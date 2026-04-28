@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#F0ECDF">
+<title>Apply for an Audit — GRAIN</title>
+<meta name="description" content="A 30-minute audit. Mutual qualification. You leave with a specific dollar figure and a clear plan, whether or not you become a client.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%23667B4A' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%239AAF7A'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%239AAF7A'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%231C2420'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>var CALENDLY_URL='https://calendly.com/YOUR-CALENDLY-URL';function openCalendly(e){if(e)e.preventDefault();Calendly.initPopupWidget({url:CALENDLY_URL});return false;}</script>
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  .apply-hero {
+    padding: 200px 32px 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .apply-hero h1 {
+    font-weight: 900;
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    max-width: 1000px;
+  }
+  .apply-hero h1 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+  .apply-hero-sub {
+    font-size: clamp(17px, 1.6vw, 21px);
+    color: var(--ink-soft);
+    max-width: 720px;
+    line-height: 1.55;
+  }
+
+  .apply-grid {
+    max-width: 1280px;
+    margin: 60px auto 140px;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .apply-info-block { padding-top: 24px; }
+  .apply-info-block h3 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 28px;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .apply-info-block p {
+    font-size: 15px;
+    color: var(--ink-light);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .what-to-expect {
+    border-top: 1px solid var(--line);
+    padding-top: 32px;
+    margin-bottom: 32px;
+  }
+  .expect-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--moss-deep);
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+  .expect-list { list-style: none; margin-bottom: 32px; }
+  .expect-list li {
+    padding: 12px 0 12px 32px;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .expect-list li::before {
+    content: counter(item, decimal-leading-zero);
+    counter-increment: item;
+    position: absolute;
+    left: 0;
+    top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--moss-deep);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .expect-list { counter-reset: item; }
+
+  /* Form */
+  .form-wrap {
+    background: var(--paper);
+    padding: 56px 48px;
+    border: 1px solid var(--line);
+  }
+  .form-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--moss-deep);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .form-h {
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .form-intro {
+    font-size: 14px;
+    color: var(--ink-light);
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+  .contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .form-input, .form-select, .form-textarea {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 14px 16px;
+    font-size: 15px;
+    color: var(--ink);
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--moss-deep);
+  }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    grid-column: 1 / -1;
+    background: var(--ink);
+    color: var(--bg);
+    padding: 18px;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.02em;
+    margin-top: 16px;
+    transition: background 0.2s;
+  }
+  .form-submit:hover { background: var(--moss-deep); }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--moss-deep);
+  }
+  .form-success.show { display: block; }
+  .form-success-h {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .or-divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    position: relative;
+  }
+  .or-divider::before, .or-divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 80px;
+    height: 1px;
+    background: var(--line);
+  }
+  .or-divider::before { left: calc(50% - 100px); }
+  .or-divider::after { right: calc(50% - 100px); }
+
+  .calendly-cta {
+    width: 100%;
+    padding: 18px;
+    background: var(--moss);
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.02em;
+    transition: background 0.2s;
+  }
+  .calendly-cta:hover { background: var(--moss-light); }
+
+  @media (max-width: 900px) {
+    .apply-grid { grid-template-columns: 1fr; gap: 48px; }
+    .form-wrap { padding: 40px 28px; }
+    .contact-form { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#667B4A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
+      GRAIN
+    </a>
+    <div class="nav-links">
+      <a href="method.html">Method</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="calculator.html">Calculator</a>
+      <button class="nav-cta" onclick="openCalendly(event)">Apply for Audit</button>
+    </div>
+  </div>
+</nav>
+
+<section class="apply-hero">
+  <div class="eyebrow">THE AUDIT</div>
+  <h1>Apply for a 30-minute <span class="italic">audit.</span></h1>
+  <p class="apply-hero-sub">We trace your real numbers, give you a specific dollar figure of what you're losing, and determine if your business is a fit for GRAIN. Whether or not you become a client, the analysis is yours.</p>
+</section>
+
+<div class="apply-grid">
+  <div class="apply-info-block">
+    <div class="what-to-expect">
+      <div class="expect-label">WHAT TO EXPECT</div>
+      <ol class="expect-list">
+        <li>You apply via the form or by booking directly on our calendar</li>
+        <li>We review your application within 24 hours and confirm the call</li>
+        <li>30-minute audit on Zoom — we ask 10 specific questions about your lead flow</li>
+        <li>You leave with a dollar figure of what your business is losing per year</li>
+        <li>If GRAIN is a fit, we discuss next steps. If not, you keep the analysis</li>
+      </ol>
+    </div>
+
+    <h3>Who this is for.</h3>
+    <p>Home service business owners doing $500K to $10M in revenue who lose jobs because they can't answer every call, follow up on every quote, or stay in touch with past customers. We work across roofing, HVAC, plumbing, pest control, electrical, fencing, pool, painting, landscaping, and remodeling.</p>
+
+    <h3>Who this isn't for.</h3>
+    <p>If you're under $500K revenue or generating fewer than 30 leads per month, GRAIN isn't the right fit yet. If you don't already have a system for delivering work to customers (CRM, scheduling, etc.), you need that before you need GRAIN. The audit will tell us either way.</p>
+  </div>
+
+  <div>
+    <div class="form-wrap">
+      <div class="form-eyebrow">SUBMIT YOUR APPLICATION</div>
+      <h2 class="form-h">Tell us about your business.</h2>
+      <p class="form-intro">We'll review and respond within 24 hours.</p>
+
+      <form class="contact-form" id="audit-form" action="https://formspree.io/f/FORMSPREE_ID_HERE" method="POST">
+        <div class="form-field">
+          <label class="form-label">YOUR NAME</label>
+          <input class="form-input" type="text" name="name" placeholder="Johnny Smith" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label">BUSINESS NAME</label>
+          <input class="form-input" type="text" name="business" placeholder="Smith Roofing Co." required>
+        </div>
+        <div class="form-field">
+          <label class="form-label">PHONE</label>
+          <input class="form-input" type="tel" name="phone" placeholder="(615) 555-0100" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label">EMAIL</label>
+          <input class="form-input" type="email" name="email" placeholder="you@yourbusiness.com" required>
+        </div>
+        <div class="form-field full">
+          <label class="form-label">YOUR TRADE</label>
+          <select class="form-select" name="trade" required>
+            <option value="" disabled selected>Select your primary trade</option>
+            <option>Roofing</option>
+            <option>HVAC</option>
+            <option>Plumbing</option>
+            <option>Pest Control</option>
+            <option>Electrical</option>
+            <option>Fencing</option>
+            <option>Pool</option>
+            <option>Painting</option>
+            <option>Landscaping</option>
+            <option>Remodeling</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label class="form-label">ANNUAL REVENUE (ESTIMATE)</label>
+          <select class="form-select" name="revenue" required>
+            <option value="" disabled selected>Select a range</option>
+            <option>Under $500K</option>
+            <option>$500K to $1M</option>
+            <option>$1M to $3M</option>
+            <option>$3M to $10M</option>
+            <option>$10M+</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label class="form-label">BIGGEST GAP IN YOUR CURRENT PROCESS</label>
+          <textarea class="form-textarea" name="challenge" placeholder="Where do leads tend to slip through? After-hours calls? Follow-up on quotes? Past customers?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Submit Application →</button>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <div class="form-success-h">Application received.</div>
+        <p>We'll review and reach out within 24 hours.</p>
+      </div>
+
+      <div class="or-divider">OR</div>
+
+      <button class="calendly-cta" onclick="openCalendly(event)">Book Directly on Our Calendar →</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand-block">
+      <div class="footer-brand">
+        <svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#1C2420" rx="40"/><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#F0ECDF"/></g></g></svg>
+        GRAIN
+      </div>
+      <div class="footer-tag">PLANT · NURTURE · SCALE</div>
+      <div class="footer-mission">Lead-to-customer infrastructure for home service businesses. Nashville-based. Serving nationwide.</div>
+    </div>
+    <div class="footer-col">
+      <h4>System</h4>
+      <a href="method.html">The Method</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="calculator.html">Calculator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="apply.html">Apply for Audit</a>
+      <a href="mailto:johnny@grainmethod.com">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Trust</h4>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Guarantee</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 GRAIN Method LLC · Nashville, Tennessee</div>
+    <div>johnny@grainmethod.com</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('audit-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const data = new FormData(this);
+    fetch(this.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+      .then(() => {
+        this.style.display = 'none';
+        document.getElementById('form-success').classList.add('show');
+      })
+      .catch(() => alert('Something went wrong. Please email johnny@grainmethod.com directly.'));
+  });
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+</script>
+</body>
+</html>

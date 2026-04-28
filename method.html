@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#F0ECDF">
+<title>The Method — GRAIN</title>
+<meta name="description" content="The five-stage system that closes the response gap. Generate, Respond, Automate, Integrate, Nurture. Deployed in 7 days. Gets smarter every month.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%23667B4A' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%239AAF7A'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%239AAF7A'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%231C2420'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>var CALENDLY_URL='https://calendly.com/YOUR-CALENDLY-URL';function openCalendly(e){if(e)e.preventDefault();Calendly.initPopupWidget({url:CALENDLY_URL});return false;}</script>
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  /* PAGE HERO */
+  .page-hero {
+    padding: 200px 32px 80px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .page-hero h1 {
+    font-weight: 900;
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    max-width: 1000px;
+  }
+  .page-hero h1 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+  .page-hero-sub {
+    font-size: clamp(17px, 1.6vw, 21px);
+    color: var(--ink-soft);
+    max-width: 720px;
+    line-height: 1.55;
+  }
+  @media (max-width: 768px) { .page-hero { padding: 140px 20px 60px; } }
+
+  /* FIVE STAGES */
+  .stages {
+    padding: 100px 0 140px;
+  }
+  .stage {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    gap: 60px;
+    padding: 80px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .stage:last-child { border-bottom: 1px solid var(--line); }
+  .stage-letter {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 180px;
+    line-height: 0.85;
+    color: var(--moss-deep);
+    letter-spacing: -0.04em;
+  }
+  .stage-content h3 {
+    font-weight: 800;
+    font-size: clamp(32px, 3.5vw, 48px);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .stage-content p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    max-width: 560px;
+  }
+  .stage-meta {
+    text-align: right;
+  }
+  .stage-meta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--moss-deep);
+    margin-bottom: 8px;
+  }
+  .stage-meta-val {
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  @media (max-width: 900px) {
+    .stage { grid-template-columns: 1fr; gap: 24px; padding: 60px 0; }
+    .stage-letter { font-size: 120px; }
+    .stage-meta { text-align: left; }
+  }
+
+  /* TIMELINE */
+  .timeline-section {
+    background: var(--paper);
+    padding: 140px 0;
+  }
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 60px;
+  }
+  .tl-card {
+    background: var(--bg);
+    padding: 48px 36px;
+    border: 1px solid var(--line);
+    position: relative;
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  }
+  .tl-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(28, 36, 32, 0.08);
+  }
+  .tl-card-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--moss-deep);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .tl-card-title {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .tl-card-subtitle {
+    font-size: 14px;
+    color: var(--ink-light);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .tl-card-duration {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--moss-deep);
+    background: rgba(154, 175, 122, 0.12);
+    padding: 6px 10px;
+    display: inline-block;
+    margin-bottom: 24px;
+  }
+  .tl-card-body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-light);
+  }
+  @media (max-width: 900px) {
+    .timeline-grid { grid-template-columns: 1fr; }
+  }
+
+  /* DATA NETWORK EFFECT */
+  .network-section {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 160px 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .network-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .network-section h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 6vw, 72px);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    color: var(--bg);
+    margin-bottom: 32px;
+    max-width: 900px;
+  }
+  .network-section h2 .italic { color: var(--moss-light); }
+  .network-section .section-sub {
+    color: rgba(240, 236, 223, 0.75);
+    max-width: 720px;
+    margin-bottom: 80px;
+  }
+  .flywheel {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto 80px;
+    aspect-ratio: 1;
+  }
+  .flywheel-svg {
+    width: 100%;
+    height: 100%;
+    animation: rotate-slow 60s linear infinite;
+  }
+  @keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .flywheel-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: var(--ink);
+    padding: 40px;
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(154, 175, 122, 0.3);
+  }
+  .flywheel-center-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--moss-light);
+    margin-bottom: 12px;
+  }
+  .flywheel-center-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.15;
+    color: var(--bg);
+  }
+  .network-stages {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(154, 175, 122, 0.15);
+    border: 1px solid rgba(154, 175, 122, 0.25);
+  }
+  .network-stage {
+    background: var(--ink);
+    padding: 36px 28px;
+  }
+  .network-stage-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--moss-light);
+    margin-bottom: 16px;
+  }
+  .network-stage-title {
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--bg);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .network-stage-body {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(240, 236, 223, 0.65);
+  }
+  @media (max-width: 900px) {
+    .network-stages { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .network-stages { grid-template-columns: 1fr; }
+    .flywheel-center { width: 180px; height: 180px; padding: 28px; }
+    .flywheel-center-text { font-size: 19px; }
+  }
+
+  /* DASHBOARD PREVIEW */
+  .dash-section { padding: 140px 0; }
+  .dash-preview {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 56px;
+    border: 1px solid var(--moss-deep);
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .dash-preview::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--moss), transparent);
+  }
+  .dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(240, 236, 223, 0.12);
+    margin-bottom: 40px;
+  }
+  .dash-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--moss-light);
+    font-weight: 600;
+  }
+  .dash-live {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--moss);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dash-live::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: var(--moss);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity:1;transform:scale(1); } 50% { opacity:0.5;transform:scale(0.8); } }
+  .dash-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(240, 236, 223, 0.1);
+    border: 1px solid rgba(240, 236, 223, 0.1);
+  }
+  .dash-stat {
+    background: var(--ink);
+    padding: 32px 24px;
+  }
+  .dash-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: rgba(240, 236, 223, 0.6);
+    margin-bottom: 14px;
+  }
+  .dash-stat-value {
+    font-weight: 900;
+    font-size: 40px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--bg);
+    margin-bottom: 8px;
+  }
+  .dash-stat-delta {
+    font-size: 12px;
+    color: var(--moss-light);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .dash-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: rgba(240, 236, 223, 0.45);
+    margin-top: 36px;
+    text-align: center;
+  }
+  @media (max-width: 900px) {
+    .dash-preview { padding: 36px 24px; }
+    .dash-grid { grid-template-columns: 1fr 1fr; }
+    .dash-stat-value { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#667B4A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
+      GRAIN
+    </a>
+    <div class="nav-links">
+      <a href="method.html" class="active">Method</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="calculator.html">Calculator</a>
+      <button class="nav-cta" onclick="openCalendly(event)">Apply for Audit</button>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="eyebrow">THE GRAIN METHOD</div>
+  <h1>One system. <span class="italic">Five stages.</span><br>Built to close the gap.</h1>
+  <p class="page-hero-sub">GRAIN isn't a chatbot, an answering service, or a CRM. It's the complete lead-to-customer infrastructure your business should have had years ago. Five integrated stages. One install. Done for you in 7 days.</p>
+</section>
+
+<!-- FIVE STAGES -->
+<section class="stages">
+  <div class="container">
+    <div class="stage reveal">
+      <div class="stage-letter">G</div>
+      <div class="stage-content">
+        <h3>Generate.</h3>
+        <p>Capture demand from every channel. Web forms, phone calls, missed calls, social DMs, paid ads, referrals, and lead aggregator sources like Thumbtack, Angi, and Google LSA.</p>
+        <p>Nothing slips through. Every inquiry hits the same intake, gets tagged by source, and starts moving through the system within seconds.</p>
+      </div>
+      <div class="stage-meta">
+        <div class="stage-meta-label">RESPONSE TIME</div>
+        <div class="stage-meta-val">Instant capture<br>across all channels</div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div class="stage-letter">R</div>
+      <div class="stage-content">
+        <h3>Respond.</h3>
+        <p>Every inquiry gets answered in under 60 seconds, 24 hours a day, 7 days a week. Voice answers your calls. SMS catches your missed ones. Email responds to your forms.</p>
+        <p>The conversation feels human because the system has been trained on thousands of real homeowner conversations in your specific trade.</p>
+      </div>
+      <div class="stage-meta">
+        <div class="stage-meta-label">STANDARD</div>
+        <div class="stage-meta-val">&lt;60 seconds<br>24/7/365</div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div class="stage-letter">A</div>
+      <div class="stage-content">
+        <h3>Automate.</h3>
+        <p>Quote follow-up sequences. Appointment confirmations. Review requests after every job. Referral asks at the right moment. Reactivation drips for stalled leads.</p>
+        <p>Every workflow that used to live in your head, now runs on autopilot. You stop forgetting. Your customers stop being forgotten.</p>
+      </div>
+      <div class="stage-meta">
+        <div class="stage-meta-label">CADENCE</div>
+        <div class="stage-meta-val">90 days of follow-up<br>per quote, automatic</div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div class="stage-letter">I</div>
+      <div class="stage-content">
+        <h3>Integrate.</h3>
+        <p>Connects to whatever you're already using. ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, GoHighLevel, Leap, and more.</p>
+        <p>No rip-and-replace. We layer on top of your existing tools and make them do what you hoped they would when you bought them.</p>
+      </div>
+      <div class="stage-meta">
+        <div class="stage-meta-label">CRM SUPPORT</div>
+        <div class="stage-meta-val">12+ direct integrations<br>plus custom builds</div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div class="stage-letter">N</div>
+      <div class="stage-content">
+        <h3>Nurture.</h3>
+        <p>Past customers reactivated quarterly. Seasonal touchpoints. Maintenance reminders. Birthday and anniversary check-ins. Holiday campaigns.</p>
+        <p>The work you already did keeps generating revenue years later. Most clients pull $50K to $200K out of their existing customer list within the first 90 days.</p>
+      </div>
+      <div class="stage-meta">
+        <div class="stage-meta-label">REACTIVATION</div>
+        <div class="stage-meta-val">Quarterly cadence<br>across full customer history</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS WITH -->
+<section class="works-with">
+  <div class="container">
+    <div class="works-with-label">CONNECTS DIRECTLY TO YOUR EXISTING TOOLS</div>
+    <div class="logo-grid">
+      <div class="logo-cell">ServiceTitan</div>
+      <div class="logo-cell">Jobber</div>
+      <div class="logo-cell">Housecall Pro</div>
+      <div class="logo-cell">JobNimbus</div>
+      <div class="logo-cell">AccuLynx</div>
+      <div class="logo-cell">FieldPulse</div>
+      <div class="logo-cell">GoHighLevel</div>
+      <div class="logo-cell">Leap</div>
+      <div class="logo-cell">SalesRabbit</div>
+      <div class="logo-cell">JobTread</div>
+      <div class="logo-cell">Service Fusion</div>
+      <div class="logo-cell">Improveit360</div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPLOYMENT TIMELINE -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">DEPLOYMENT</div>
+      <h2>7 days from signed <span class="italic">to running.</span></h2>
+      <p class="section-sub">Three phases. One week. Live and answering your phone before most agencies have finished their kickoff call.</p>
+    </div>
+    <div class="timeline-grid">
+      <div class="tl-card reveal reveal-delay-1">
+        <div class="tl-card-num">01 · PLANT</div>
+        <div class="tl-card-title">Plant.</div>
+        <div class="tl-card-subtitle">We learn your business.</div>
+        <div class="tl-card-duration">DAYS 1—2</div>
+        <div class="tl-card-body">A 60-minute kickoff. We pull your last 12 months of leads, quotes, and customer data and produce your Day-1 Onboarding Intelligence Report. Every gap mapped. A clear plan, a clear target.</div>
+      </div>
+      <div class="tl-card reveal reveal-delay-2">
+        <div class="tl-card-num">02 · NURTURE</div>
+        <div class="tl-card-title">Nurture.</div>
+        <div class="tl-card-subtitle">The system goes in.</div>
+        <div class="tl-card-duration">DAYS 3—5</div>
+        <div class="tl-card-body">Voice agent built and tuned for your trade. SMS responder armed. 90-day quote follow-up sequences set. Past customer reactivation flows ready. CRM integrated. Dashboard provisioned.</div>
+      </div>
+      <div class="tl-card reveal reveal-delay-3">
+        <div class="tl-card-num">03 · SCALE</div>
+        <div class="tl-card-title">Scale.</div>
+        <div class="tl-card-subtitle">It starts working for you.</div>
+        <div class="tl-card-duration">DAYS 6—7</div>
+        <div class="tl-card-body">Internal QA across every workflow. Team training call. Final tuning. The system goes live on Day 7 and starts answering your phone, working your quotes, and reactivating your customers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA NETWORK EFFECT -->
+<section class="network-section">
+  <div class="network-inner">
+    <div class="reveal">
+      <div class="eyebrow" style="color: var(--moss-light);">THE FLYWHEEL</div>
+      <h2>The system gets <span class="italic">smarter</span> every month.</h2>
+      <p class="section-sub">Most agencies sell you a configuration and walk away. GRAIN sells you a system that learns. Every call handled, every text exchange, every quote that converts or goes cold becomes signal. Anonymized, aggregated, used to make every GRAIN client's system smarter the next month.</p>
+    </div>
+
+    <div class="flywheel reveal reveal-delay-2">
+      <svg class="flywheel-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer ring -->
+        <circle cx="200" cy="200" r="180" fill="none" stroke="rgba(154,175,122,0.25)" stroke-width="1" stroke-dasharray="2 6"/>
+        <!-- Inner ring -->
+        <circle cx="200" cy="200" r="140" fill="none" stroke="rgba(154,175,122,0.4)" stroke-width="1.5"/>
+        <!-- 4 arcs -->
+        <g stroke="#9AAF7A" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M 200 60 A 140 140 0 0 1 340 200" />
+          <path d="M 340 200 A 140 140 0 0 1 200 340" opacity="0.7"/>
+          <path d="M 200 340 A 140 140 0 0 1 60 200" opacity="0.5"/>
+          <path d="M 60 200 A 140 140 0 0 1 200 60" opacity="0.3"/>
+        </g>
+        <!-- Arrow heads on each arc end -->
+        <g fill="#9AAF7A">
+          <polygon points="340,195 350,200 340,205" />
+          <polygon points="195,340 200,350 205,340" opacity="0.7"/>
+          <polygon points="60,205 50,200 60,195" opacity="0.5"/>
+          <polygon points="205,60 200,50 195,60" opacity="0.3"/>
+        </g>
+        <!-- Node dots at quadrants -->
+        <g fill="#BFD0A2">
+          <circle cx="200" cy="60" r="6"/>
+          <circle cx="340" cy="200" r="6"/>
+          <circle cx="200" cy="340" r="6"/>
+          <circle cx="60" cy="200" r="6"/>
+        </g>
+      </svg>
+      <div class="flywheel-center">
+        <div class="flywheel-center-label">EVERY MONTH</div>
+        <div class="flywheel-center-text">Smarter agents. Better sequences.</div>
+      </div>
+    </div>
+
+    <div class="network-stages reveal reveal-delay-3">
+      <div class="network-stage">
+        <div class="network-stage-num">01</div>
+        <div class="network-stage-title">Your business runs the system.</div>
+        <div class="network-stage-body">Voice calls. Texts. Quotes. Follow-ups. Real interactions, real outcomes, real data.</div>
+      </div>
+      <div class="network-stage">
+        <div class="network-stage-num">02</div>
+        <div class="network-stage-title">Real signal is captured.</div>
+        <div class="network-stage-body">Every call recorded. Every conversion tracked. Every script that worked or didn't, logged.</div>
+      </div>
+      <div class="network-stage">
+        <div class="network-stage-num">03</div>
+        <div class="network-stage-title">Aggregated across the network.</div>
+        <div class="network-stage-body">Anonymized signal from every GRAIN client trains the next iteration of the system, by trade and region.</div>
+      </div>
+      <div class="network-stage">
+        <div class="network-stage-num">04</div>
+        <div class="network-stage-title">Returns to your business, smarter.</div>
+        <div class="network-stage-body">The roofer in Tennessee benefits from what was learned in Texas. Your system grows compounding intelligence over time.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD PREVIEW -->
+<section class="dash-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">YOUR DASHBOARD</div>
+      <h2>Live numbers. <span class="italic">Yours.</span></h2>
+      <p class="section-sub">Every GRAIN client gets a live performance dashboard. Updated in real time. Showing exactly what the system is doing for your revenue.</p>
+    </div>
+    <div class="dash-preview reveal">
+      <div class="dash-header">
+        <div class="dash-title">SAMPLE CLIENT DASHBOARD · LAST 30 DAYS</div>
+        <div class="dash-live">LIVE</div>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-stat">
+          <div class="dash-stat-label">JOBS BOOKED</div>
+          <div class="dash-stat-value">14</div>
+          <div class="dash-stat-delta">+8 from system</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-label">LEADS RECOVERED</div>
+          <div class="dash-stat-value">67</div>
+          <div class="dash-stat-delta">vs 0 last month</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-label">RESPONSE TIME</div>
+          <div class="dash-stat-value">42s</div>
+          <div class="dash-stat-delta">was 47 min</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-label">ATTRIBUTED REVENUE</div>
+          <div class="dash-stat-value">$124K</div>
+          <div class="dash-stat-delta">month-to-date</div>
+        </div>
+      </div>
+      <div class="dash-note">SAMPLE NUMBERS · YOUR DASHBOARD UPDATES IN REAL TIME</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding: 160px 32px; text-align: center; max-width: 920px; margin: 0 auto;">
+  <div class="eyebrow reveal" style="justify-content: center;">THE NEXT STEP</div>
+  <h2 class="reveal reveal-delay-1" style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: clamp(40px, 6vw, 72px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 32px; color: var(--ink);">See what the gap is costing you.</h2>
+  <p class="reveal reveal-delay-2" style="font-size: 18px; color: var(--ink-light); line-height: 1.6; max-width: 600px; margin: 0 auto 48px;">A 30-minute audit. We trace your real numbers and give you a specific dollar figure. Whether or not you become a client.</p>
+  <div class="reveal reveal-delay-3">
+    <button class="btn btn-primary" onclick="openCalendly(event)">Apply for Your Audit <span class="btn-arrow">→</span></button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand-block">
+      <div class="footer-brand">
+        <svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#1C2420" rx="40"/><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#F0ECDF"/></g></g></svg>
+        GRAIN
+      </div>
+      <div class="footer-tag">PLANT · NURTURE · SCALE</div>
+      <div class="footer-mission">Lead-to-customer infrastructure for home service businesses. Nashville-based. Serving nationwide.</div>
+    </div>
+    <div class="footer-col">
+      <h4>System</h4>
+      <a href="method.html">The Method</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="calculator.html">Calculator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#" onclick="openCalendly(event); return false;">Apply for Audit</a>
+      <a href="mailto:johnny@grainmethod.com">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Trust</h4>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Guarantee</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 GRAIN Method LLC · Nashville, Tennessee</div>
+    <div>johnny@grainmethod.com</div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+</script>
+</body>
+</html>

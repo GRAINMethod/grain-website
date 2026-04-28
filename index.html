@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#F0ECDF">
+<title>GRAIN Method — Lead-to-Customer Infrastructure for Home Services</title>
+<meta name="description" content="The response gap is killing your business. GRAIN closes it. Every call answered in 60 seconds. Every quote followed up for 90 days. Done for you in 7 days.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20' stroke-linejoin='miter'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%23667B4A' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%239AAF7A'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%239AAF7A'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%231C2420'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+
+<!-- ANALYTICS PLACEHOLDER -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+
+<!-- CALENDLY -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  var CALENDLY_URL='https://calendly.com/YOUR-CALENDLY-URL';
+  function openCalendly(e){if(e)e.preventDefault();Calendly.initPopupWidget({url:CALENDLY_URL});if(typeof gtag!=='undefined')gtag('event','calendly_open');return false;}
+</script>
+
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  /* ============================================================
+     HOMEPAGE-SPECIFIC STYLES
+     ============================================================ */
+
+  /* HERO */
+  .hero {
+    padding: 200px 32px 120px;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 240px;
+    right: -120px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(154,175,122,0.18) 0%, transparent 60%);
+    z-index: -1;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  h1.hero-title {
+    font-weight: 900;
+    font-size: clamp(48px, 8vw, 108px);
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+    margin-bottom: 36px;
+    max-width: 1100px;
+    color: var(--ink);
+  }
+  h1.hero-title .italic {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--moss-deep);
+  }
+  .hero-sub {
+    font-size: clamp(18px, 1.6vw, 22px);
+    max-width: 680px;
+    margin-bottom: 28px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .hero-sub strong { color: var(--ink); font-weight: 700; }
+  .hero-guarantee {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(18px, 1.8vw, 24px);
+    color: var(--moss-deep);
+    margin-bottom: 56px;
+    font-weight: 500;
+    max-width: 680px;
+    line-height: 1.4;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    max-width: 740px;
+    padding-top: 48px;
+    border-top: 1px solid var(--line);
+  }
+  .stat-num {
+    font-weight: 900;
+    font-size: clamp(36px, 4vw, 56px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .stat-num .italic {
+    font-size: 0.5em;
+    color: var(--moss-deep);
+    font-weight: 400;
+    margin-left: 4px;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* Hero load animation */
+  .hero > * { animation: fadeUp 0.9s var(--ease) backwards; }
+  .hero .eyebrow { animation-delay: 0.05s; }
+  .hero h1 { animation-delay: 0.2s; }
+  .hero .hero-sub { animation-delay: 0.4s; }
+  .hero .hero-guarantee { animation-delay: 0.55s; }
+  .hero .hero-ctas { animation-delay: 0.7s; }
+  .hero .hero-stats { animation-delay: 0.85s; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 140px 20px 80px; }
+    .hero-stats { grid-template-columns: 1fr; gap: 32px; }
+    .hero-ctas { flex-direction: column; align-items: stretch; }
+    .hero-ctas .btn { justify-content: center; }
+  }
+
+  /* THREE STANDARDS */
+  .standards-section { padding: 140px 0; }
+  .standards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .standard-cell {
+    background: var(--bg);
+    padding: 56px 44px;
+    transition: background 0.3s var(--ease);
+  }
+  .standard-cell:hover { background: var(--paper); }
+  .standard-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--moss-deep);
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+  .standard-headline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .standard-body {
+    font-size: 15px;
+    color: var(--ink-light);
+    line-height: 1.65;
+  }
+  @media (max-width: 900px) {
+    .standards-grid { grid-template-columns: 1fr; }
+    .standard-cell { padding: 40px 28px; }
+    .standard-headline { font-size: 30px; }
+  }
+
+  /* CALCULATOR PREVIEW */
+  .calc-preview {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 140px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .calc-preview::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1200px;
+    height: 1200px;
+    background: radial-gradient(circle, rgba(154,175,122,0.12) 0%, transparent 60%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .calc-preview-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .calc-preview h2 {
+    font-weight: 900;
+    font-size: clamp(36px, 5vw, 56px);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    color: var(--bg);
+    margin-bottom: 28px;
+  }
+  .calc-preview h2 .italic { color: var(--moss-light); }
+  .calc-preview p {
+    font-size: 17px;
+    color: rgba(240, 236, 223, 0.8);
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+  .calc-preview-vis {
+    background: rgba(240, 236, 223, 0.04);
+    border: 1px solid rgba(154, 175, 122, 0.25);
+    padding: 48px 40px;
+    position: relative;
+  }
+  .calc-vis-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--moss-light);
+    margin-bottom: 24px;
+  }
+  .calc-vis-number {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 1;
+    color: var(--bg);
+    margin-bottom: 12px;
+  }
+  .calc-vis-suffix { color: var(--moss-light); }
+  .calc-vis-caption {
+    font-size: 13px;
+    color: rgba(240, 236, 223, 0.6);
+    line-height: 1.5;
+  }
+  .calc-vis-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(154,175,122,0.4), transparent);
+    margin: 32px 0;
+  }
+  .calc-vis-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+  .calc-vis-detail-label {
+    color: rgba(240, 236, 223, 0.6);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+  .calc-vis-detail-val {
+    color: var(--moss-light);
+    font-weight: 600;
+  }
+  @media (max-width: 900px) {
+    .calc-preview-inner { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    padding: 160px 32px;
+    text-align: center;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .cta-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--moss-deep);
+    font-weight: 600;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .cta-headline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    color: var(--ink);
+  }
+  .cta-sub {
+    font-size: 18px;
+    color: var(--ink-light);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 48px;
+  }
+  .cta-fineprint {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 24px;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18" stroke-linejoin="miter"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#667B4A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
+      GRAIN
+    </a>
+    <div class="nav-links">
+      <a href="method.html">Method</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="calculator.html">Calculator</a>
+      <button class="nav-cta" onclick="openCalendly(event)">Apply for Audit</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">LEAD-TO-CUSTOMER INFRASTRUCTURE FOR HOME SERVICES</div>
+  <h1 class="hero-title">The response gap is <span class="italic">killing your business.</span></h1>
+  <p class="hero-sub">The average home service company loses 35 to 50 percent of their leads in the first hour. Not because the leads are bad. Because nobody picks up the phone fast enough. <strong>GRAIN closes the gap.</strong> Every call answered in 60 seconds. Every quote followed up for 90 days. Every dormant customer reactivated. Done for you.</p>
+  <p class="hero-guarantee">5 extra jobs in 60 days, or we work for free until you get them.</p>
+  <div class="hero-ctas">
+    <button class="btn btn-primary" onclick="openCalendly(event)">Apply for an Audit <span class="btn-arrow">→</span></button>
+    <a href="calculator.html" class="btn btn-secondary">Calculate Your Gap</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">7<span class="italic">days</span></div>
+      <div class="stat-label">FROM SIGNED TO RUNNING</div>
+    </div>
+    <div>
+      <div class="stat-num">&lt;60<span class="italic">sec</span></div>
+      <div class="stat-label">RESPONSE TIME STANDARD</div>
+    </div>
+    <div>
+      <div class="stat-num">5<span class="italic">jobs</span></div>
+      <div class="stat-label">GUARANTEED IN 60 DAYS</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">EVERY CALL ANSWERED IN 60 SECONDS</span><span class="ticker-dot"></span>
+    <span class="ticker-item">EVERY QUOTE FOLLOWED UP FOR 90 DAYS</span><span class="ticker-dot"></span>
+    <span class="ticker-item">EVERY DORMANT CUSTOMER REACTIVATED</span><span class="ticker-dot"></span>
+    <span class="ticker-item">7-DAY DEPLOYMENT</span><span class="ticker-dot"></span>
+    <span class="ticker-item">5 JOBS IN 60 DAYS, GUARANTEED</span><span class="ticker-dot"></span>
+    <span class="ticker-item">EVERY CALL ANSWERED IN 60 SECONDS</span><span class="ticker-dot"></span>
+    <span class="ticker-item">EVERY QUOTE FOLLOWED UP FOR 90 DAYS</span><span class="ticker-dot"></span>
+    <span class="ticker-item">EVERY DORMANT CUSTOMER REACTIVATED</span><span class="ticker-dot"></span>
+    <span class="ticker-item">7-DAY DEPLOYMENT</span><span class="ticker-dot"></span>
+    <span class="ticker-item">5 JOBS IN 60 DAYS, GUARANTEED</span><span class="ticker-dot"></span>
+  </div>
+</div>
+
+<!-- THREE STANDARDS -->
+<section class="standards-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">THREE STANDARDS</div>
+      <h2>What we hold <span class="italic">ourselves to.</span></h2>
+      <p class="section-sub">These aren't features. They're the floor. Every GRAIN client gets all three, every month, without exception.</p>
+    </div>
+    <div class="standards-grid">
+      <div class="standard-cell reveal reveal-delay-1">
+        <div class="standard-num">01</div>
+        <div class="standard-headline">Every call, answered.</div>
+        <div class="standard-body">When your phone rings, someone picks up in under 60 seconds. 24 hours a day, 7 days a week, every holiday. The lead never goes to voicemail. Voicemails are where revenue dies.</div>
+      </div>
+      <div class="standard-cell reveal reveal-delay-2">
+        <div class="standard-num">02</div>
+        <div class="standard-headline">Every quote, worked.</div>
+        <div class="standard-body">When you send a quote, the follow-up sequence starts immediately and runs for 90 days. Texts, emails, and calls on the right cadence. No quote goes cold. No quote gets forgotten.</div>
+      </div>
+      <div class="standard-cell reveal reveal-delay-3">
+        <div class="standard-num">03</div>
+        <div class="standard-headline">Every customer, returned.</div>
+        <div class="standard-body">Your past customers get reactivated quarterly. Seasonal check-ins, maintenance reminders, referral asks. The work you already did keeps generating revenue years later.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS WITH -->
+<section class="works-with">
+  <div class="container">
+    <div class="works-with-label">WORKS WITH THE TOOLS YOU ALREADY USE</div>
+    <div class="logo-grid">
+      <div class="logo-cell">ServiceTitan</div>
+      <div class="logo-cell">Jobber</div>
+      <div class="logo-cell">Housecall Pro</div>
+      <div class="logo-cell">JobNimbus</div>
+      <div class="logo-cell">AccuLynx</div>
+      <div class="logo-cell">FieldPulse</div>
+      <div class="logo-cell">GoHighLevel</div>
+      <div class="logo-cell">Leap</div>
+      <div class="logo-cell">SalesRabbit</div>
+      <div class="logo-cell">JobTread</div>
+      <div class="logo-cell">Service Fusion</div>
+      <div class="logo-cell">Improveit360</div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR PREVIEW -->
+<section class="calc-preview">
+  <div class="calc-preview-inner">
+    <div class="reveal">
+      <div class="eyebrow" style="color: var(--moss-light);">YOUR REVENUE GAP</div>
+      <h2>How much are you <span class="italic">walking away from</span> every month?</h2>
+      <p>Most home service businesses have no idea how much revenue they're losing to slow follow-up. The number is usually in the hundreds of thousands per year. Three quick questions and you'll know yours.</p>
+      <a href="calculator.html" class="btn btn-primary" style="background: var(--moss); color: var(--ink);">Open the Calculator <span class="btn-arrow">→</span></a>
+    </div>
+    <div class="calc-preview-vis reveal reveal-delay-2">
+      <div class="calc-vis-label">SAMPLE — ROOFER, $2M REVENUE</div>
+      <div class="calc-vis-number">$84K<span class="calc-vis-suffix">/mo</span></div>
+      <div class="calc-vis-caption">Estimated revenue lost to slow lead response, dead quotes, and uncontacted past customers.</div>
+      <div class="calc-vis-line"></div>
+      <div class="calc-vis-detail">
+        <span class="calc-vis-detail-label">LEADS LOST TO SLOW RESPONSE</span>
+        <span class="calc-vis-detail-val">$32K</span>
+      </div>
+      <div class="calc-vis-detail">
+        <span class="calc-vis-detail-label">QUOTES THAT WENT COLD</span>
+        <span class="calc-vis-detail-val">$38K</span>
+      </div>
+      <div class="calc-vis-detail">
+        <span class="calc-vis-detail-label">PAST CUSTOMERS NEVER CONTACTED</span>
+        <span class="calc-vis-detail-val">$14K</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-eyebrow reveal">THE AUDIT</div>
+  <h2 class="cta-headline reveal reveal-delay-1">See what your business is actually losing.</h2>
+  <p class="cta-sub reveal reveal-delay-2">A 30-minute call. We trace your real numbers. You leave with a specific dollar figure and a clear plan, whether or not you become a client.</p>
+  <div class="reveal reveal-delay-3">
+    <button class="btn btn-primary" onclick="openCalendly(event)">Apply for Your Audit <span class="btn-arrow">→</span></button>
+  </div>
+  <p class="cta-fineprint reveal reveal-delay-4">Audits are by application. We work with a small number of home service businesses at a time.</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand-block">
+      <div class="footer-brand">
+        <svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#1C2420" rx="40"/><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#F0ECDF"/></g></g></svg>
+        GRAIN
+      </div>
+      <div class="footer-tag">PLANT · NURTURE · SCALE</div>
+      <div class="footer-mission">Lead-to-customer infrastructure for home service businesses. Nashville-based. Serving nationwide.</div>
+    </div>
+    <div class="footer-col">
+      <h4>System</h4>
+      <a href="method.html">The Method</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="calculator.html">Calculator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#" onclick="openCalendly(event); return false;">Apply for Audit</a>
+      <a href="mailto:johnny@grainmethod.com">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Trust</h4>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Guarantee</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 GRAIN Method LLC · Nashville, Tennessee</div>
+    <div>johnny@grainmethod.com</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav scroll state
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+</script>
+</body>
+</html>

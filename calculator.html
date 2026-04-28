@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#1C2420">
+<title>The Calculator — GRAIN</title>
+<meta name="description" content="Three quick questions. Find out exactly how much revenue your business is losing to slow lead response, dead quotes, and uncontacted past customers.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%23667B4A' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%239AAF7A'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%239AAF7A'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%231C2420'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>var CALENDLY_URL='https://calendly.com/YOUR-CALENDLY-URL';function openCalendly(e){if(e)e.preventDefault();Calendly.initPopupWidget({url:CALENDLY_URL});return false;}</script>
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  .calc-page {
+    background: var(--ink);
+    color: var(--bg);
+    min-height: 100vh;
+    padding-top: 100px;
+  }
+  .calc-page .nav {
+    background: rgba(28, 36, 32, 0.85) !important;
+  }
+  .calc-page .nav.scrolled {
+    background: rgba(28, 36, 32, 0.95) !important;
+    border-bottom-color: rgba(154,175,122,0.2);
+  }
+  .calc-page .nav-brand { color: var(--bg); }
+  .calc-page .nav-brand svg path[stroke="#1C2420"] { stroke: #F0ECDF; }
+  .calc-page .nav-brand svg path[fill="#1C2420"] { fill: #F0ECDF; }
+  .calc-page .nav-links a { color: rgba(240, 236, 223, 0.85); }
+  .calc-page .nav-links a:hover { color: var(--moss-light); }
+  .calc-page .nav-cta { background: var(--moss); color: var(--ink); }
+  .calc-page .nav-cta:hover { background: var(--moss-light); }
+
+  .calc-hero {
+    padding: 100px 32px 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .calc-hero h1 {
+    font-weight: 900;
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    max-width: 1000px;
+    color: var(--bg);
+  }
+  .calc-hero h1 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-light); }
+  .calc-hero-sub {
+    font-size: clamp(17px, 1.6vw, 21px);
+    color: rgba(240, 236, 223, 0.75);
+    max-width: 720px;
+    line-height: 1.55;
+  }
+
+  .calc-wrap {
+    max-width: 1200px;
+    margin: 60px auto 120px;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: rgba(240, 236, 223, 0.04);
+    border: 1px solid rgba(154, 175, 122, 0.25);
+  }
+  .calc-left, .calc-right { padding: 56px 48px; }
+  .calc-left { border-right: 1px solid rgba(240, 236, 223, 0.12); }
+
+  .calc-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--moss-light);
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+  .calc-h {
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    color: var(--bg);
+  }
+  .calc-intro {
+    font-size: 15px;
+    color: rgba(240, 236, 223, 0.7);
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .field { margin-bottom: 36px; }
+  .field-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(240, 236, 223, 0.65);
+    margin-bottom: 16px;
+    display: block;
+    font-weight: 600;
+  }
+  .slider-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .slider-value {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 36px;
+    color: var(--moss-light);
+    line-height: 1;
+  }
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: rgba(154, 175, 122, 0.2);
+    border-radius: 2px;
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    background: var(--moss);
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+
+  .trade-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+  .trade-btn {
+    background: rgba(240, 236, 223, 0.04);
+    border: 1px solid rgba(154, 175, 122, 0.2);
+    padding: 12px 8px;
+    color: rgba(240, 236, 223, 0.85);
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .trade-btn:hover {
+    border-color: var(--moss);
+    color: var(--moss-light);
+  }
+  .trade-btn.active {
+    background: var(--moss);
+    border-color: var(--moss);
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* Result panel */
+  .result-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--moss-light);
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+  .result-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(56px, 7vw, 88px);
+    line-height: 1;
+    color: var(--bg);
+    margin-bottom: 12px;
+  }
+  .result-num .suffix { color: var(--moss-light); }
+  .result-caption {
+    font-size: 14px;
+    color: rgba(240, 236, 223, 0.65);
+    line-height: 1.5;
+    margin-bottom: 36px;
+  }
+  .result-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(154,175,122,0.3), transparent);
+    margin: 32px 0;
+  }
+  .result-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(240,236,223,0.06);
+  }
+  .result-detail:last-child { border-bottom: none; }
+  .result-detail-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: rgba(240, 236, 223, 0.6);
+    letter-spacing: 0.05em;
+  }
+  .result-detail-val {
+    color: var(--moss-light);
+    font-weight: 700;
+    font-size: 18px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .result-yearly {
+    background: rgba(154,175,122,0.08);
+    padding: 24px;
+    margin: 32px 0;
+    border-left: 3px solid var(--moss);
+  }
+  .result-yearly-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--moss-light);
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+  }
+  .result-yearly-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1;
+    color: var(--bg);
+  }
+  .result-cta {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    background: var(--moss);
+    color: var(--ink);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.02em;
+    margin-top: 32px;
+    transition: background 0.2s;
+  }
+  .result-cta:hover { background: var(--moss-light); }
+
+  /* Source citations */
+  .source-section {
+    padding: 100px 32px 140px;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(240,236,223,0.1);
+  }
+  .source-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--moss-light);
+    margin-bottom: 24px;
+  }
+  .source-h {
+    font-weight: 800;
+    font-size: 32px;
+    color: var(--bg);
+    margin-bottom: 32px;
+    letter-spacing: -0.02em;
+  }
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+  }
+  .source-card {
+    border: 1px solid rgba(154,175,122,0.18);
+    padding: 28px;
+  }
+  .source-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--moss-light);
+    margin-bottom: 12px;
+  }
+  .source-card-h {
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--bg);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .source-card-body {
+    font-size: 14px;
+    color: rgba(240,236,223,0.65);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 900px) {
+    .calc-wrap { grid-template-columns: 1fr; }
+    .calc-left { border-right: none; border-bottom: 1px solid rgba(240,236,223,0.12); }
+    .calc-left, .calc-right { padding: 40px 28px; }
+    .trade-grid { grid-template-columns: repeat(2, 1fr); }
+    .source-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body class="calc-page">
+
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
+      GRAIN
+    </a>
+    <div class="nav-links">
+      <a href="method.html">Method</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="calculator.html" class="active">Calculator</a>
+      <button class="nav-cta" onclick="openCalendly(event)">Apply for Audit</button>
+    </div>
+  </div>
+</nav>
+
+<section class="calc-hero">
+  <div class="eyebrow" style="color: var(--moss-light);">THE CALCULATOR</div>
+  <h1>How much are you <span class="italic">walking away from?</span></h1>
+  <p class="calc-hero-sub">Three quick questions. We'll show you the dollar figure of revenue sitting in your missed calls, unworked quotes, and uncontacted past customers — every single month.</p>
+</section>
+
+<div class="calc-wrap">
+  <div class="calc-left">
+    <div class="calc-eyebrow">YOUR INPUTS</div>
+    <h2 class="calc-h">Three numbers about your business.</h2>
+    <p class="calc-intro">Slide and click. The result updates live on the right.</p>
+
+    <div class="field">
+      <label class="field-label">ANNUAL REVENUE</label>
+      <div class="slider-wrap">
+        <div class="slider-value" id="rev-value">$1,500,000</div>
+        <input type="range" id="revenue" min="250000" max="10000000" step="50000" value="1500000">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">LEADS PER MONTH (ESTIMATE)</label>
+      <div class="slider-wrap">
+        <div class="slider-value" id="leads-value">75</div>
+        <input type="range" id="leads" min="10" max="500" step="5" value="75">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">YOUR TRADE</label>
+      <div class="trade-grid" id="trade-grid">
+        <button class="trade-btn active" data-avg="12500">Roofing</button>
+        <button class="trade-btn" data-avg="8500">HVAC</button>
+        <button class="trade-btn" data-avg="4500">Plumbing</button>
+        <button class="trade-btn" data-avg="1188">Pest Control</button>
+        <button class="trade-btn" data-avg="3500">Electrical</button>
+        <button class="trade-btn" data-avg="8000">Fencing</button>
+        <button class="trade-btn" data-avg="75000">Pool</button>
+        <button class="trade-btn" data-avg="8000">Painting</button>
+        <button class="trade-btn" data-avg="6500">Landscaping</button>
+        <button class="trade-btn" data-avg="60000">Remodeling</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-right">
+    <div class="result-eyebrow">YOUR MONTHLY REVENUE LEAK</div>
+    <div class="result-num" id="leak-num">$84,375<span class="suffix">/mo</span></div>
+    <div class="result-caption">Estimated revenue lost to slow response, dead quotes, and uncontacted past customers — every month, calculated from your inputs and industry benchmarks.</div>
+
+    <div class="result-line"></div>
+
+    <div class="result-detail">
+      <span class="result-detail-label">SLOW RESPONSE</span>
+      <span class="result-detail-val" id="slow-val">$32,500</span>
+    </div>
+    <div class="result-detail">
+      <span class="result-detail-label">DEAD QUOTES</span>
+      <span class="result-detail-val" id="dead-val">$37,500</span>
+    </div>
+    <div class="result-detail">
+      <span class="result-detail-label">PAST CUSTOMERS</span>
+      <span class="result-detail-val" id="past-val">$14,375</span>
+    </div>
+
+    <div class="result-yearly">
+      <div class="result-yearly-label">PROJECTED ANNUAL LEAK</div>
+      <div class="result-yearly-num" id="yearly-num">$1,012,500</div>
+    </div>
+
+    <button class="result-cta" onclick="openCalendly(event)">Get the Real Number on a 30-min Audit →</button>
+  </div>
+</div>
+
+<!-- SOURCES -->
+<div class="source-section">
+  <div class="source-eyebrow">METHODOLOGY · WHERE THE NUMBERS COME FROM</div>
+  <h3 class="source-h">Real research. Real data.</h3>
+  <div class="source-grid">
+    <div class="source-card">
+      <div class="source-card-label">SLOW RESPONSE</div>
+      <div class="source-card-h">Blazeo 2026 Speed-to-Lead Benchmark</div>
+      <div class="source-card-body">74% of businesses miss the 5-minute response window. Conversion rates drop 80% after the first hour. Calculation assumes 50% of leads slip past the threshold and lose 60% of their conversion potential.</div>
+    </div>
+    <div class="source-card">
+      <div class="source-card-label">DEAD QUOTES</div>
+      <div class="source-card-h">InsideSales 50M Interaction Study</div>
+      <div class="source-card-body">First-touch responders win ~50% of competitive deals. Quotes without 90-day follow-up convert at 15% vs 33% with proper sequences. Calculation uses the gap between observed conversion and benchmark conversion.</div>
+    </div>
+    <div class="source-card">
+      <div class="source-card-label">PAST CUSTOMERS</div>
+      <div class="source-card-h">ServiceTitan 2024 Contractor Report</div>
+      <div class="source-card-body">Average home service business has 5–8x more dormant customers than active. Reactivation rates of 8–15% are typical. Calculation estimates 12% of trailing 12-month customer value can be reactivated annually.</div>
+    </div>
+    <div class="source-card">
+      <div class="source-card-label">FOUNDATIONAL RESEARCH</div>
+      <div class="source-card-h">Harvard Business Review (original study)</div>
+      <div class="source-card-body">Original speed-to-lead research showing 21x higher qualification likelihood for 5-minute response vs 30-minute. Findings replicated in every subsequent industry study from 2011 through 2026.</div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand-block">
+      <div class="footer-brand">
+        <svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#1C2420" rx="40"/><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#F0ECDF"/></g></g></svg>
+        GRAIN
+      </div>
+      <div class="footer-tag">PLANT · NURTURE · SCALE</div>
+      <div class="footer-mission">Lead-to-customer infrastructure for home service businesses. Nashville-based. Serving nationwide.</div>
+    </div>
+    <div class="footer-col">
+      <h4>System</h4>
+      <a href="method.html">The Method</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="calculator.html">Calculator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#" onclick="openCalendly(event); return false;">Apply for Audit</a>
+      <a href="mailto:johnny@grainmethod.com">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Trust</h4>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Guarantee</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 GRAIN Method LLC · Nashville, Tennessee</div>
+    <div>johnny@grainmethod.com</div>
+  </div>
+</footer>
+
+<script>
+  // Calculator logic
+  let avgJob = 12500;
+  function fmt(n){ return '$' + Math.round(n).toLocaleString(); }
+  function calc() {
+    const revenue = parseFloat(document.getElementById('revenue').value);
+    const leads = parseFloat(document.getElementById('leads').value);
+    document.getElementById('rev-value').textContent = '$' + revenue.toLocaleString();
+    document.getElementById('leads-value').textContent = leads;
+
+    // Slow response: 50% of leads miss the response window, 60% of those would have converted
+    const closeRate = 0.20;
+    const slowResponseLost = leads * 0.5 * 0.6 * closeRate * avgJob;
+
+    // Dead quotes: ~70% of quotes go cold without 90-day follow-up
+    // Estimate quotes = leads * 0.4 (40% of leads get a quote)
+    const quotes = leads * 0.4;
+    const deadQuotesLost = quotes * 0.55 * 0.18 * avgJob;
+
+    // Past customers: 12% of trailing customer value reactivatable annually, monthly = /12
+    const pastCustomerLost = (revenue * 0.12) / 12;
+
+    const monthlyLeak = slowResponseLost + deadQuotesLost + pastCustomerLost;
+    const yearlyLeak = monthlyLeak * 12;
+
+    document.getElementById('leak-num').innerHTML = fmt(monthlyLeak) + '<span class="suffix">/mo</span>';
+    document.getElementById('slow-val').textContent = fmt(slowResponseLost);
+    document.getElementById('dead-val').textContent = fmt(deadQuotesLost);
+    document.getElementById('past-val').textContent = fmt(pastCustomerLost);
+    document.getElementById('yearly-num').textContent = fmt(yearlyLeak);
+  }
+  document.getElementById('revenue').addEventListener('input', calc);
+  document.getElementById('leads').addEventListener('input', calc);
+  document.querySelectorAll('.trade-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.trade-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      avgJob = parseFloat(btn.dataset.avg);
+      calc();
+    });
+  });
+  calc();
+
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+</script>
+</body>
+</html>
