@@ -237,7 +237,12 @@
       <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#667B4A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
       GRAIN
     </a>
-    <div class="nav-links">
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
       <a href="method.html">Method</a>
       <a href="pricing.html">Pricing</a>
       <a href="calculator.html">Calculator</a>
@@ -276,7 +281,7 @@
     <div class="form-wrap">
       <div class="form-eyebrow">SUBMIT YOUR APPLICATION</div>
       <h2 class="form-h">Tell us about your business.</h2>
-      <p class="form-intro">We'll review and respond within 24 hours.</p>
+      <p class="form-intro">We respond within 24 hours.</p>
 
       <form class="contact-form" id="audit-form" action="https://formspree.io/f/FORMSPREE_ID_HERE" method="POST">
         <div class="form-field">
@@ -324,15 +329,15 @@
           </select>
         </div>
         <div class="form-field full">
-          <label class="form-label">BIGGEST GAP IN YOUR CURRENT PROCESS</label>
+          <label class="form-label">WHERE YOU'RE LOSING THE MOST LEADS</label>
           <textarea class="form-textarea" name="challenge" placeholder="Where do leads tend to slip through? After-hours calls? Follow-up on quotes? Past customers?"></textarea>
         </div>
-        <button type="submit" class="form-submit">Submit Application →</button>
+        <button type="submit" class="form-submit">Send Application →</button>
       </form>
 
       <div class="form-success" id="form-success">
-        <div class="form-success-h">Application received.</div>
-        <p>We'll review and reach out within 24 hours.</p>
+        <div class="form-success-h">Got it.</div>
+        <p>We'll be in touch within 24 hours.</p>
       </div>
 
       <div class="or-divider">OR</div>
@@ -350,7 +355,7 @@
         GRAIN
       </div>
       <div class="footer-tag">PLANT · NURTURE · SCALE</div>
-      <div class="footer-mission">Lead-to-customer infrastructure for home service businesses. Nashville-based. Serving nationwide.</div>
+      <div class="footer-mission">Done-for-you lead response for home service businesses. Nashville-based. Serving nationwide.</div>
     </div>
     <div class="footer-col">
       <h4>System</h4>
@@ -387,6 +392,20 @@
       })
       .catch(() => alert('Something went wrong. Please email johnny@grainmethod.com directly.'));
   });
+    const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  }
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) nav.classList.add('scrolled');

@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light only">
 <meta name="theme-color" content="#F0ECDF">
 <title>Pricing — GRAIN</title>
-<meta name="description" content="$2,500 to install. $1,997/month, all-inclusive. 5 jobs in 60 days or we work for free until you get them.">
+<meta name="description" content="Three tiers from $1,997/month. Done-for-you lead response for home service businesses. Five extra jobs in 60 days, guaranteed.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%23667B4A' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%239AAF7A'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%239AAF7A'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%231C2420'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
@@ -62,6 +62,15 @@
     height: 4px;
     background: linear-gradient(90deg, var(--moss-deep), var(--moss), var(--moss-light), var(--moss), var(--moss-deep));
   }
+  .offer-tier-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--moss-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
   .offer-name {
     font-family: 'Fraunces', serif;
     font-style: italic;
@@ -69,15 +78,21 @@
     font-size: 56px;
     line-height: 1;
     color: var(--bg);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
   .offer-tagline {
+    font-size: 17px;
+    color: rgba(240, 236, 223, 0.78);
+    margin-bottom: 14px;
+    line-height: 1.45;
+  }
+  .offer-fit-line {
     font-size: 14px;
-    color: var(--moss-light);
+    color: rgba(240, 236, 223, 0.6);
     font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.15em;
-    margin-bottom: 48px;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 40px;
+    line-height: 1.5;
   }
   .offer-pricing {
     display: grid;
@@ -191,6 +206,168 @@
     .offer-name { font-size: 40px; }
   }
 
+  /* OTHER TIERS — ORCHARD + ESTATE */
+  .other-tiers {
+    background: var(--bg);
+    padding: 100px 0 140px;
+    border-top: 1px solid var(--line);
+  }
+  .other-tiers-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 64px;
+    padding: 0 24px;
+  }
+  .other-tiers-head h2 {
+    font-weight: 900;
+    font-size: clamp(32px, 4.5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 16px;
+    margin-top: 16px;
+  }
+  .other-tiers-head h2 .italic {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--moss-deep);
+  }
+  .other-tiers-sub {
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .tier-grid {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .tier-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 44px 36px;
+    position: relative;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  }
+  .tier-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px rgba(28, 36, 32, 0.08);
+  }
+  .tier-card.estate {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+  .tier-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--moss-deep);
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .tier-card.estate .tier-card-label { color: var(--moss-light); }
+  .tier-card-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 44px;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  .tier-card.estate .tier-card-name { color: var(--bg); }
+  .tier-card-tagline {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .tier-card.estate .tier-card-tagline { color: rgba(240, 236, 223, 0.78); }
+  .tier-card-price {
+    font-weight: 900;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .tier-card.estate .tier-card-price {
+    color: var(--moss-light);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .tier-card-price-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .tier-card.estate .tier-card-price-sub { color: rgba(240, 236, 223, 0.55); }
+  .tier-card-fit {
+    padding: 20px 0;
+    border-top: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 28px;
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+  .tier-card.estate .tier-card-fit {
+    border-color: rgba(240, 236, 223, 0.18);
+    color: rgba(240, 236, 223, 0.7);
+  }
+  .tier-card-fit strong { color: var(--ink); font-weight: 700; }
+  .tier-card.estate .tier-card-fit strong { color: var(--bg); }
+  .tier-card-includes { list-style: none; padding: 0; margin: 0 0 32px; }
+  .tier-card-includes li {
+    font-size: 14px;
+    color: var(--ink-soft);
+    padding: 6px 0 6px 22px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .tier-card-includes li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--moss-deep);
+    font-weight: 700;
+  }
+  .tier-card.estate .tier-card-includes li { color: rgba(240, 236, 223, 0.78); }
+  .tier-card.estate .tier-card-includes li::before { color: var(--moss-light); }
+  .tier-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .tier-card-cta:hover { background: var(--moss-deep); }
+  .tier-card.estate .tier-card-cta { background: var(--moss); color: var(--ink); }
+  .tier-card.estate .tier-card-cta:hover { background: var(--moss-light); }
+  @media (max-width: 720px) {
+    .other-tiers { padding: 70px 0 100px; }
+    .tier-grid { grid-template-columns: 1fr; padding: 0 20px; }
+    .tier-card { padding: 36px 28px; }
+    .tier-card-name { font-size: 36px; }
+  }
+
   /* COMPARISON / WHAT'S INCLUDED */
   .what-included {
     background: var(--paper);
@@ -293,7 +470,12 @@
       <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#667B4A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
       GRAIN
     </a>
-    <div class="nav-links">
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
       <a href="method.html">Method</a>
       <a href="pricing.html" class="active">Pricing</a>
       <a href="calculator.html">Calculator</a>
@@ -305,15 +487,17 @@
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="eyebrow">INVESTMENT</div>
-  <h1>One offer. <span class="italic">One standard.</span></h1>
-  <p class="page-hero-sub">No tiers to compare. No upsells. No hidden usage fees. The full GRAIN system, installed and operated for you.</p>
+  <h1>Three tiers. <span class="italic">One standard.</span></h1>
+  <p class="page-hero-sub">Whether you run one location or many, the standards are the same. What changes is the scope of what we install. No usage fees. No upsells. No hidden charges.</p>
 </section>
 
-<!-- OFFER -->
+<!-- OFFER — GREENHOUSE FEATURED -->
 <section class="offer-section">
   <div class="single-offer reveal">
+    <div class="offer-tier-label">TIER ONE · MOST CLIENTS START HERE</div>
     <div class="offer-name">Greenhouse</div>
-    <div class="offer-tagline">The complete lead-to-customer system</div>
+    <div class="offer-tagline">The complete lead response system, installed and run for you</div>
+    <div class="offer-fit-line">Built for single-location businesses doing $500K to $3M, handling 30 to 150 leads per month.</div>
 
     <div class="offer-pricing">
       <div class="offer-price-block">
@@ -353,13 +537,64 @@
   </div>
 </section>
 
+<!-- OTHER TIERS — ORCHARD + ESTATE -->
+<section class="other-tiers">
+  <div class="other-tiers-head reveal">
+    <div class="eyebrow" style="justify-content: center;">FOR LARGER OPERATIONS</div>
+    <h2>Two more <span class="italic">tiers.</span></h2>
+    <p class="other-tiers-sub">Same standards. Wider scope. For multi-trade businesses and multi-location companies.</p>
+  </div>
+  <div class="tier-grid">
+    <!-- ORCHARD -->
+    <div class="tier-card reveal reveal-delay-1">
+      <div class="tier-card-label">TIER TWO</div>
+      <div class="tier-card-name">Orchard</div>
+      <div class="tier-card-tagline">For multi-trade businesses or higher-volume single locations.</div>
+      <div class="tier-card-price">$5,000 <span style="font-size:18px;font-weight:600;color:var(--ink-soft)">setup</span></div>
+      <div class="tier-card-price-sub">$4,997/MO · STARTING DAY 31</div>
+      <div class="tier-card-fit">
+        <strong>Built for:</strong> $3M to $10M revenue. 150 to 500 leads/month. Multi-trade or expanded service area. 14-day deployment.
+      </div>
+      <ul class="tier-card-includes">
+        <li>Everything in Greenhouse</li>
+        <li>Multi-trade routing and scripts</li>
+        <li>Custom CRM integrations</li>
+        <li>Weekly review calls</li>
+        <li>Priority Slack support</li>
+        <li>Quarterly strategy session with the founder</li>
+      </ul>
+      <button class="tier-card-cta" onclick="openCalendly(event)">Apply for an Audit →</button>
+    </div>
+    <!-- ESTATE -->
+    <div class="tier-card estate reveal reveal-delay-2">
+      <div class="tier-card-label">TIER THREE</div>
+      <div class="tier-card-name">Estate</div>
+      <div class="tier-card-tagline">For multi-location businesses running multiple brands.</div>
+      <div class="tier-card-price">Custom</div>
+      <div class="tier-card-price-sub">STARTS AFTER A CONVERSATION</div>
+      <div class="tier-card-fit">
+        <strong>Built for:</strong> $10M+ revenue. 3+ locations. 500+ leads/month. Multi-brand rollouts. 30-day deployment with dedicated team.
+      </div>
+      <ul class="tier-card-includes">
+        <li>Everything in Orchard</li>
+        <li>Multi-location and multi-brand setup</li>
+        <li>Dedicated implementation team</li>
+        <li>Executive quarterly business reviews</li>
+        <li>Custom benchmarking against your peer set</li>
+        <li>Direct line to the founder</li>
+      </ul>
+      <a href="mailto:johnny@grainmethod.com?subject=Estate%20Tier%20Inquiry" class="tier-card-cta">Inquire →</a>
+    </div>
+  </div>
+</section>
+
 <!-- WHAT'S INCLUDED VS NOT -->
 <section class="what-included">
   <div class="container-narrow">
     <div class="section-head reveal">
       <div class="eyebrow">WHAT'S INCLUDED</div>
       <h2>Everything in. <span class="italic">Nothing extra.</span></h2>
-      <p class="section-sub">No usage fees. No surprise add-ons. No tiers to upgrade into. The price you see is the price you pay.</p>
+      <p class="section-sub">What you see is what you pay. No usage fees. No surprise add-ons.</p>
     </div>
     <div class="included-grid">
       <div class="included-col yes reveal reveal-delay-1">
@@ -382,7 +617,6 @@
         <ul>
           <li>Per-minute voice usage fees</li>
           <li>Per-message SMS fees</li>
-          <li>Tier upgrades to access core features</li>
           <li>Onboarding fees beyond the install</li>
           <li>Surprise overage charges</li>
           <li>Long-term contracts</li>
@@ -403,8 +637,12 @@
     </div>
     <div class="faq-list reveal">
       <div class="faq-item">
+        <div class="faq-q">How do I know which tier I need?</div>
+        <div class="faq-a">Most clients start with Greenhouse — single location, $500K to $3M revenue, 30 to 150 leads per month. Orchard fits multi-trade businesses or single locations doing $3M to $10M with higher lead volume. Estate is built for $10M+ businesses running three or more locations. The audit call sorts this out. We're not trying to upsell you into the wrong tier.</div>
+        </div>
+        <div class="faq-item">
         <div class="faq-q">How does billing actually work?</div>
-        <div class="faq-a">$2,500 charged at signing. That covers the build and your first 30 days of service. After that, $1,997/month, all-inclusive. The setup fee is one-time. The monthly is recurring. Cancel anytime with 30 days notice.</div>
+        <div class="faq-a">For Greenhouse: $2,500 at signing covers the build and your first 30 days. $1,997/month begins on Day 31, all-inclusive. For Orchard: $5,000 setup, $4,997/month, same structure. Estate is custom — we have a discovery conversation first. All three are month-to-month after the first 60 days. Cancel anytime with 30 days notice. Setup fees are one-time.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">What does the guarantee actually mean?</div>
@@ -457,7 +695,7 @@
         GRAIN
       </div>
       <div class="footer-tag">PLANT · NURTURE · SCALE</div>
-      <div class="footer-mission">Lead-to-customer infrastructure for home service businesses. Nashville-based. Serving nationwide.</div>
+      <div class="footer-mission">Done-for-you lead response for home service businesses. Nashville-based. Serving nationwide.</div>
     </div>
     <div class="footer-col">
       <h4>System</h4>
@@ -491,6 +729,20 @@
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
   });
+    const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  }
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) nav.classList.add('scrolled');

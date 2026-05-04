@@ -321,7 +321,12 @@
       <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
       GRAIN
     </a>
-    <div class="nav-links">
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
       <a href="method.html">Method</a>
       <a href="pricing.html">Pricing</a>
       <a href="calculator.html" class="active">Calculator</a>
@@ -400,7 +405,7 @@
       <div class="result-yearly-num" id="yearly-num">$1,012,500</div>
     </div>
 
-    <button class="result-cta" onclick="openCalendly(event)">Get the Real Number on a 30-min Audit →</button>
+    <button class="result-cta" onclick="openCalendly(event)">Apply for an Audit →</button>
   </div>
 </div>
 
@@ -426,7 +431,7 @@
     </div>
     <div class="source-card">
       <div class="source-card-label">FOUNDATIONAL RESEARCH</div>
-      <div class="source-card-h">Harvard Business Review (original study)</div>
+      <div class="source-card-h">Harvard Business Review</div>
       <div class="source-card-body">Original speed-to-lead research showing 21x higher qualification likelihood for 5-minute response vs 30-minute. Findings replicated in every subsequent industry study from 2011 through 2026.</div>
     </div>
   </div>
@@ -440,7 +445,7 @@
         GRAIN
       </div>
       <div class="footer-tag">PLANT · NURTURE · SCALE</div>
-      <div class="footer-mission">Lead-to-customer infrastructure for home service businesses. Nashville-based. Serving nationwide.</div>
+      <div class="footer-mission">Done-for-you lead response for home service businesses. Nashville-based. Serving nationwide.</div>
     </div>
     <div class="footer-col">
       <h4>System</h4>
@@ -509,6 +514,20 @@
   });
   calc();
 
+    const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  }
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) nav.classList.add('scrolled');

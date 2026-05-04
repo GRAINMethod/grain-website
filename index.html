@@ -5,15 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
 <meta name="theme-color" content="#F0ECDF">
-<title>GRAIN Method — Lead-to-Customer Infrastructure for Home Services</title>
-<meta name="description" content="The response gap is killing your business. GRAIN closes it. Every call answered in 60 seconds. Every quote followed up for 90 days. Done for you in 7 days.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20' stroke-linejoin='miter'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%23667B4A' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%239AAF7A'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%239AAF7A'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%231C2420'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+<title>GRAIN Method — Done-For-You Lead Response for Home Services</title>
+<meta name="description" content="Your leads are seeds. We build the greenhouse. Done-for-you lead response for home service businesses. Three tiers from $1,997/month. Five extra jobs in 60 days, guaranteed.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%23667B4A' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%239AAF7A'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%239AAF7A'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%231C2420'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
 
-<!-- ANALYTICS PLACEHOLDER -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 
-<!-- CALENDLY -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
@@ -24,29 +22,46 @@
 <link rel="stylesheet" href="styles.css">
 
 <style>
-  /* ============================================================
-     HOMEPAGE-SPECIFIC STYLES
-     ============================================================ */
-
-  /* HERO */
+  /* DARK HERO */
+  .hero-wrap {
+    background: var(--ink);
+    color: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-wrap::before {
+    content: "";
+    position: absolute;
+    top: 15%;
+    right: -200px;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(154,175,122,0.18) 0%, transparent 60%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero-wrap::after {
+    content: "";
+    position: absolute;
+    bottom: -150px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(102,123,74,0.12) 0%, transparent 60%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
   .hero {
     padding: 200px 32px 120px;
     max-width: 1280px;
     margin: 0 auto;
     position: relative;
+    z-index: 1;
   }
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: 240px;
-    right: -120px;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, rgba(154,175,122,0.18) 0%, transparent 60%);
-    z-index: -1;
-    border-radius: 50%;
-    pointer-events: none;
-  }
+  .hero .eyebrow { color: var(--moss-light); }
+  .hero .eyebrow::before { background: var(--moss); }
   h1.hero-title {
     font-weight: 900;
     font-size: clamp(48px, 8vw, 108px);
@@ -54,27 +69,27 @@
     letter-spacing: -0.035em;
     margin-bottom: 36px;
     max-width: 1100px;
-    color: var(--ink);
+    color: var(--bg);
   }
   h1.hero-title .italic {
     font-family: 'Fraunces', serif;
     font-style: italic;
     font-weight: 400;
-    color: var(--moss-deep);
+    color: var(--moss-light);
   }
   .hero-sub {
-    font-size: clamp(18px, 1.6vw, 22px);
+    font-size: clamp(17px, 1.5vw, 21px);
     max-width: 680px;
     margin-bottom: 28px;
-    color: var(--ink-soft);
+    color: rgba(240, 236, 223, 0.78);
     line-height: 1.55;
   }
-  .hero-sub strong { color: var(--ink); font-weight: 700; }
+  .hero-sub strong { color: var(--bg); font-weight: 700; }
   .hero-guarantee {
     font-family: 'Fraunces', serif;
     font-style: italic;
     font-size: clamp(18px, 1.8vw, 24px);
-    color: var(--moss-deep);
+    color: var(--moss-light);
     margin-bottom: 56px;
     font-weight: 500;
     max-width: 680px;
@@ -87,13 +102,32 @@
     align-items: center;
     margin-bottom: 80px;
   }
+  .hero-ctas .btn-primary {
+    background: var(--moss);
+    color: var(--ink);
+    border: 1px solid var(--moss);
+  }
+  .hero-ctas .btn-primary:hover {
+    background: var(--moss-light);
+    border-color: var(--moss-light);
+  }
+  .hero-ctas .btn-secondary {
+    background: transparent;
+    color: var(--bg);
+    border: 1px solid rgba(240, 236, 223, 0.35);
+  }
+  .hero-ctas .btn-secondary:hover {
+    background: rgba(240, 236, 223, 0.06);
+    border-color: var(--moss-light);
+    color: var(--moss-light);
+  }
   .hero-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 48px;
     max-width: 740px;
     padding-top: 48px;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid rgba(240, 236, 223, 0.18);
   }
   .stat-num {
     font-weight: 900;
@@ -101,11 +135,11 @@
     letter-spacing: -0.02em;
     line-height: 1;
     margin-bottom: 8px;
-    color: var(--ink);
+    color: var(--bg);
   }
   .stat-num .italic {
     font-size: 0.5em;
-    color: var(--moss-deep);
+    color: var(--moss-light);
     font-weight: 400;
     margin-left: 4px;
   }
@@ -113,12 +147,10 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.18em;
-    color: var(--muted);
+    color: rgba(240, 236, 223, 0.55);
     font-weight: 600;
     line-height: 1.4;
   }
-
-  /* Hero load animation */
   .hero > * { animation: fadeUp 0.9s var(--ease) backwards; }
   .hero .eyebrow { animation-delay: 0.05s; }
   .hero h1 { animation-delay: 0.2s; }
@@ -130,15 +162,28 @@
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
   @media (max-width: 768px) {
-    .hero { padding: 140px 20px 80px; }
-    .hero-stats { grid-template-columns: 1fr; gap: 32px; }
+    .hero { padding: 130px 20px 70px; }
+    h1.hero-title { font-size: clamp(40px, 9vw, 72px); }
+    .hero-stats { grid-template-columns: 1fr; gap: 28px; padding-top: 36px; }
     .hero-ctas { flex-direction: column; align-items: stretch; }
     .hero-ctas .btn { justify-content: center; }
   }
 
-  /* THREE STANDARDS */
+  /* Organic section divider — sprout illustration */
+  .section-divider {
+    display: flex;
+    justify-content: center;
+    padding: 56px 0 0;
+    pointer-events: none;
+    background: var(--bg);
+  }
+  .section-divider svg {
+    width: 36px;
+    height: auto;
+    opacity: 0.5;
+  }
+
   .standards-section { padding: 140px 0; }
   .standards-grid {
     display: grid;
@@ -177,12 +222,12 @@
     line-height: 1.65;
   }
   @media (max-width: 900px) {
+    .standards-section { padding: 80px 0; }
     .standards-grid { grid-template-columns: 1fr; }
     .standard-cell { padding: 40px 28px; }
-    .standard-headline { font-size: 30px; }
+    .standard-headline { font-size: 28px; }
   }
 
-  /* CALCULATOR PREVIEW */
   .calc-preview {
     background: var(--ink);
     color: var(--bg);
@@ -214,7 +259,7 @@
   }
   .calc-preview h2 {
     font-weight: 900;
-    font-size: clamp(36px, 5vw, 56px);
+    font-size: clamp(32px, 5vw, 56px);
     letter-spacing: -0.025em;
     line-height: 1.05;
     color: var(--bg);
@@ -277,10 +322,11 @@
     font-weight: 600;
   }
   @media (max-width: 900px) {
-    .calc-preview-inner { grid-template-columns: 1fr; gap: 48px; }
+    .calc-preview { padding: 80px 0; }
+    .calc-preview-inner { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
+    .calc-preview-vis { padding: 32px 24px; }
   }
 
-  /* CTA SECTION */
   .cta-section {
     padding: 160px 32px;
     text-align: center;
@@ -300,7 +346,7 @@
     font-family: 'Fraunces', serif;
     font-style: italic;
     font-weight: 400;
-    font-size: clamp(40px, 6vw, 72px);
+    font-size: clamp(36px, 6vw, 72px);
     line-height: 1.05;
     letter-spacing: -0.02em;
     margin-bottom: 32px;
@@ -319,18 +365,25 @@
     margin-top: 24px;
     font-style: italic;
   }
+  @media (max-width: 768px) {
+    .cta-section { padding: 100px 20px; }
+  }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" id="main-nav">
+<nav class="nav over-dark" id="main-nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-brand">
-      <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18" stroke-linejoin="miter"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#667B4A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
+      <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#667B4A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
       GRAIN
     </a>
-    <div class="nav-links">
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
       <a href="method.html">Method</a>
       <a href="pricing.html">Pricing</a>
       <a href="calculator.html">Calculator</a>
@@ -339,33 +392,33 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="eyebrow">LEAD-TO-CUSTOMER INFRASTRUCTURE FOR HOME SERVICES</div>
-  <h1 class="hero-title">The response gap is <span class="italic">killing your business.</span></h1>
-  <p class="hero-sub">The average home service company loses 35 to 50 percent of their leads in the first hour. Not because the leads are bad. Because nobody picks up the phone fast enough. <strong>GRAIN closes the gap.</strong> Every call answered in 60 seconds. Every quote followed up for 90 days. Every dormant customer reactivated. Done for you.</p>
-  <p class="hero-guarantee">5 extra jobs in 60 days, or we work for free until you get them.</p>
-  <div class="hero-ctas">
-    <button class="btn btn-primary" onclick="openCalendly(event)">Apply for an Audit <span class="btn-arrow">→</span></button>
-    <a href="calculator.html" class="btn btn-secondary">Calculate Your Gap</a>
-  </div>
-  <div class="hero-stats">
-    <div>
-      <div class="stat-num">7<span class="italic">days</span></div>
-      <div class="stat-label">FROM SIGNED TO RUNNING</div>
+<section class="hero-wrap">
+  <section class="hero">
+    <div class="eyebrow">DONE-FOR-YOU LEAD RESPONSE FOR HOME SERVICES</div>
+    <h1 class="hero-title">Your leads are seeds.<br>We build the <span class="italic">greenhouse.</span></h1>
+    <p class="hero-sub">The average home service business loses 35 to 50 percent of their leads in the first hour. Not because the leads are bad — because nobody picks up the phone fast enough. <strong>GRAIN is the system that captures every inquiry, follows up on every quote, and brings back every dormant customer.</strong> Done for you.</p>
+    <p class="hero-guarantee">5 extra jobs in 60 days, or we work for free until you get them.</p>
+    <div class="hero-ctas">
+      <button class="btn btn-primary" onclick="openCalendly(event)">Apply for an Audit <span class="btn-arrow">→</span></button>
+      <a href="calculator.html" class="btn btn-secondary">See Your Numbers</a>
     </div>
-    <div>
-      <div class="stat-num">&lt;60<span class="italic">sec</span></div>
-      <div class="stat-label">RESPONSE TIME STANDARD</div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">7<span class="italic">days</span></div>
+        <div class="stat-label">FROM SIGNED TO RUNNING</div>
+      </div>
+      <div>
+        <div class="stat-num">&lt;60<span class="italic">sec</span></div>
+        <div class="stat-label">RESPONSE TIME STANDARD</div>
+      </div>
+      <div>
+        <div class="stat-num">5<span class="italic">jobs</span></div>
+        <div class="stat-label">GUARANTEED IN 60 DAYS</div>
+      </div>
     </div>
-    <div>
-      <div class="stat-num">5<span class="italic">jobs</span></div>
-      <div class="stat-label">GUARANTEED IN 60 DAYS</div>
-    </div>
-  </div>
+  </section>
 </section>
 
-<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
     <span class="ticker-item">EVERY CALL ANSWERED IN 60 SECONDS</span><span class="ticker-dot"></span>
@@ -381,7 +434,51 @@
   </div>
 </div>
 
-<!-- THREE STANDARDS -->
+<div class="section-divider" aria-hidden="true">
+  <svg viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M30 78 L30 32" stroke="#667B4A" stroke-width="2" stroke-linecap="round"/>
+    <path d="M30 50 Q14 40 8 28 Q22 32 30 46" fill="#9AAF7A" opacity="0.85"/>
+    <path d="M30 38 Q46 28 52 16 Q38 20 30 34" fill="#9AAF7A" opacity="0.85"/>
+    <path d="M30 28 Q22 18 18 8 Q28 14 30 24" fill="#9AAF7A" opacity="0.7"/>
+    <path d="M30 28 Q38 18 42 8 Q32 14 30 24" fill="#9AAF7A" opacity="0.7"/>
+    <circle cx="30" cy="6" r="2.5" fill="#667B4A"/>
+  </svg>
+</div>
+
+<section class="grain-cascade">
+  <div class="cascade-inner">
+    <div style="text-align: center; margin-bottom: 80px;" class="reveal">
+      <div class="eyebrow" style="justify-content: center;">THE METHOD</div>
+      <h2 style="font-weight: 900; font-size: clamp(36px, 5vw, 64px); letter-spacing: -0.025em; line-height: 1; margin-top: 16px;">Five stages. <span class="italic">One system.</span></h2>
+    </div>
+    <div class="cascade-row">
+      <div class="cascade-letter">G</div>
+      <div class="cascade-text-block"><div class="cascade-word">GENERATE</div></div>
+      <div class="cascade-desc">Capture demand from every channel.</div>
+    </div>
+    <div class="cascade-row">
+      <div class="cascade-letter">R</div>
+      <div class="cascade-text-block"><div class="cascade-word">RESPOND</div></div>
+      <div class="cascade-desc">Under 60 seconds, 24/7.</div>
+    </div>
+    <div class="cascade-row">
+      <div class="cascade-letter">A</div>
+      <div class="cascade-text-block"><div class="cascade-word">AUTOMATE</div></div>
+      <div class="cascade-desc">Every workflow, hands-off.</div>
+    </div>
+    <div class="cascade-row">
+      <div class="cascade-letter">I</div>
+      <div class="cascade-text-block"><div class="cascade-word">INTEGRATE</div></div>
+      <div class="cascade-desc">Works with the tools you already use.</div>
+    </div>
+    <div class="cascade-row">
+      <div class="cascade-letter">N</div>
+      <div class="cascade-text-block"><div class="cascade-word">NURTURE</div></div>
+      <div class="cascade-desc">Past customers, brought back.</div>
+    </div>
+  </div>
+</section>
+
 <section class="standards-section">
   <div class="container">
     <div class="section-head reveal">
@@ -409,35 +506,46 @@
   </div>
 </section>
 
-<!-- WORKS WITH -->
-<section class="works-with">
+<section class="integrations-section" id="integrations">
   <div class="container">
-    <div class="works-with-label">WORKS WITH THE TOOLS YOU ALREADY USE</div>
-    <div class="logo-grid">
-      <div class="logo-cell">ServiceTitan</div>
-      <div class="logo-cell">Jobber</div>
-      <div class="logo-cell">Housecall Pro</div>
-      <div class="logo-cell">JobNimbus</div>
-      <div class="logo-cell">AccuLynx</div>
-      <div class="logo-cell">FieldPulse</div>
-      <div class="logo-cell">GoHighLevel</div>
-      <div class="logo-cell">Leap</div>
-      <div class="logo-cell">SalesRabbit</div>
-      <div class="logo-cell">JobTread</div>
-      <div class="logo-cell">Service Fusion</div>
-      <div class="logo-cell">Improveit360</div>
+    <div class="reveal">
+      <div class="integrations-label">INTEGRATES WITH YOUR EXISTING STACK</div>
+      <h2 class="integrations-h">Plugs into the tools <span class="italic">you already trust.</span></h2>
+    </div>
+    <div class="hub-stage" id="hub-stage">
+      <svg class="orbit-svg" id="orbit-svg" viewBox="0 0 720 720" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="hub-center">
+        <div class="hub-center-label">GRAIN</div>
+        <div class="hub-center-name">hub</div>
+      </div>
+    </div>
+    <div class="integrations-grid" id="int-grid">
+      <div class="int-cell"><div class="int-cell-tip">Two-way customer sync</div><div class="int-cell-logo">ServiceTitan</div><div class="int-cell-pulse"></div></div>
+      <div class="int-cell"><div class="int-cell-tip">Lead capture webhook</div><div class="int-cell-logo">Jobber</div><div class="int-cell-pulse"></div></div>
+      <div class="int-cell"><div class="int-cell-tip">Real-time job creation</div><div class="int-cell-logo">Housecall Pro</div><div class="int-cell-pulse"></div></div>
+      <div class="int-cell"><div class="int-cell-tip">Pipeline + estimate sync</div><div class="int-cell-logo">JobNimbus</div><div class="int-cell-pulse"></div></div>
+      <div class="int-cell"><div class="int-cell-tip">Roofing workflow native</div><div class="int-cell-logo">AccuLynx</div><div class="int-cell-pulse"></div></div>
+      <div class="int-cell"><div class="int-cell-tip">Field ops integration</div><div class="int-cell-logo">FieldPulse</div><div class="int-cell-pulse"></div></div>
+      <div class="int-cell"><div class="int-cell-tip">Native sub-account sync</div><div class="int-cell-logo">GoHighLevel</div><div class="int-cell-pulse"></div></div>
+      <div class="int-cell"><div class="int-cell-tip">Quote + contract flow</div><div class="int-cell-logo">Leap</div><div class="int-cell-pulse"></div></div>
+      <div class="int-cell"><div class="int-cell-tip">Door-to-door lead push</div><div class="int-cell-logo">SalesRabbit</div><div class="int-cell-pulse"></div></div>
+      <div class="int-cell"><div class="int-cell-tip">Project tracking sync</div><div class="int-cell-logo">JobTread</div><div class="int-cell-pulse"></div></div>
+      <div class="int-cell"><div class="int-cell-tip">Service dispatch flow</div><div class="int-cell-logo">Service Fusion</div><div class="int-cell-pulse"></div></div>
+      <div class="int-cell"><div class="int-cell-tip">Remodeling pipeline</div><div class="int-cell-logo">Improveit360</div><div class="int-cell-pulse"></div></div>
+    </div>
+    <div style="text-align: center; margin-top: 32px;">
+      <p style="font-size: 12px; color: var(--muted); font-style: italic;">All trademarks property of their respective owners. Integration capabilities verified during onboarding.</p>
     </div>
   </div>
 </section>
 
-<!-- CALCULATOR PREVIEW -->
 <section class="calc-preview">
   <div class="calc-preview-inner">
     <div class="reveal">
       <div class="eyebrow" style="color: var(--moss-light);">YOUR REVENUE GAP</div>
       <h2>How much are you <span class="italic">walking away from</span> every month?</h2>
       <p>Most home service businesses have no idea how much revenue they're losing to slow follow-up. The number is usually in the hundreds of thousands per year. Three quick questions and you'll know yours.</p>
-      <a href="calculator.html" class="btn btn-primary" style="background: var(--moss); color: var(--ink);">Open the Calculator <span class="btn-arrow">→</span></a>
+      <a href="calculator.html" class="btn btn-primary" style="background: var(--moss); color: var(--ink);">See Your Numbers <span class="btn-arrow">→</span></a>
     </div>
     <div class="calc-preview-vis reveal reveal-delay-2">
       <div class="calc-vis-label">SAMPLE — ROOFER, $2M REVENUE</div>
@@ -460,7 +568,6 @@
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-section">
   <div class="cta-eyebrow reveal">THE AUDIT</div>
   <h2 class="cta-headline reveal reveal-delay-1">See what your business is actually losing.</h2>
@@ -471,7 +578,6 @@
   <p class="cta-fineprint reveal reveal-delay-4">Audits are by application. We work with a small number of home service businesses at a time.</p>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand-block">
@@ -480,7 +586,7 @@
         GRAIN
       </div>
       <div class="footer-tag">PLANT · NURTURE · SCALE</div>
-      <div class="footer-mission">Lead-to-customer infrastructure for home service businesses. Nashville-based. Serving nationwide.</div>
+      <div class="footer-mission">Done-for-you lead response for home service businesses. Nashville-based. Serving nationwide.</div>
     </div>
     <div class="footer-col">
       <h4>System</h4>
@@ -509,18 +615,119 @@
 <script>
   // Scroll reveal
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Nav scroll state
-  const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
+  // Cascade reveal
+  const cascadeRows = document.querySelectorAll('.cascade-row');
+  const cascadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(cascadeRows).indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), idx * 180);
+        cascadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+  cascadeRows.forEach(row => cascadeObserver.observe(row));
+
+  // Hamburger nav
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
   });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // Nav scroll state — toggle over-dark + scrolled relative to hero
+  const nav = document.getElementById('main-nav');
+  const heroWrap = document.querySelector('.hero-wrap');
+  function updateNavState() {
+    const sy = window.scrollY;
+    if (sy > 20) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+    if (heroWrap) {
+      const heroBottom = heroWrap.offsetTop + heroWrap.offsetHeight * 0.85;
+      if (sy > heroBottom) nav.classList.remove('over-dark'); else nav.classList.add('over-dark');
+    }
+  }
+  window.addEventListener('scroll', updateNavState);
+  updateNavState();
+
+  // Integrations Hub orbit -> grid
+  function initIntegrationHub() {
+    const hubStage = document.getElementById('hub-stage');
+    const orbitSvg = document.getElementById('orbit-svg');
+    const grid = document.getElementById('int-grid');
+    if (!hubStage || !orbitSvg || !grid) return;
+
+    const tools = ['ServiceTitan','Jobber','Housecall Pro','JobNimbus','AccuLynx','FieldPulse','GoHighLevel','Leap','SalesRabbit','JobTread','Service Fusion','Improveit360'];
+    let started = false;
+
+    const stageObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !started) {
+          started = true;
+          runOrbitAnimation();
+          stageObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    stageObserver.observe(hubStage);
+
+    function runOrbitAnimation() {
+      const rect = hubStage.getBoundingClientRect();
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const radius = Math.min(rect.width, rect.height) * 0.42;
+
+      hubStage.querySelectorAll('.orbit-logo').forEach(el => el.remove());
+      orbitSvg.innerHTML = '';
+
+      tools.forEach((tool, i) => {
+        const angle = (i / tools.length) * Math.PI * 2 - Math.PI / 2;
+        const x = cx + Math.cos(angle) * radius;
+        const y = cy + Math.sin(angle) * radius;
+
+        const logoEl = document.createElement('div');
+        logoEl.className = 'orbit-logo';
+        logoEl.style.left = x + 'px';
+        logoEl.style.top = y + 'px';
+        logoEl.textContent = tool;
+        hubStage.appendChild(logoEl);
+
+        const scaleFactor = 720 / rect.width;
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', cx * scaleFactor);
+        line.setAttribute('y1', cy * scaleFactor);
+        line.setAttribute('x2', x * scaleFactor);
+        line.setAttribute('y2', y * scaleFactor);
+        orbitSvg.appendChild(line);
+
+        setTimeout(() => {
+          logoEl.classList.add('visible');
+          setTimeout(() => line.classList.add('drawn'), 150);
+        }, 200 + i * 110);
+      });
+
+      const settleDelay = 200 + tools.length * 110 + 1500;
+      setTimeout(() => {
+        hubStage.querySelectorAll('.orbit-logo').forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translate(-50%, -50%) scale(0.6)';
+        });
+        orbitSvg.querySelectorAll('line').forEach(line => { line.style.opacity = '0'; });
+        setTimeout(() => grid.classList.add('visible'), 400);
+      }, settleDelay);
+    }
+  }
+  initIntegrationHub();
 </script>
 </body>
 </html>

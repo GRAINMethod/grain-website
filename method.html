@@ -382,7 +382,12 @@
       <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#667B4A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
       GRAIN
     </a>
-    <div class="nav-links">
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
       <a href="method.html" class="active">Method</a>
       <a href="pricing.html">Pricing</a>
       <a href="calculator.html">Calculator</a>
@@ -395,7 +400,7 @@
 <section class="page-hero">
   <div class="eyebrow">THE GRAIN METHOD</div>
   <h1>One system. <span class="italic">Five stages.</span><br>Built to close the gap.</h1>
-  <p class="page-hero-sub">GRAIN isn't a chatbot, an answering service, or a CRM. It's the complete lead-to-customer infrastructure your business should have had years ago. Five integrated stages. One install. Done for you in 7 days.</p>
+  <p class="page-hero-sub">GRAIN isn't a chatbot, an answering service, or a CRM. It's the complete lead-to-customer system your business should have had years ago. Five integrated stages. One install. Done for you in 7 days.</p>
 </section>
 
 <!-- FIVE STAGES -->
@@ -607,22 +612,22 @@
       <div class="dash-grid">
         <div class="dash-stat">
           <div class="dash-stat-label">JOBS BOOKED</div>
-          <div class="dash-stat-value">14</div>
+          <div class="dash-stat-value" data-target="14">0</div>
           <div class="dash-stat-delta">+8 from system</div>
         </div>
         <div class="dash-stat">
           <div class="dash-stat-label">LEADS RECOVERED</div>
-          <div class="dash-stat-value">67</div>
-          <div class="dash-stat-delta">vs 0 last month</div>
+          <div class="dash-stat-value" data-target="67">0</div>
+          <div class="dash-stat-delta">vs last month</div>
         </div>
         <div class="dash-stat">
           <div class="dash-stat-label">RESPONSE TIME</div>
-          <div class="dash-stat-value">42s</div>
+          <div class="dash-stat-value" data-target="42" data-suffix="s">0s</div>
           <div class="dash-stat-delta">was 47 min</div>
         </div>
         <div class="dash-stat">
           <div class="dash-stat-label">ATTRIBUTED REVENUE</div>
-          <div class="dash-stat-value">$124K</div>
+          <div class="dash-stat-value" data-target="124" data-prefix="$" data-suffix="K">$0K</div>
           <div class="dash-stat-delta">month-to-date</div>
         </div>
       </div>
@@ -650,7 +655,7 @@
         GRAIN
       </div>
       <div class="footer-tag">PLANT · NURTURE · SCALE</div>
-      <div class="footer-mission">Lead-to-customer infrastructure for home service businesses. Nashville-based. Serving nationwide.</div>
+      <div class="footer-mission">Done-for-you lead response for home service businesses. Nashville-based. Serving nationwide.</div>
     </div>
     <div class="footer-col">
       <h4>System</h4>
@@ -681,11 +686,53 @@
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  }
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
   });
+
+  // Animated counters for the dashboard
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.target);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(target * eased);
+      el.textContent = prefix + current + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+  const dashObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.dash-stat-value[data-target]').forEach(animateCounter);
+        dashObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  const dashPreview = document.querySelector('.dash-preview');
+  if (dashPreview) dashObserver.observe(dashPreview);
 </script>
 </body>
 </html>
