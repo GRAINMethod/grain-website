@@ -5,461 +5,715 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
 <meta name="theme-color" content="#F0ECDF">
-<title>Pricing — GRAIN</title>
-<meta name="description" content="Three tiers from $1,997/month. Done-for-you lead response for home service businesses. Five extra jobs in 60 days, guaranteed.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%23667B4A' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%239AAF7A'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%239AAF7A'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%231C2420'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+<title>Pricing — GRAIN Method</title>
+<meta name="description" content="Three tiers. One standard. Greenhouse, Orchard, Estate. Done-for-you lead response for home service businesses. No usage fees. No surprises.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3C/g%3E%3C/svg%3E">
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>var CALENDLY_URL='https://calendly.com/YOUR-CALENDLY-URL';function openCalendly(e){if(e)e.preventDefault();Calendly.initPopupWidget({url:CALENDLY_URL});return false;}</script>
-<link rel="stylesheet" href="styles.css">
+
+<style id="shared-styles">
+/* ====== SHARED STYLES (inlined from styles.css) ====== */
+/* ============================================
+   GRAIN METHOD — STYLES v4
+   Last updated: May 2026
+   ============================================ */
+
+/* DESIGN TOKENS */
+:root {
+  --ink: #1C2420;
+  --ink-soft: #3F4F47;
+  --ink-light: #56685E;
+  --bg: #F0ECDF;
+  --paper: #F7F4EA;
+  --moss: #9AAF7A;
+  --moss-deep: #667B4A;
+  --moss-light: #BFD0A2;
+  --line: #DAD6C7;
+  --muted: #8A8772;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Fraunces:ital,wght@1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* RESET + BASE */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img, svg { max-width: 100%; display: block; }
+button { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* CONTAINERS */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.container-narrow { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 600px) { .container, .container-narrow { padding: 0 20px; } }
+
+/* TYPOGRAPHY UTILITIES */
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--moss-deep);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.italic {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 24px 0;
+  background: rgba(240, 236, 223, 0);
+  transition: background 0.3s var(--ease), padding 0.3s var(--ease);
+}
+.nav.scrolled {
+  background: rgba(240, 236, 223, 0.96);
+  backdrop-filter: blur(12px);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.nav.over-dark .nav-brand,
+.nav.over-dark .nav-links a {
+  color: var(--bg);
+}
+.nav.over-dark.scrolled .nav-brand,
+.nav.over-dark.scrolled .nav-links a {
+  color: var(--ink);
+}
+.nav.over-dark .nav-toggle span { background: var(--bg); }
+.nav.over-dark.scrolled .nav-toggle span { background: var(--ink); }
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+.nav-brand svg {
+  width: 32px;
+  height: 32px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  transition: color 0.2s var(--ease);
+}
+.nav-links a:hover { color: var(--moss-deep); }
+.nav-links a.active { color: var(--moss-deep); }
+.nav-cta {
+  padding: 10px 20px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+}
+.nav-cta:hover { background: var(--moss-deep); }
+.nav.over-dark .nav-cta {
+  background: var(--moss);
+  color: var(--ink);
+}
+.nav.over-dark .nav-cta:hover { background: var(--moss-light); }
+
+/* Mobile nav */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  transition: all 0.2s var(--ease);
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 900px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 24px 32px;
+    gap: 20px;
+    display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 8px 0; font-size: 16px; }
+  .nav.over-dark .nav-links a { color: var(--ink); }
+  .nav-cta { text-align: center; }
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s var(--ease);
+  font-family: inherit;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--bg);
+}
+.btn-primary:hover {
+  background: var(--moss-deep);
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--bg);
+  border: 1px solid rgba(240,236,223,0.3);
+}
+.btn-secondary:hover {
+  background: rgba(240,236,223,0.08);
+  border-color: var(--moss-light);
+}
+.btn-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
+/* REVEAL ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* FOOTER */
+.site-footer {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 80px 32px 40px;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(240,236,223,0.12);
+}
+.footer-brand {}
+.footer-logo {
+  font-weight: 900;
+  font-size: 32px;
+  letter-spacing: 0.05em;
+  color: var(--bg);
+  margin-bottom: 16px;
+}
+.footer-mission {
+  font-size: 15px;
+  color: rgba(240,236,223,0.7);
+  line-height: 1.6;
+  max-width: 440px;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-self: end;
+}
+.footer-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: rgba(240,236,223,0.65);
+  text-transform: uppercase;
+  transition: color 0.2s var(--ease);
+}
+.footer-links a:hover { color: var(--moss-light); }
+.footer-bottom {
+  max-width: 1280px;
+  margin: 40px auto 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: rgba(240,236,223,0.4);
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-links { justify-self: start; }
+}
+
+/* Headings reset within sections */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* ============================================================
+   SHARED ASK GRAIN BAR — appears on every page above the footer
+   ============================================================ */
+.ask-bar-page {
+  background: var(--ink);
+  padding: 18px 32px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  border-top: 1px solid rgba(240,236,223,0.08);
+  transition: background 0.2s ease;
+}
+.ask-bar-page:hover { background: #0F1612; }
+.ask-bar-page .ask-bar-page-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--bg);
+}
+.ask-bar-page .ask-bar-page-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--moss-light);
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.ask-bar-page .ask-bar-page-sep {
+  width: 1px;
+  height: 18px;
+  background: rgba(240,236,223,0.2);
+  flex-shrink: 0;
+}
+.ask-bar-page .ask-bar-page-input {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(240,236,223,0.7);
+  font-style: italic;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ask-bar-page .ask-bar-page-cue {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--moss-light);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.ask-bar-page.open .ask-bar-page-cue { transform: rotate(180deg); }
+
+.ask-bar-page-dropdown {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background: var(--ink);
+  border-top: 1px solid var(--moss-light);
+  max-height: 380px;
+  overflow-y: auto;
+  z-index: 100;
+}
+.ask-bar-page-dropdown.open { display: block; }
+.ask-bar-page-dropdown-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 32px 14px;
+}
+.ask-bar-page-dropdown-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: rgba(240,236,223,0.5);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10px 0 6px;
+  border-bottom: 1px solid rgba(240,236,223,0.08);
+}
+.ask-bar-page-q {
+  display: block;
+  width: 100%;
+  padding: 13px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(240,236,223,0.06);
+  color: rgba(240,236,223,0.85);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.15s ease, padding-left 0.15s ease;
+}
+.ask-bar-page-q:hover { color: var(--moss-light); padding-left: 8px; }
+.ask-bar-page-q:last-child { border-bottom: none; }
+.ask-bar-page-q::before {
+  content: "→ ";
+  color: var(--moss-light);
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .ask-bar-page { padding: 14px 20px; }
+  .ask-bar-page .ask-bar-page-inner { gap: 14px; }
+  .ask-bar-page .ask-bar-page-label { font-size: 10px; letter-spacing: 0.2em; }
+  .ask-bar-page .ask-bar-page-input { font-size: 13px; }
+  .ask-bar-page-dropdown-inner { padding: 10px 20px 14px; }
+}
+
+/* Ask GRAIN response panel (appears below bar when a question is selected) */
+.ask-bar-response {
+  display: none;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+.ask-bar-response.open { display: block; }
+.ask-bar-response-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 22px 32px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.ask-bar-response-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--moss-deep);
+  font-weight: 700;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  padding-top: 4px;
+  min-width: 64px;
+}
+.ask-bar-response-text {
+  flex: 1;
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.65;
+  font-family: 'Inter', sans-serif;
+}
+.ask-bar-response-close {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 26px;
+  cursor: pointer;
+  padding: 0 6px;
+  line-height: 1;
+  align-self: flex-start;
+  transition: color 0.2s ease;
+}
+.ask-bar-response-close:hover { color: var(--ink); }
+
+@media (max-width: 768px) {
+  .ask-bar-response-inner { padding: 18px 20px; gap: 14px; flex-direction: column; }
+  .ask-bar-response-label { min-width: 0; }
+  .ask-bar-response-close { position: absolute; top: 12px; right: 14px; }
+}
+
+/* ============================================================
+   SHARED PILL TOGGLE — used for view toggles and pricing toggles
+   ============================================================ */
+.pill-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.pill-toggle {
+  display: inline-flex;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 3px;
+  position: relative;
+  border-radius: 999px;
+}
+.pill-toggle-btn {
+  padding: 8px 22px;
+  background: transparent;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.25s ease;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.pill-toggle-btn.active { color: var(--paper); }
+.pill-toggle-slider {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  background: var(--ink);
+  border-radius: 999px;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 1;
+}
+.pill-toggle[data-active="right"] .pill-toggle-slider { transform: translateX(100%); }
+.pill-toggle-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 6px;
+  background: var(--moss);
+  color: var(--ink);
+  border-radius: 999px;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+@media (max-width: 600px) {
+  .pill-toggle-btn { padding: 7px 16px; font-size: 10px; letter-spacing: 0.06em; }
+}
+
+</style>
 
 <style>
-  .page-hero {
-    padding: 200px 32px 80px;
-    max-width: 1280px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .page-hero .eyebrow { justify-content: center; }
-  .page-hero .eyebrow::before { display: none; }
-  .page-hero h1 {
-    font-weight: 900;
-    font-size: clamp(48px, 7vw, 88px);
-    line-height: 0.96;
-    letter-spacing: -0.03em;
-    margin-bottom: 32px;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .page-hero h1 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
-  .page-hero-sub {
-    font-size: clamp(17px, 1.6vw, 21px);
-    color: var(--ink-soft);
-    max-width: 680px;
-    line-height: 1.55;
-    margin: 0 auto;
-  }
-  @media (max-width: 768px) { .page-hero { padding: 140px 20px 60px; } }
+.page-hero { padding: 200px 32px 80px; max-width: 1280px; margin: 0 auto; text-align: center; }
+.page-hero h1 { font-weight: 900; font-size: clamp(48px, 7vw, 92px); line-height: 0.96; letter-spacing: -0.03em; margin-bottom: 32px; }
+.page-hero h1 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+.page-hero-sub { font-size: clamp(17px, 1.6vw, 21px); color: var(--ink-soft); max-width: 720px; line-height: 1.55; margin: 0 auto; }
+@media (max-width: 768px) { .page-hero { padding: 140px 20px 60px; } }
 
-  /* OFFER CARD */
-  .offer-section { padding: 80px 0 140px; }
-  .single-offer {
-    max-width: 760px;
-    margin: 0 auto;
-    background: var(--ink);
-    color: var(--bg);
-    padding: 64px 56px;
-    border: 2px solid var(--moss-deep);
-    position: relative;
-  }
-  .single-offer::before {
-    content: "";
-    position: absolute;
-    top: -1px; left: -1px; right: -1px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--moss-deep), var(--moss), var(--moss-light), var(--moss), var(--moss-deep));
-  }
-  .offer-tier-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    color: var(--moss-light);
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-  }
-  .offer-name {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 56px;
-    line-height: 1;
-    color: var(--bg);
-    margin-bottom: 14px;
-  }
-  .offer-tagline {
-    font-size: 17px;
-    color: rgba(240, 236, 223, 0.78);
-    margin-bottom: 14px;
-    line-height: 1.45;
-  }
-  .offer-fit-line {
-    font-size: 14px;
-    color: rgba(240, 236, 223, 0.6);
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.02em;
-    margin-bottom: 40px;
-    line-height: 1.5;
-  }
-  .offer-pricing {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 32px;
-    align-items: center;
-    padding: 40px 0;
-    border-top: 1px solid rgba(240,236,223,0.15);
-    border-bottom: 1px solid rgba(240,236,223,0.15);
-    margin-bottom: 48px;
-  }
-  .offer-price-block { text-align: center; }
-  .offer-price {
-    font-weight: 900;
-    font-size: 56px;
-    line-height: 1;
-    letter-spacing: -0.025em;
-    color: var(--bg);
-    margin-bottom: 12px;
-  }
-  .offer-mo { font-weight: 500; font-size: 28px; color: var(--moss-light); }
-  .offer-price-label {
-    font-size: 12px;
-    color: rgba(240, 236, 223, 0.65);
-    line-height: 1.5;
-    max-width: 220px;
-    margin: 0 auto;
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.05em;
-  }
-  .offer-divider { width: 1px; height: 100px; background: rgba(240,236,223,0.2); }
+/* Featured Greenhouse Offer */
+.offer-section { padding: 80px 32px 140px; max-width: 1100px; margin: 0 auto; }
+.single-offer { background: var(--bg); border: 1px solid var(--line); padding: 72px 64px; }
+.offer-tier-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--moss-deep); margin-bottom: 28px; text-transform: uppercase; font-weight: 600; }
+.offer-name { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 72px; line-height: 1; margin-bottom: 16px; color: var(--ink); }
+.offer-tagline { font-size: 22px; color: var(--ink-soft); margin-bottom: 12px; line-height: 1.4; }
+.offer-fit-line { font-size: 15px; color: var(--muted); margin-bottom: 48px; line-height: 1.5; }
+.offer-pricing { display: grid; grid-template-columns: 1fr auto 1fr; gap: 40px; align-items: center; padding: 36px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 48px; }
+.offer-price-block { text-align: center; }
+.offer-price { font-weight: 900; font-size: 56px; line-height: 1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px; }
+.offer-mo { font-size: 24px; font-weight: 500; color: var(--ink-soft); }
+.offer-price-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
+.offer-divider { width: 1px; height: 80px; background: var(--line); }
+.standards-block { margin-bottom: 48px; }
+.standards-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--moss-deep); margin-bottom: 24px; font-weight: 600; }
+.standards-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 32px; }
+.standards-list li { font-size: 15px; color: var(--ink-light); padding-left: 24px; position: relative; line-height: 1.5; }
+.standards-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--moss-deep); font-weight: 700; }
+.guarantee-block { background: var(--paper); padding: 32px 36px; border-left: 3px solid var(--moss-deep); margin-bottom: 48px; }
+.guarantee-label-inline { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss-deep); margin-bottom: 12px; font-weight: 600; }
+.guarantee-text { font-size: 16px; color: var(--ink); line-height: 1.55; }
+.offer-btn { display: inline-flex; align-items: center; gap: 12px; padding: 20px 36px; background: var(--ink); color: var(--bg); font-weight: 600; font-size: 16px; border: none; cursor: pointer; transition: all 0.2s var(--ease); margin-bottom: 20px; }
+.offer-btn:hover { background: var(--moss-deep); transform: translateY(-2px); }
+.offer-fineprint { font-size: 13px; color: var(--muted); font-style: italic; line-height: 1.55; }
+@media (max-width: 768px) {
+  .single-offer { padding: 48px 28px; }
+  .offer-name { font-size: 48px; }
+  .offer-pricing { grid-template-columns: 1fr; gap: 32px; }
+  .offer-divider { display: none; }
+  .standards-list { grid-template-columns: 1fr; }
+}
 
-  .standards-block {
-    margin-bottom: 48px;
-  }
-  .standards-label, .guarantee-label-inline {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    color: var(--moss-light);
-    margin-bottom: 24px;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  .standards-list {
-    list-style: none;
-  }
-  .standards-list li {
-    padding: 14px 0;
-    padding-left: 28px;
-    position: relative;
-    font-size: 15px;
-    line-height: 1.55;
-    color: rgba(240,236,223,0.95);
-    border-bottom: 1px solid rgba(240,236,223,0.08);
-  }
-  .standards-list li:last-child { border-bottom: none; }
-  .standards-list li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: var(--moss-light);
-    font-weight: 700;
-  }
+/* Mission Control Callout */
+.mc-callout { background: var(--ink); color: var(--bg); padding: 56px 48px; margin-top: 48px; position: relative; overflow: hidden; }
+.mc-callout::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--moss), transparent); }
+.mc-callout-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss-light); margin-bottom: 20px; }
+.mc-callout-title { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 36px; line-height: 1.15; margin-bottom: 16px; }
+.mc-callout-body { font-size: 16px; color: rgba(240,236,223,0.75); line-height: 1.6; max-width: 720px; }
 
-  .guarantee-block {
-    background: rgba(154,175,122,0.08);
-    padding: 32px;
-    margin-bottom: 48px;
-    border-left: 3px solid var(--moss);
-  }
-  .guarantee-text {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 19px;
-    line-height: 1.5;
-    color: var(--bg);
-  }
+/* Other Tiers Cards */
+.other-tiers { padding: 100px 32px; background: var(--paper); }
+.other-tiers-head { text-align: center; max-width: 720px; margin: 0 auto 60px; }
+.other-tiers-head h2 { font-weight: 900; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
+.other-tiers-head h2 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+.other-tiers-sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; }
+.tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 1100px; margin: 0 auto; }
+.tier-card { background: var(--bg); border: 1px solid var(--line); padding: 48px 40px; transition: all 0.3s var(--ease); }
+.tier-card:hover { border-color: var(--moss-deep); transform: translateY(-4px); }
+.tier-card-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--moss-deep); margin-bottom: 20px; font-weight: 600; text-transform: uppercase; }
+.tier-card-name { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 48px; line-height: 1; margin-bottom: 12px; color: var(--ink); }
+.tier-card-tagline { font-size: 16px; color: var(--ink-soft); margin-bottom: 28px; line-height: 1.4; min-height: 44px; }
+.tier-card-price { font-weight: 900; font-size: 40px; line-height: 1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 8px; }
+.tier-card-price-sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--muted); margin-bottom: 32px; text-transform: uppercase; }
+.tier-card-fit { background: var(--paper); padding: 20px; font-size: 14px; color: var(--ink-light); line-height: 1.55; margin-bottom: 28px; }
+.tier-card-fit strong { color: var(--ink); }
+.tier-card-includes { list-style: none; padding: 0; margin: 0 0 32px 0; }
+.tier-card-includes li { font-size: 14px; color: var(--ink-light); padding-left: 22px; position: relative; line-height: 1.5; margin-bottom: 10px; }
+.tier-card-includes li::before { content: "→"; position: absolute; left: 0; top: 0; color: var(--moss-deep); }
+.tier-card-cta { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; background: var(--ink); color: var(--bg); font-weight: 600; font-size: 14px; border: none; cursor: pointer; text-decoration: none; transition: all 0.2s var(--ease); }
+.tier-card-cta:hover { background: var(--moss-deep); }
+.tier-card.estate { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.tier-card.estate .tier-card-label { color: var(--moss-light); }
+.tier-card.estate .tier-card-name { color: var(--bg); }
+.tier-card.estate .tier-card-tagline { color: rgba(240,236,223,0.75); }
+.tier-card.estate .tier-card-price { color: var(--bg); }
+.tier-card.estate .tier-card-price-sub { color: rgba(240,236,223,0.5); }
+.tier-card.estate .tier-card-fit { background: rgba(240,236,223,0.06); color: rgba(240,236,223,0.8); }
+.tier-card.estate .tier-card-fit strong { color: var(--bg); }
+.tier-card.estate .tier-card-includes li { color: rgba(240,236,223,0.75); }
+.tier-card.estate .tier-card-includes li::before { color: var(--moss-light); }
+.tier-card.estate .tier-card-cta { background: var(--moss); color: var(--ink); }
+.tier-card.estate .tier-card-cta:hover { background: var(--moss-light); }
+@media (max-width: 768px) {
+  .tier-grid { grid-template-columns: 1fr; gap: 24px; }
+  .tier-card { padding: 36px 28px; }
+  .tier-card-name { font-size: 36px; }
+  .tier-card-tagline { min-height: 0; }
+}
 
-  .offer-btn {
-    display: block;
-    width: 100%;
-    padding: 24px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 16px;
-    background: var(--moss);
-    color: var(--ink);
-    transition: background 0.25s;
-    cursor: pointer;
-    border: none;
-    font-family: inherit;
-    letter-spacing: 0.02em;
-    margin-bottom: 20px;
-  }
-  .offer-btn:hover { background: var(--moss-light); }
-  .offer-fineprint {
-    font-size: 12px;
-    color: rgba(240,236,223,0.6);
-    text-align: center;
-    line-height: 1.5;
-    font-style: italic;
-    font-family: 'Fraunces', serif;
-  }
+/* Add-Ons Section */
+.addons-section { padding: 140px 32px; background: var(--bg); }
+.addons-inner { max-width: 1200px; margin: 0 auto; }
+.addons-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+.addons-head h2 { font-weight: 900; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
+.addons-head h2 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+.addons-head p { font-size: 17px; color: var(--ink-soft); line-height: 1.6; }
+.addons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.addon-card { background: var(--paper); border: 1px solid var(--line); padding: 28px 26px 26px; display: flex; flex-direction: column; gap: 16px; transition: border-color 0.4s ease, transform 0.4s ease; min-height: 290px; }
+.addon-card:hover { border-color: var(--moss); transform: translateY(-3px); }
+.addon-mark { font-weight: 900; font-size: 32px; line-height: 1; letter-spacing: -0.02em; color: var(--moss-deep); width: 32px; font-family: 'Helvetica Neue', 'Arial Black', sans-serif; }
+.addon-name { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 28px; line-height: 1; color: var(--ink); letter-spacing: -0.01em; margin-top: -4px; }
+.addon-desc { font-size: 14px; line-height: 1.55; color: var(--ink-light); flex-grow: 1; }
+.addon-price-block { padding-top: 16px; border-top: 1px solid var(--line-soft); }
+.addon-price { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.05em; color: var(--ink); font-weight: 700; line-height: 1.4; }
+.addon-price-note { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; font-weight: 600; margin-top: 4px; }
+.addons-footnote { text-align: center; margin-top: 48px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; font-weight: 600; }
+@media (max-width: 960px) { .addons-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .addons-grid { grid-template-columns: 1fr; } .addon-card { min-height: auto; } }
 
-  @media (max-width: 720px) {
-    .single-offer { padding: 44px 28px; }
-    .offer-pricing { grid-template-columns: 1fr; gap: 32px; }
-    .offer-divider { width: 80%; height: 1px; margin: 0 auto; }
-    .offer-price { font-size: 44px; }
-    .offer-name { font-size: 40px; }
-  }
+/* What's Included / Not Included */
+.what-included { padding: 100px 32px; background: var(--paper); }
+.container-narrow { max-width: 1000px; margin: 0 auto; }
+.section-head { text-align: center; margin-bottom: 64px; }
+.section-head .eyebrow { justify-content: center; }
+.section-head h2 { font-weight: 900; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
+.section-head h2 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+.section-sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 600px; margin: 0 auto; }
+.included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.included-col { background: var(--bg); padding: 48px 40px; }
+.included-col h3 { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 32px; margin-bottom: 28px; color: var(--ink); }
+.included-col.no h3 { color: var(--muted); }
+.included-col ul { list-style: none; padding: 0; margin: 0; }
+.included-col li { font-size: 15px; color: var(--ink-light); padding-left: 24px; position: relative; line-height: 1.5; margin-bottom: 12px; }
+.included-col.yes li::before { content: "✓"; position: absolute; left: 0; color: var(--moss-deep); font-weight: 700; }
+.included-col.no li::before { content: "✗"; position: absolute; left: 0; color: var(--muted); font-weight: 700; }
+@media (max-width: 768px) { .included-grid { grid-template-columns: 1fr; } .included-col { padding: 36px 28px; } }
 
-  /* OTHER TIERS — ORCHARD + ESTATE */
-  .other-tiers {
-    background: var(--bg);
-    padding: 100px 0 140px;
-    border-top: 1px solid var(--line);
-  }
-  .other-tiers-head {
-    text-align: center;
-    max-width: 720px;
-    margin: 0 auto 64px;
-    padding: 0 24px;
-  }
-  .other-tiers-head h2 {
-    font-weight: 900;
-    font-size: clamp(32px, 4.5vw, 52px);
-    line-height: 1.05;
-    letter-spacing: -0.025em;
-    color: var(--ink);
-    margin-bottom: 16px;
-    margin-top: 16px;
-  }
-  .other-tiers-head h2 .italic {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--moss-deep);
-  }
-  .other-tiers-sub {
-    font-size: 17px;
-    color: var(--ink-soft);
-    line-height: 1.55;
-  }
-  .tier-grid {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 32px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-  .tier-card {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    padding: 44px 36px;
-    position: relative;
-    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-  }
-  .tier-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 24px 48px rgba(28, 36, 32, 0.08);
-  }
-  .tier-card.estate {
-    background: var(--ink);
-    color: var(--bg);
-    border-color: var(--ink);
-  }
-  .tier-card-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    color: var(--moss-deep);
-    font-weight: 600;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-  }
-  .tier-card.estate .tier-card-label { color: var(--moss-light); }
-  .tier-card-name {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 44px;
-    letter-spacing: -0.01em;
-    line-height: 1;
-    margin-bottom: 14px;
-    color: var(--ink);
-  }
-  .tier-card.estate .tier-card-name { color: var(--bg); }
-  .tier-card-tagline {
-    font-size: 16px;
-    color: var(--ink-soft);
-    margin-bottom: 24px;
-    line-height: 1.5;
-  }
-  .tier-card.estate .tier-card-tagline { color: rgba(240, 236, 223, 0.78); }
-  .tier-card-price {
-    font-weight: 900;
-    font-size: 32px;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-  .tier-card.estate .tier-card-price {
-    color: var(--moss-light);
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-  }
-  .tier-card-price-sub {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    margin-bottom: 28px;
-  }
-  .tier-card.estate .tier-card-price-sub { color: rgba(240, 236, 223, 0.55); }
-  .tier-card-fit {
-    padding: 20px 0;
-    border-top: 1px solid var(--line-soft);
-    border-bottom: 1px solid var(--line-soft);
-    margin-bottom: 28px;
-    font-size: 13px;
-    color: var(--ink-light);
-    line-height: 1.6;
-  }
-  .tier-card.estate .tier-card-fit {
-    border-color: rgba(240, 236, 223, 0.18);
-    color: rgba(240, 236, 223, 0.7);
-  }
-  .tier-card-fit strong { color: var(--ink); font-weight: 700; }
-  .tier-card.estate .tier-card-fit strong { color: var(--bg); }
-  .tier-card-includes { list-style: none; padding: 0; margin: 0 0 32px; }
-  .tier-card-includes li {
-    font-size: 14px;
-    color: var(--ink-soft);
-    padding: 6px 0 6px 22px;
-    position: relative;
-    line-height: 1.5;
-  }
-  .tier-card-includes li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: var(--moss-deep);
-    font-weight: 700;
-  }
-  .tier-card.estate .tier-card-includes li { color: rgba(240, 236, 223, 0.78); }
-  .tier-card.estate .tier-card-includes li::before { color: var(--moss-light); }
-  .tier-card-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 24px;
-    font-size: 14px;
-    font-weight: 600;
-    background: var(--ink);
-    color: var(--bg);
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .tier-card-cta:hover { background: var(--moss-deep); }
-  .tier-card.estate .tier-card-cta { background: var(--moss); color: var(--ink); }
-  .tier-card.estate .tier-card-cta:hover { background: var(--moss-light); }
-  @media (max-width: 720px) {
-    .other-tiers { padding: 70px 0 100px; }
-    .tier-grid { grid-template-columns: 1fr; padding: 0 20px; }
-    .tier-card { padding: 36px 28px; }
-    .tier-card-name { font-size: 36px; }
-  }
+/* FAQ */
+.faq-section { padding: 140px 32px; }
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item { padding: 36px 0; border-bottom: 1px solid var(--line); }
+.faq-item:first-child { padding-top: 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 24px; color: var(--ink); margin-bottom: 14px; line-height: 1.3; }
+.faq-a { font-size: 16px; color: var(--ink-light); line-height: 1.65; }
 
-  /* COMPARISON / WHAT'S INCLUDED */
-  .what-included {
-    background: var(--paper);
-    padding: 140px 0;
-  }
-  .included-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    margin-top: 60px;
-  }
-  .included-col h3 {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 32px;
-    margin-bottom: 24px;
-    color: var(--ink);
-  }
-  .included-col ul {
-    list-style: none;
-  }
-  .included-col li {
-    padding: 12px 0;
-    padding-left: 28px;
-    position: relative;
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    border-bottom: 1px solid var(--line-soft);
-  }
-  .included-col li:last-child { border-bottom: none; }
-  .included-col.yes li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--moss-deep);
-    font-weight: 700;
-  }
-  .included-col.no li::before {
-    content: "✕";
-    position: absolute;
-    left: 0;
-    color: var(--muted);
-    font-weight: 700;
-  }
-  .included-col.no li {
-    color: var(--muted);
-    text-decoration: line-through;
-    text-decoration-color: rgba(107,107,98,0.3);
-  }
-  @media (max-width: 768px) {
-    .included-grid { grid-template-columns: 1fr; gap: 32px; }
-  }
+/* CTA */
+.cta-section { background: var(--ink); color: var(--bg); padding: 160px 32px; text-align: center; }
+.cta-section .eyebrow { color: var(--moss-light); justify-content: center; }
+.cta-section h2 { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: clamp(36px, 6vw, 72px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 32px; color: var(--bg); }
+.cta-section p { font-size: 18px; color: rgba(240,236,223,0.8); line-height: 1.6; max-width: 600px; margin: 0 auto 48px; }
+.cta-section .btn-primary { background: var(--moss); color: var(--ink); }
+.cta-section .btn-primary:hover { background: var(--moss-light); }
 
-  /* FAQ */
-  .faq-section { padding: 140px 0; }
-  .faq-list { max-width: 800px; margin: 60px auto 0; }
-  .faq-item { border-bottom: 1px solid var(--line); }
-  .faq-q {
-    font-weight: 700;
-    font-size: 18px;
-    padding: 28px 0;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    transition: color 0.2s;
-    user-select: none;
-  }
-  .faq-q:hover { color: var(--moss-deep); }
-  .faq-q::after {
-    content: "+";
-    font-weight: 300;
-    font-size: 28px;
-    color: var(--moss-deep);
-    flex-shrink: 0;
-    transition: transform 0.3s;
-  }
-  .faq-item.open .faq-q::after { transform: rotate(45deg); }
-  .faq-a {
-    font-size: 15px;
-    color: var(--ink-light);
-    line-height: 1.7;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s var(--ease), padding 0.3s;
-  }
-  .faq-item.open .faq-a { max-height: 500px; padding-bottom: 28px; }
+/* Per-tier annual toggle */
+.tier-toggle-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+.tier-toggle-area { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; padding-top: 4px; }
+.tier-toggle-lbl { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: var(--muted); font-weight: 700; text-transform: uppercase; }
+.tier-card.estate .tier-toggle-lbl { color: rgba(240,236,223,0.65); }
+.tier-sw { position: relative; width: 40px; height: 22px; cursor: pointer; display: inline-block; }
+.tier-sw input { opacity: 0; width: 0; height: 0; position: absolute; margin: 0; }
+.tier-sw-track { position: absolute; inset: 0; background: rgba(28,36,32,0.18); border-radius: 11px; transition: background 0.28s; }
+.tier-card.estate .tier-sw-track { background: rgba(240,236,223,0.2); }
+.tier-sw input:checked ~ .tier-sw-track { background: var(--moss-deep); }
+.tier-card.estate .tier-sw input:checked ~ .tier-sw-track { background: var(--moss); }
+.tier-sw-thumb { position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background: #fff; border-radius: 50%; transition: transform 0.28s cubic-bezier(0.16,1,0.3,1); box-shadow: 0 1px 4px rgba(0,0,0,0.18); }
+.tier-sw input:checked ~ .tier-sw-thumb { transform: translateX(18px); }
+
+/* Price flip animation */
+@keyframes priceFlip { 0% { transform: translateY(0); opacity: 1; } 45% { transform: translateY(-9px); opacity: 0; } 55% { transform: translateY(9px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+.price-flipping { animation: priceFlip 0.38s cubic-bezier(0.16,1,0.3,1); }
+
+/* Annual savings indicator */
+.price-save { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--moss-deep); font-weight: 700; text-transform: uppercase; opacity: 0; height: 0; overflow: hidden; transition: opacity 0.28s, height 0.3s cubic-bezier(0.16,1,0.3,1), margin 0.28s; }
+.tier-card.estate .price-save { color: var(--moss-light); }
+.price-save.on { opacity: 1; height: 16px; margin-top: 6px; }
 </style>
 </head>
 <body>
@@ -470,44 +724,52 @@
       <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#667B4A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
       GRAIN
     </a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
     <div class="nav-links" id="nav-links">
       <a href="method.html">Method</a>
-      <a href="pricing.html" class="active">Pricing</a>
+      <a href="dashboard.html">Dashboard</a>
       <a href="calculator.html">Calculator</a>
+      <a href="pricing.html" class="active">Pricing</a>
       <button class="nav-cta" onclick="openCalendly(event)">Apply for Audit</button>
     </div>
   </div>
 </nav>
 
-<!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="eyebrow">INVESTMENT</div>
-  <h1>Three tiers. <span class="italic">One standard.</span></h1>
+  <div class="eyebrow">PRICING</div>
+  <h1>Three tiers.<br><span class="italic">One standard.</span></h1>
   <p class="page-hero-sub">Whether you run one location or many, the standards are the same. What changes is the scope of what we install. No usage fees. No upsells. No hidden charges.</p>
 </section>
 
-<!-- OFFER — GREENHOUSE FEATURED -->
 <section class="offer-section">
-  <div class="single-offer reveal">
-    <div class="offer-tier-label">TIER ONE · MOST CLIENTS START HERE</div>
+  <div class="single-offer">
+    <div class="tier-toggle-row">
+      <div>
+        <div class="offer-tier-label">TIER ONE · MOST CLIENTS START HERE</div>
+      </div>
+      <div class="tier-toggle-area">
+        <div class="tier-toggle-lbl">Annual · Save 20%</div>
+        <label class="tier-sw">
+          <input type="checkbox" data-tier="greenhouse" onchange="setTierAnnual('greenhouse', this.checked)">
+          <span class="tier-sw-track"></span>
+          <span class="tier-sw-thumb"></span>
+        </label>
+      </div>
+    </div>
     <div class="offer-name">Greenhouse</div>
-    <div class="offer-tagline">The complete lead response system, installed and run for you</div>
+    <div class="offer-tagline">The complete lead response system, installed and run for you.</div>
     <div class="offer-fit-line">Built for single-location businesses doing $500K to $3M, handling 30 to 150 leads per month.</div>
 
     <div class="offer-pricing">
       <div class="offer-price-block">
-        <div class="offer-price">$2,500</div>
+        <div class="offer-price">$3,500</div>
         <div class="offer-price-label">to install · covers your first 30 days</div>
       </div>
       <div class="offer-divider"></div>
       <div class="offer-price-block">
-        <div class="offer-price">$1,997<span class="offer-mo">/mo</span></div>
-        <div class="offer-price-label">starting day 31 · all-inclusive</div>
+        <div class="offer-price" id="greenhouse-price"><span id="greenhouse-num">$2,497</span><span class="offer-mo">/mo</span></div>
+        <div class="offer-price-label" id="greenhouse-sub">starting day 31 · all-inclusive</div>
+        <div class="price-save" id="greenhouse-save">Save $6,000/year</div>
       </div>
     </div>
 
@@ -520,7 +782,7 @@
         <li>Every dormant customer reactivated quarterly</li>
         <li>System live in 7 days from signed agreement</li>
         <li>Day-1 Onboarding Intelligence Report</li>
-        <li>Live performance dashboard, updated in real time</li>
+        <li>Your private Greenhouse dashboard at yourname.grainmethod.com</li>
         <li>Monthly growth review with the founder</li>
         <li>Direct Slack access for support</li>
         <li>Quarterly industry benchmark report</li>
@@ -534,45 +796,71 @@
 
     <button class="offer-btn" onclick="openCalendly(event)">Apply for an Audit →</button>
     <p class="offer-fineprint">Audits are by application. We work with a small number of home service businesses at a time to maintain our standards.</p>
+
+    <div class="mc-callout">
+      <div class="mc-callout-label">YOUR GREENHOUSE DASHBOARD · INCLUDED</div>
+      <div class="mc-callout-title">Every Greenhouse client gets their own dashboard.</div>
+      <p class="mc-callout-body">Built on your own subdomain at yourname.grainmethod.com. Live lead pipeline. Every call answered, with the recording. Every quote followed up, with the status. Every dollar attributed to the system, with the math. Plus Ask GRAIN — type a question in plain English, get an answer about your own data. No logging into someone else's CRM. Your business, your dashboard.</p>
+    </div>
   </div>
 </section>
 
-<!-- OTHER TIERS — ORCHARD + ESTATE -->
 <section class="other-tiers">
-  <div class="other-tiers-head reveal">
+  <div class="other-tiers-head">
     <div class="eyebrow" style="justify-content: center;">FOR LARGER OPERATIONS</div>
     <h2>Two more <span class="italic">tiers.</span></h2>
     <p class="other-tiers-sub">Same standards. Wider scope. For multi-trade businesses and multi-location companies.</p>
   </div>
   <div class="tier-grid">
-    <!-- ORCHARD -->
-    <div class="tier-card reveal reveal-delay-1">
-      <div class="tier-card-label">TIER TWO</div>
+    <div class="tier-card">
+      <div class="tier-toggle-row">
+        <div class="tier-card-label">TIER TWO</div>
+        <div class="tier-toggle-area">
+          <div class="tier-toggle-lbl">Annual · Save 20%</div>
+          <label class="tier-sw">
+            <input type="checkbox" data-tier="orchard" onchange="setTierAnnual('orchard', this.checked)">
+            <span class="tier-sw-track"></span>
+            <span class="tier-sw-thumb"></span>
+          </label>
+        </div>
+      </div>
       <div class="tier-card-name">Orchard</div>
       <div class="tier-card-tagline">For multi-trade businesses or higher-volume single locations.</div>
-      <div class="tier-card-price">$5,000 <span style="font-size:18px;font-weight:600;color:var(--ink-soft)">setup</span></div>
-      <div class="tier-card-price-sub">$4,997/MO · STARTING DAY 31</div>
-      <div class="tier-card-fit">
+      <div class="tier-card-price">$7,500 <span style="font-size:18px;font-weight:600;color:var(--ink-soft)">setup</span></div>
+      <div class="tier-card-price-sub" id="orchard-sub"><span id="orchard-num">$5,997</span><span id="orchard-suffix">/MO · STARTING DAY 31</span></div>
+      <div class="price-save" id="orchard-save">Save $14,400/year</div>
+      <div class="tier-card-fit" style="margin-top: 28px;">
         <strong>Built for:</strong> $3M to $10M revenue. 150 to 500 leads/month. Multi-trade or expanded service area. 14-day deployment.
       </div>
       <ul class="tier-card-includes">
         <li>Everything in Greenhouse</li>
-        <li>Multi-trade routing and scripts</li>
+        <li>Up to 3 voice agents (different trades or locations)</li>
+        <li>Multi-trade routing and trade-specific scripts</li>
         <li>Custom CRM integrations</li>
-        <li>Weekly review calls</li>
-        <li>Priority Slack support</li>
+        <li>Voice cloning of your preferred staff member</li>
+        <li>Weekly review calls, priority Slack support</li>
         <li>Quarterly strategy session with the founder</li>
       </ul>
       <button class="tier-card-cta" onclick="openCalendly(event)">Apply for an Audit →</button>
     </div>
-    <!-- ESTATE -->
-    <div class="tier-card estate reveal reveal-delay-2">
-      <div class="tier-card-label">TIER THREE</div>
+    <div class="tier-card estate">
+      <div class="tier-toggle-row">
+        <div class="tier-card-label">TIER THREE</div>
+        <div class="tier-toggle-area">
+          <div class="tier-toggle-lbl">Annual · Save 20%</div>
+          <label class="tier-sw">
+            <input type="checkbox" data-tier="estate" onchange="setTierAnnual('estate', this.checked)">
+            <span class="tier-sw-track"></span>
+            <span class="tier-sw-thumb"></span>
+          </label>
+        </div>
+      </div>
       <div class="tier-card-name">Estate</div>
       <div class="tier-card-tagline">For multi-location businesses running multiple brands.</div>
       <div class="tier-card-price">Custom</div>
-      <div class="tier-card-price-sub">STARTS AFTER A CONVERSATION</div>
-      <div class="tier-card-fit">
+      <div class="tier-card-price-sub" id="estate-sub">STARTS AFTER A CONVERSATION</div>
+      <div class="price-save" id="estate-save">Annual pricing available on inquiry</div>
+      <div class="tier-card-fit" style="margin-top: 28px;">
         <strong>Built for:</strong> $10M+ revenue. 3+ locations. 500+ leads/month. Multi-brand rollouts. 30-day deployment with dedicated team.
       </div>
       <ul class="tier-card-includes">
@@ -580,7 +868,8 @@
         <li>Multi-location and multi-brand setup</li>
         <li>Dedicated implementation team</li>
         <li>Executive quarterly business reviews</li>
-        <li>Custom benchmarking against your peer set</li>
+        <li>Custom peer-set benchmarking</li>
+        <li>24/7 dedicated channel</li>
         <li>Direct line to the founder</li>
       </ul>
       <a href="mailto:johnny@grainmethod.com?subject=Estate%20Tier%20Inquiry" class="tier-card-cta">Inquire →</a>
@@ -588,16 +877,89 @@
   </div>
 </section>
 
-<!-- WHAT'S INCLUDED VS NOT -->
+<section class="addons-section">
+  <div class="addons-inner">
+    <div class="addons-head reveal">
+      <div class="eyebrow" style="justify-content: center;">ADD-ONS</div>
+      <h2>More engines, <span class="italic">when you're ready.</span></h2>
+      <p>Greenhouse and Orchard cover the core. Add-Ons cover specialty work — paid ads, content, referrals, dead lead revival, CRM cleanup, local visibility. Add what you need, when you need it. Some flat monthly. A few one-time. Two only charge when they bring in revenue.</p>
+    </div>
+    <div class="addons-grid">
+
+      <div class="addon-card reveal reveal-delay-1">
+        <div class="addon-mark">F</div>
+        <div class="addon-name">Fertilizer</div>
+        <p class="addon-desc">Four branded social posts a week across LinkedIn, Instagram, and Facebook. Plus we ask every recent customer for a review after their job. Keeps your name in front of people and your reviews compounding.</p>
+        <div class="addon-price-block">
+          <div class="addon-price">$497 / month</div>
+          <div class="addon-price-note">Recurring</div>
+        </div>
+      </div>
+
+      <div class="addon-card reveal reveal-delay-2">
+        <div class="addon-mark">C</div>
+        <div class="addon-name">Compost</div>
+        <p class="addon-desc">We work your last 24 months of dead leads and ghosted quotes through a 30-to-45-day revival sequence. You pay the 15% only when something we revived turns into actual revenue.</p>
+        <div class="addon-price-block">
+          <div class="addon-price">$1,500 setup + 15% of recovered</div>
+          <div class="addon-price-note">One-time install · revenue share</div>
+        </div>
+      </div>
+
+      <div class="addon-card reveal reveal-delay-3">
+        <div class="addon-mark">P</div>
+        <div class="addon-name">Pollination</div>
+        <p class="addon-desc">A referral program built for your business — branded materials, automated tracking, kickback rules. Your existing customers become your sales team. 10% on referred revenue for 12 months, then it's yours free.</p>
+        <div class="addon-price-block">
+          <div class="addon-price">$1,500 setup + 10% of referred</div>
+          <div class="addon-price-note">12-month cap on revenue share</div>
+        </div>
+      </div>
+
+      <div class="addon-card reveal reveal-delay-1">
+        <div class="addon-mark">P</div>
+        <div class="addon-name">Pruning</div>
+        <p class="addon-desc">30-day cleanup of your customer database. Dedupe records, fix bad data, archive who's gone. The foundation everything else stands on. Recommended once a year.</p>
+        <div class="addon-price-block">
+          <div class="addon-price">$1,500 one-time</div>
+          <div class="addon-price-note">No recurring fee</div>
+        </div>
+      </div>
+
+      <div class="addon-card reveal reveal-delay-2">
+        <div class="addon-mark">S</div>
+        <div class="addon-name">Sunlight</div>
+        <p class="addon-desc">Google, Meta, and Local Service Ads — fully managed. You bring the ad budget, we run the campaigns. Every click flows into your Greenhouse as a tracked lead.</p>
+        <div class="addon-price-block">
+          <div class="addon-price">$1,997 / month</div>
+          <div class="addon-price-note">Recurring · ad spend separate</div>
+        </div>
+      </div>
+
+      <div class="addon-card reveal reveal-delay-3">
+        <div class="addon-mark">R</div>
+        <div class="addon-name">Roots</div>
+        <p class="addon-desc">Local SEO, Google Business Profile, and AI visibility — getting found on Google search, Maps, and the AI tools customers now use (ChatGPT, Perplexity, Gemini, AI Overviews). Monthly visibility audit shows where you stand.</p>
+        <div class="addon-price-block">
+          <div class="addon-price">$2,500 setup + $497 / month</div>
+          <div class="addon-price-note">One-time install · recurring</div>
+        </div>
+      </div>
+
+    </div>
+    <p class="addons-footnote">Add-ons work with any tier · turn on or off month-to-month</p>
+  </div>
+</section>
+
 <section class="what-included">
   <div class="container-narrow">
-    <div class="section-head reveal">
+    <div class="section-head">
       <div class="eyebrow">WHAT'S INCLUDED</div>
       <h2>Everything in. <span class="italic">Nothing extra.</span></h2>
       <p class="section-sub">What you see is what you pay. No usage fees. No surprise add-ons.</p>
     </div>
     <div class="included-grid">
-      <div class="included-col yes reveal reveal-delay-1">
+      <div class="included-col yes">
         <h3>Included.</h3>
         <ul>
           <li>Voice agent calls (unlimited)</li>
@@ -605,14 +967,15 @@
           <li>Email sequences (unlimited)</li>
           <li>CRM integration setup and maintenance</li>
           <li>Workflow updates and optimization</li>
+          <li>Your private dashboard at yourname.grainmethod.com</li>
+          <li>Ask GRAIN chat (your own data, in plain English)</li>
           <li>Monthly review calls</li>
-          <li>Dashboard hosting and support</li>
           <li>System upgrades as we improve them</li>
           <li>Industry benchmark reports</li>
           <li>Direct support via Slack</li>
         </ul>
       </div>
-      <div class="included-col no reveal reveal-delay-2">
+      <div class="included-col no">
         <h3>Not included.</h3>
         <ul>
           <li>Per-minute voice usage fees</li>
@@ -621,133 +984,223 @@
           <li>Surprise overage charges</li>
           <li>Long-term contracts</li>
           <li>Cancellation penalties</li>
-          <li>Add-on subscriptions</li>
+          <li>Hidden subscriptions</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="faq-section">
   <div class="container-narrow">
-    <div class="section-head reveal">
+    <div class="section-head">
       <div class="eyebrow">QUESTIONS</div>
       <h2>The straight <span class="italic">answers.</span></h2>
     </div>
-    <div class="faq-list reveal">
+    <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q">How do I know which tier I need?</div>
         <div class="faq-a">Most clients start with Greenhouse — single location, $500K to $3M revenue, 30 to 150 leads per month. Orchard fits multi-trade businesses or single locations doing $3M to $10M with higher lead volume. Estate is built for $10M+ businesses running three or more locations. The audit call sorts this out. We're not trying to upsell you into the wrong tier.</div>
-        </div>
-        <div class="faq-item">
+      </div>
+      <div class="faq-item">
         <div class="faq-q">How does billing actually work?</div>
-        <div class="faq-a">For Greenhouse: $2,500 at signing covers the build and your first 30 days. $1,997/month begins on Day 31, all-inclusive. For Orchard: $5,000 setup, $4,997/month, same structure. Estate is custom — we have a discovery conversation first. All three are month-to-month after the first 60 days. Cancel anytime with 30 days notice. Setup fees are one-time.</div>
+        <div class="faq-a">For Greenhouse: $3,500 at signing covers the build and your first 30 days. $2,497/month begins on Day 31, all-inclusive. For Orchard: $7,500 setup, $5,997/month, same structure. Estate is custom — we have a discovery conversation first. All three are month-to-month after the first 60 days. Cancel anytime with 30 days notice. Setup fees are one-time. We default new clients to ACH for the monthly to save you the credit card fees, but card works fine if you prefer.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">What does the guarantee actually mean?</div>
-        <div class="faq-a">We install your system in 7 days. For the next 60 days we track every extra job the system books that you wouldn't have booked without it. If the count is under 5, we keep working — at no additional cost — until you get there. No refund games. No fine print. We work until it works.</div>
+        <div class="faq-a">We install your system in 7 days. For the next 60 days we track every extra job the system books that you wouldn't have booked without it. If the count is under 5, we keep working — at no additional cost — until you get there. No refund games. No fine print. The full methodology is published — we'll show you exactly how we count a job as ours.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">What if I already use a CRM like ServiceTitan or Jobber?</div>
-        <div class="faq-a">Good. We integrate with what you have. ServiceTitan, Jobber, Housecall Pro, GoHighLevel, JobNimbus, AccuLynx, FieldPulse, and more. No rip-and-replace. The GRAIN layer sits on top of your existing tools and makes them do what you hoped they would when you bought them.</div>
+        <div class="faq-q">What's the Greenhouse dashboard?</div>
+        <div class="faq-a">A live performance dashboard at your own subdomain — yourname.grainmethod.com. Built on your own data. Live lead pipeline, every call answered with the recording, every quote followed up with the status, every dollar attributed to the system. Plus Ask GRAIN — a chat interface where you can ask questions about your own business in plain English and get real answers. No logging into someone else's CRM. Your business, your dashboard.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Will the voice answering actually work for my customers?</div>
-        <div class="faq-a">It's not trying to trick anyone. Our agents introduce themselves as your booking assistant. They handle routine questions like hours, services, basic pricing, and scheduling. Anything complex gets handed to a human. Most homeowners would rather talk to a helpful agent at 9pm than leave a voicemail that nobody returns until Tuesday.</div>
+        <div class="faq-q">Do I need to switch CRMs?</div>
+        <div class="faq-a">No. GRAIN plugs into whatever you're already using — ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, GoHighLevel, Leap, and others. Nothing rips out. Your existing system stays. We become the operating layer on top.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">What does the audit involve?</div>
-        <div class="faq-a">A 30-minute call. We ask about your lead sources, average job value, current follow-up process, and the tools you use. You leave with a specific dollar figure of what your business is losing per year. We use the call to determine if your business is a fit for GRAIN. If it isn't, the analysis is yours either way.</div>
+        <div class="faq-q">What if my business doesn't fit any of these tiers?</div>
+        <div class="faq-a">If you're under $500K revenue, the math probably doesn't work yet. If you're between tiers, the audit call will help you choose. If you're a franchise or have unusual structure, that's an Estate conversation — email us directly with subject "Estate Tier Inquiry."</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Why are you selective about who you work with?</div>
-        <div class="faq-a">Because the standards we hold are demanding. Every call answered in 60 seconds. Every quote followed up for 90 days. Every system live in 7 days. To maintain that, we work with a small number of home service businesses at a time. The audit determines fit on both sides.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">What's the typical ROI?</div>
-        <div class="faq-a">Most clients book their first GRAIN-attributed extra job within the first 14 days. Average client adds 5 to 12 extra jobs per month from previously lost leads. For a roofer at a $12,500 average ticket, that's $62K to $150K in monthly recovered revenue. Against a $1,997 monthly fee.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">What if I don't have many leads to work with?</div>
-        <div class="faq-a">GRAIN works best for businesses generating at least 30 leads per month from any combination of marketing, referrals, and inbound calls. If you're below that, you may need lead generation support before GRAIN is the right fit. The audit will tell us either way.</div>
+        <div class="faq-q">Can I add Add-Ons later?</div>
+        <div class="faq-a">Yes. Add or drop any add-on month to month. The base tier and add-ons are billed separately. We'll never push an add-on you don't need — they're listed publicly so you can pick what fits.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section style="padding: 160px 32px; text-align: center; max-width: 920px; margin: 0 auto;">
-  <div class="eyebrow reveal" style="justify-content: center;">READY?</div>
-  <h2 class="reveal reveal-delay-1" style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: clamp(40px, 6vw, 72px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 32px; color: var(--ink);">See if your business is a fit.</h2>
-  <p class="reveal reveal-delay-2" style="font-size: 18px; color: var(--ink-light); line-height: 1.6; max-width: 600px; margin: 0 auto 48px;">A 30-minute audit. Mutual qualification. You leave with a clear picture of what you're losing and whether GRAIN is the right system to install.</p>
-  <div class="reveal reveal-delay-3">
-    <button class="btn btn-primary" onclick="openCalendly(event)">Apply for Your Audit <span class="btn-arrow">→</span></button>
-  </div>
+<section class="cta-section">
+  <div class="eyebrow reveal">THE AUDIT</div>
+  <h2 class="reveal reveal-delay-1">See what the gap is costing you.</h2>
+  <p class="reveal reveal-delay-2">A 30-minute call. We trace your real numbers. You leave with a specific dollar figure and a clear plan, whether or not you become a client.</p>
+  <button class="btn btn-primary reveal reveal-delay-3" onclick="openCalendly(event)">Apply for Your Audit <span class="btn-arrow">→</span></button>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
+<!-- Persistent Ask GRAIN bar -->
+<div class="ask-bar-page" id="ask-bar-page">
+  <div class="ask-bar-page-dropdown" id="ask-bar-dropdown">
+    <div class="ask-bar-page-dropdown-inner">
+      <div class="ask-bar-page-dropdown-label">Pick a question — ask GRAIN anything about us</div>
+      <button class="ask-bar-page-q" data-q="What does GRAIN actually do?">What does GRAIN actually do?</button>
+      <button class="ask-bar-page-q" data-q="How are you different from other agencies?">How are you different from other agencies?</button>
+      <button class="ask-bar-page-q" data-q="Why can't I just hire a virtual receptionist?">Why can't I just hire a virtual receptionist?</button>
+      <button class="ask-bar-page-q" data-q="What's the difference between Greenhouse and Orchard?">What's the difference between Greenhouse and Orchard?</button>
+      <button class="ask-bar-page-q" data-q="Can you really deploy in 7 days?">Can you really deploy in 7 days?</button>
+      <button class="ask-bar-page-q" data-q="Is this AI answering my calls, or real people?">Is this AI answering my calls, or real people?</button>
+      <button class="ask-bar-page-q" data-q="What happens if you don't deliver 5 jobs in 60 days?">What happens if you don't deliver 5 jobs in 60 days?</button>
+      <button class="ask-bar-page-q" data-q="How do you keep my customer data private?">How do you keep my customer data private?</button>
+      <button class="ask-bar-page-q" data-q="What home service trades do you work with?">What home service trades do you work with?</button>
+      <button class="ask-bar-page-q" data-q="Why should I trust you with my business?">Why should I trust you with my business?</button>
+    </div>
+  </div>
+  <div class="ask-bar-page-inner">
+    <span class="ask-bar-page-label">Ask GRAIN</span>
+    <span class="ask-bar-page-sep"></span>
+    <span class="ask-bar-page-input" id="ask-bar-page-input">"What does GRAIN actually do?"</span>
+    <span class="ask-bar-page-cue">▾</span>
+  </div>
+</div>
+<div class="ask-bar-response" id="ask-bar-response">
+  <div class="ask-bar-response-inner">
+    <div class="ask-bar-response-label">GRAIN</div>
+    <div class="ask-bar-response-text" id="ask-bar-response-text"></div>
+    <button class="ask-bar-response-close" id="ask-bar-response-close" type="button" aria-label="Close">×</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var askAnswers = {
+    "What does GRAIN actually do?": "GRAIN is the operating system that runs in the background of your business. We catch every lead from every channel — phone, text, web form, social DM — answer every inquiry in under 60 seconds, follow up on every quote for 90 days, and keep your customer base warm so they come back. You see all of it in one dashboard. It's done-for-you. You focus on the work; we keep the business running.",
+    "How are you different from other agencies?": "Most agencies generate leads and hand them off. We do the opposite — we focus on what happens AFTER the lead arrives, which is where most home service businesses lose 35-50% of what comes in. We have a guaranteed deployment timeline (7 days), a measurable outcome (5 extra jobs in 60 days or we work free), and a private dashboard so you see every metric live. We're not selling more leads. We're selling a system that converts more of the leads you already have.",
+    "Why can't I just hire a virtual receptionist?": "A virtual receptionist answers calls. GRAIN catches every lead from every channel (calls, texts, forms, social DMs), responds in under 60 seconds 24/7, follows up automatically for 90 days on every quote, syncs with your CRM, runs reactivation campaigns on dormant customers, and shows you the whole picture in one dashboard. Receptionists are people. GRAIN is infrastructure.",
+    "What's the difference between Greenhouse and Orchard?": "Greenhouse ($2,497/mo) is for single-location, single-trade businesses doing $500K-$3M revenue with 30-150 leads/month. Orchard ($5,997/mo) is for multi-location or multi-trade businesses doing $3M-$10M with 150-500 leads/month. Orchard also includes Fertilizer (reputation engine), quarterly Compost campaigns, weekly strategy calls, priority support, and access to the GRAIN private community.",
+    "Can you really deploy in 7 days?": "Yes — we built this specifically for fast deployment. Day 1: kickoff and intelligence pull. Day 2: Day-1 Intelligence Report delivered. Days 2-3: voice agent built and tested. Days 3-4: SMS, email, and 90-day follow-up sequences live. Days 4-5: CRM integrated, dashboard live. Days 5-7: testing, training, go-live. By Day 7, your system is catching leads.",
+    "Is this AI answering my calls, or real people?": "The voice agent is a system, but it's trained on thousands of real home service conversations in your specific trade. It sounds natural. It can answer questions, book appointments, escalate emergencies to you, and qualify leads before they hit your team. Real people (your team and ours) handle the work after the conversation. The system makes sure no call gets missed.",
+    "What happens if you don't deliver 5 jobs in 60 days?": "We work for free until you get them. No fine print. Your setup fee is non-refundable, but the monthly fee stops accruing until we hit the threshold. Service continues uninterrupted. The bet is on us, not you.",
+    "How do you keep my customer data private?": "Your data lives in your private dashboard. It's not shared with other clients. The only thing we use cross-client is anonymized patterns (what scripts convert, what objections come up most often) which helps the system get smarter for everyone. Your actual customer list, contact info, and revenue are yours alone.",
+    "What home service trades do you work with?": "Roofing, HVAC, plumbing, pest control, electrical, fencing, pool, painting, landscaping, and remodeling. The system is built around what these trades have in common: high-value jobs, time-sensitive leads, repeat-purchase potential, and trust-driven decisions. If you're outside these trades, ask — odds are we can adapt the system.",
+    "Why should I trust you with my business?": "Because we work in public. Our dashboard is live and demo-able right now. Our pricing is on the website. Our guarantee is specific. Our deployment timeline is published. We don't lock you into long contracts — it's month-to-month after the first 60 days. And we built this because we sell using the same system. That's literally how we found you."
+  };
+
+  var askBarPage = document.getElementById('ask-bar-page');
+  var askBarDropdown = document.getElementById('ask-bar-dropdown');
+  var askBarInput = document.getElementById('ask-bar-page-input');
+  var askBarResponse = document.getElementById('ask-bar-response');
+  var askBarResponseText = document.getElementById('ask-bar-response-text');
+  var askBarResponseClose = document.getElementById('ask-bar-response-close');
+
+  if (!askBarPage || !askBarDropdown || !askBarInput || !askBarResponse || !askBarResponseText) return;
+
+  askBarPage.addEventListener('click', function(e) {
+    if (e.target.closest('.ask-bar-page-q')) return;
+    e.stopPropagation();
+    askBarDropdown.classList.toggle('open');
+    askBarPage.classList.toggle('open');
+  });
+
+  askBarDropdown.querySelectorAll('.ask-bar-page-q').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var q = btn.dataset.q;
+      askBarInput.textContent = '"' + q + '"';
+      askBarResponseText.textContent = askAnswers[q] || '';
+      askBarResponse.classList.add('open');
+      askBarDropdown.classList.remove('open');
+      askBarPage.classList.remove('open');
+    });
+  });
+
+  if (askBarResponseClose) {
+    askBarResponseClose.addEventListener('click', function(e) {
+      e.stopPropagation();
+      askBarResponse.classList.remove('open');
+      askBarInput.textContent = '"What does GRAIN actually do?"';
+    });
+  }
+
+  document.addEventListener('click', function() {
+    askBarDropdown.classList.remove('open');
+    askBarPage.classList.remove('open');
+  });
+})();
+</script>
+
+<footer class="site-footer">
+
+
   <div class="footer-inner">
-    <div class="footer-brand-block">
-      <div class="footer-brand">
-        <svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#1C2420" rx="40"/><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#F0ECDF"/></g></g></svg>
-        GRAIN
-      </div>
-      <div class="footer-tag">PLANT · NURTURE · SCALE</div>
+    <div class="footer-brand">
+      <div class="footer-logo">GRAIN</div>
       <div class="footer-mission">Done-for-you lead response for home service businesses. Nashville-based. Serving nationwide.</div>
     </div>
-    <div class="footer-col">
-      <h4>System</h4>
-      <a href="method.html">The Method</a>
-      <a href="pricing.html">Pricing</a>
+    <div class="footer-links">
+      <a href="method.html">Method</a>
+      <a href="dashboard.html">Dashboard</a>
       <a href="calculator.html">Calculator</a>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="#" onclick="openCalendly(event); return false;">Apply for Audit</a>
-      <a href="mailto:johnny@grainmethod.com">Contact</a>
-    </div>
-    <div class="footer-col">
-      <h4>Trust</h4>
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Guarantee</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="apply.html">Apply</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <div>© 2026 GRAIN Method LLC · Nashville, Tennessee</div>
-    <div>johnny@grainmethod.com</div>
-  </div>
+  <div class="footer-bottom">© 2026 GRAIN Method. All rights reserved.</div>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  document.querySelectorAll('.faq-q').forEach(q => {
-    q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
-  });
-    const navToggle = document.getElementById('nav-toggle');
-  const navLinks = document.getElementById('nav-links');
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
-    });
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+navToggle.addEventListener('click', () => { navToggle.classList.toggle('open'); navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { navToggle.classList.remove('open'); navLinks.classList.remove('open'); }));
+
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
+}, { threshold: 0.15 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// Per-tier annual toggle with price-flip animation
+(function() {
+  var tierData = {
+    greenhouse: {
+      monthly: { num: '$2,497', sub: 'starting day 31 · all-inclusive' },
+      annual:  { num: '$1,997', sub: 'billed annually · all-inclusive' }
+    },
+    orchard: {
+      monthly: { num: '$5,997', suffix: '/MO · STARTING DAY 31' },
+      annual:  { num: '$4,797', suffix: '/MO BILLED ANNUALLY' }
+    },
+    estate: {
+      monthly: { num: 'Custom', sub: 'STARTS AFTER A CONVERSATION' },
+      annual:  { num: 'Custom', sub: 'ANNUAL PRICING AVAILABLE ON INQUIRY' }
+    }
+  };
+
+  function flipText(el, newText) {
+    if (!el) return;
+    el.classList.remove('price-flipping');
+    void el.offsetWidth; // force reflow to restart animation
+    el.classList.add('price-flipping');
+    setTimeout(function() { el.textContent = newText; }, 170);
   }
-  const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  });
+
+  window.setTierAnnual = function(tier, isAnnual) {
+    var data = tierData[tier];
+    var mode = isAnnual ? data.annual : data.monthly;
+    var numEl = document.getElementById(tier + '-num');
+    var subEl = document.getElementById(tier + '-sub');
+    var suffixEl = document.getElementById(tier + '-suffix');
+    var saveEl = document.getElementById(tier + '-save');
+
+    flipText(numEl, mode.num);
+    if (tier === 'orchard' && suffixEl) {
+      setTimeout(function() { suffixEl.textContent = mode.suffix; }, 170);
+    } else if (subEl && mode.sub !== undefined) {
+      setTimeout(function() { subEl.textContent = mode.sub; }, 170);
+    }
+    if (saveEl) saveEl.classList.toggle('on', isAnnual);
+  };
+})();
 </script>
+
 </body>
 </html>

@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Greenhouse Dashboard — Memorial HVAC</title>
+<meta name="description" content="A live demo of the Greenhouse dashboard every GRAIN client receives. Sample data shown — yours updates in real time at yourname.grainmethod.com.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    color-scheme: light;
+    --bg:           #FFFFFF;
+    --paper:        #F0ECDF;
+    --body-bg:      #DDD6C3;
+    --ink:          #1C2420;
+    --ink-soft:     #2A332E;
+    --ink-light:    #4A544E;
+    --moss:         #9AAF7A;
+    --moss-deep:    #667B4A;
+    --moss-light:   #BFD0A2;
+    --muted:        #6B6B62;
+    --muted-dark:   rgba(240,236,223,0.50);
+    --line:         #C7BFAB;
+    --line-soft:    rgba(199,191,171,0.45);
+    --line-dark:    rgba(240,236,223,0.10);
+    --frame-border: rgba(102,123,74,0.22);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { color-scheme: light; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    min-height: 100vh;
+    padding: 36px 32px 64px;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1000; opacity: 0.5;
+  }
+
+  .back-link {
+    position: fixed; top: 14px; left: 14px; z-index: 50;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.18em; font-weight: 600;
+    color: var(--muted); text-decoration: none; text-transform: uppercase;
+    padding: 7px 12px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line);
+    transition: all 0.2s ease;
+  }
+  .back-link:hover { color: var(--moss-deep); border-color: var(--moss); }
+
+  /* Page intro for dashboard.html */
+  .dashboard-page-intro { max-width: 1200px; margin: 0 auto; padding: 80px 28px 32px; }
+  .dashboard-page-intro .eyebrow { display: inline-flex; align-items: center; gap: 9px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.24em; color: var(--moss-deep); font-weight: 600; padding: 7px 13px; background: rgba(154,175,122,0.15); border: 1px solid rgba(154,175,122,0.3); margin-bottom: 20px; text-transform: uppercase; }
+  .dashboard-page-intro .eyebrow::before { content: ""; width: 5px; height: 5px; background: var(--moss-deep); border-radius: 50%; }
+  .dashboard-page-intro h1 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: clamp(40px, 6vw, 72px); line-height: 0.98; letter-spacing: -0.03em; margin-bottom: 22px; max-width: 900px; color: var(--ink); }
+  .dashboard-page-intro h1 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+  .dashboard-page-sub { font-size: clamp(15px, 1.6vw, 18px); color: var(--ink-light); max-width: 720px; line-height: 1.55; }
+  @media (max-width: 768px) { .dashboard-page-intro { padding: 64px 20px 24px; } }
+
+  .greenhouse-label { text-align: center; line-height: 1.3; margin-bottom: 6px; }
+  .gl-the { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: -0.005em; color: var(--moss-light); }
+  .gl-name { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 13px; color: var(--moss-light); letter-spacing: -0.01em; }
+
+  .greenhouse-stage { max-width: 1200px; margin: 0 auto; position: relative; }
+  .greenhouse-roof-frame { position: absolute; top: 0; left: 0; right: 0; height: 120px; background: var(--ink); border: none; z-index: 1; pointer-events: none; }
+
+  .roof-outline { position: absolute; top: 0; left: 0; width: 100%; height: 326px; z-index: 3; pointer-events: none; overflow: visible; }
+  .roof-outline-mobile { display: none; }
+  .roof-outline-poly { fill: none; stroke: var(--moss-light); stroke-width: 1.5; opacity: 0.55; vector-effect: non-scaling-stroke; stroke-linejoin: miter; stroke-miterlimit: 4; }
+
+  .peak-panes {
+    position: absolute; top: 0; left: 0; right: 0; height: 120px; z-index: 1; pointer-events: none;
+    background-image: linear-gradient(to right,
+      transparent 0, transparent calc(20% - .5px),
+      rgba(191,208,162,0.10) calc(20% - .5px), rgba(191,208,162,0.10) calc(20% + .5px),
+      transparent calc(20% + .5px), transparent calc(40% - .5px),
+      rgba(191,208,162,0.10) calc(40% - .5px), rgba(191,208,162,0.10) calc(40% + .5px),
+      transparent calc(40% + .5px), transparent calc(60% - .5px),
+      rgba(191,208,162,0.10) calc(60% - .5px), rgba(191,208,162,0.10) calc(60% + .5px),
+      transparent calc(60% + .5px), transparent calc(80% - .5px),
+      rgba(191,208,162,0.10) calc(80% - .5px), rgba(191,208,162,0.10) calc(80% + .5px),
+      transparent calc(80% + .5px));
+  }
+
+  .air-corner {
+    position: absolute; top: 18px; z-index: 10;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; font-weight: 600;
+    text-transform: uppercase; color: var(--muted-dark);
+    display: flex; flex-direction: column; gap: 5px; max-width: 42%;
+  }
+  .air-corner .air-row { display: flex; align-items: center; gap: 9px; }
+  .air-left  { left: 22px; align-items: flex-start; }
+  .air-right { right: 22px; align-items: flex-end; text-align: right; }
+  .air-right .air-row { justify-content: flex-end; }
+
+  .air-live { display: inline-flex; align-items: center; gap: 7px; color: var(--moss-light); }
+  .air-dot  { width: 7px; height: 7px; background: var(--moss); border-radius: 50%; animation: air-pulse 2.4s infinite ease-in-out; }
+  @keyframes air-pulse {
+    0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(154,175,122,0.6); }
+    50%      { opacity:0.6; box-shadow: 0 0 0 6px rgba(154,175,122,0); }
+  }
+  .air-value { color: var(--moss-light); font-weight: 700; }
+  .air-sep   { color: var(--muted-dark); opacity: 0.4; }
+
+  .greenhouse {
+    background: var(--ink);
+    clip-path: polygon(50% 0%, 100% 120px, 100% 100%, 0% 100%, 0% 120px);
+    padding: 120px 0 0;
+    position: relative; color: var(--paper); z-index: 2;
+  }
+  .greenhouse::before {
+    content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 70%; height: 120px;
+    background: radial-gradient(ellipse at top, rgba(191,208,162,0.17) 0%, transparent 65%);
+    pointer-events: none; z-index: 0;
+  }
+  .greenhouse::after {
+    content: ""; position: absolute; top: 118px; left: 50%; transform: translateX(-50%);
+    width: 28px; height: 2px; background: var(--moss); opacity: 0.55; z-index: 5;
+  }
+
+  .peak-logo { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 96px; height: 96px; z-index: 2; }
+
+  .brand-band { background: var(--ink); padding: 24px 32px 18px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .brand-client-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.32em; color: var(--moss-light); font-weight: 600; text-transform: uppercase; opacity: 0.75; }
+  .brand-name { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 30px; line-height: 1; color: var(--paper); letter-spacing: -0.01em; }
+  .brand-bottom { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+  .brand-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--muted-dark); }
+  .brand-metric-value { color: var(--moss-light); font-weight: 700; }
+  .brand-metric-right { text-align: right; }
+
+  .tabs { background: var(--ink); display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
+  .tabs::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1.5px; background: var(--moss-deep); z-index: 1; }
+
+  .tab {
+    background: transparent; border: none; padding: 15px 10px 13px; cursor: pointer;
+    font-family: inherit; text-align: center; border-bottom: 2px solid transparent;
+    transition: background 0.5s cubic-bezier(0.25,1,0.3,1), border-color 0.4s ease;
+    position: relative; display: flex; flex-direction: column; align-items: center; gap: 0;
+  }
+  .tab:not(:last-child)::after { content: ""; position: absolute; right: 0; top: 22%; bottom: 22%; width: 1px; background: var(--line-dark); }
+  .tab:hover { background: rgba(240,236,223,0.05); }
+  .tab.active { border-bottom-color: var(--moss-light); background: rgba(240,236,223,0.07); }
+  .tab.active .tab-letter { color: var(--paper); }
+  .tab.active .tab-word  { color: var(--paper); }
+
+  .tab-top { display: flex; align-items: center; justify-content: center; }
+  .tab-letter {
+    font-family: 'Helvetica Neue', 'Arial Black', sans-serif; font-style: normal; font-weight: 900;
+    font-size: 28px; line-height: 1; letter-spacing: 0.01em; color: var(--moss-light);
+    transition: color 0.5s cubic-bezier(0.25,1,0.3,1); width: 34px; text-align: center; display: inline-block;
+  }
+  .tab:hover .tab-letter, .tab.active .tab-letter { color: var(--paper); }
+
+  .tab-word {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.20em; font-weight: 600;
+    color: var(--paper); text-transform: uppercase; max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap;
+    transition: max-width 1.4s cubic-bezier(0.25,1,0.3,1), opacity 0.4s ease 0.1s, margin-left 1.3s cubic-bezier(0.25,1,0.3,1);
+  }
+  .tab:hover .tab-word, .tab.active .tab-word { max-width: 240px; opacity: 1; margin-left: 12px; }
+
+  /* ACTIVE ADD-ONS STRIP — Add-Ons running for this client */
+  .addons-strip {
+    background: var(--ink);
+    border-top: 1px solid var(--line-dark);
+    padding: 14px 24px;
+  }
+  .addons-strip-inner {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+    align-items: center;
+  }
+  .addons-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    color: var(--moss-light);
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding-right: 18px;
+    border-right: 1px solid rgba(154,175,122,0.18);
+  }
+  .addons-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .addon-item { display: flex; flex-direction: column; gap: 3px; }
+  .addon-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--paper);
+    line-height: 1;
+  }
+  .addon-stat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    color: rgba(240,236,223,0.6);
+    line-height: 1.35;
+  }
+  @media (max-width: 900px) {
+    .addons-strip-inner { grid-template-columns: 1fr; gap: 12px; }
+    .addons-label { padding-right: 0; border-right: none; padding-bottom: 8px; border-bottom: 1px solid rgba(154,175,122,0.15); }
+    .addons-items { grid-template-columns: 1fr 1fr; gap: 12px; }
+  }
+  @media (max-width: 600px) {
+    .addons-items { grid-template-columns: 1fr; gap: 10px; }
+    .addons-strip { padding: 12px 16px; }
+  }
+
+  /* ASK GRAIN BAR — always visible, sits between tabs and body */
+  .ask-bar {
+    background: var(--ink);
+    border-top: 1px solid var(--line-dark);
+    padding: 12px 24px;
+  }
+  .ask-bar-inner {
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(240,236,223,0.06);
+    border: 1px solid rgba(154,175,122,0.18);
+    padding: 10px 14px;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    cursor: text;
+  }
+  .ask-bar-inner:hover { border-color: rgba(154,175,122,0.4); background: rgba(240,236,223,0.08); }
+  .ask-bar-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.22em; font-weight: 600;
+    color: var(--moss-light); text-transform: uppercase; white-space: nowrap;
+  }
+  .ask-bar-sep { width: 1px; height: 16px; background: rgba(154,175,122,0.2); }
+  .ask-bar-input {
+    flex: 1; font-size: 13px; color: rgba(240,236,223,0.55); font-style: italic;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .ask-bar-cue {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--moss-light);
+    border: 1px solid rgba(154,175,122,0.3); padding: 2px 7px; font-weight: 600;
+  }
+  @media (max-width: 640px) {
+    .ask-bar { padding: 10px 16px; }
+    .ask-bar-label { font-size: 8px; letter-spacing: 0.18em; }
+    .ask-bar-input { font-size: 12px; }
+    .ask-bar-cue { display: none; }
+  }
+
+  .body { background: var(--body-bg); padding: 26px 28px 28px; position: relative; }
+  .body::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(to right,
+      transparent 0, transparent calc(20% - .5px),
+      rgba(102,123,74,0.10) calc(20% - .5px), rgba(102,123,74,0.10) calc(20% + .5px),
+      transparent calc(20% + .5px), transparent calc(40% - .5px),
+      rgba(102,123,74,0.10) calc(40% - .5px), rgba(102,123,74,0.10) calc(40% + .5px),
+      transparent calc(40% + .5px), transparent calc(60% - .5px),
+      rgba(102,123,74,0.10) calc(60% - .5px), rgba(102,123,74,0.10) calc(60% + .5px),
+      transparent calc(60% + .5px), transparent calc(80% - .5px),
+      rgba(102,123,74,0.10) calc(80% - .5px), rgba(102,123,74,0.10) calc(80% + .5px),
+      transparent calc(80% + .5px));
+    pointer-events: none; z-index: 0;
+  }
+  .body::after {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 160px;
+    background: linear-gradient(to bottom, rgba(191,208,162,0.14) 0%, transparent 100%);
+    pointer-events: none; z-index: 0;
+  }
+  .body-inner { position: relative; z-index: 1; }
+
+  .engine-panel { display: none; }
+  .engine-panel.active { display: block; animation: fadeUp 0.5s cubic-bezier(0.25,1,0.3,1); }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+  .engine-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.28em;
+    color: var(--moss-deep); font-weight: 600; text-transform: uppercase;
+    margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+  }
+  .engine-eyebrow::before { content: ""; width: 22px; height: 1.5px; background: var(--moss-deep); }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 22px; }
+  .kpi { background: var(--paper); border: 1px solid var(--line); padding: 16px 16px 14px; transition: border-color .4s, transform .4s; }
+  .kpi:hover { border-color: var(--moss); transform: translateY(-2px); }
+  .kpi-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.22em; color: var(--muted); font-weight: 600; text-transform: uppercase; margin-bottom: 8px; }
+  .kpi-value { font-weight: 800; font-size: 26px; line-height: 1; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 5px; font-variant-numeric: tabular-nums; }
+  .kpi-value .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: .55em; color: var(--moss-deep); margin-left: 3px; }
+  .kpi-delta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--moss-deep); font-weight: 600; }
+  .kpi-benchmark { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.05em; margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line-soft); }
+  .kpi-benchmark strong { color: var(--moss-deep); font-weight: 700; }
+
+  .panel-cols { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-bottom: 22px; }
+  .card { background: var(--paper); border: 1px solid var(--line); padding: 18px 18px 14px; }
+  .card-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line-soft); }
+  .card-title { font-weight: 700; font-size: 13px; color: var(--ink); letter-spacing: -0.01em; }
+  .card-meta { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; }
+
+  .row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line-soft); }
+  .row:last-child { border-bottom: none; }
+  .row-name { font-size: 12px; color: var(--ink); font-weight: 500; line-height: 1.3; }
+  .row-detail { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); margin-top: 3px; }
+  .row-stat { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--moss-deep); font-weight: 700; text-align: right; white-space: nowrap; }
+
+  .status-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line-soft); }
+  .status-row:last-child { border-bottom: none; }
+  .status-name { font-size: 12px; color: var(--ink); }
+  .status-pill { display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--moss-deep); font-weight: 600; text-transform: uppercase; }
+  .status-pill::before { content: ""; width: 6px; height: 6px; background: var(--moss); border-radius: 50%; }
+
+  .feed { background: var(--paper); border: 1px solid var(--line); padding: 18px 18px 6px; }
+  .feed-item { display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line-soft); align-items: start; }
+  .feed-item:last-child { border-bottom: none; }
+  .feed-time { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); padding-top: 2px; white-space: nowrap; }
+  .feed-text { font-size: 12px; color: var(--ink); line-height: 1.45; }
+  .feed-text strong { font-weight: 600; color: var(--moss-deep); }
+
+  .engine-footer { margin-top: 12px; padding-top: 22px; border-top: 1px dashed var(--line); max-width: 720px; }
+  .engine-header { margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px dashed var(--line); max-width: 720px; }
+  .engine-title { font-weight: 800; font-size: 26px; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 8px; }
+  .engine-title .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+  .engine-sub { font-size: 13px; color: var(--ink-light); line-height: 1.55; }
+
+  .foundation {
+    background: var(--ink); padding: 14px 28px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;
+    color: var(--paper); border-top: 1px solid var(--line-dark); position: relative;
+  }
+  .foundation::before {
+    content: ""; position: absolute; top: 0; left: 18%; right: 18%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--moss-deep) 30%, var(--moss-deep) 70%, transparent); opacity: 0.5;
+  }
+  .foundation-side { display: flex; align-items: center; gap: 14px; }
+  .f-dot { width: 4px; height: 4px; background: var(--moss); border-radius: 50%; }
+
+  @media (max-width: 1000px) {
+    body { padding: 28px 16px 48px; }
+    .greenhouse { clip-path: polygon(50% 0%, 100% 100px, 100% 100%, 0% 100%, 0% 100px); padding: 100px 0 0; }
+    .peak-panes { height: 100px; }
+    .roof-outline-desktop { display: none; }
+    .roof-outline-mobile { display: block; height: 296px; }
+    .greenhouse::before { height: 100px; }
+    .greenhouse::after { top: 98px; }
+    .peak-logo { width: 96px; height: 96px; top: 10px; }
+    .air-corner { font-size: 9px; letter-spacing: 0.12em; gap: 4px; top: 14px; }
+    .air-left  { left: 14px; }
+    .air-right { right: 14px; }
+    .brand-band { padding: 20px 22px 16px; }
+    .brand-name { font-size: 24px; }
+    .tab { padding: 12px 6px 10px; }
+    .tab-letter { font-size: 26px; width: 28px; }
+    .tab-word { font-size: 9px; }
+    .tab:hover .tab-word, .tab.active .tab-word { margin-left: 8px; }
+    .body { padding: 20px 16px 18px; }
+    .panel-cols { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: repeat(2,1fr); }
+    .engine-title { font-size: 22px; }
+    .foundation { flex-direction: column; gap: 6px; padding: 12px 20px; }
+  }
+
+  @media (max-width: 640px) {
+    .air-corner { font-size: 8px; letter-spacing: 0.08em; gap: 3px; top: 10px; }
+    .air-left  { left: 10px; }
+    .air-right { right: 10px; }
+    .air-sep { display: none; }
+    .tab-word, .tab:hover .tab-word, .tab.active .tab-word { display: none; }
+    .brand-client-eyebrow { letter-spacing: 0.20em; }
+    .brand-metric { font-size: 9px; }
+  }
+
+  /* VIEW TOGGLE — shared pill-toggle component (inlined) */
+  .pill-toggle-wrap { display: flex; justify-content: center; margin: 0 auto; }
+  .pill-toggle { display: inline-flex; background: var(--paper); border: 1px solid var(--line); padding: 3px; position: relative; border-radius: 999px; }
+  .pill-toggle-btn { padding: 8px 22px; background: transparent; border: none; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); cursor: pointer; position: relative; z-index: 2; transition: color 0.25s ease; border-radius: 999px; white-space: nowrap; }
+  .pill-toggle-btn.active { color: var(--paper); }
+  .pill-toggle-slider { position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); background: var(--ink); border-radius: 999px; transition: transform 0.3s cubic-bezier(0.65,0,0.35,1); z-index: 1; }
+  .pill-toggle[data-active="right"] .pill-toggle-slider { transform: translateX(100%); }
+  @media (max-width: 600px) { .pill-toggle-btn { padding: 7px 16px; font-size: 10px; letter-spacing: 0.06em; } }
+  .view-greenhouse, .view-orchard { display: none; }
+  .view-greenhouse.active, .view-orchard.active { display: block; }
+
+  /* ORCHARD VIEW */
+  .orchard-view { margin-top: 56px; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 16px; }
+  .orchard-divider { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+  .orchard-divider-line { flex: 1; height: 1px; background: var(--line); }
+  .orchard-divider-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--moss-deep); font-weight: 700; text-transform: uppercase; }
+  .orchard-stage { background: var(--paper); border: 1px solid var(--line); padding: 36px 32px; }
+  .orchard-header { margin-bottom: 28px; }
+  .orchard-header h3 { font-weight: 900; font-size: 30px; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 10px; color: var(--ink); }
+  .orchard-header h3 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+  .orchard-header p { font-size: 15px; color: var(--ink-light); line-height: 1.55; max-width: 600px; }
+  .orchard-aggregated { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 20px; }
+  .agg-stat { background: var(--bg); padding: 18px 16px; }
+  .agg-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--muted); font-weight: 600; text-transform: uppercase; margin-bottom: 6px; }
+  .agg-value { font-weight: 900; font-size: 26px; line-height: 1; color: var(--ink); letter-spacing: -0.02em; }
+  .orchard-locations { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .loc-card { background: var(--bg); border: 1px solid var(--line); padding: 20px 18px; transition: border-color 0.2s ease; }
+  .loc-card:hover { border-color: var(--moss); }
+  .loc-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; gap: 12px; }
+  .loc-name { font-weight: 700; font-size: 14px; color: var(--ink); line-height: 1.3; }
+  .loc-status { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.16em; font-weight: 700; white-space: nowrap; }
+  .loc-status-active { color: var(--moss-deep); }
+  .loc-status-attention { color: #B85C1F; }
+  .loc-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .loc-stat-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.16em; color: var(--muted); font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+  .loc-stat-value { font-weight: 800; font-size: 17px; color: var(--ink); line-height: 1; }
+  .orchard-note { background: rgba(154,175,122,0.1); border-left: 3px solid var(--moss-deep); padding: 16px 20px; font-size: 14px; color: var(--ink-light); line-height: 1.6; }
+  .orchard-note strong { color: var(--ink); font-weight: 700; }
+
+  @media (max-width: 1000px) {
+    .orchard-aggregated { grid-template-columns: repeat(2, 1fr); }
+    .orchard-locations { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .orchard-stage { padding: 26px 22px; }
+    .orchard-aggregated { grid-template-columns: 1fr 1fr; }
+    .loc-stat-value { font-size: 16px; }
+  }
+</style>
+
+</head>
+<body>
+
+<a href="index.html" class="back-link">← grainmethod.com</a>
+
+<section class="dashboard-page-intro">
+  <div class="eyebrow">THE DASHBOARD</div>
+  <h1>One dashboard. <span class="italic">Five engines.</span></h1>
+  <p class="dashboard-page-sub">Every lead. Every call. Every quote. Every dollar attributed to the system, live. Toggle between Greenhouse and Orchard views to see how the dashboard scales from single-location to multi-trade operations.</p>
+</section>
+
+<div class="view-toggle-wrap pill-toggle-wrap" style="margin: 0 auto 28px; padding: 0 16px;">
+  <div class="pill-toggle" id="view-toggle" data-active="left">
+    <span class="pill-toggle-slider"></span>
+    <button type="button" class="pill-toggle-btn active" data-view="greenhouse">Greenhouse</button>
+    <button type="button" class="pill-toggle-btn" data-view="orchard">Orchard</button>
+  </div>
+</div>
+
+<div class="view-greenhouse active">
+
+<div class="greenhouse-stage">
+
+  <div class="greenhouse-roof-frame"></div>
+
+  <div class="air-corner air-left">
+    <div class="air-row">
+      <span class="air-live"><span class="air-dot"></span>Live</span>
+      <span class="air-sep">·</span>
+      <span>Day 47</span>
+    </div>
+  </div>
+
+  <div class="air-corner air-right">
+    <div class="air-row">Greg Mitchell</div>
+  </div>
+
+  <div class="greenhouse">
+
+    <svg class="peak-logo" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g transform="translate(90,75)">
+        <path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#DDD6C3" fill="none" stroke-width="18" stroke-linejoin="miter"/>
+        <g transform="translate(110,230)">
+          <path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/>
+          <path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/>
+          <path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/>
+          <path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/>
+          <path d="M -32 0 Q 0 -14 32 0 Z" fill="#BFD0A2"/>
+        </g>
+      </g>
+    </svg>
+
+    <div class="peak-panes"></div>
+
+    <div class="brand-band">
+      <div class="greenhouse-label"><span class="gl-the">The </span><span class="gl-name">Greenhouse</span></div>
+      <div class="brand-name">Memorial HVAC</div>
+      <div class="brand-client-eyebrow">HVAC · Nashville, TN</div>
+      <div class="brand-bottom">
+        <div class="brand-metric"><span class="brand-metric-value" data-animate data-target="28400" data-prefix="$" data-format="comma">$0</span>&thinsp;booked this month</div>
+        <div class="brand-metric brand-metric-right"><span class="brand-metric-value" data-animate data-target="14" data-suffix="×">0×</span>&thinsp;return on spend</div>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-engine="generate" role="tab"><div class="tab-top"><span class="tab-letter">G</span><span class="tab-word">Generate</span></div></button>
+      <button class="tab" data-engine="respond" role="tab"><div class="tab-top"><span class="tab-letter">R</span><span class="tab-word">Respond</span></div></button>
+      <button class="tab" data-engine="automate" role="tab"><div class="tab-top"><span class="tab-letter">A</span><span class="tab-word">Automate</span></div></button>
+      <button class="tab" data-engine="integrate" role="tab"><div class="tab-top"><span class="tab-letter">I</span><span class="tab-word">Integrate</span></div></button>
+      <button class="tab" data-engine="nurture" role="tab"><div class="tab-top"><span class="tab-letter">N</span><span class="tab-word">Nurture</span></div></button>
+    </div>
+
+    <!-- ASK GRAIN BAR moved below — sits between body and foundation -->
+
+    <div class="body">
+      <div class="body-inner">
+
+        <div class="engine-panel active" data-panel="generate">
+          <div class="engine-eyebrow">Generate · every new lead, caught the moment it arrives</div>
+          <div class="engine-header">
+            <h2 class="engine-title">New business, <span class="italic">captured.</span></h2>
+            <p class="engine-sub">Every form submission, every inbound call, every after-hours inquiry — captured, qualified, and routed before it goes cold.</p>
+          </div>
+          <div class="kpi-grid">
+            <div class="kpi"><div class="kpi-label">New leads captured</div><div class="kpi-value"><span data-animate data-target="87">0</span></div><div class="kpi-delta">+18 vs last week</div></div>
+            <div class="kpi"><div class="kpi-label">Booking rate</div><div class="kpi-value"><span data-animate data-target="36">0</span><span class="italic">%</span></div><div class="kpi-delta">+4 pts vs last month</div><div class="kpi-benchmark">Industry: <strong>22%</strong> · Top 10%: <strong>41%</strong></div></div>
+            <div class="kpi"><div class="kpi-label">After-hours captures</div><div class="kpi-value"><span data-animate data-target="18">0</span></div><div class="kpi-delta">would have been missed</div></div>
+            <div class="kpi"><div class="kpi-label">Pipeline value</div><div class="kpi-value"><span data-animate data-target="94" data-prefix="$" data-suffix="K">$0K</span><span class="italic">mtd</span></div><div class="kpi-delta">+$11K this week</div></div>
+          </div>
+          <div class="panel-cols">
+            <div class="card">
+              <div class="card-head"><div class="card-title">Lead sources</div><div class="card-meta">This month</div></div>
+              <div class="row"><div><div class="row-name">Web form capture</div><div class="row-detail">47 captured · 22 booked · 47% conversion</div></div><div class="row-stat">+$48K</div></div>
+              <div class="row"><div><div class="row-name">Google LSA</div><div class="row-detail">14 captured · 11 booked · $72/lead avg · 3 disputed pending</div></div><div class="row-stat">+$23K</div></div>
+              <div class="row"><div><div class="row-name">Voice agent inbound</div><div class="row-detail">23 today · 19 booked · 83% rate</div></div><div class="row-stat">+$31K</div></div>
+              <div class="row"><div><div class="row-name">Referrals received</div><div class="row-detail">8 this week · 5 booked · 63% rate</div></div><div class="row-stat">+$11K</div></div>
+              <div class="row"><div><div class="row-name">Off-hours captures</div><div class="row-detail">9 since last Friday · 4 booked</div></div><div class="row-stat">+$4K</div></div>
+            </div>
+            <div class="card">
+              <div class="card-head"><div class="card-title">Cross-channel matches</div><div class="card-meta">Same customer · multiple touches</div></div>
+              <div class="row"><div><div class="row-name">Lisa B.</div><div class="row-detail">Web form 9:14am → SMS 9:23am → Call 11:02am · linked as 1</div></div><div class="row-stat">3 touches</div></div>
+              <div class="row"><div><div class="row-name">Marcus T.</div><div class="row-detail">Missed call 8:32am → text bounce-back → booked 9:04am</div></div><div class="row-stat">2 touches</div></div>
+              <div class="row"><div><div class="row-name">Henderson R.</div><div class="row-detail">Web form last night 6pm → call this morning · matched</div></div><div class="row-stat">2 touches</div></div>
+              <div class="row"><div><div class="row-name">Carter L.</div><div class="row-detail">Auto-reply → reply received → quote requested via SMS</div></div><div class="row-stat">3 touches</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="engine-panel" data-panel="respond">
+          <div class="engine-eyebrow">Respond · every inquiry, answered in under a minute</div>
+          <div class="engine-header">
+            <h2 class="engine-title">The phone, <span class="italic">always answered.</span></h2>
+            <p class="engine-sub">Voice agents pick up every call, forms get instant replies, missed-call texts go out automatically. The lead never goes to voicemail.</p>
+          </div>
+          <div class="kpi-grid">
+            <div class="kpi"><div class="kpi-label">Avg response time</div><div class="kpi-value"><span data-animate data-target="14">0</span><span class="italic">sec</span></div><div class="kpi-delta">was 47 min manual</div><div class="kpi-benchmark">Industry: <strong>4m 12s</strong> · Top 10%: <strong>32s</strong> · Google LSA standard: <strong>5min</strong></div></div>
+            <div class="kpi"><div class="kpi-label">Missed call rate</div><div class="kpi-value"><span data-animate data-target="1.2" data-decimals="1">0.0</span><span class="italic">%</span></div><div class="kpi-delta">best in class &lt;7%</div></div>
+            <div class="kpi"><div class="kpi-label">Lead → appointment</div><div class="kpi-value"><span data-animate data-target="4.3" data-format="time">0:00</span></div><div class="kpi-delta">inbound to scheduled</div></div>
+            <div class="kpi"><div class="kpi-label">Booked from inbound</div><div class="kpi-value"><span data-animate data-target="83">0</span><span class="italic">%</span></div><div class="kpi-delta">19 of 23 calls</div></div>
+          </div>
+          <div class="panel-cols">
+            <div class="card">
+              <div class="card-head"><div class="card-title">Voice agent · Memorial</div><div class="card-meta">23 calls today</div></div>
+              <div class="row"><div><div class="row-name">Today's grades</div><div class="row-detail">14 A · 7 B · 2 C · auto-graded by AI</div></div><div class="row-stat">A− avg</div></div>
+              <div class="row"><div><div class="row-name">Avg call duration</div><div class="row-detail">2 min 41 sec from greeting to booking confirm</div></div><div class="row-stat">2:41</div></div>
+              <div class="row"><div><div class="row-name">Coachable moments</div><div class="row-detail">2 calls · skipped financing question on quote</div></div><div class="row-stat">2 flagged</div></div>
+              <div class="row"><div><div class="row-name">Escalations to owner</div><div class="row-detail">2 today · both emergencies, both reached you</div></div><div class="row-stat">2</div></div>
+            </div>
+            <div class="card">
+              <div class="card-head"><div class="card-title">Why calls didn't book</div><div class="card-meta">5 of 28 calls</div></div>
+              <div class="row"><div><div class="row-name">Out of service area</div><div class="row-detail">2 calls · West Nashville zips</div></div><div class="row-stat">$5.2K lost</div></div>
+              <div class="row"><div><div class="row-name">Wanted same-day</div><div class="row-detail">2 calls · couldn't fit Tuesday</div></div><div class="row-stat">$3.1K lost</div></div>
+              <div class="row"><div><div class="row-name">Pricing concern</div><div class="row-detail">1 call · objection before quote</div></div><div class="row-stat">$1.4K lost</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="engine-panel" data-panel="automate">
+          <div class="engine-eyebrow">Automate · every follow-up, run without your input</div>
+          <div class="engine-header">
+            <h2 class="engine-title">Quotes worked, <span class="italic">automatically.</span></h2>
+            <p class="engine-sub">Every quote runs a 90-day follow-up sequence. Appointments confirmed. Reviews asked. Referrals requested. Nothing lives in your head anymore — and nothing falls through.</p>
+          </div>
+          <div class="kpi-grid">
+            <div class="kpi"><div class="kpi-label">Sequences running</div><div class="kpi-value"><span data-animate data-target="14">0</span></div><div class="kpi-delta">all firing on schedule</div></div>
+            <div class="kpi"><div class="kpi-label">Customer touches sent</div><div class="kpi-value"><span data-animate data-target="487">0</span></div><div class="kpi-delta">+89 vs last week</div></div>
+            <div class="kpi"><div class="kpi-label">Cold quotes re-engaged</div><div class="kpi-value"><span data-animate data-target="12">0</span></div><div class="kpi-delta">3 came back active</div></div>
+            <div class="kpi"><div class="kpi-label">Reply rate</div><div class="kpi-value"><span data-animate data-target="28">0</span><span class="italic">%</span></div><div class="kpi-delta">+6 pts vs last month</div></div>
+          </div>
+          <div class="panel-cols">
+            <div class="card">
+              <div class="card-head"><div class="card-title">Active sequences</div><div class="card-meta">14 running</div></div>
+              <div class="row"><div><div class="row-name">90-day Quote Follow-up</div><div class="row-detail">22 quotes active · 7-touch cadence · 12 replies</div></div><div class="row-stat">22 active</div></div>
+              <div class="row"><div><div class="row-name">Appointment Confirmation</div><div class="row-detail">8 sent today · 100% delivered · 6 confirmed back</div></div><div class="row-stat">8 today</div></div>
+              <div class="row"><div><div class="row-name">Review Request · post-job</div><div class="row-detail">6 sent today · 4 reviews left · 4.8★ avg</div></div><div class="row-stat">6 today</div></div>
+              <div class="row"><div><div class="row-name">Referral Ask · happy customers</div><div class="row-detail">3 sent today · 1 referral received</div></div><div class="row-stat">3 today</div></div>
+            </div>
+            <div class="feed">
+              <div class="card-head"><div class="card-title">Today's queue</div><div class="card-meta">23 pending</div></div>
+              <div class="feed-item"><div class="feed-time">3:00 pm</div><div class="feed-text">Quote follow-up SMS · <strong>James P.</strong> · day 14 cadence</div></div>
+              <div class="feed-item"><div class="feed-time">3:30 pm</div><div class="feed-text">Appointment reminder · <strong>Caldwell M.</strong> · tomorrow 9am</div></div>
+              <div class="feed-item"><div class="feed-time">4:15 pm</div><div class="feed-text">Review request · <strong>Henderson R.</strong> · job completed today</div></div>
+              <div class="feed-item"><div class="feed-time">5:00 pm</div><div class="feed-text">Quote follow-up · <strong>Patel A.</strong> · day 30 cadence</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="engine-panel" data-panel="integrate">
+          <div class="engine-eyebrow">Integrate · every tool you use, kept in sync</div>
+          <div class="engine-header">
+            <h2 class="engine-title">Less typing. <span class="italic">More working.</span></h2>
+            <p class="engine-sub">Every tool you use, talking to every other tool. No double entry, no handoff lag, no copy-paste between systems. The data shows up where it needs to be, when it needs to be there.</p>
+          </div>
+          <div class="kpi-grid">
+            <div class="kpi"><div class="kpi-label">Hours saved (vs manual)</div><div class="kpi-value"><span data-animate data-target="47">0</span></div><div class="kpi-delta">$2,400 in labor</div></div>
+            <div class="kpi"><div class="kpi-label">Calls with full context</div><div class="kpi-value"><span data-animate data-target="94">0</span><span class="italic">%</span></div><div class="kpi-delta">+6 pts vs last month</div></div>
+            <div class="kpi"><div class="kpi-label">Hands-off actions</div><div class="kpi-value"><span data-animate data-target="847">0</span></div><div class="kpi-delta">0 manual handoffs</div></div>
+            <div class="kpi"><div class="kpi-label">Systems in sync</div><div class="kpi-value"><span data-animate data-target="6">0</span><span class="italic">/6</span></div><div class="kpi-delta">99.97% uptime</div></div>
+          </div>
+          <div class="panel-cols">
+            <div class="card">
+              <div class="card-head"><div class="card-title">Connected systems</div><div class="card-meta">All operational</div></div>
+              <div class="status-row"><div class="status-name">ServiceTitan · your CRM</div><div class="status-pill">Healthy · 12s</div></div>
+              <div class="status-row"><div class="status-name">GoHighLevel · operating layer</div><div class="status-pill">Healthy · 5s</div></div>
+              <div class="status-row"><div class="status-name">GHL Voice AI · phone agent</div><div class="status-pill">Healthy · 14s</div></div>
+              <div class="status-row"><div class="status-name">GHL Phone &amp; SMS</div><div class="status-pill">Healthy · 4s</div></div>
+              <div class="status-row"><div class="status-name">Google Calendar · sync</div><div class="status-pill">Healthy · 8s</div></div>
+              <div class="status-row"><div class="status-name">Web forms · your website</div><div class="status-pill">Healthy · 6s</div></div>
+            </div>
+            <div class="feed">
+              <div class="card-head"><div class="card-title">Cross-system actions</div><div class="card-meta">Last 60 min</div></div>
+              <div class="feed-item"><div class="feed-time">Just now</div><div class="feed-text">Call → CRM lead → tech text → calendar block · <strong>2.1s end-to-end</strong></div></div>
+              <div class="feed-item"><div class="feed-time">8 min</div><div class="feed-text">Web form → CRM enriched with <strong>service history</strong> → quote drafted</div></div>
+              <div class="feed-item"><div class="feed-time">14 min</div><div class="feed-text">Quote signed in CRM → invoice created → <strong>review request scheduled</strong></div></div>
+              <div class="feed-item"><div class="feed-time">31 min</div><div class="feed-text">Customer profile enriched · <strong>last service date</strong> auto-loaded for next call</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="engine-panel" data-panel="nurture">
+          <div class="engine-eyebrow">Nurture · every old customer, given a reason to come back</div>
+          <div class="engine-header">
+            <h2 class="engine-title">Old customers, <span class="italic">brought back.</span></h2>
+            <p class="engine-sub">Reactivation campaigns wake up dormant accounts. Dead quotes get revived. The slow compounding revenue most owners skip.</p>
+          </div>
+          <div class="kpi-grid">
+            <div class="kpi"><div class="kpi-label">Revenue recovered</div><div class="kpi-value"><span data-animate data-target="58.5" data-decimals="1" data-prefix="$" data-suffix="K">$0.0K</span><span class="italic">mtd</span></div><div class="kpi-delta">+$14.2K this week</div></div>
+            <div class="kpi"><div class="kpi-label">Customers reactivated</div><div class="kpi-value"><span data-animate data-target="47">0</span></div><div class="kpi-delta">+12 vs last week</div></div>
+            <div class="kpi"><div class="kpi-label">Dead quotes revived</div><div class="kpi-value"><span data-animate data-target="12">0</span></div><div class="kpi-delta">+3 vs last week</div></div>
+            <div class="kpi"><div class="kpi-label">5-star reviews</div><div class="kpi-value"><span data-animate data-target="23">0</span></div><div class="kpi-delta">4.8★ avg this month</div></div>
+          </div>
+          <div class="panel-cols">
+            <div class="card">
+              <div class="card-head"><div class="card-title">Active campaigns</div><div class="card-meta">5 running</div></div>
+              <div class="row"><div><div class="row-name">Q4 Annual Maintenance Reminder</div><div class="row-detail">134 sent · 22% reply rate · 8 booked</div></div><div class="row-stat">+$12.4K</div></div>
+              <div class="row"><div><div class="row-name">Storm Damage Check-In</div><div class="row-detail">67 sent · 18% reply rate · 4 booked</div></div><div class="row-stat">+$9.6K</div></div>
+              <div class="row"><div><div class="row-name">Dead Quote Revival · 90-day cohort</div><div class="row-detail">28 sent · 11% reply rate · 2 booked</div></div><div class="row-stat">+$4.8K</div></div>
+              <div class="row"><div><div class="row-name">Quarterly Customer Check-in</div><div class="row-detail">245 sent · 85% open · 34 replies</div></div><div class="row-stat">85% open</div></div>
+              <div class="row"><div><div class="row-name">Pre-summer Tune-up Reminder</div><div class="row-detail">47 sent · 12 booked tune-ups</div></div><div class="row-stat">+$3.4K</div></div>
+            </div>
+            <div class="feed">
+              <div class="card-head"><div class="card-title">Live activity</div><div class="card-meta">Last 60 min</div></div>
+              <div class="feed-item"><div class="feed-time">2 min</div><div class="feed-text">Reactivation message sent to <strong>Sarah K.</strong> · last service 14 months ago</div></div>
+              <div class="feed-item"><div class="feed-time">8 min</div><div class="feed-text">Reply received from <strong>Dwight F.</strong> · routed to follow-up</div></div>
+              <div class="feed-item"><div class="feed-time">23 min</div><div class="feed-text">Job booked from reactivation · <strong>$4,800 estimate</strong></div></div>
+              <div class="feed-item"><div class="feed-time">41 min</div><div class="feed-text">Maintenance reminder cohort fired · 47 customers</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ACTIVE ADD-ONS STRIP — Add-Ons running for Memorial HVAC -->
+    <div class="addons-strip">
+      <div class="addons-strip-inner">
+        <div class="addons-label">Add-Ons · Active</div>
+        <div class="addons-items">
+          <div class="addon-item">
+            <div class="addon-name">Fertilizer</div>
+            <div class="addon-stat">16 posts · 23 review asks this month</div>
+          </div>
+          <div class="addon-item">
+            <div class="addon-name">Compost</div>
+            <div class="addon-stat">12 dead quotes revived · +$58K recovered</div>
+          </div>
+          <div class="addon-item">
+            <div class="addon-name">Roots</div>
+            <div class="addon-stat">47 AI citations this month · trending up</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASK GRAIN BAR — always available, sits above foundation -->
+    <div class="ask-bar">
+      <div class="ask-bar-inner">
+        <span class="ask-bar-label">Ask GRAIN</span>
+        <span class="ask-bar-sep"></span>
+        <span class="ask-bar-input">"Show me every quote from the last 14 days I haven't followed up on yet..."</span>
+        <span class="ask-bar-cue">↵</span>
+      </div>
+    </div>
+
+    <div class="foundation">
+      <div class="foundation-side">
+        <span>Greenhouse v1.0</span>
+        <span class="f-dot"></span>
+        <span>Memorial HVAC</span>
+        <span class="f-dot"></span>
+        <span>Nashville, TN</span>
+      </div>
+      <div class="foundation-side">
+        <span id="last-updated">Last updated 4 sec ago</span>
+        <span class="f-dot"></span>
+        <span><span data-animate data-target="187" data-prefix="$" data-suffix="K">$0K</span> total since Day 1</span>
+        <span class="f-dot"></span>
+        <span>GRAIN Method</span>
+      </div>
+    </div>
+
+  </div>
+
+  <svg class="roof-outline roof-outline-desktop" viewBox="0 0 1200 326" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon class="roof-outline-poly" points="600,0 1200,120 1200,326 0,326 0,120"/>
+  </svg>
+
+  <svg class="roof-outline roof-outline-mobile" viewBox="0 0 326 296" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon class="roof-outline-poly" points="163,0 326,100 326,296 0,296 0,100"/>
+  </svg>
+
+</div>
+
+</div><!-- /.view-greenhouse -->
+
+<div class="view-orchard">
+
+<section class="orchard-view-section">
+
+<div class="greenhouse-stage">
+
+  <div class="greenhouse-roof-frame"></div>
+
+  <div class="air-corner air-left">
+    <div class="air-row">
+      <span class="air-live"><span class="air-dot"></span>Live</span>
+      <span class="air-sep">·</span>
+      <span>Day 47</span>
+      <span class="air-sep">·</span>
+      <span>3 Locations</span>
+    </div>
+  </div>
+
+  <div class="air-corner air-right">
+    <div class="air-row">Greg Mitchell</div>
+  </div>
+
+  <div class="greenhouse">
+
+    <svg class="peak-logo" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g transform="translate(90,75)">
+        <path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#DDD6C3" fill="none" stroke-width="18" stroke-linejoin="miter"/>
+        <g transform="translate(110,230)">
+          <path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/>
+          <path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/>
+          <path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/>
+          <path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/>
+          <path d="M -32 0 Q 0 -14 32 0 Z" fill="#BFD0A2"/>
+        </g>
+      </g>
+    </svg>
+
+    <div class="peak-panes"></div>
+
+    <div class="brand-band">
+      <div class="greenhouse-label"><span class="gl-the">The </span><span class="gl-name">Orchard</span></div>
+      <div class="brand-name">Memorial HVAC</div>
+      <div class="brand-client-eyebrow">HVAC · Nashville · Knoxville · Chattanooga</div>
+      <div class="brand-bottom">
+        <div class="brand-metric"><span class="brand-metric-value" data-animate data-target="76800" data-prefix="$" data-format="comma">$0</span>&thinsp;booked this month</div>
+        <div class="brand-metric brand-metric-right"><span class="brand-metric-value" data-animate data-target="16" data-suffix="×">0×</span>&thinsp;return on spend</div>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-engine="generate" role="tab"><div class="tab-top"><span class="tab-letter">G</span><span class="tab-word">Generate</span></div></button>
+      <button class="tab" data-engine="respond" role="tab"><div class="tab-top"><span class="tab-letter">R</span><span class="tab-word">Respond</span></div></button>
+      <button class="tab" data-engine="automate" role="tab"><div class="tab-top"><span class="tab-letter">A</span><span class="tab-word">Automate</span></div></button>
+      <button class="tab" data-engine="integrate" role="tab"><div class="tab-top"><span class="tab-letter">I</span><span class="tab-word">Integrate</span></div></button>
+      <button class="tab" data-engine="nurture" role="tab"><div class="tab-top"><span class="tab-letter">N</span><span class="tab-word">Nurture</span></div></button>
+    </div>
+
+    <div class="body">
+      <div class="body-inner">
+
+        <div class="engine-panel active" data-panel="generate">
+          <div class="engine-eyebrow">Generate · every new lead, every location</div>
+          <div class="engine-header">
+            <h2 class="engine-title">New business, <span class="italic">captured everywhere.</span></h2>
+            <p class="engine-sub">Every form submission, every inbound call, every after-hours inquiry — captured across all three locations and routed to the right team within seconds.</p>
+          </div>
+          <div class="kpi-grid">
+            <div class="kpi"><div class="kpi-label">New leads captured</div><div class="kpi-value"><span data-animate data-target="247">0</span></div><div class="kpi-delta">+52 vs last week</div></div>
+            <div class="kpi"><div class="kpi-label">Booking rate</div><div class="kpi-value"><span data-animate data-target="38">0</span><span class="italic">%</span></div><div class="kpi-delta">+4 pts vs last month</div><div class="kpi-benchmark">Industry: <strong>22%</strong> · Top 10%: <strong>41%</strong></div></div>
+            <div class="kpi"><div class="kpi-label">After-hours captures</div><div class="kpi-value"><span data-animate data-target="64">0</span></div><div class="kpi-delta">would have been missed</div></div>
+            <div class="kpi"><div class="kpi-label">Pipeline value</div><div class="kpi-value"><span data-animate data-target="268" data-prefix="$" data-suffix="K">$0K</span><span class="italic">mtd</span></div><div class="kpi-delta">+$34K this week</div></div>
+          </div>
+          <div class="panel-cols">
+            <div class="card">
+              <div class="card-head"><div class="card-title">Leads by location</div><div class="card-meta">This week</div></div>
+              <div class="row"><div><div class="row-name">Nashville</div><div class="row-detail">62 captured · 17 booked · 27% rate</div></div><div class="row-stat">+$94K</div></div>
+              <div class="row"><div><div class="row-name">Knoxville</div><div class="row-detail">48 captured · 12 booked · 25% rate</div></div><div class="row-stat">+$72K</div></div>
+              <div class="row"><div><div class="row-name">Chattanooga</div><div class="row-detail">37 captured · 9 booked · 24% rate · response time flagged</div></div><div class="row-stat">+$58K</div></div>
+            </div>
+            <div class="card">
+              <div class="card-head"><div class="card-title">Lead sources (aggregated)</div><div class="card-meta">Across 3 locations</div></div>
+              <div class="row"><div><div class="row-name">Web form capture</div><div class="row-detail">132 captured · 64 booked · 48% conversion</div></div><div class="row-stat">+$148K</div></div>
+              <div class="row"><div><div class="row-name">Google LSA</div><div class="row-detail">38 captured · 30 booked · $68/lead avg</div></div><div class="row-stat">+$67K</div></div>
+              <div class="row"><div><div class="row-name">Voice agent inbound</div><div class="row-detail">71 today · 57 booked · 80% rate</div></div><div class="row-stat">+$94K</div></div>
+              <div class="row"><div><div class="row-name">Referrals received</div><div class="row-detail">23 this week · 15 booked · 65% rate</div></div><div class="row-stat">+$32K</div></div>
+              <div class="row"><div><div class="row-name">Off-hours captures</div><div class="row-detail">28 since last Friday · 13 booked</div></div><div class="row-stat">+$13K</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="engine-panel" data-panel="respond">
+          <div class="engine-eyebrow">Respond · every inquiry, every location</div>
+          <div class="engine-header">
+            <h2 class="engine-title">Every phone, <span class="italic">always answered.</span></h2>
+            <p class="engine-sub">Trade-specific voice agents at all three locations. No call goes to voicemail. No form sits unanswered.</p>
+          </div>
+          <div class="kpi-grid">
+            <div class="kpi"><div class="kpi-label">Avg response time</div><div class="kpi-value"><span data-animate data-target="18">0</span><span class="italic">sec</span></div><div class="kpi-delta">across all locations</div><div class="kpi-benchmark">Industry: <strong>4m 12s</strong> · Top 10%: <strong>32s</strong> · Google LSA standard: <strong>5min</strong></div></div>
+            <div class="kpi"><div class="kpi-label">Missed call rate</div><div class="kpi-value"><span data-animate data-target="1.4" data-decimals="1">0.0</span><span class="italic">%</span></div><div class="kpi-delta">best in class &lt;7%</div></div>
+            <div class="kpi"><div class="kpi-label">Lead → appointment</div><div class="kpi-value"><span data-animate data-target="4.6" data-format="time">0:00</span></div><div class="kpi-delta">inbound to scheduled</div></div>
+            <div class="kpi"><div class="kpi-label">Booked from inbound</div><div class="kpi-value"><span data-animate data-target="79">0</span><span class="italic">%</span></div><div class="kpi-delta">57 of 71 calls</div></div>
+          </div>
+          <div class="panel-cols">
+            <div class="card">
+              <div class="card-head"><div class="card-title">Voice agents · by location</div><div class="card-meta">71 calls today</div></div>
+              <div class="row"><div><div class="row-name">Nashville</div><div class="row-detail">23 calls · 38s avg · A− grade</div></div><div class="row-stat">19 booked</div></div>
+              <div class="row"><div><div class="row-name">Knoxville</div><div class="row-detail">26 calls · 52s avg · B+ grade</div></div><div class="row-stat">21 booked</div></div>
+              <div class="row"><div><div class="row-name">Chattanooga</div><div class="row-detail">22 calls · 1:47 avg · B grade · slower than target</div></div><div class="row-stat">17 booked</div></div>
+            </div>
+            <div class="card">
+              <div class="card-head"><div class="card-title">Why calls didn't book</div><div class="card-meta">14 of 71 calls</div></div>
+              <div class="row"><div><div class="row-name">Out of service area</div><div class="row-detail">5 calls · expansion opportunity flagged</div></div><div class="row-stat">$14K lost</div></div>
+              <div class="row"><div><div class="row-name">Wanted same-day</div><div class="row-detail">4 calls · Chattanooga · capacity issue</div></div><div class="row-stat">$8K lost</div></div>
+              <div class="row"><div><div class="row-name">Pricing concern</div><div class="row-detail">3 calls · objection before quote</div></div><div class="row-stat">$5K lost</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="engine-panel" data-panel="automate">
+          <div class="engine-eyebrow">Automate · every follow-up, every location</div>
+          <div class="engine-header">
+            <h2 class="engine-title">Every quote worked, <span class="italic">automatically.</span></h2>
+            <p class="engine-sub">90-day sequences running across all three locations. Same playbook, every location. Nothing falls through anywhere.</p>
+          </div>
+          <div class="kpi-grid">
+            <div class="kpi"><div class="kpi-label">Sequences running</div><div class="kpi-value"><span data-animate data-target="38">0</span></div><div class="kpi-delta">all firing on schedule</div></div>
+            <div class="kpi"><div class="kpi-label">Customer touches sent</div><div class="kpi-value"><span data-animate data-target="1247">0</span></div><div class="kpi-delta">+247 vs last week</div></div>
+            <div class="kpi"><div class="kpi-label">Cold quotes re-engaged</div><div class="kpi-value"><span data-animate data-target="32">0</span></div><div class="kpi-delta">8 came back active</div></div>
+            <div class="kpi"><div class="kpi-label">Reply rate</div><div class="kpi-value"><span data-animate data-target="28">0</span><span class="italic">%</span></div><div class="kpi-delta">+6 pts vs last month</div></div>
+          </div>
+          <div class="panel-cols">
+            <div class="card">
+              <div class="card-head"><div class="card-title">Active sequences (all locations)</div><div class="card-meta">38 running</div></div>
+              <div class="row"><div><div class="row-name">90-day Quote Follow-up</div><div class="row-detail">62 quotes active · 7-touch cadence · 31 replies</div></div><div class="row-stat">62 active</div></div>
+              <div class="row"><div><div class="row-name">Appointment Confirmation</div><div class="row-detail">22 sent today · 100% delivered · 17 confirmed back</div></div><div class="row-stat">22 today</div></div>
+              <div class="row"><div><div class="row-name">Review Request · post-job</div><div class="row-detail">16 sent today · 12 reviews left · 4.8★ avg</div></div><div class="row-stat">16 today</div></div>
+              <div class="row"><div><div class="row-name">Referral Ask · happy customers</div><div class="row-detail">9 sent today · 3 referrals received</div></div><div class="row-stat">9 today</div></div>
+            </div>
+            <div class="feed">
+              <div class="card-head"><div class="card-title">Today's queue</div><div class="card-meta">63 pending</div></div>
+              <div class="feed-item"><div class="feed-time">3:00 pm</div><div class="feed-text">Quote follow-up · <strong>James P. · Nashville</strong> · day 14 cadence</div></div>
+              <div class="feed-item"><div class="feed-time">3:30 pm</div><div class="feed-text">Appointment reminder · <strong>Caldwell M. · Knoxville</strong> · tomorrow 9am</div></div>
+              <div class="feed-item"><div class="feed-time">4:15 pm</div><div class="feed-text">Review request · <strong>Henderson R. · Nashville</strong> · job completed today</div></div>
+              <div class="feed-item"><div class="feed-time">5:00 pm</div><div class="feed-text">Quote follow-up · <strong>Patel A. · Chattanooga</strong> · day 30 cadence</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="engine-panel" data-panel="integrate">
+          <div class="engine-eyebrow">Integrate · every system, kept in sync across every location</div>
+          <div class="engine-header">
+            <h2 class="engine-title">Three locations. <span class="italic">One source of truth.</span></h2>
+            <p class="engine-sub">Same CRM, same calendar, same phone system across all three locations. Multi-location routing sends each lead to the right team without you thinking about it.</p>
+          </div>
+          <div class="kpi-grid">
+            <div class="kpi"><div class="kpi-label">Hours saved (vs manual)</div><div class="kpi-value"><span data-animate data-target="142">0</span></div><div class="kpi-delta">$7,100 in labor</div></div>
+            <div class="kpi"><div class="kpi-label">Calls with full context</div><div class="kpi-value"><span data-animate data-target="94">0</span><span class="italic">%</span></div><div class="kpi-delta">+6 pts vs last month</div></div>
+            <div class="kpi"><div class="kpi-label">Hands-off actions</div><div class="kpi-value"><span data-animate data-target="2487">0</span></div><div class="kpi-delta">0 manual handoffs</div></div>
+            <div class="kpi"><div class="kpi-label">Systems in sync</div><div class="kpi-value"><span data-animate data-target="7">0</span><span class="italic">/7</span></div><div class="kpi-delta">99.97% uptime</div></div>
+          </div>
+          <div class="panel-cols">
+            <div class="card">
+              <div class="card-head"><div class="card-title">Connected systems</div><div class="card-meta">All locations operational</div></div>
+              <div class="status-row"><div class="status-name">ServiceTitan · your CRM</div><div class="status-pill">Healthy · 12s</div></div>
+              <div class="status-row"><div class="status-name">GoHighLevel · operating layer</div><div class="status-pill">Healthy · 5s</div></div>
+              <div class="status-row"><div class="status-name">Voice agents · 3 trade-specific clones</div><div class="status-pill">Healthy · 14s</div></div>
+              <div class="status-row"><div class="status-name">Phone &amp; SMS · multi-location routing</div><div class="status-pill">Healthy · 4s</div></div>
+              <div class="status-row"><div class="status-name">Google Calendar · per-location sync</div><div class="status-pill">Healthy · 8s</div></div>
+              <div class="status-row"><div class="status-name">Web forms · multi-location routing</div><div class="status-pill">Healthy · 6s</div></div>
+              <div class="status-row"><div class="status-name">QuickBooks · consolidated accounting</div><div class="status-pill">Healthy · 12s</div></div>
+            </div>
+            <div class="feed">
+              <div class="card-head"><div class="card-title">Cross-location actions</div><div class="card-meta">Last 60 min</div></div>
+              <div class="feed-item"><div class="feed-time">Just now</div><div class="feed-text">Nashville overflow call routed to <strong>Knoxville tech</strong> · capacity rebalanced</div></div>
+              <div class="feed-item"><div class="feed-time">8 min</div><div class="feed-text">Chattanooga web form · auto-routed to <strong>nearest available tech</strong></div></div>
+              <div class="feed-item"><div class="feed-time">14 min</div><div class="feed-text">Knoxville quote signed · <strong>review request scheduled</strong></div></div>
+              <div class="feed-item"><div class="feed-time">31 min</div><div class="feed-text">Cross-location service history loaded · <strong>customer profile enriched</strong></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="engine-panel" data-panel="nurture">
+          <div class="engine-eyebrow">Nurture · every old customer, every location, given a reason</div>
+          <div class="engine-header">
+            <h2 class="engine-title">The whole customer base, <span class="italic">working.</span></h2>
+            <p class="engine-sub">Reactivation campaigns running across all three locations. Quarterly Compost cycles included with Orchard. The compounding revenue most owners skip.</p>
+          </div>
+          <div class="kpi-grid">
+            <div class="kpi"><div class="kpi-label">Revenue recovered</div><div class="kpi-value"><span data-animate data-target="164" data-prefix="$" data-suffix="K">$0K</span><span class="italic">mtd</span></div><div class="kpi-delta">+$38K this week</div></div>
+            <div class="kpi"><div class="kpi-label">Customers reactivated</div><div class="kpi-value"><span data-animate data-target="132">0</span></div><div class="kpi-delta">+34 vs last week</div></div>
+            <div class="kpi"><div class="kpi-label">Dead quotes revived</div><div class="kpi-value"><span data-animate data-target="32">0</span></div><div class="kpi-delta">+8 vs last week</div></div>
+            <div class="kpi"><div class="kpi-label">5-star reviews</div><div class="kpi-value"><span data-animate data-target="67">0</span></div><div class="kpi-delta">4.8★ avg this month</div></div>
+          </div>
+          <div class="panel-cols">
+            <div class="card">
+              <div class="card-head"><div class="card-title">Active campaigns</div><div class="card-meta">14 running across locations</div></div>
+              <div class="row"><div><div class="row-name">Q4 Annual Maintenance Reminder</div><div class="row-detail">387 sent · 22% reply · 24 booked</div></div><div class="row-stat">+$36K</div></div>
+              <div class="row"><div><div class="row-name">Storm Damage Check-In · Nashville</div><div class="row-detail">198 sent · 18% reply · 12 booked</div></div><div class="row-stat">+$28K</div></div>
+              <div class="row"><div><div class="row-name">Quarterly Compost · Knoxville</div><div class="row-detail">324 sent · 24+ month dormant cohort · 14 booked</div></div><div class="row-stat">+$42K</div></div>
+              <div class="row"><div><div class="row-name">Dead Quote Revival · 90-day cohort</div><div class="row-detail">82 sent · 11% reply rate · 6 booked</div></div><div class="row-stat">+$14K</div></div>
+              <div class="row"><div><div class="row-name">Pre-summer Tune-up · all locations</div><div class="row-detail">142 sent · 38 booked tune-ups</div></div><div class="row-stat">+$11K</div></div>
+            </div>
+            <div class="feed">
+              <div class="card-head"><div class="card-title">Live activity</div><div class="card-meta">Last 60 min</div></div>
+              <div class="feed-item"><div class="feed-time">2 min</div><div class="feed-text">Reactivation sent · <strong>Sarah K. · Nashville</strong> · last service 14 months ago</div></div>
+              <div class="feed-item"><div class="feed-time">8 min</div><div class="feed-text">Reply received · <strong>Dwight F. · Knoxville</strong> · routed to follow-up</div></div>
+              <div class="feed-item"><div class="feed-time">23 min</div><div class="feed-text">Job booked from reactivation · <strong>Chattanooga · $4,800 estimate</strong></div></div>
+              <div class="feed-item"><div class="feed-time">41 min</div><div class="feed-text">Maintenance cohort fired · 142 customers across 3 locations</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ORCHARD: Expanded Add-Ons (more included with this tier) -->
+    <div class="addons-strip">
+      <div class="addons-strip-inner">
+        <div class="addons-label">Orchard Add-Ons · Active</div>
+        <div class="addons-items">
+          <div class="addon-item">
+            <div class="addon-name">Fertilizer</div>
+            <div class="addon-stat">included · 67 reviews · 142 posts mtd</div>
+          </div>
+          <div class="addon-item">
+            <div class="addon-name">Compost (quarterly)</div>
+            <div class="addon-stat">included · Q4 cycle: $42K recovered</div>
+          </div>
+          <div class="addon-item">
+            <div class="addon-name">Pruning (mini-quarterly)</div>
+            <div class="addon-stat">included · last cleanup 23 days ago</div>
+          </div>
+          <div class="addon-item">
+            <div class="addon-name">Roots (basic)</div>
+            <div class="addon-stat">included · 89 AI citations · trending up</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASK GRAIN BAR -->
+    <div class="ask-bar">
+      <div class="ask-bar-inner">
+        <span class="ask-bar-label">Ask GRAIN</span>
+        <span class="ask-bar-sep"></span>
+        <span class="ask-bar-input">"Which location had the slowest response time this week?"</span>
+        <span class="ask-bar-cue">↵</span>
+      </div>
+    </div>
+
+    <div class="foundation">
+      <div class="foundation-side">
+        <span>Orchard v1.0</span>
+        <span class="f-dot"></span>
+        <span>Memorial HVAC</span>
+        <span class="f-dot"></span>
+        <span>3 Locations · TN</span>
+      </div>
+      <div class="foundation-side">
+        <span id="last-updated-orchard">Last updated 4 sec ago</span>
+        <span class="f-dot"></span>
+        <span><span data-animate data-target="487" data-prefix="$" data-suffix="K">$0K</span> total since Day 1</span>
+        <span class="f-dot"></span>
+        <span>GRAIN Method</span>
+      </div>
+    </div>
+
+  </div>
+
+  <svg class="roof-outline roof-outline-desktop" viewBox="0 0 1200 326" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon class="roof-outline-poly" points="600,0 1200,120 1200,326 0,326 0,120"/>
+  </svg>
+
+  <svg class="roof-outline roof-outline-mobile" viewBox="0 0 326 296" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon class="roof-outline-poly" points="163,0 326,100 326,296 0,296 0,100"/>
+  </svg>
+
+</div>
+
+</section>
+
+</div><!-- /.view-orchard -->
+
+<script>
+(function() {
+  function formatValue(val, format, decimals) {
+    if (format === 'time') {
+      var min = Math.floor(val);
+      var sec = Math.round((val - min) * 60);
+      if (sec >= 60) { min += 1; sec -= 60; }
+      return min + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+    if (format === 'comma') {
+      return Math.round(val).toLocaleString('en-US');
+    }
+    return val.toFixed(decimals || 0);
+  }
+
+  function animateNumber(el) {
+    var target = parseFloat(el.dataset.target);
+    if (isNaN(target)) return;
+
+    var prefix   = el.dataset.prefix || '';
+    var suffix   = el.dataset.suffix || '';
+    var decimals = parseInt(el.dataset.decimals || '0', 10);
+    var format   = el.dataset.format || 'plain';
+    var duration = parseInt(el.dataset.duration || '1400', 10);
+
+    var start = performance.now();
+
+    function tick(now) {
+      var progress = Math.min((now - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var value = target * eased;
+      el.textContent = prefix + formatValue(value, format, decimals) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = prefix + formatValue(target, format, decimals) + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function animateScope(scope) {
+    scope.querySelectorAll('[data-animate]').forEach(animateNumber);
+  }
+
+  document.querySelectorAll('.brand-band [data-animate], .foundation [data-animate]').forEach(animateNumber);
+
+  // Animate the initial active panel in EACH view (Greenhouse + Orchard)
+  document.querySelectorAll('.engine-panel.active').forEach(animateScope);
+
+  // Scope tabs to within each view so Greenhouse and Orchard operate independently
+  ['greenhouse', 'orchard'].forEach(function(viewName) {
+    var view = document.querySelector('.view-' + viewName);
+    if (!view) return;
+    var viewTabs = view.querySelectorAll('.tab');
+    var viewPanels = view.querySelectorAll('.engine-panel');
+
+    viewTabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var eng = this.dataset.engine;
+        viewTabs.forEach(function(t) { t.classList.remove('active'); });
+        viewPanels.forEach(function(p) { p.classList.remove('active'); });
+        this.classList.add('active');
+        var panel = view.querySelector('[data-panel="' + eng + '"]');
+        if (panel) {
+          panel.classList.add('active');
+          animateScope(panel);
+        }
+      });
+    });
+  });
+
+  var lu = document.getElementById('last-updated');
+  var luOrchard = document.getElementById('last-updated-orchard');
+  var s = 4;
+  setInterval(function() {
+    s = s > 58 ? 1 : s + 1;
+    var txt = 'Last updated ' + s + ' sec ago';
+    if (lu) lu.textContent = txt;
+    if (luOrchard) luOrchard.textContent = txt;
+  }, 1000);
+
+  // View toggle: Greenhouse / Orchard
+  var viewToggle = document.getElementById('view-toggle');
+  var viewBtns = viewToggle ? viewToggle.querySelectorAll('.pill-toggle-btn') : [];
+  var viewGreenhouse = document.querySelector('.view-greenhouse');
+  var viewOrchard = document.querySelector('.view-orchard');
+
+  if (viewToggle && viewBtns.length && viewGreenhouse && viewOrchard) {
+    viewBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var target = this.dataset.view;
+        viewBtns.forEach(function(b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        viewToggle.dataset.active = (target === 'greenhouse') ? 'left' : 'right';
+        if (target === 'greenhouse') {
+          viewGreenhouse.classList.add('active');
+          viewOrchard.classList.remove('active');
+        } else {
+          viewGreenhouse.classList.remove('active');
+          viewOrchard.classList.add('active');
+        }
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -6,227 +6,573 @@
 <meta name="color-scheme" content="light only">
 <meta name="theme-color" content="#F0ECDF">
 <title>Apply for an Audit — GRAIN</title>
-<meta name="description" content="A 30-minute audit. Mutual qualification. You leave with a specific dollar figure and a clear plan, whether or not you become a client.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%23667B4A' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%239AAF7A'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%239AAF7A'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%231C2420'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+<meta name="description" content="Apply for a 30-minute audit call. We trace your real numbers and give you a specific dollar figure, whether or not you become a client.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3C/g%3E%3C/svg%3E">
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<script>var CALENDLY_URL='https://calendly.com/YOUR-CALENDLY-URL';function openCalendly(e){if(e)e.preventDefault();Calendly.initPopupWidget({url:CALENDLY_URL});return false;}</script>
-<link rel="stylesheet" href="styles.css">
+
+<style id="shared-styles">
+/* ====== SHARED STYLES (inlined from styles.css) ====== */
+/* ============================================
+   GRAIN METHOD — STYLES v4
+   Last updated: May 2026
+   ============================================ */
+
+/* DESIGN TOKENS */
+:root {
+  --ink: #1C2420;
+  --ink-soft: #3F4F47;
+  --ink-light: #56685E;
+  --bg: #F0ECDF;
+  --paper: #F7F4EA;
+  --moss: #9AAF7A;
+  --moss-deep: #667B4A;
+  --moss-light: #BFD0A2;
+  --line: #DAD6C7;
+  --muted: #8A8772;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Fraunces:ital,wght@1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* RESET + BASE */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img, svg { max-width: 100%; display: block; }
+button { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* CONTAINERS */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.container-narrow { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 600px) { .container, .container-narrow { padding: 0 20px; } }
+
+/* TYPOGRAPHY UTILITIES */
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--moss-deep);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.italic {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 24px 0;
+  background: rgba(240, 236, 223, 0);
+  transition: background 0.3s var(--ease), padding 0.3s var(--ease);
+}
+.nav.scrolled {
+  background: rgba(240, 236, 223, 0.96);
+  backdrop-filter: blur(12px);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.nav.over-dark .nav-brand,
+.nav.over-dark .nav-links a {
+  color: var(--bg);
+}
+.nav.over-dark.scrolled .nav-brand,
+.nav.over-dark.scrolled .nav-links a {
+  color: var(--ink);
+}
+.nav.over-dark .nav-toggle span { background: var(--bg); }
+.nav.over-dark.scrolled .nav-toggle span { background: var(--ink); }
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+.nav-brand svg {
+  width: 32px;
+  height: 32px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  transition: color 0.2s var(--ease);
+}
+.nav-links a:hover { color: var(--moss-deep); }
+.nav-links a.active { color: var(--moss-deep); }
+.nav-cta {
+  padding: 10px 20px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+}
+.nav-cta:hover { background: var(--moss-deep); }
+.nav.over-dark .nav-cta {
+  background: var(--moss);
+  color: var(--ink);
+}
+.nav.over-dark .nav-cta:hover { background: var(--moss-light); }
+
+/* Mobile nav */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  transition: all 0.2s var(--ease);
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 900px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 24px 32px;
+    gap: 20px;
+    display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 8px 0; font-size: 16px; }
+  .nav.over-dark .nav-links a { color: var(--ink); }
+  .nav-cta { text-align: center; }
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s var(--ease);
+  font-family: inherit;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--bg);
+}
+.btn-primary:hover {
+  background: var(--moss-deep);
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--bg);
+  border: 1px solid rgba(240,236,223,0.3);
+}
+.btn-secondary:hover {
+  background: rgba(240,236,223,0.08);
+  border-color: var(--moss-light);
+}
+.btn-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
+/* REVEAL ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* FOOTER */
+.site-footer {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 80px 32px 40px;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(240,236,223,0.12);
+}
+.footer-brand {}
+.footer-logo {
+  font-weight: 900;
+  font-size: 32px;
+  letter-spacing: 0.05em;
+  color: var(--bg);
+  margin-bottom: 16px;
+}
+.footer-mission {
+  font-size: 15px;
+  color: rgba(240,236,223,0.7);
+  line-height: 1.6;
+  max-width: 440px;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-self: end;
+}
+.footer-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: rgba(240,236,223,0.65);
+  text-transform: uppercase;
+  transition: color 0.2s var(--ease);
+}
+.footer-links a:hover { color: var(--moss-light); }
+.footer-bottom {
+  max-width: 1280px;
+  margin: 40px auto 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: rgba(240,236,223,0.4);
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-links { justify-self: start; }
+}
+
+/* Headings reset within sections */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* ============================================================
+   SHARED ASK GRAIN BAR — appears on every page above the footer
+   ============================================================ */
+.ask-bar-page {
+  background: var(--ink);
+  padding: 18px 32px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  border-top: 1px solid rgba(240,236,223,0.08);
+  transition: background 0.2s ease;
+}
+.ask-bar-page:hover { background: #0F1612; }
+.ask-bar-page .ask-bar-page-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--bg);
+}
+.ask-bar-page .ask-bar-page-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--moss-light);
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.ask-bar-page .ask-bar-page-sep {
+  width: 1px;
+  height: 18px;
+  background: rgba(240,236,223,0.2);
+  flex-shrink: 0;
+}
+.ask-bar-page .ask-bar-page-input {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(240,236,223,0.7);
+  font-style: italic;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ask-bar-page .ask-bar-page-cue {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--moss-light);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.ask-bar-page.open .ask-bar-page-cue { transform: rotate(180deg); }
+
+.ask-bar-page-dropdown {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background: var(--ink);
+  border-top: 1px solid var(--moss-light);
+  max-height: 380px;
+  overflow-y: auto;
+  z-index: 100;
+}
+.ask-bar-page-dropdown.open { display: block; }
+.ask-bar-page-dropdown-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 32px 14px;
+}
+.ask-bar-page-dropdown-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: rgba(240,236,223,0.5);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10px 0 6px;
+  border-bottom: 1px solid rgba(240,236,223,0.08);
+}
+.ask-bar-page-q {
+  display: block;
+  width: 100%;
+  padding: 13px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(240,236,223,0.06);
+  color: rgba(240,236,223,0.85);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.15s ease, padding-left 0.15s ease;
+}
+.ask-bar-page-q:hover { color: var(--moss-light); padding-left: 8px; }
+.ask-bar-page-q:last-child { border-bottom: none; }
+.ask-bar-page-q::before {
+  content: "→ ";
+  color: var(--moss-light);
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .ask-bar-page { padding: 14px 20px; }
+  .ask-bar-page .ask-bar-page-inner { gap: 14px; }
+  .ask-bar-page .ask-bar-page-label { font-size: 10px; letter-spacing: 0.2em; }
+  .ask-bar-page .ask-bar-page-input { font-size: 13px; }
+  .ask-bar-page-dropdown-inner { padding: 10px 20px 14px; }
+}
+
+/* Ask GRAIN response panel (appears below bar when a question is selected) */
+.ask-bar-response {
+  display: none;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+.ask-bar-response.open { display: block; }
+.ask-bar-response-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 22px 32px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.ask-bar-response-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--moss-deep);
+  font-weight: 700;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  padding-top: 4px;
+  min-width: 64px;
+}
+.ask-bar-response-text {
+  flex: 1;
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.65;
+  font-family: 'Inter', sans-serif;
+}
+.ask-bar-response-close {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 26px;
+  cursor: pointer;
+  padding: 0 6px;
+  line-height: 1;
+  align-self: flex-start;
+  transition: color 0.2s ease;
+}
+.ask-bar-response-close:hover { color: var(--ink); }
+
+@media (max-width: 768px) {
+  .ask-bar-response-inner { padding: 18px 20px; gap: 14px; flex-direction: column; }
+  .ask-bar-response-label { min-width: 0; }
+  .ask-bar-response-close { position: absolute; top: 12px; right: 14px; }
+}
+
+/* ============================================================
+   SHARED PILL TOGGLE — used for view toggles and pricing toggles
+   ============================================================ */
+.pill-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.pill-toggle {
+  display: inline-flex;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 3px;
+  position: relative;
+  border-radius: 999px;
+}
+.pill-toggle-btn {
+  padding: 8px 22px;
+  background: transparent;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.25s ease;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.pill-toggle-btn.active { color: var(--paper); }
+.pill-toggle-slider {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  background: var(--ink);
+  border-radius: 999px;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 1;
+}
+.pill-toggle[data-active="right"] .pill-toggle-slider { transform: translateX(100%); }
+.pill-toggle-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 6px;
+  background: var(--moss);
+  color: var(--ink);
+  border-radius: 999px;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+@media (max-width: 600px) {
+  .pill-toggle-btn { padding: 7px 16px; font-size: 10px; letter-spacing: 0.06em; }
+}
+
+</style>
 
 <style>
-  .apply-hero {
-    padding: 200px 32px 60px;
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-  .apply-hero h1 {
-    font-weight: 900;
-    font-size: clamp(48px, 7vw, 92px);
-    line-height: 0.96;
-    letter-spacing: -0.03em;
-    margin-bottom: 32px;
-    max-width: 1000px;
-  }
-  .apply-hero h1 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
-  .apply-hero-sub {
-    font-size: clamp(17px, 1.6vw, 21px);
-    color: var(--ink-soft);
-    max-width: 720px;
-    line-height: 1.55;
-  }
+.page-hero { padding: 200px 32px 60px; max-width: 1280px; margin: 0 auto; text-align: center; }
+.page-hero h1 { font-weight: 900; font-size: clamp(48px, 7vw, 92px); line-height: 0.96; letter-spacing: -0.03em; margin-bottom: 32px; }
+.page-hero h1 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+.page-hero-sub { font-size: clamp(17px, 1.6vw, 21px); color: var(--ink-soft); max-width: 720px; line-height: 1.55; margin: 0 auto 24px; }
+.page-hero-fineprint { font-size: 14px; color: var(--muted); font-style: italic; max-width: 600px; margin: 0 auto; line-height: 1.55; }
+@media (max-width: 768px) { .page-hero { padding: 140px 20px 40px; } }
 
-  .apply-grid {
-    max-width: 1280px;
-    margin: 60px auto 140px;
-    padding: 0 32px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-  }
-
-  .apply-info-block { padding-top: 24px; }
-  .apply-info-block h3 {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 28px;
-    margin-bottom: 16px;
-    color: var(--ink);
-  }
-  .apply-info-block p {
-    font-size: 15px;
-    color: var(--ink-light);
-    line-height: 1.7;
-    margin-bottom: 32px;
-  }
-  .what-to-expect {
-    border-top: 1px solid var(--line);
-    padding-top: 32px;
-    margin-bottom: 32px;
-  }
-  .expect-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    color: var(--moss-deep);
-    margin-bottom: 24px;
-    font-weight: 600;
-  }
-  .expect-list { list-style: none; margin-bottom: 32px; }
-  .expect-list li {
-    padding: 12px 0 12px 32px;
-    position: relative;
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-  .expect-list li::before {
-    content: counter(item, decimal-leading-zero);
-    counter-increment: item;
-    position: absolute;
-    left: 0;
-    top: 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--moss-deep);
-    font-weight: 600;
-    letter-spacing: 0.05em;
-  }
-  .expect-list { counter-reset: item; }
-
-  /* Form */
-  .form-wrap {
-    background: var(--paper);
-    padding: 56px 48px;
-    border: 1px solid var(--line);
-  }
-  .form-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    color: var(--moss-deep);
-    margin-bottom: 16px;
-    font-weight: 600;
-  }
-  .form-h {
-    font-weight: 900;
-    font-size: 32px;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 12px;
-    color: var(--ink);
-  }
-  .form-intro {
-    font-size: 14px;
-    color: var(--ink-light);
-    line-height: 1.6;
-    margin-bottom: 36px;
-  }
-  .contact-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .form-field {
-    display: flex;
-    flex-direction: column;
-  }
-  .form-field.full { grid-column: 1 / -1; }
-  .form-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--muted);
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
-  .form-input, .form-select, .form-textarea {
-    background: var(--bg);
-    border: 1px solid var(--line);
-    padding: 14px 16px;
-    font-size: 15px;
-    color: var(--ink);
-    font-family: inherit;
-    transition: border-color 0.2s;
-  }
-  .form-input:focus, .form-select:focus, .form-textarea:focus {
-    outline: none;
-    border-color: var(--moss-deep);
-  }
-  .form-textarea { resize: vertical; min-height: 100px; }
-  .form-submit {
-    grid-column: 1 / -1;
-    background: var(--ink);
-    color: var(--bg);
-    padding: 18px;
-    font-size: 14px;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    letter-spacing: 0.02em;
-    margin-top: 16px;
-    transition: background 0.2s;
-  }
-  .form-submit:hover { background: var(--moss-deep); }
-  .form-success {
-    display: none;
-    text-align: center;
-    padding: 48px 24px;
-    color: var(--moss-deep);
-  }
-  .form-success.show { display: block; }
-  .form-success-h {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 32px;
-    margin-bottom: 12px;
-    color: var(--ink);
-  }
-
-  .or-divider {
-    text-align: center;
-    margin: 40px 0;
-    color: var(--muted);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    position: relative;
-  }
-  .or-divider::before, .or-divider::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 80px;
-    height: 1px;
-    background: var(--line);
-  }
-  .or-divider::before { left: calc(50% - 100px); }
-  .or-divider::after { right: calc(50% - 100px); }
-
-  .calendly-cta {
-    width: 100%;
-    padding: 18px;
-    background: var(--moss);
-    color: var(--ink);
-    font-size: 14px;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    letter-spacing: 0.02em;
-    transition: background 0.2s;
-  }
-  .calendly-cta:hover { background: var(--moss-light); }
-
-  @media (max-width: 900px) {
-    .apply-grid { grid-template-columns: 1fr; gap: 48px; }
-    .form-wrap { padding: 40px 28px; }
-    .contact-form { grid-template-columns: 1fr; }
-  }
+.form-wrap { padding: 60px 32px 140px; max-width: 720px; margin: 0 auto; }
+.form-card { background: var(--bg); border: 1px solid var(--line); padding: 56px 56px; }
+.form-row { margin-bottom: 32px; }
+.form-label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss-deep); margin-bottom: 12px; font-weight: 600; text-transform: uppercase; }
+.form-input, .form-select, .form-textarea { width: 100%; padding: 16px 20px; font-size: 16px; font-family: inherit; border: 1px solid var(--line); background: var(--paper); color: var(--ink); transition: border 0.2s var(--ease); }
+.form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--moss-deep); background: var(--bg); }
+.form-textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
+.form-help { font-size: 13px; color: var(--muted); margin-top: 8px; font-style: italic; }
+.form-submit { width: 100%; padding: 22px 32px; background: var(--ink); color: var(--bg); font-weight: 600; font-size: 16px; border: none; cursor: pointer; transition: all 0.2s var(--ease); margin-top: 24px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+.form-submit:hover { background: var(--moss-deep); }
+.form-promise { background: var(--paper); padding: 24px 28px; border-left: 3px solid var(--moss-deep); margin-top: 32px; }
+.form-promise-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss-deep); margin-bottom: 10px; font-weight: 600; }
+.form-promise-text { font-size: 14px; color: var(--ink); line-height: 1.55; }
+.form-success { display: none; text-align: center; padding: 64px 40px; background: var(--ink); color: var(--bg); margin-top: 24px; }
+.form-success.visible { display: block; }
+.form-success-title { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 40px; margin-bottom: 16px; color: var(--bg); line-height: 1.2; }
+.form-success-text { font-size: 16px; color: rgba(240,236,223,0.8); line-height: 1.6; max-width: 480px; margin: 0 auto; }
+@media (max-width: 600px) { .form-card { padding: 36px 28px; } }
 </style>
 </head>
 <body>
@@ -237,180 +583,237 @@
       <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#667B4A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
       GRAIN
     </a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
     <div class="nav-links" id="nav-links">
       <a href="method.html">Method</a>
-      <a href="pricing.html">Pricing</a>
+      <a href="dashboard.html">Dashboard</a>
       <a href="calculator.html">Calculator</a>
-      <button class="nav-cta" onclick="openCalendly(event)">Apply for Audit</button>
+      <a href="pricing.html">Pricing</a>
+      <a href="apply.html" class="active nav-cta">Apply for Audit</a>
     </div>
   </div>
 </nav>
 
-<section class="apply-hero">
-  <div class="eyebrow">THE AUDIT</div>
-  <h1>Apply for a 30-minute <span class="italic">audit.</span></h1>
-  <p class="apply-hero-sub">We trace your real numbers, give you a specific dollar figure of what you're losing, and determine if your business is a fit for GRAIN. Whether or not you become a client, the analysis is yours.</p>
+<section class="page-hero">
+  <div class="eyebrow">APPLY FOR YOUR AUDIT</div>
+  <h1>Tell us a bit<br><span class="italic">about your business.</span></h1>
+  <p class="page-hero-sub">We respond within 24 hours. The audit call is 30 minutes. We trace your real numbers and give you a specific dollar figure, whether or not you become a client.</p>
+  <p class="page-hero-fineprint">Audits are by application. We work with a small number of home service businesses at a time to maintain our standards.</p>
 </section>
 
-<div class="apply-grid">
-  <div class="apply-info-block">
-    <div class="what-to-expect">
-      <div class="expect-label">WHAT TO EXPECT</div>
-      <ol class="expect-list">
-        <li>You apply via the form or by booking directly on our calendar</li>
-        <li>We review your application within 24 hours and confirm the call</li>
-        <li>30-minute audit on Zoom — we ask 10 specific questions about your lead flow</li>
-        <li>You leave with a dollar figure of what your business is losing per year</li>
-        <li>If GRAIN is a fit, we discuss next steps. If not, you keep the analysis</li>
-      </ol>
-    </div>
+<div class="form-wrap">
+  <div class="form-card" id="form-card">
+    <form id="applyForm" action="https://formspree.io/f/FORMSPREE_ID_HERE" method="POST">
 
-    <h3>Who this is for.</h3>
-    <p>Home service business owners doing $500K to $10M in revenue who lose jobs because they can't answer every call, follow up on every quote, or stay in touch with past customers. We work across roofing, HVAC, plumbing, pest control, electrical, fencing, pool, painting, landscaping, and remodeling.</p>
-
-    <h3>Who this isn't for.</h3>
-    <p>If you're under $500K revenue or generating fewer than 30 leads per month, GRAIN isn't the right fit yet. If you don't already have a system for delivering work to customers (CRM, scheduling, etc.), you need that before you need GRAIN. The audit will tell us either way.</p>
-  </div>
-
-  <div>
-    <div class="form-wrap">
-      <div class="form-eyebrow">SUBMIT YOUR APPLICATION</div>
-      <h2 class="form-h">Tell us about your business.</h2>
-      <p class="form-intro">We respond within 24 hours.</p>
-
-      <form class="contact-form" id="audit-form" action="https://formspree.io/f/FORMSPREE_ID_HERE" method="POST">
-        <div class="form-field">
-          <label class="form-label">YOUR NAME</label>
-          <input class="form-input" type="text" name="name" placeholder="Johnny Smith" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label">BUSINESS NAME</label>
-          <input class="form-input" type="text" name="business" placeholder="Smith Roofing Co." required>
-        </div>
-        <div class="form-field">
-          <label class="form-label">PHONE</label>
-          <input class="form-input" type="tel" name="phone" placeholder="(615) 555-0100" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label">EMAIL</label>
-          <input class="form-input" type="email" name="email" placeholder="you@yourbusiness.com" required>
-        </div>
-        <div class="form-field full">
-          <label class="form-label">YOUR TRADE</label>
-          <select class="form-select" name="trade" required>
-            <option value="" disabled selected>Select your primary trade</option>
-            <option>Roofing</option>
-            <option>HVAC</option>
-            <option>Plumbing</option>
-            <option>Pest Control</option>
-            <option>Electrical</option>
-            <option>Fencing</option>
-            <option>Pool</option>
-            <option>Painting</option>
-            <option>Landscaping</option>
-            <option>Remodeling</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-field full">
-          <label class="form-label">ANNUAL REVENUE (ESTIMATE)</label>
-          <select class="form-select" name="revenue" required>
-            <option value="" disabled selected>Select a range</option>
-            <option>Under $500K</option>
-            <option>$500K to $1M</option>
-            <option>$1M to $3M</option>
-            <option>$3M to $10M</option>
-            <option>$10M+</option>
-          </select>
-        </div>
-        <div class="form-field full">
-          <label class="form-label">WHERE YOU'RE LOSING THE MOST LEADS</label>
-          <textarea class="form-textarea" name="challenge" placeholder="Where do leads tend to slip through? After-hours calls? Follow-up on quotes? Past customers?"></textarea>
-        </div>
-        <button type="submit" class="form-submit">Send Application →</button>
-      </form>
-
-      <div class="form-success" id="form-success">
-        <div class="form-success-h">Got it.</div>
-        <p>We'll be in touch within 24 hours.</p>
+      <div class="form-row">
+        <label class="form-label" for="name">Your name</label>
+        <input type="text" name="name" id="name" class="form-input" required placeholder="John Smith">
       </div>
 
-      <div class="or-divider">OR</div>
+      <div class="form-row">
+        <label class="form-label" for="business">Business name</label>
+        <input type="text" name="business" id="business" class="form-input" required placeholder="Smith Roofing Co.">
+      </div>
 
-      <button class="calendly-cta" onclick="openCalendly(event)">Book Directly on Our Calendar →</button>
-    </div>
+      <div class="form-row">
+        <label class="form-label" for="email">Email</label>
+        <input type="email" name="email" id="email" class="form-input" required placeholder="john@smithroofing.com">
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="phone">Phone</label>
+        <input type="tel" name="phone" id="phone" class="form-input" required placeholder="(615) 555-0100">
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="trade">Your trade</label>
+        <select name="trade" id="trade" class="form-select" required>
+          <option value="">Select your trade</option>
+          <option>Roofing</option>
+          <option>HVAC</option>
+          <option>Plumbing</option>
+          <option>Pest Control</option>
+          <option>Electrical</option>
+          <option>Fencing</option>
+          <option>Pool</option>
+          <option>Painting</option>
+          <option>Landscaping</option>
+          <option>Remodeling</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="revenue">Annual revenue range</label>
+        <select name="revenue" id="revenue" class="form-select" required>
+          <option value="">Select range</option>
+          <option>Under $500K</option>
+          <option>$500K – $1M</option>
+          <option>$1M – $3M</option>
+          <option>$3M – $10M</option>
+          <option>$10M+</option>
+        </select>
+        <div class="form-help">We use this only to make sure we're a fit. Greenhouse works best at $500K–$3M.</div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="leads">Estimated leads per month</label>
+        <input type="number" name="leads" id="leads" class="form-input" placeholder="80" min="0">
+        <div class="form-help">Calls, web forms, missed calls, ads, referrals, all sources combined. Ballpark is fine.</div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="pain">What's the biggest gap right now?</label>
+        <textarea name="pain" id="pain" class="form-textarea" placeholder="Missed calls, slow follow-up, quotes that go cold, can't reach past customers — whatever is costing you the most sleep."></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">Send Application <span style="font-family:'JetBrains Mono',monospace;">→</span></button>
+
+      <div class="form-promise">
+        <div class="form-promise-label">WHAT HAPPENS NEXT</div>
+        <p class="form-promise-text">We review every application within 24 hours. If we're a fit, you'll get a calendar link to book a 30-minute audit call. If we're not a fit, we'll tell you honestly and point you somewhere that is.</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="form-success" id="form-success">
+    <div class="form-success-title">Got it.</div>
+    <p class="form-success-text">We'll be in touch within 24 hours. Talk soon.</p>
   </div>
 </div>
 
-<footer class="footer">
+<!-- Persistent Ask GRAIN bar -->
+<div class="ask-bar-page" id="ask-bar-page">
+  <div class="ask-bar-page-dropdown" id="ask-bar-dropdown">
+    <div class="ask-bar-page-dropdown-inner">
+      <div class="ask-bar-page-dropdown-label">Pick a question — ask GRAIN anything about us</div>
+      <button class="ask-bar-page-q" data-q="What does GRAIN actually do?">What does GRAIN actually do?</button>
+      <button class="ask-bar-page-q" data-q="How are you different from other agencies?">How are you different from other agencies?</button>
+      <button class="ask-bar-page-q" data-q="Why can't I just hire a virtual receptionist?">Why can't I just hire a virtual receptionist?</button>
+      <button class="ask-bar-page-q" data-q="What's the difference between Greenhouse and Orchard?">What's the difference between Greenhouse and Orchard?</button>
+      <button class="ask-bar-page-q" data-q="Can you really deploy in 7 days?">Can you really deploy in 7 days?</button>
+      <button class="ask-bar-page-q" data-q="Is this AI answering my calls, or real people?">Is this AI answering my calls, or real people?</button>
+      <button class="ask-bar-page-q" data-q="What happens if you don't deliver 5 jobs in 60 days?">What happens if you don't deliver 5 jobs in 60 days?</button>
+      <button class="ask-bar-page-q" data-q="How do you keep my customer data private?">How do you keep my customer data private?</button>
+      <button class="ask-bar-page-q" data-q="What home service trades do you work with?">What home service trades do you work with?</button>
+      <button class="ask-bar-page-q" data-q="Why should I trust you with my business?">Why should I trust you with my business?</button>
+    </div>
+  </div>
+  <div class="ask-bar-page-inner">
+    <span class="ask-bar-page-label">Ask GRAIN</span>
+    <span class="ask-bar-page-sep"></span>
+    <span class="ask-bar-page-input" id="ask-bar-page-input">"What does GRAIN actually do?"</span>
+    <span class="ask-bar-page-cue">▾</span>
+  </div>
+</div>
+<div class="ask-bar-response" id="ask-bar-response">
+  <div class="ask-bar-response-inner">
+    <div class="ask-bar-response-label">GRAIN</div>
+    <div class="ask-bar-response-text" id="ask-bar-response-text"></div>
+    <button class="ask-bar-response-close" id="ask-bar-response-close" type="button" aria-label="Close">×</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var askAnswers = {
+    "What does GRAIN actually do?": "GRAIN is the operating system that runs in the background of your business. We catch every lead from every channel — phone, text, web form, social DM — answer every inquiry in under 60 seconds, follow up on every quote for 90 days, and keep your customer base warm so they come back. You see all of it in one dashboard. It's done-for-you. You focus on the work; we keep the business running.",
+    "How are you different from other agencies?": "Most agencies generate leads and hand them off. We do the opposite — we focus on what happens AFTER the lead arrives, which is where most home service businesses lose 35-50% of what comes in. We have a guaranteed deployment timeline (7 days), a measurable outcome (5 extra jobs in 60 days or we work free), and a private dashboard so you see every metric live. We're not selling more leads. We're selling a system that converts more of the leads you already have.",
+    "Why can't I just hire a virtual receptionist?": "A virtual receptionist answers calls. GRAIN catches every lead from every channel (calls, texts, forms, social DMs), responds in under 60 seconds 24/7, follows up automatically for 90 days on every quote, syncs with your CRM, runs reactivation campaigns on dormant customers, and shows you the whole picture in one dashboard. Receptionists are people. GRAIN is infrastructure.",
+    "What's the difference between Greenhouse and Orchard?": "Greenhouse ($2,497/mo) is for single-location, single-trade businesses doing $500K-$3M revenue with 30-150 leads/month. Orchard ($5,997/mo) is for multi-location or multi-trade businesses doing $3M-$10M with 150-500 leads/month. Orchard also includes Fertilizer (reputation engine), quarterly Compost campaigns, weekly strategy calls, priority support, and access to the GRAIN private community.",
+    "Can you really deploy in 7 days?": "Yes — we built this specifically for fast deployment. Day 1: kickoff and intelligence pull. Day 2: Day-1 Intelligence Report delivered. Days 2-3: voice agent built and tested. Days 3-4: SMS, email, and 90-day follow-up sequences live. Days 4-5: CRM integrated, dashboard live. Days 5-7: testing, training, go-live. By Day 7, your system is catching leads.",
+    "Is this AI answering my calls, or real people?": "The voice agent is a system, but it's trained on thousands of real home service conversations in your specific trade. It sounds natural. It can answer questions, book appointments, escalate emergencies to you, and qualify leads before they hit your team. Real people (your team and ours) handle the work after the conversation. The system makes sure no call gets missed.",
+    "What happens if you don't deliver 5 jobs in 60 days?": "We work for free until you get them. No fine print. Your setup fee is non-refundable, but the monthly fee stops accruing until we hit the threshold. Service continues uninterrupted. The bet is on us, not you.",
+    "How do you keep my customer data private?": "Your data lives in your private dashboard. It's not shared with other clients. The only thing we use cross-client is anonymized patterns (what scripts convert, what objections come up most often) which helps the system get smarter for everyone. Your actual customer list, contact info, and revenue are yours alone.",
+    "What home service trades do you work with?": "Roofing, HVAC, plumbing, pest control, electrical, fencing, pool, painting, landscaping, and remodeling. The system is built around what these trades have in common: high-value jobs, time-sensitive leads, repeat-purchase potential, and trust-driven decisions. If you're outside these trades, ask — odds are we can adapt the system.",
+    "Why should I trust you with my business?": "Because we work in public. Our dashboard is live and demo-able right now. Our pricing is on the website. Our guarantee is specific. Our deployment timeline is published. We don't lock you into long contracts — it's month-to-month after the first 60 days. And we built this because we sell using the same system. That's literally how we found you."
+  };
+
+  var askBarPage = document.getElementById('ask-bar-page');
+  var askBarDropdown = document.getElementById('ask-bar-dropdown');
+  var askBarInput = document.getElementById('ask-bar-page-input');
+  var askBarResponse = document.getElementById('ask-bar-response');
+  var askBarResponseText = document.getElementById('ask-bar-response-text');
+  var askBarResponseClose = document.getElementById('ask-bar-response-close');
+
+  if (!askBarPage || !askBarDropdown || !askBarInput || !askBarResponse || !askBarResponseText) return;
+
+  askBarPage.addEventListener('click', function(e) {
+    if (e.target.closest('.ask-bar-page-q')) return;
+    e.stopPropagation();
+    askBarDropdown.classList.toggle('open');
+    askBarPage.classList.toggle('open');
+  });
+
+  askBarDropdown.querySelectorAll('.ask-bar-page-q').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var q = btn.dataset.q;
+      askBarInput.textContent = '"' + q + '"';
+      askBarResponseText.textContent = askAnswers[q] || '';
+      askBarResponse.classList.add('open');
+      askBarDropdown.classList.remove('open');
+      askBarPage.classList.remove('open');
+    });
+  });
+
+  if (askBarResponseClose) {
+    askBarResponseClose.addEventListener('click', function(e) {
+      e.stopPropagation();
+      askBarResponse.classList.remove('open');
+      askBarInput.textContent = '"What does GRAIN actually do?"';
+    });
+  }
+
+  document.addEventListener('click', function() {
+    askBarDropdown.classList.remove('open');
+    askBarPage.classList.remove('open');
+  });
+})();
+</script>
+
+<footer class="site-footer">
+
+
   <div class="footer-inner">
-    <div class="footer-brand-block">
-      <div class="footer-brand">
-        <svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#1C2420" rx="40"/><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#F0ECDF"/></g></g></svg>
-        GRAIN
-      </div>
-      <div class="footer-tag">PLANT · NURTURE · SCALE</div>
+    <div class="footer-brand">
+      <div class="footer-logo">GRAIN</div>
       <div class="footer-mission">Done-for-you lead response for home service businesses. Nashville-based. Serving nationwide.</div>
     </div>
-    <div class="footer-col">
-      <h4>System</h4>
-      <a href="method.html">The Method</a>
-      <a href="pricing.html">Pricing</a>
+    <div class="footer-links">
+      <a href="method.html">Method</a>
+      <a href="dashboard.html">Dashboard</a>
       <a href="calculator.html">Calculator</a>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="apply.html">Apply for Audit</a>
-      <a href="mailto:johnny@grainmethod.com">Contact</a>
-    </div>
-    <div class="footer-col">
-      <h4>Trust</h4>
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Guarantee</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="apply.html">Apply</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <div>© 2026 GRAIN Method LLC · Nashville, Tennessee</div>
-    <div>johnny@grainmethod.com</div>
-  </div>
+  <div class="footer-bottom">© 2026 GRAIN Method. All rights reserved.</div>
 </footer>
 
 <script>
-  document.getElementById('audit-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const data = new FormData(this);
-    fetch(this.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
-      .then(() => {
-        this.style.display = 'none';
-        document.getElementById('form-success').classList.add('show');
-      })
-      .catch(() => alert('Something went wrong. Please email johnny@grainmethod.com directly.'));
-  });
-    const navToggle = document.getElementById('nav-toggle');
-  const navLinks = document.getElementById('nav-links');
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
-    });
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+navToggle.addEventListener('click', () => { navToggle.classList.toggle('open'); navLinks.classList.toggle('open'); });
+
+document.getElementById('applyForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  try {
+    const response = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+    if (response.ok) {
+      document.getElementById('form-card').style.display = 'none';
+      document.getElementById('form-success').classList.add('visible');
+      if (typeof gtag !== 'undefined') gtag('event', 'apply_submitted');
+    } else {
+      alert('Something went wrong. Please try emailing johnny@grainmethod.com directly.');
+    }
+  } catch (err) {
+    alert('Network error. Please try emailing johnny@grainmethod.com directly.');
   }
-  const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  });
+});
 </script>
+
 </body>
 </html>

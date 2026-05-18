@@ -6,372 +6,695 @@
 <meta name="color-scheme" content="light only">
 <meta name="theme-color" content="#F0ECDF">
 <title>The Method — GRAIN</title>
-<meta name="description" content="The five-stage system that closes the response gap. Generate, Respond, Automate, Integrate, Nurture. Deployed in 7 days. Gets smarter every month.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%23667B4A' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%239AAF7A'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%239AAF7A'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%231C2420'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+<meta name="description" content="The five-engine system for home service businesses. Generate, Respond, Automate, Integrate, Nurture. Your own private dashboard. Deployed in 7 days.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3C/g%3E%3C/svg%3E">
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>var CALENDLY_URL='https://calendly.com/YOUR-CALENDLY-URL';function openCalendly(e){if(e)e.preventDefault();Calendly.initPopupWidget({url:CALENDLY_URL});return false;}</script>
-<link rel="stylesheet" href="styles.css">
 
-<style>
-  /* PAGE HERO */
-  .page-hero {
-    padding: 200px 32px 80px;
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-  .page-hero h1 {
-    font-weight: 900;
-    font-size: clamp(48px, 7vw, 92px);
-    line-height: 0.96;
-    letter-spacing: -0.03em;
-    margin-bottom: 32px;
-    max-width: 1000px;
-  }
-  .page-hero h1 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
-  .page-hero-sub {
-    font-size: clamp(17px, 1.6vw, 21px);
-    color: var(--ink-soft);
-    max-width: 720px;
-    line-height: 1.55;
-  }
-  @media (max-width: 768px) { .page-hero { padding: 140px 20px 60px; } }
+<style id="shared-styles">
+/* ====== SHARED STYLES (inlined from styles.css) ====== */
+/* ============================================
+   GRAIN METHOD — STYLES v4
+   Last updated: May 2026
+   ============================================ */
 
-  /* FIVE STAGES */
-  .stages {
-    padding: 100px 0 140px;
-  }
-  .stage {
-    display: grid;
-    grid-template-columns: 200px 1fr 200px;
-    gap: 60px;
-    padding: 80px 0;
-    border-top: 1px solid var(--line);
-    align-items: start;
-  }
-  .stage:last-child { border-bottom: 1px solid var(--line); }
-  .stage-letter {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 180px;
-    line-height: 0.85;
-    color: var(--moss-deep);
-    letter-spacing: -0.04em;
-  }
-  .stage-content h3 {
-    font-weight: 800;
-    font-size: clamp(32px, 3.5vw, 48px);
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    margin-bottom: 20px;
-  }
-  .stage-content p {
-    font-size: 17px;
-    line-height: 1.65;
-    color: var(--ink-soft);
-    margin-bottom: 16px;
-    max-width: 560px;
-  }
-  .stage-meta {
-    text-align: right;
-  }
-  .stage-meta-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--moss-deep);
-    margin-bottom: 8px;
-  }
-  .stage-meta-val {
-    font-size: 14px;
-    color: var(--ink);
-    font-weight: 600;
-    line-height: 1.5;
-  }
-  @media (max-width: 900px) {
-    .stage { grid-template-columns: 1fr; gap: 24px; padding: 60px 0; }
-    .stage-letter { font-size: 120px; }
-    .stage-meta { text-align: left; }
-  }
+/* DESIGN TOKENS */
+:root {
+  --ink: #1C2420;
+  --ink-soft: #3F4F47;
+  --ink-light: #56685E;
+  --bg: #F0ECDF;
+  --paper: #F7F4EA;
+  --moss: #9AAF7A;
+  --moss-deep: #667B4A;
+  --moss-light: #BFD0A2;
+  --line: #DAD6C7;
+  --muted: #8A8772;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
 
-  /* TIMELINE */
-  .timeline-section {
-    background: var(--paper);
-    padding: 140px 0;
-  }
-  .timeline-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    margin-top: 60px;
-  }
-  .tl-card {
-    background: var(--bg);
-    padding: 48px 36px;
-    border: 1px solid var(--line);
-    position: relative;
-    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
-  }
-  .tl-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 24px 60px rgba(28, 36, 32, 0.08);
-  }
-  .tl-card-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    color: var(--moss-deep);
-    font-weight: 600;
-    margin-bottom: 24px;
-  }
-  .tl-card-title {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 1;
-    margin-bottom: 8px;
-    color: var(--ink);
-  }
-  .tl-card-subtitle {
-    font-size: 14px;
-    color: var(--ink-light);
-    font-weight: 600;
-    margin-bottom: 24px;
-  }
-  .tl-card-duration {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: var(--moss-deep);
-    background: rgba(154, 175, 122, 0.12);
-    padding: 6px 10px;
-    display: inline-block;
-    margin-bottom: 24px;
-  }
-  .tl-card-body {
-    font-size: 14px;
-    line-height: 1.65;
-    color: var(--ink-light);
-  }
-  @media (max-width: 900px) {
-    .timeline-grid { grid-template-columns: 1fr; }
-  }
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Fraunces:ital,wght@1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-  /* DATA NETWORK EFFECT */
-  .network-section {
-    background: var(--ink);
-    color: var(--bg);
-    padding: 160px 0;
-    overflow: hidden;
-    position: relative;
-  }
-  .network-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-  .network-section h2 {
-    font-weight: 900;
-    font-size: clamp(40px, 6vw, 72px);
-    letter-spacing: -0.025em;
-    line-height: 1.05;
-    color: var(--bg);
-    margin-bottom: 32px;
-    max-width: 900px;
-  }
-  .network-section h2 .italic { color: var(--moss-light); }
-  .network-section .section-sub {
-    color: rgba(240, 236, 223, 0.75);
-    max-width: 720px;
-    margin-bottom: 80px;
-  }
-  .flywheel {
-    position: relative;
-    max-width: 720px;
-    margin: 0 auto 80px;
-    aspect-ratio: 1;
-  }
-  .flywheel-svg {
-    width: 100%;
-    height: 100%;
-    animation: rotate-slow 60s linear infinite;
-  }
-  @keyframes rotate-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  .flywheel-center {
+/* RESET + BASE */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img, svg { max-width: 100%; display: block; }
+button { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* CONTAINERS */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.container-narrow { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 600px) { .container, .container-narrow { padding: 0 20px; } }
+
+/* TYPOGRAPHY UTILITIES */
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--moss-deep);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.italic {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 24px 0;
+  background: rgba(240, 236, 223, 0);
+  transition: background 0.3s var(--ease), padding 0.3s var(--ease);
+}
+.nav.scrolled {
+  background: rgba(240, 236, 223, 0.96);
+  backdrop-filter: blur(12px);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.nav.over-dark .nav-brand,
+.nav.over-dark .nav-links a {
+  color: var(--bg);
+}
+.nav.over-dark.scrolled .nav-brand,
+.nav.over-dark.scrolled .nav-links a {
+  color: var(--ink);
+}
+.nav.over-dark .nav-toggle span { background: var(--bg); }
+.nav.over-dark.scrolled .nav-toggle span { background: var(--ink); }
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+.nav-brand svg {
+  width: 32px;
+  height: 32px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  transition: color 0.2s var(--ease);
+}
+.nav-links a:hover { color: var(--moss-deep); }
+.nav-links a.active { color: var(--moss-deep); }
+.nav-cta {
+  padding: 10px 20px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+}
+.nav-cta:hover { background: var(--moss-deep); }
+.nav.over-dark .nav-cta {
+  background: var(--moss);
+  color: var(--ink);
+}
+.nav.over-dark .nav-cta:hover { background: var(--moss-light); }
+
+/* Mobile nav */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  transition: all 0.2s var(--ease);
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 900px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    background: var(--ink);
-    padding: 40px;
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid rgba(154, 175, 122, 0.3);
-  }
-  .flywheel-center-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    color: var(--moss-light);
-    margin-bottom: 12px;
-  }
-  .flywheel-center-text {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 1.15;
-    color: var(--bg);
-  }
-  .network-stages {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: rgba(154, 175, 122, 0.15);
-    border: 1px solid rgba(154, 175, 122, 0.25);
-  }
-  .network-stage {
-    background: var(--ink);
-    padding: 36px 28px;
-  }
-  .network-stage-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--moss-light);
-    margin-bottom: 16px;
-  }
-  .network-stage-title {
-    font-weight: 700;
-    font-size: 17px;
-    color: var(--bg);
-    margin-bottom: 10px;
-    line-height: 1.2;
-  }
-  .network-stage-body {
-    font-size: 13px;
-    line-height: 1.55;
-    color: rgba(240, 236, 223, 0.65);
-  }
-  @media (max-width: 900px) {
-    .network-stages { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 600px) {
-    .network-stages { grid-template-columns: 1fr; }
-    .flywheel-center { width: 180px; height: 180px; padding: 28px; }
-    .flywheel-center-text { font-size: 19px; }
-  }
-
-  /* DASHBOARD PREVIEW */
-  .dash-section { padding: 140px 0; }
-  .dash-preview {
-    background: var(--ink);
-    color: var(--bg);
-    padding: 56px;
-    border: 1px solid var(--moss-deep);
-    margin-top: 60px;
-    position: relative;
-    overflow: hidden;
-  }
-  .dash-preview::before {
-    content: "";
-    position: absolute;
-    top: 0;
+    top: 100%;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--moss), transparent);
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 24px 32px;
+    gap: 20px;
+    display: none;
   }
-  .dash-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 32px;
-    border-bottom: 1px solid rgba(240, 236, 223, 0.12);
-    margin-bottom: 40px;
-  }
-  .dash-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    color: var(--moss-light);
-    font-weight: 600;
-  }
-  .dash-live {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--moss);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .dash-live::before {
-    content: "";
-    width: 7px;
-    height: 7px;
-    background: var(--moss);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse { 0%,100% { opacity:1;transform:scale(1); } 50% { opacity:0.5;transform:scale(0.8); } }
-  .dash-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: rgba(240, 236, 223, 0.1);
-    border: 1px solid rgba(240, 236, 223, 0.1);
-  }
-  .dash-stat {
-    background: var(--ink);
-    padding: 32px 24px;
-  }
-  .dash-stat-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: rgba(240, 236, 223, 0.6);
-    margin-bottom: 14px;
-  }
-  .dash-stat-value {
-    font-weight: 900;
-    font-size: 40px;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    color: var(--bg);
-    margin-bottom: 8px;
-  }
-  .dash-stat-delta {
-    font-size: 12px;
-    color: var(--moss-light);
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .dash-note {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    color: rgba(240, 236, 223, 0.45);
-    margin-top: 36px;
-    text-align: center;
-  }
-  @media (max-width: 900px) {
-    .dash-preview { padding: 36px 24px; }
-    .dash-grid { grid-template-columns: 1fr 1fr; }
-    .dash-stat-value { font-size: 30px; }
-  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 8px 0; font-size: 16px; }
+  .nav.over-dark .nav-links a { color: var(--ink); }
+  .nav-cta { text-align: center; }
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s var(--ease);
+  font-family: inherit;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--bg);
+}
+.btn-primary:hover {
+  background: var(--moss-deep);
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--bg);
+  border: 1px solid rgba(240,236,223,0.3);
+}
+.btn-secondary:hover {
+  background: rgba(240,236,223,0.08);
+  border-color: var(--moss-light);
+}
+.btn-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
+/* REVEAL ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* FOOTER */
+.site-footer {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 80px 32px 40px;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(240,236,223,0.12);
+}
+.footer-brand {}
+.footer-logo {
+  font-weight: 900;
+  font-size: 32px;
+  letter-spacing: 0.05em;
+  color: var(--bg);
+  margin-bottom: 16px;
+}
+.footer-mission {
+  font-size: 15px;
+  color: rgba(240,236,223,0.7);
+  line-height: 1.6;
+  max-width: 440px;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-self: end;
+}
+.footer-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: rgba(240,236,223,0.65);
+  text-transform: uppercase;
+  transition: color 0.2s var(--ease);
+}
+.footer-links a:hover { color: var(--moss-light); }
+.footer-bottom {
+  max-width: 1280px;
+  margin: 40px auto 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: rgba(240,236,223,0.4);
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-links { justify-self: start; }
+}
+
+/* Headings reset within sections */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* ============================================================
+   SHARED ASK GRAIN BAR — appears on every page above the footer
+   ============================================================ */
+.ask-bar-page {
+  background: var(--ink);
+  padding: 18px 32px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  border-top: 1px solid rgba(240,236,223,0.08);
+  transition: background 0.2s ease;
+}
+.ask-bar-page:hover { background: #0F1612; }
+.ask-bar-page .ask-bar-page-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--bg);
+}
+.ask-bar-page .ask-bar-page-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--moss-light);
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.ask-bar-page .ask-bar-page-sep {
+  width: 1px;
+  height: 18px;
+  background: rgba(240,236,223,0.2);
+  flex-shrink: 0;
+}
+.ask-bar-page .ask-bar-page-input {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(240,236,223,0.7);
+  font-style: italic;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ask-bar-page .ask-bar-page-cue {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--moss-light);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.ask-bar-page.open .ask-bar-page-cue { transform: rotate(180deg); }
+
+.ask-bar-page-dropdown {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background: var(--ink);
+  border-top: 1px solid var(--moss-light);
+  max-height: 380px;
+  overflow-y: auto;
+  z-index: 100;
+}
+.ask-bar-page-dropdown.open { display: block; }
+.ask-bar-page-dropdown-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 32px 14px;
+}
+.ask-bar-page-dropdown-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: rgba(240,236,223,0.5);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10px 0 6px;
+  border-bottom: 1px solid rgba(240,236,223,0.08);
+}
+.ask-bar-page-q {
+  display: block;
+  width: 100%;
+  padding: 13px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(240,236,223,0.06);
+  color: rgba(240,236,223,0.85);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.15s ease, padding-left 0.15s ease;
+}
+.ask-bar-page-q:hover { color: var(--moss-light); padding-left: 8px; }
+.ask-bar-page-q:last-child { border-bottom: none; }
+.ask-bar-page-q::before {
+  content: "→ ";
+  color: var(--moss-light);
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .ask-bar-page { padding: 14px 20px; }
+  .ask-bar-page .ask-bar-page-inner { gap: 14px; }
+  .ask-bar-page .ask-bar-page-label { font-size: 10px; letter-spacing: 0.2em; }
+  .ask-bar-page .ask-bar-page-input { font-size: 13px; }
+  .ask-bar-page-dropdown-inner { padding: 10px 20px 14px; }
+}
+
+/* Ask GRAIN response panel (appears below bar when a question is selected) */
+.ask-bar-response {
+  display: none;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+.ask-bar-response.open { display: block; }
+.ask-bar-response-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 22px 32px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.ask-bar-response-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--moss-deep);
+  font-weight: 700;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  padding-top: 4px;
+  min-width: 64px;
+}
+.ask-bar-response-text {
+  flex: 1;
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.65;
+  font-family: 'Inter', sans-serif;
+}
+.ask-bar-response-close {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 26px;
+  cursor: pointer;
+  padding: 0 6px;
+  line-height: 1;
+  align-self: flex-start;
+  transition: color 0.2s ease;
+}
+.ask-bar-response-close:hover { color: var(--ink); }
+
+@media (max-width: 768px) {
+  .ask-bar-response-inner { padding: 18px 20px; gap: 14px; flex-direction: column; }
+  .ask-bar-response-label { min-width: 0; }
+  .ask-bar-response-close { position: absolute; top: 12px; right: 14px; }
+}
+
+/* ============================================================
+   SHARED PILL TOGGLE — used for view toggles and pricing toggles
+   ============================================================ */
+.pill-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.pill-toggle {
+  display: inline-flex;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 3px;
+  position: relative;
+  border-radius: 999px;
+}
+.pill-toggle-btn {
+  padding: 8px 22px;
+  background: transparent;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.25s ease;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.pill-toggle-btn.active { color: var(--paper); }
+.pill-toggle-slider {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  background: var(--ink);
+  border-radius: 999px;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 1;
+}
+.pill-toggle[data-active="right"] .pill-toggle-slider { transform: translateX(100%); }
+.pill-toggle-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 6px;
+  background: var(--moss);
+  color: var(--ink);
+  border-radius: 999px;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+@media (max-width: 600px) {
+  .pill-toggle-btn { padding: 7px 16px; font-size: 10px; letter-spacing: 0.06em; }
+}
+
+</style>
+
+<style>
+.page-hero { padding: 160px 32px 64px; max-width: 1280px; margin: 0 auto; }
+.page-hero h1 { font-weight: 900; font-size: clamp(48px, 7vw, 92px); line-height: 0.96; letter-spacing: -0.03em; margin-bottom: 32px; max-width: 1000px; }
+.page-hero h1 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+.page-hero-sub { font-size: clamp(17px, 1.6vw, 21px); color: var(--ink-soft); max-width: 720px; line-height: 1.55; }
+@media (max-width: 768px) { .page-hero { padding: 120px 20px 48px; } }
+
+/* Method overview grid (v5-style — 5 cells with hover color flip) */
+.method-overview { padding: 0 32px 80px; max-width: 1280px; margin: 0 auto; }
+.method-overview-grid { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--line); background: var(--line); gap: 1px; }
+.method-overview-cell { background: var(--bg); padding: 40px 26px; transition: background 0.32s cubic-bezier(0.16,1,0.3,1); cursor: default; }
+.method-overview-cell:hover { background: var(--ink); }
+.method-overview-cell:hover .method-overview-letter { color: var(--moss-light); }
+.method-overview-cell:hover .method-overview-word { color: rgba(240,236,223,0.96); }
+.method-overview-cell:hover .method-overview-desc { color: rgba(240,236,223,0.82); }
+.method-overview-letter { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 72px; line-height: 1; color: var(--moss-deep); letter-spacing: -0.03em; margin-bottom: 18px; transition: color 0.32s; }
+.method-overview-word { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; font-weight: 700; margin-bottom: 14px; color: var(--ink); transition: color 0.32s; text-transform: uppercase; }
+.method-overview-desc { font-size: 13px; line-height: 1.55; color: var(--ink-light); transition: color 0.32s; }
+@media (max-width: 860px) { .method-overview-grid { grid-template-columns: repeat(2, 1fr); } .method-overview-letter { font-size: 60px; } }
+@media (max-width: 500px) { .method-overview-grid { grid-template-columns: 1fr; } .method-overview { padding: 0 20px 56px; } }
+
+/* Five Stages */
+.stages { padding: 64px 0 96px; }
+.stage { display: grid; grid-template-columns: 200px 1fr 220px; gap: 48px; padding: 48px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.stage:last-child { border-bottom: none; }
+.stage-letter { font-family: 'Inter', sans-serif; font-style: normal; font-weight: 900; font-size: 140px; line-height: 1; color: var(--moss-deep); letter-spacing: -0.04em; }
+.stage-content h3 { font-weight: 900; font-size: 44px; line-height: 1; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--ink); }
+.stage-content p { font-size: 16px; color: var(--ink-light); line-height: 1.6; margin-bottom: 14px; max-width: 580px; }
+.stage-content p:last-child { margin-bottom: 0; }
+.stage-meta { background: var(--paper); border-left: 3px solid var(--moss-deep); padding: 24px 22px; align-self: start; }
+.stage-meta-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss-deep); margin-bottom: 10px; font-weight: 600; }
+.stage-meta-val { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 19px; line-height: 1.3; color: var(--ink); }
+@media (max-width: 1024px) {
+  .stage { grid-template-columns: 80px 1fr; gap: 28px; }
+  .stage-letter { font-size: 72px; }
+  .stage-content h3 { font-size: 34px; }
+  .stage-meta { grid-column: 1 / -1; margin-top: 14px; }
+}
+@media (max-width: 600px) {
+  .stage { grid-template-columns: 1fr; gap: 14px; }
+  .stage-letter { font-size: 60px; }
+}
+
+/* Mission Control Section */
+.mc-section { background: var(--ink); color: var(--bg); padding: 100px 32px; position: relative; overflow: hidden; }
+.mc-section::before { content: ""; position: absolute; top: 20%; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(154,175,122,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+.mc-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.mc-head { max-width: 760px; margin-bottom: 48px; }
+.mc-head .eyebrow { color: var(--moss-light); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; }
+.mc-head h2 { font-weight: 900; font-size: clamp(40px, 6vw, 64px); line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--bg); }
+.mc-head h2 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-light); }
+.mc-head p { font-size: 17px; color: rgba(240,236,223,0.8); line-height: 1.6; }
+.mc-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(240,236,223,0.1); border: 1px solid rgba(240,236,223,0.12); }
+.mc-feature { background: var(--ink); padding: 32px 28px; }
+.mc-feature-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss-light); margin-bottom: 16px; }
+.mc-feature-title { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 26px; line-height: 1.15; margin-bottom: 14px; color: var(--bg); }
+.mc-feature-body { font-size: 14px; color: rgba(240,236,223,0.75); line-height: 1.6; }
+@media (max-width: 900px) { .mc-features { grid-template-columns: 1fr; } }
+
+/* Data Network */
+.network-section { padding: 100px 32px; background: var(--paper); }
+.network-inner { max-width: 1100px; margin: 0 auto; }
+.network-head { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+.network-head h2 { font-weight: 900; font-size: clamp(36px, 5vw, 52px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 18px; }
+.network-head h2 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+.network-head p { font-size: 16px; color: var(--ink-soft); line-height: 1.6; }
+.network-stages { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.network-stage { background: var(--ink); color: var(--bg); padding: 28px 24px; }
+.network-stage-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss-light); margin-bottom: 14px; }
+.network-stage-title { font-weight: 700; font-size: 16px; color: var(--bg); margin-bottom: 8px; line-height: 1.2; }
+.network-stage-body { font-size: 13px; line-height: 1.55; color: rgba(240,236,223,0.65); }
+@media (max-width: 900px) { .network-stages { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .network-stages { grid-template-columns: 1fr; } }
+
+/* Deployment Timeline */
+.timeline-section { padding: 100px 32px; }
+.timeline-inner { max-width: 900px; margin: 0 auto; }
+.timeline-head { text-align: center; margin-bottom: 48px; }
+.timeline-head h2 { font-weight: 900; font-size: clamp(36px, 5vw, 52px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 18px; }
+.timeline-head h2 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+.timeline-head p { font-size: 16px; color: var(--ink-soft); line-height: 1.6; max-width: 580px; margin: 0 auto; }
+.timeline-list { position: relative; }
+.timeline-list::before { content: ""; position: absolute; left: 100px; top: 24px; bottom: 24px; width: 1px; background: var(--line); }
+.timeline-item { display: grid; grid-template-columns: 100px 1fr; gap: 48px; align-items: start; padding: 24px 0; position: relative; }
+.timeline-item::before { content: ""; position: absolute; left: 96px; top: 30px; width: 9px; height: 9px; background: var(--moss); border-radius: 50%; }
+.timeline-day { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss-deep); font-weight: 600; padding-top: 4px; }
+.timeline-content h4 { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 24px; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
+.timeline-content p { font-size: 15px; color: var(--ink-light); line-height: 1.55; }
+@media (max-width: 600px) {
+  .timeline-list::before { left: 6px; }
+  .timeline-item { grid-template-columns: 1fr; gap: 6px; padding-left: 32px; }
+  .timeline-item::before { left: 2px; top: 8px; }
+  .timeline-day { padding-top: 0; }
+}
+
+/* CTA */
+.cta-section { background: var(--ink); color: var(--bg); padding: 120px 32px; text-align: center; }
+.cta-section .eyebrow { color: var(--moss-light); justify-content: center; }
+.cta-section h2 { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: clamp(36px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 28px; color: var(--bg); }
+.cta-section p { font-size: 17px; color: rgba(240,236,223,0.8); line-height: 1.6; max-width: 600px; margin: 0 auto 36px; }
+.cta-section .btn-primary { background: var(--moss); color: var(--ink); }
+.cta-section .btn-primary:hover { background: var(--moss-light); }
+
+/* ===== V5-style method grid (5 cells with hover flip) ===== */
+.method-section { padding: 80px 28px; max-width: 1160px; margin: 0 auto; }
+.method-section-head { max-width: 760px; margin-bottom: 48px; }
+.method-section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; color: var(--moss-deep); font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.method-section-label::before { content: ""; width: 28px; height: 1.5px; background: var(--moss-deep); }
+.method-section-h2 { font-weight: 800; font-size: clamp(32px, 5vw, 52px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; color: var(--ink); }
+.method-section-h2 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+.method-section-sub { font-size: 17px; color: var(--ink-light); max-width: 620px; line-height: 1.55; }
+
+.method-grid { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--line); background: var(--line); gap: 1px; }
+.method-cell { background: var(--bg); padding: 36px 22px; transition: background 0.32s cubic-bezier(0.16,1,0.3,1); cursor: default; }
+.method-cell:hover { background: var(--ink); }
+.method-cell:hover .method-letter { color: var(--moss-light); }
+.method-cell:hover .method-word { color: rgba(240,236,223,0.96); }
+.method-cell:hover .method-desc { color: rgba(240,236,223,0.82); }
+.method-letter { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 66px; line-height: 1; color: var(--moss-deep); letter-spacing: -0.03em; margin-bottom: 12px; transition: color 0.32s; }
+.method-word { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; font-weight: 700; margin-bottom: 12px; color: var(--ink); transition: color 0.32s; text-transform: uppercase; }
+.method-desc { font-size: 13px; line-height: 1.55; color: var(--ink-light); transition: color 0.32s; }
+@media (max-width: 860px) { .method-grid { grid-template-columns: repeat(2, 1fr); } .method-letter { font-size: 56px; } }
+@media (max-width: 500px) { .method-grid { grid-template-columns: 1fr; } }
+
+/* ===== Embedded dashboard preview (v5 dash-wrap style) ===== */
+.dash-preview { margin-top: 56px; background: var(--ink); padding: 36px; position: relative; overflow: hidden; }
+.dash-preview::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--moss), transparent); }
+.dash-preview::after { content: ""; position: absolute; bottom: -70px; right: -70px; width: 260px; height: 260px; background: radial-gradient(circle, rgba(154,175,122,0.14) 0%, transparent 62%); pointer-events: none; }
+.dash-preview-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 1px solid rgba(240,236,223,0.1); margin-bottom: 24px; position: relative; z-index: 1; }
+.dash-preview-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; color: var(--moss-light); font-weight: 600; }
+.dash-preview-live { display: inline-flex; align-items: center; gap: 7px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--moss-light); font-weight: 500; }
+.dash-preview-live::before { content: ""; width: 7px; height: 7px; background: var(--moss); border-radius: 50%; animation: live-pulse 2s infinite; }
+@keyframes live-pulse { 0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(154,175,122,0.5); } 50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(154,175,122,0); } }
+.dash-preview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; position: relative; z-index: 1; }
+.dash-preview-stat { padding: 22px 18px; background: rgba(240,236,223,0.04); border: 1px solid rgba(240,236,223,0.07); transition: all 0.3s; }
+.dash-preview-stat:hover { background: rgba(240,236,223,0.07); border-color: rgba(154,175,122,0.28); }
+.dash-preview-stat-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: rgba(240,236,223,0.5); margin-bottom: 9px; font-weight: 500; text-transform: uppercase; }
+.dash-preview-stat-value { font-weight: 900; font-size: 30px; color: var(--moss-light); letter-spacing: -0.02em; line-height: 1; margin-bottom: 7px; font-variant-numeric: tabular-nums; }
+.dash-preview-stat-delta { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--moss); font-weight: 600; }
+.dash-preview-cta { margin-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 20px; position: relative; z-index: 1; flex-wrap: wrap; }
+.dash-preview-cta-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(240,236,223,0.5); letter-spacing: 0.15em; text-transform: uppercase; }
+.dash-preview-cta-btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; background: var(--moss); color: var(--ink); font-weight: 700; font-size: 13px; text-decoration: none; transition: background 0.2s ease; white-space: nowrap; }
+.dash-preview-cta-btn:hover { background: var(--moss-light); }
+@media (max-width: 760px) { .dash-preview-grid { grid-template-columns: 1fr 1fr; } .dash-preview { padding: 24px 18px; } }
 </style>
 </head>
 <body>
@@ -382,357 +705,291 @@
       <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#667B4A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
       GRAIN
     </a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
     <div class="nav-links" id="nav-links">
       <a href="method.html" class="active">Method</a>
-      <a href="pricing.html">Pricing</a>
+      <a href="dashboard.html">Dashboard</a>
       <a href="calculator.html">Calculator</a>
+      <a href="pricing.html">Pricing</a>
       <button class="nav-cta" onclick="openCalendly(event)">Apply for Audit</button>
     </div>
   </div>
 </nav>
 
-<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="eyebrow">THE GRAIN METHOD</div>
-  <h1>One system. <span class="italic">Five stages.</span><br>Built to close the gap.</h1>
-  <p class="page-hero-sub">GRAIN isn't a chatbot, an answering service, or a CRM. It's the complete lead-to-customer system your business should have had years ago. Five integrated stages. One install. Done for you in 7 days.</p>
+  <h1>One dashboard. <span class="italic">Five engines.</span></h1>
+  <p class="page-hero-sub">GRAIN is the complete operating system for home service growth. Five integrated engines running 24/7, one private dashboard, one team behind it. Catches every lead, answers every call, follows up on every quote, and surfaces the patterns most owners can't see. Deployed in 7 days.</p>
 </section>
 
-<!-- FIVE STAGES -->
-<section class="stages">
-  <div class="container">
-    <div class="stage reveal">
-      <div class="stage-letter">G</div>
-      <div class="stage-content">
-        <h3>Generate.</h3>
-        <p>Capture demand from every channel. Web forms, phone calls, missed calls, social DMs, paid ads, referrals, and lead aggregator sources like Thumbtack, Angi, and Google LSA.</p>
-        <p>Nothing slips through. Every inquiry hits the same intake, gets tagged by source, and starts moving through the system within seconds.</p>
-      </div>
-      <div class="stage-meta">
-        <div class="stage-meta-label">RESPONSE TIME</div>
-        <div class="stage-meta-val">Instant capture<br>across all channels</div>
-      </div>
-    </div>
+<section class="method-section">
+  <div class="method-section-head reveal">
+    <div class="method-section-label">THE FIVE ENGINES</div>
+    <h2 class="method-section-h2">Five integrated engines, <span class="italic">running on autopilot.</span></h2>
+    <p class="method-section-sub">Each engine runs 24/7. Each one feeds the next. You see every metric, every conversation, every dollar in one private dashboard.</p>
+  </div>
 
-    <div class="stage reveal">
-      <div class="stage-letter">R</div>
-      <div class="stage-content">
-        <h3>Respond.</h3>
-        <p>Every inquiry gets answered in under 60 seconds, 24 hours a day, 7 days a week. Voice answers your calls. SMS catches your missed ones. Email responds to your forms.</p>
-        <p>The conversation feels human because the system has been trained on thousands of real homeowner conversations in your specific trade.</p>
-      </div>
-      <div class="stage-meta">
-        <div class="stage-meta-label">STANDARD</div>
-        <div class="stage-meta-val">&lt;60 seconds<br>24/7/365</div>
-      </div>
+  <div class="method-grid reveal">
+    <div class="method-cell">
+      <div class="method-letter">G</div>
+      <div class="method-word">Generate</div>
+      <div class="method-desc">Every lead, every channel. Calls, texts, web forms, social DMs, referrals, paid ads. Nothing slips through.</div>
     </div>
-
-    <div class="stage reveal">
-      <div class="stage-letter">A</div>
-      <div class="stage-content">
-        <h3>Automate.</h3>
-        <p>Quote follow-up sequences. Appointment confirmations. Review requests after every job. Referral asks at the right moment. Reactivation drips for stalled leads.</p>
-        <p>Every workflow that used to live in your head, now runs on autopilot. You stop forgetting. Your customers stop being forgotten.</p>
-      </div>
-      <div class="stage-meta">
-        <div class="stage-meta-label">CADENCE</div>
-        <div class="stage-meta-val">90 days of follow-up<br>per quote, automatic</div>
-      </div>
+    <div class="method-cell">
+      <div class="method-letter">R</div>
+      <div class="method-word">Respond</div>
+      <div class="method-desc">Under 60 seconds, 24/7. Voice agent, SMS, email, social DMs — every inquiry answered the moment it arrives.</div>
     </div>
-
-    <div class="stage reveal">
-      <div class="stage-letter">I</div>
-      <div class="stage-content">
-        <h3>Integrate.</h3>
-        <p>Connects to whatever you're already using. ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, GoHighLevel, Leap, and more.</p>
-        <p>No rip-and-replace. We layer on top of your existing tools and make them do what you hoped they would when you bought them.</p>
-      </div>
-      <div class="stage-meta">
-        <div class="stage-meta-label">CRM SUPPORT</div>
-        <div class="stage-meta-val">12+ direct integrations<br>plus custom builds</div>
-      </div>
+    <div class="method-cell">
+      <div class="method-letter">A</div>
+      <div class="method-word">Automate</div>
+      <div class="method-desc">90-day quote follow-up, review asks, service reminders, referral asks. Every workflow runs hands-off.</div>
     </div>
+    <div class="method-cell">
+      <div class="method-letter">I</div>
+      <div class="method-word">Integrate</div>
+      <div class="method-desc">Plugs into ServiceTitan, Jobber, Housecall Pro, JobNimbus, your calendar, your CRM. No rip-and-replace.</div>
+    </div>
+    <div class="method-cell">
+      <div class="method-letter">N</div>
+      <div class="method-word">Nurture</div>
+      <div class="method-desc">Quarterly check-ins, seasonal triggers, anniversaries, win-backs. Your existing customers stay yours.</div>
+    </div>
+  </div>
 
-    <div class="stage reveal">
-      <div class="stage-letter">N</div>
-      <div class="stage-content">
-        <h3>Nurture.</h3>
-        <p>Past customers reactivated quarterly. Seasonal touchpoints. Maintenance reminders. Birthday and anniversary check-ins. Holiday campaigns.</p>
-        <p>The work you already did keeps generating revenue years later. Most clients pull $50K to $200K out of their existing customer list within the first 90 days.</p>
-      </div>
-      <div class="stage-meta">
-        <div class="stage-meta-label">REACTIVATION</div>
-        <div class="stage-meta-val">Quarterly cadence<br>across full customer history</div>
-      </div>
+  <div class="dash-preview reveal">
+    <div class="dash-preview-header">
+      <div class="dash-preview-title">YOUR PRIVATE DASHBOARD · SAMPLE</div>
+      <div class="dash-preview-live">LIVE</div>
+    </div>
+    <div class="dash-preview-grid">
+      <div class="dash-preview-stat"><div class="dash-preview-stat-label">JOBS BOOKED</div><div class="dash-preview-stat-value">14</div><div class="dash-preview-stat-delta">+8 from system</div></div>
+      <div class="dash-preview-stat"><div class="dash-preview-stat-label">LEADS RECOVERED</div><div class="dash-preview-stat-value">67</div><div class="dash-preview-stat-delta">vs 0 last month</div></div>
+      <div class="dash-preview-stat"><div class="dash-preview-stat-label">AVG RESPONSE TIME</div><div class="dash-preview-stat-value">42s</div><div class="dash-preview-stat-delta">was 47 min</div></div>
+      <div class="dash-preview-stat"><div class="dash-preview-stat-label">REVENUE FROM SYSTEM</div><div class="dash-preview-stat-value">$124K</div><div class="dash-preview-stat-delta">month-to-date</div></div>
+    </div>
+    <div class="dash-preview-cta">
+      <div class="dash-preview-cta-text">Every metric, every engine, updated live · Memorial HVAC, Nashville · Sample data</div>
+      <a href="dashboard.html" class="dash-preview-cta-btn">See the full dashboard <span style="font-family:'JetBrains Mono',monospace;">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- WORKS WITH -->
-<section class="works-with">
-  <div class="container">
-    <div class="works-with-label">CONNECTS DIRECTLY TO YOUR EXISTING TOOLS</div>
-    <div class="logo-grid">
-      <div class="logo-cell">ServiceTitan</div>
-      <div class="logo-cell">Jobber</div>
-      <div class="logo-cell">Housecall Pro</div>
-      <div class="logo-cell">JobNimbus</div>
-      <div class="logo-cell">AccuLynx</div>
-      <div class="logo-cell">FieldPulse</div>
-      <div class="logo-cell">GoHighLevel</div>
-      <div class="logo-cell">Leap</div>
-      <div class="logo-cell">SalesRabbit</div>
-      <div class="logo-cell">JobTread</div>
-      <div class="logo-cell">Service Fusion</div>
-      <div class="logo-cell">Improveit360</div>
-    </div>
-  </div>
-</section>
-
-<!-- DEPLOYMENT TIMELINE -->
-<section class="timeline-section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">DEPLOYMENT</div>
-      <h2>7 days from signed <span class="italic">to running.</span></h2>
-      <p class="section-sub">Three phases. One week. Live and answering your phone before most agencies have finished their kickoff call.</p>
-    </div>
-    <div class="timeline-grid">
-      <div class="tl-card reveal reveal-delay-1">
-        <div class="tl-card-num">01 · PLANT</div>
-        <div class="tl-card-title">Plant.</div>
-        <div class="tl-card-subtitle">We learn your business.</div>
-        <div class="tl-card-duration">DAYS 1—2</div>
-        <div class="tl-card-body">A 60-minute kickoff. We pull your last 12 months of leads, quotes, and customer data and produce your Day-1 Onboarding Intelligence Report. Every gap mapped. A clear plan, a clear target.</div>
-      </div>
-      <div class="tl-card reveal reveal-delay-2">
-        <div class="tl-card-num">02 · NURTURE</div>
-        <div class="tl-card-title">Nurture.</div>
-        <div class="tl-card-subtitle">The system goes in.</div>
-        <div class="tl-card-duration">DAYS 3—5</div>
-        <div class="tl-card-body">Voice agent built and tuned for your trade. SMS responder armed. 90-day quote follow-up sequences set. Past customer reactivation flows ready. CRM integrated. Dashboard provisioned.</div>
-      </div>
-      <div class="tl-card reveal reveal-delay-3">
-        <div class="tl-card-num">03 · SCALE</div>
-        <div class="tl-card-title">Scale.</div>
-        <div class="tl-card-subtitle">It starts working for you.</div>
-        <div class="tl-card-duration">DAYS 6—7</div>
-        <div class="tl-card-body">Internal QA across every workflow. Team training call. Final tuning. The system goes live on Day 7 and starts answering your phone, working your quotes, and reactivating your customers.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DATA NETWORK EFFECT -->
 <section class="network-section">
   <div class="network-inner">
-    <div class="reveal">
-      <div class="eyebrow" style="color: var(--moss-light);">THE FLYWHEEL</div>
-      <h2>The system gets <span class="italic">smarter</span> every month.</h2>
-      <p class="section-sub">Most agencies sell you a configuration and walk away. GRAIN sells you a system that learns. Every call handled, every text exchange, every quote that converts or goes cold becomes signal. Anonymized, aggregated, used to make every GRAIN client's system smarter the next month.</p>
+    <div class="network-head reveal">
+      <div class="eyebrow" style="justify-content: center;">THE DATA FLYWHEEL</div>
+      <h2>Every client makes the system <span class="italic">smarter.</span></h2>
+      <p>GRAIN doesn't sit still. Every conversation, every conversion, every script that worked or didn't — all of it feeds back into the system. The roofer in Tennessee benefits from what was learned in Texas.</p>
     </div>
-
-    <div class="flywheel reveal reveal-delay-2">
-      <svg class="flywheel-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-        <!-- Outer ring -->
-        <circle cx="200" cy="200" r="180" fill="none" stroke="rgba(154,175,122,0.25)" stroke-width="1" stroke-dasharray="2 6"/>
-        <!-- Inner ring -->
-        <circle cx="200" cy="200" r="140" fill="none" stroke="rgba(154,175,122,0.4)" stroke-width="1.5"/>
-        <!-- 4 arcs -->
-        <g stroke="#9AAF7A" stroke-width="2" fill="none" stroke-linecap="round">
-          <path d="M 200 60 A 140 140 0 0 1 340 200" />
-          <path d="M 340 200 A 140 140 0 0 1 200 340" opacity="0.7"/>
-          <path d="M 200 340 A 140 140 0 0 1 60 200" opacity="0.5"/>
-          <path d="M 60 200 A 140 140 0 0 1 200 60" opacity="0.3"/>
-        </g>
-        <!-- Arrow heads on each arc end -->
-        <g fill="#9AAF7A">
-          <polygon points="340,195 350,200 340,205" />
-          <polygon points="195,340 200,350 205,340" opacity="0.7"/>
-          <polygon points="60,205 50,200 60,195" opacity="0.5"/>
-          <polygon points="205,60 200,50 195,60" opacity="0.3"/>
-        </g>
-        <!-- Node dots at quadrants -->
-        <g fill="#BFD0A2">
-          <circle cx="200" cy="60" r="6"/>
-          <circle cx="340" cy="200" r="6"/>
-          <circle cx="200" cy="340" r="6"/>
-          <circle cx="60" cy="200" r="6"/>
-        </g>
-      </svg>
-      <div class="flywheel-center">
-        <div class="flywheel-center-label">EVERY MONTH</div>
-        <div class="flywheel-center-text">Smarter agents. Better sequences.</div>
-      </div>
-    </div>
-
-    <div class="network-stages reveal reveal-delay-3">
-      <div class="network-stage">
+    <div class="network-stages">
+      <div class="network-stage reveal">
         <div class="network-stage-num">01</div>
-        <div class="network-stage-title">Your business runs the system.</div>
-        <div class="network-stage-body">Voice calls. Texts. Quotes. Follow-ups. Real interactions, real outcomes, real data.</div>
+        <div class="network-stage-title">Your system runs.</div>
+        <div class="network-stage-body">Calls. Texts. Quotes. Follow-ups. Real interactions with real customers, every day.</div>
       </div>
-      <div class="network-stage">
+      <div class="network-stage reveal reveal-delay-1">
         <div class="network-stage-num">02</div>
         <div class="network-stage-title">Real signal is captured.</div>
-        <div class="network-stage-body">Every call recorded. Every conversion tracked. Every script that worked or didn't, logged.</div>
+        <div class="network-stage-body">Every call recorded. Every conversion tracked. Every script logged with what worked and what didn't.</div>
       </div>
-      <div class="network-stage">
+      <div class="network-stage reveal reveal-delay-2">
         <div class="network-stage-num">03</div>
         <div class="network-stage-title">Aggregated across the network.</div>
-        <div class="network-stage-body">Anonymized signal from every GRAIN client trains the next iteration of the system, by trade and region.</div>
+        <div class="network-stage-body">Anonymized signal from every GRAIN client trains the next iteration, by trade and region.</div>
       </div>
-      <div class="network-stage">
+      <div class="network-stage reveal reveal-delay-3">
         <div class="network-stage-num">04</div>
-        <div class="network-stage-title">Returns to your business, smarter.</div>
-        <div class="network-stage-body">The roofer in Tennessee benefits from what was learned in Texas. Your system grows compounding intelligence over time.</div>
+        <div class="network-stage-title">Returns smarter.</div>
+        <div class="network-stage-body">Patterns that no individual owner could see become visible. Your system grows compounding intelligence over time.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DASHBOARD PREVIEW -->
-<section class="dash-section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">YOUR DASHBOARD</div>
-      <h2>Live numbers. <span class="italic">Yours.</span></h2>
-      <p class="section-sub">Every GRAIN client gets a live performance dashboard. Updated in real time. Showing exactly what the system is doing for your revenue.</p>
+<section class="timeline-section">
+  <div class="timeline-inner">
+    <div class="timeline-head reveal">
+      <div class="eyebrow" style="justify-content: center;">DEPLOYMENT</div>
+      <h2>Live in <span class="italic">seven days.</span></h2>
+      <p>The Greenhouse standard. From signed agreement to your system going live. Orchard adds 7 days. Estate adds 23.</p>
     </div>
-    <div class="dash-preview reveal">
-      <div class="dash-header">
-        <div class="dash-title">SAMPLE CLIENT DASHBOARD · LAST 30 DAYS</div>
-        <div class="dash-live">LIVE</div>
-      </div>
-      <div class="dash-grid">
-        <div class="dash-stat">
-          <div class="dash-stat-label">JOBS BOOKED</div>
-          <div class="dash-stat-value" data-target="14">0</div>
-          <div class="dash-stat-delta">+8 from system</div>
-        </div>
-        <div class="dash-stat">
-          <div class="dash-stat-label">LEADS RECOVERED</div>
-          <div class="dash-stat-value" data-target="67">0</div>
-          <div class="dash-stat-delta">vs last month</div>
-        </div>
-        <div class="dash-stat">
-          <div class="dash-stat-label">RESPONSE TIME</div>
-          <div class="dash-stat-value" data-target="42" data-suffix="s">0s</div>
-          <div class="dash-stat-delta">was 47 min</div>
-        </div>
-        <div class="dash-stat">
-          <div class="dash-stat-label">ATTRIBUTED REVENUE</div>
-          <div class="dash-stat-value" data-target="124" data-prefix="$" data-suffix="K">$0K</div>
-          <div class="dash-stat-delta">month-to-date</div>
+    <div class="timeline-list">
+      <div class="timeline-item reveal">
+        <div class="timeline-day">DAY 1</div>
+        <div class="timeline-content">
+          <h4>Kickoff and intelligence pull.</h4>
+          <p>60-minute kickoff call. We pull your last 12 months of leads, quotes, and customer data. Voice samples for your agent. CRM access. Brand voice review.</p>
         </div>
       </div>
-      <div class="dash-note">SAMPLE NUMBERS · YOUR DASHBOARD UPDATES IN REAL TIME</div>
+      <div class="timeline-item reveal">
+        <div class="timeline-day">DAY 2</div>
+        <div class="timeline-content">
+          <h4>Day-1 Intelligence Report delivered.</h4>
+          <p>Where money was being lost when you signed up, in dollars. Where the leak is biggest. What we're fixing first.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-day">DAYS 2-3</div>
+        <div class="timeline-content">
+          <h4>Voice agent built and tested.</h4>
+          <p>Trade-specific scripts, qualification flow, scheduling, escalation logic. Internal QA calls before any live customers hit it.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-day">DAYS 3-4</div>
+        <div class="timeline-content">
+          <h4>SMS, email, and follow-up sequences live.</h4>
+          <p>Missed-call responders. Web form auto-responses. 90-day quote follow-up sequences. Appointment reminders. Review requests.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-day">DAYS 4-5</div>
+        <div class="timeline-content">
+          <h4>CRM integrated. Dashboard live.</h4>
+          <p>Your existing CRM connected. Your private dashboard active at grainmethod.com. Initial data flowing.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-day">DAYS 5-7</div>
+        <div class="timeline-content">
+          <h4>Testing, training, go-live.</h4>
+          <p>Final QA. Your team trained on the dashboard and the Slack channel. System tested end to end. Go-live call. The system starts catching leads.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section style="padding: 160px 32px; text-align: center; max-width: 920px; margin: 0 auto;">
-  <div class="eyebrow reveal" style="justify-content: center;">THE NEXT STEP</div>
-  <h2 class="reveal reveal-delay-1" style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: clamp(40px, 6vw, 72px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 32px; color: var(--ink);">See what the gap is costing you.</h2>
-  <p class="reveal reveal-delay-2" style="font-size: 18px; color: var(--ink-light); line-height: 1.6; max-width: 600px; margin: 0 auto 48px;">A 30-minute audit. We trace your real numbers and give you a specific dollar figure. Whether or not you become a client.</p>
-  <div class="reveal reveal-delay-3">
-    <button class="btn btn-primary" onclick="openCalendly(event)">Apply for Your Audit <span class="btn-arrow">→</span></button>
-  </div>
+<section class="cta-section">
+  <div class="eyebrow reveal">THE NEXT STEP</div>
+  <h2 class="reveal reveal-delay-1">See what slow response is costing you.</h2>
+  <p class="reveal reveal-delay-2">A 30-minute audit. We trace your real numbers and give you a specific dollar figure. No pitch. Just the math.</p>
+  <button class="btn btn-primary reveal reveal-delay-3" onclick="openCalendly(event)">Apply for Your Audit <span class="btn-arrow">→</span></button>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
+<!-- Persistent Ask GRAIN bar -->
+<div class="ask-bar-page" id="ask-bar-page">
+  <div class="ask-bar-page-dropdown" id="ask-bar-dropdown">
+    <div class="ask-bar-page-dropdown-inner">
+      <div class="ask-bar-page-dropdown-label">Pick a question — ask GRAIN anything about us</div>
+      <button class="ask-bar-page-q" data-q="What does GRAIN actually do?">What does GRAIN actually do?</button>
+      <button class="ask-bar-page-q" data-q="How are you different from other agencies?">How are you different from other agencies?</button>
+      <button class="ask-bar-page-q" data-q="Why can't I just hire a virtual receptionist?">Why can't I just hire a virtual receptionist?</button>
+      <button class="ask-bar-page-q" data-q="What's the difference between Greenhouse and Orchard?">What's the difference between Greenhouse and Orchard?</button>
+      <button class="ask-bar-page-q" data-q="Can you really deploy in 7 days?">Can you really deploy in 7 days?</button>
+      <button class="ask-bar-page-q" data-q="Is this AI answering my calls, or real people?">Is this AI answering my calls, or real people?</button>
+      <button class="ask-bar-page-q" data-q="What happens if you don't deliver 5 jobs in 60 days?">What happens if you don't deliver 5 jobs in 60 days?</button>
+      <button class="ask-bar-page-q" data-q="How do you keep my customer data private?">How do you keep my customer data private?</button>
+      <button class="ask-bar-page-q" data-q="What home service trades do you work with?">What home service trades do you work with?</button>
+      <button class="ask-bar-page-q" data-q="Why should I trust you with my business?">Why should I trust you with my business?</button>
+    </div>
+  </div>
+  <div class="ask-bar-page-inner">
+    <span class="ask-bar-page-label">Ask GRAIN</span>
+    <span class="ask-bar-page-sep"></span>
+    <span class="ask-bar-page-input" id="ask-bar-page-input">"What does GRAIN actually do?"</span>
+    <span class="ask-bar-page-cue">▾</span>
+  </div>
+</div>
+<div class="ask-bar-response" id="ask-bar-response">
+  <div class="ask-bar-response-inner">
+    <div class="ask-bar-response-label">GRAIN</div>
+    <div class="ask-bar-response-text" id="ask-bar-response-text"></div>
+    <button class="ask-bar-response-close" id="ask-bar-response-close" type="button" aria-label="Close">×</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var askAnswers = {
+    "What does GRAIN actually do?": "GRAIN is the operating system that runs in the background of your business. We catch every lead from every channel — phone, text, web form, social DM — answer every inquiry in under 60 seconds, follow up on every quote for 90 days, and keep your customer base warm so they come back. You see all of it in one dashboard. It's done-for-you. You focus on the work; we keep the business running.",
+    "How are you different from other agencies?": "Most agencies generate leads and hand them off. We do the opposite — we focus on what happens AFTER the lead arrives, which is where most home service businesses lose 35-50% of what comes in. We have a guaranteed deployment timeline (7 days), a measurable outcome (5 extra jobs in 60 days or we work free), and a private dashboard so you see every metric live. We're not selling more leads. We're selling a system that converts more of the leads you already have.",
+    "Why can't I just hire a virtual receptionist?": "A virtual receptionist answers calls. GRAIN catches every lead from every channel (calls, texts, forms, social DMs), responds in under 60 seconds 24/7, follows up automatically for 90 days on every quote, syncs with your CRM, runs reactivation campaigns on dormant customers, and shows you the whole picture in one dashboard. Receptionists are people. GRAIN is infrastructure.",
+    "What's the difference between Greenhouse and Orchard?": "Greenhouse ($2,497/mo) is for single-location, single-trade businesses doing $500K-$3M revenue with 30-150 leads/month. Orchard ($5,997/mo) is for multi-location or multi-trade businesses doing $3M-$10M with 150-500 leads/month. Orchard also includes Fertilizer (reputation engine), quarterly Compost campaigns, weekly strategy calls, priority support, and access to the GRAIN private community.",
+    "Can you really deploy in 7 days?": "Yes — we built this specifically for fast deployment. Day 1: kickoff and intelligence pull. Day 2: Day-1 Intelligence Report delivered. Days 2-3: voice agent built and tested. Days 3-4: SMS, email, and 90-day follow-up sequences live. Days 4-5: CRM integrated, dashboard live. Days 5-7: testing, training, go-live. By Day 7, your system is catching leads.",
+    "Is this AI answering my calls, or real people?": "The voice agent is a system, but it's trained on thousands of real home service conversations in your specific trade. It sounds natural. It can answer questions, book appointments, escalate emergencies to you, and qualify leads before they hit your team. Real people (your team and ours) handle the work after the conversation. The system makes sure no call gets missed.",
+    "What happens if you don't deliver 5 jobs in 60 days?": "We work for free until you get them. No fine print. Your setup fee is non-refundable, but the monthly fee stops accruing until we hit the threshold. Service continues uninterrupted. The bet is on us, not you.",
+    "How do you keep my customer data private?": "Your data lives in your private dashboard. It's not shared with other clients. The only thing we use cross-client is anonymized patterns (what scripts convert, what objections come up most often) which helps the system get smarter for everyone. Your actual customer list, contact info, and revenue are yours alone.",
+    "What home service trades do you work with?": "Roofing, HVAC, plumbing, pest control, electrical, fencing, pool, painting, landscaping, and remodeling. The system is built around what these trades have in common: high-value jobs, time-sensitive leads, repeat-purchase potential, and trust-driven decisions. If you're outside these trades, ask — odds are we can adapt the system.",
+    "Why should I trust you with my business?": "Because we work in public. Our dashboard is live and demo-able right now. Our pricing is on the website. Our guarantee is specific. Our deployment timeline is published. We don't lock you into long contracts — it's month-to-month after the first 60 days. And we built this because we sell using the same system. That's literally how we found you."
+  };
+
+  var askBarPage = document.getElementById('ask-bar-page');
+  var askBarDropdown = document.getElementById('ask-bar-dropdown');
+  var askBarInput = document.getElementById('ask-bar-page-input');
+  var askBarResponse = document.getElementById('ask-bar-response');
+  var askBarResponseText = document.getElementById('ask-bar-response-text');
+  var askBarResponseClose = document.getElementById('ask-bar-response-close');
+
+  if (!askBarPage || !askBarDropdown || !askBarInput || !askBarResponse || !askBarResponseText) return;
+
+  askBarPage.addEventListener('click', function(e) {
+    if (e.target.closest('.ask-bar-page-q')) return;
+    e.stopPropagation();
+    askBarDropdown.classList.toggle('open');
+    askBarPage.classList.toggle('open');
+  });
+
+  askBarDropdown.querySelectorAll('.ask-bar-page-q').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var q = btn.dataset.q;
+      askBarInput.textContent = '"' + q + '"';
+      askBarResponseText.textContent = askAnswers[q] || '';
+      askBarResponse.classList.add('open');
+      askBarDropdown.classList.remove('open');
+      askBarPage.classList.remove('open');
+    });
+  });
+
+  if (askBarResponseClose) {
+    askBarResponseClose.addEventListener('click', function(e) {
+      e.stopPropagation();
+      askBarResponse.classList.remove('open');
+      askBarInput.textContent = '"What does GRAIN actually do?"';
+    });
+  }
+
+  document.addEventListener('click', function() {
+    askBarDropdown.classList.remove('open');
+    askBarPage.classList.remove('open');
+  });
+})();
+</script>
+
+<footer class="site-footer">
+
   <div class="footer-inner">
-    <div class="footer-brand-block">
-      <div class="footer-brand">
-        <svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#1C2420" rx="40"/><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#F0ECDF"/></g></g></svg>
-        GRAIN
-      </div>
-      <div class="footer-tag">PLANT · NURTURE · SCALE</div>
+    <div class="footer-brand">
+      <div class="footer-logo">GRAIN</div>
       <div class="footer-mission">Done-for-you lead response for home service businesses. Nashville-based. Serving nationwide.</div>
     </div>
-    <div class="footer-col">
-      <h4>System</h4>
-      <a href="method.html">The Method</a>
-      <a href="pricing.html">Pricing</a>
+    <div class="footer-links">
+      <a href="method.html">Method</a>
+      <a href="dashboard.html">Dashboard</a>
       <a href="calculator.html">Calculator</a>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="#" onclick="openCalendly(event); return false;">Apply for Audit</a>
-      <a href="mailto:johnny@grainmethod.com">Contact</a>
-    </div>
-    <div class="footer-col">
-      <h4>Trust</h4>
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Guarantee</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="apply.html">Apply</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <div>© 2026 GRAIN Method LLC · Nashville, Tennessee</div>
-    <div>johnny@grainmethod.com</div>
-  </div>
+  <div class="footer-bottom">© 2026 GRAIN Method. All rights reserved.</div>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    const navToggle = document.getElementById('nav-toggle');
-  const navLinks = document.getElementById('nav-links');
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
-    });
-  }
-  const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  });
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+navToggle.addEventListener('click', () => { navToggle.classList.toggle('open'); navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { navToggle.classList.remove('open'); navLinks.classList.remove('open'); }));
 
-  // Animated counters for the dashboard
-  function animateCounter(el) {
-    const target = parseFloat(el.dataset.target);
-    const prefix = el.dataset.prefix || '';
-    const suffix = el.dataset.suffix || '';
-    const duration = 1800;
-    const start = performance.now();
-    function update(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(target * eased);
-      el.textContent = prefix + current + suffix;
-      if (progress < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
-  }
-  const dashObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.dash-stat-value[data-target]').forEach(animateCounter);
-        dashObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.4 });
-  const dashPreview = document.querySelector('.dash-preview');
-  if (dashPreview) dashObserver.observe(dashPreview);
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
+}, { threshold: 0.15 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+
 </script>
+
 </body>
 </html>

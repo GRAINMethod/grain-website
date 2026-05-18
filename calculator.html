@@ -4,535 +4,875 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
-<meta name="theme-color" content="#1C2420">
-<title>The Calculator — GRAIN</title>
-<meta name="description" content="Three quick questions. Find out exactly how much revenue your business is losing to slow lead response, dead quotes, and uncontacted past customers.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%23667B4A' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%239AAF7A'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%239AAF7A'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%239AAF7A'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%231C2420'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+<meta name="theme-color" content="#F0ECDF">
+<title>Revenue Gap Calculator — GRAIN</title>
+<meta name="description" content="See exactly how much revenue you're losing to slow lead response, dead quotes, and uncontacted past customers. Three quick questions.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3C/g%3E%3C/svg%3E">
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>var CALENDLY_URL='https://calendly.com/YOUR-CALENDLY-URL';function openCalendly(e){if(e)e.preventDefault();Calendly.initPopupWidget({url:CALENDLY_URL});return false;}</script>
-<link rel="stylesheet" href="styles.css">
+
+<style id="shared-styles">
+/* ====== SHARED STYLES (inlined from styles.css) ====== */
+/* ============================================
+   GRAIN METHOD — STYLES v4
+   Last updated: May 2026
+   ============================================ */
+
+/* DESIGN TOKENS */
+:root {
+  --ink: #1C2420;
+  --ink-soft: #3F4F47;
+  --ink-light: #56685E;
+  --bg: #F0ECDF;
+  --paper: #F7F4EA;
+  --moss: #9AAF7A;
+  --moss-deep: #667B4A;
+  --moss-light: #BFD0A2;
+  --line: #DAD6C7;
+  --muted: #8A8772;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Fraunces:ital,wght@1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* RESET + BASE */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img, svg { max-width: 100%; display: block; }
+button { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* CONTAINERS */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.container-narrow { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 600px) { .container, .container-narrow { padding: 0 20px; } }
+
+/* TYPOGRAPHY UTILITIES */
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--moss-deep);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.italic {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 24px 0;
+  background: rgba(240, 236, 223, 0);
+  transition: background 0.3s var(--ease), padding 0.3s var(--ease);
+}
+.nav.scrolled {
+  background: rgba(240, 236, 223, 0.96);
+  backdrop-filter: blur(12px);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.nav.over-dark .nav-brand,
+.nav.over-dark .nav-links a {
+  color: var(--bg);
+}
+.nav.over-dark.scrolled .nav-brand,
+.nav.over-dark.scrolled .nav-links a {
+  color: var(--ink);
+}
+.nav.over-dark .nav-toggle span { background: var(--bg); }
+.nav.over-dark.scrolled .nav-toggle span { background: var(--ink); }
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+.nav-brand svg {
+  width: 32px;
+  height: 32px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  transition: color 0.2s var(--ease);
+}
+.nav-links a:hover { color: var(--moss-deep); }
+.nav-links a.active { color: var(--moss-deep); }
+.nav-cta {
+  padding: 10px 20px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+}
+.nav-cta:hover { background: var(--moss-deep); }
+.nav.over-dark .nav-cta {
+  background: var(--moss);
+  color: var(--ink);
+}
+.nav.over-dark .nav-cta:hover { background: var(--moss-light); }
+
+/* Mobile nav */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  transition: all 0.2s var(--ease);
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 900px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 24px 32px;
+    gap: 20px;
+    display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 8px 0; font-size: 16px; }
+  .nav.over-dark .nav-links a { color: var(--ink); }
+  .nav-cta { text-align: center; }
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s var(--ease);
+  font-family: inherit;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--bg);
+}
+.btn-primary:hover {
+  background: var(--moss-deep);
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--bg);
+  border: 1px solid rgba(240,236,223,0.3);
+}
+.btn-secondary:hover {
+  background: rgba(240,236,223,0.08);
+  border-color: var(--moss-light);
+}
+.btn-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
+/* REVEAL ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* FOOTER */
+.site-footer {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 80px 32px 40px;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(240,236,223,0.12);
+}
+.footer-brand {}
+.footer-logo {
+  font-weight: 900;
+  font-size: 32px;
+  letter-spacing: 0.05em;
+  color: var(--bg);
+  margin-bottom: 16px;
+}
+.footer-mission {
+  font-size: 15px;
+  color: rgba(240,236,223,0.7);
+  line-height: 1.6;
+  max-width: 440px;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-self: end;
+}
+.footer-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: rgba(240,236,223,0.65);
+  text-transform: uppercase;
+  transition: color 0.2s var(--ease);
+}
+.footer-links a:hover { color: var(--moss-light); }
+.footer-bottom {
+  max-width: 1280px;
+  margin: 40px auto 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: rgba(240,236,223,0.4);
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-links { justify-self: start; }
+}
+
+/* Headings reset within sections */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* ============================================================
+   SHARED ASK GRAIN BAR — appears on every page above the footer
+   ============================================================ */
+.ask-bar-page {
+  background: var(--ink);
+  padding: 18px 32px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  border-top: 1px solid rgba(240,236,223,0.08);
+  transition: background 0.2s ease;
+}
+.ask-bar-page:hover { background: #0F1612; }
+.ask-bar-page .ask-bar-page-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--bg);
+}
+.ask-bar-page .ask-bar-page-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--moss-light);
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.ask-bar-page .ask-bar-page-sep {
+  width: 1px;
+  height: 18px;
+  background: rgba(240,236,223,0.2);
+  flex-shrink: 0;
+}
+.ask-bar-page .ask-bar-page-input {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(240,236,223,0.7);
+  font-style: italic;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ask-bar-page .ask-bar-page-cue {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--moss-light);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.ask-bar-page.open .ask-bar-page-cue { transform: rotate(180deg); }
+
+.ask-bar-page-dropdown {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background: var(--ink);
+  border-top: 1px solid var(--moss-light);
+  max-height: 380px;
+  overflow-y: auto;
+  z-index: 100;
+}
+.ask-bar-page-dropdown.open { display: block; }
+.ask-bar-page-dropdown-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 32px 14px;
+}
+.ask-bar-page-dropdown-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: rgba(240,236,223,0.5);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10px 0 6px;
+  border-bottom: 1px solid rgba(240,236,223,0.08);
+}
+.ask-bar-page-q {
+  display: block;
+  width: 100%;
+  padding: 13px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(240,236,223,0.06);
+  color: rgba(240,236,223,0.85);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.15s ease, padding-left 0.15s ease;
+}
+.ask-bar-page-q:hover { color: var(--moss-light); padding-left: 8px; }
+.ask-bar-page-q:last-child { border-bottom: none; }
+.ask-bar-page-q::before {
+  content: "→ ";
+  color: var(--moss-light);
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .ask-bar-page { padding: 14px 20px; }
+  .ask-bar-page .ask-bar-page-inner { gap: 14px; }
+  .ask-bar-page .ask-bar-page-label { font-size: 10px; letter-spacing: 0.2em; }
+  .ask-bar-page .ask-bar-page-input { font-size: 13px; }
+  .ask-bar-page-dropdown-inner { padding: 10px 20px 14px; }
+}
+
+/* Ask GRAIN response panel (appears below bar when a question is selected) */
+.ask-bar-response {
+  display: none;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+.ask-bar-response.open { display: block; }
+.ask-bar-response-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 22px 32px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.ask-bar-response-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--moss-deep);
+  font-weight: 700;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  padding-top: 4px;
+  min-width: 64px;
+}
+.ask-bar-response-text {
+  flex: 1;
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.65;
+  font-family: 'Inter', sans-serif;
+}
+.ask-bar-response-close {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 26px;
+  cursor: pointer;
+  padding: 0 6px;
+  line-height: 1;
+  align-self: flex-start;
+  transition: color 0.2s ease;
+}
+.ask-bar-response-close:hover { color: var(--ink); }
+
+@media (max-width: 768px) {
+  .ask-bar-response-inner { padding: 18px 20px; gap: 14px; flex-direction: column; }
+  .ask-bar-response-label { min-width: 0; }
+  .ask-bar-response-close { position: absolute; top: 12px; right: 14px; }
+}
+
+/* ============================================================
+   SHARED PILL TOGGLE — used for view toggles and pricing toggles
+   ============================================================ */
+.pill-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.pill-toggle {
+  display: inline-flex;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 3px;
+  position: relative;
+  border-radius: 999px;
+}
+.pill-toggle-btn {
+  padding: 8px 22px;
+  background: transparent;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.25s ease;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.pill-toggle-btn.active { color: var(--paper); }
+.pill-toggle-slider {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  background: var(--ink);
+  border-radius: 999px;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 1;
+}
+.pill-toggle[data-active="right"] .pill-toggle-slider { transform: translateX(100%); }
+.pill-toggle-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 6px;
+  background: var(--moss);
+  color: var(--ink);
+  border-radius: 999px;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+@media (max-width: 600px) {
+  .pill-toggle-btn { padding: 7px 16px; font-size: 10px; letter-spacing: 0.06em; }
+}
+
+</style>
 
 <style>
-  .calc-page {
-    background: var(--ink);
-    color: var(--bg);
-    min-height: 100vh;
-    padding-top: 100px;
-  }
-  .calc-page .nav {
-    background: rgba(28, 36, 32, 0.85) !important;
-  }
-  .calc-page .nav.scrolled {
-    background: rgba(28, 36, 32, 0.95) !important;
-    border-bottom-color: rgba(154,175,122,0.2);
-  }
-  .calc-page .nav-brand { color: var(--bg); }
-  .calc-page .nav-brand svg path[stroke="#1C2420"] { stroke: #F0ECDF; }
-  .calc-page .nav-brand svg path[fill="#1C2420"] { fill: #F0ECDF; }
-  .calc-page .nav-links a { color: rgba(240, 236, 223, 0.85); }
-  .calc-page .nav-links a:hover { color: var(--moss-light); }
-  .calc-page .nav-cta { background: var(--moss); color: var(--ink); }
-  .calc-page .nav-cta:hover { background: var(--moss-light); }
+.page-hero { padding: 200px 32px 60px; max-width: 1280px; margin: 0 auto; text-align: center; }
+.page-hero h1 { font-weight: 900; font-size: clamp(48px, 7vw, 92px); line-height: 0.96; letter-spacing: -0.03em; margin-bottom: 32px; }
+.page-hero h1 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
+.page-hero-sub { font-size: clamp(17px, 1.6vw, 21px); color: var(--ink-soft); max-width: 720px; line-height: 1.55; margin: 0 auto; }
+@media (max-width: 768px) { .page-hero { padding: 140px 20px 40px; } }
 
-  .calc-hero {
-    padding: 100px 32px 60px;
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-  .calc-hero h1 {
-    font-weight: 900;
-    font-size: clamp(48px, 7vw, 92px);
-    line-height: 0.96;
-    letter-spacing: -0.03em;
-    margin-bottom: 32px;
-    max-width: 1000px;
-    color: var(--bg);
-  }
-  .calc-hero h1 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-light); }
-  .calc-hero-sub {
-    font-size: clamp(17px, 1.6vw, 21px);
-    color: rgba(240, 236, 223, 0.75);
-    max-width: 720px;
-    line-height: 1.55;
-  }
+.calc-wrap { padding: 60px 32px 140px; max-width: 1000px; margin: 0 auto; }
+.calc-card { background: var(--bg); border: 1px solid var(--line); padding: 64px 56px; }
+.calc-section-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--moss-deep); margin-bottom: 32px; font-weight: 600; text-transform: uppercase; }
+.calc-question { margin-bottom: 48px; }
+.calc-q-label { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 28px; color: var(--ink); margin-bottom: 20px; line-height: 1.2; }
+.calc-q-help { font-size: 14px; color: var(--muted); margin-bottom: 20px; line-height: 1.5; }
+.calc-input { width: 100%; padding: 20px 24px; font-size: 18px; font-family: inherit; border: 1px solid var(--line); background: var(--paper); color: var(--ink); transition: border 0.2s var(--ease); }
+.calc-input:focus { outline: none; border-color: var(--moss-deep); background: var(--bg); }
+.calc-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.calc-option { padding: 20px 24px; background: var(--paper); border: 1px solid var(--line); font-size: 15px; color: var(--ink); cursor: pointer; transition: all 0.2s var(--ease); text-align: center; font-family: inherit; }
+.calc-option:hover { border-color: var(--moss-deep); background: var(--bg); }
+.calc-option.selected { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.calc-option-time { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--muted); display: block; margin-top: 6px; }
+.calc-option.selected .calc-option-time { color: rgba(240,236,223,0.6); }
+@media (max-width: 600px) { .calc-options { grid-template-columns: 1fr; } .calc-card { padding: 40px 24px; } }
 
-  .calc-wrap {
-    max-width: 1200px;
-    margin: 60px auto 120px;
-    padding: 0 32px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    background: rgba(240, 236, 223, 0.04);
-    border: 1px solid rgba(154, 175, 122, 0.25);
-  }
-  .calc-left, .calc-right { padding: 56px 48px; }
-  .calc-left { border-right: 1px solid rgba(240, 236, 223, 0.12); }
+.calc-result { background: var(--ink); color: var(--bg); padding: 64px 56px; margin-top: 32px; display: none; position: relative; overflow: hidden; }
+.calc-result.visible { display: block; }
+.calc-result::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--moss), transparent); }
+.calc-result-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--moss-light); margin-bottom: 20px; }
+.calc-result-headline { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: clamp(32px, 4vw, 48px); line-height: 1.15; margin-bottom: 32px; color: var(--bg); }
+.calc-result-big { font-weight: 900; font-size: clamp(56px, 9vw, 120px); color: var(--moss-light); line-height: 1; letter-spacing: -0.03em; margin-bottom: 16px; }
+.calc-result-mo { font-size: 24px; font-weight: 500; color: rgba(240,236,223,0.65); }
+.calc-result-year { font-size: 17px; color: rgba(240,236,223,0.7); margin-bottom: 40px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; }
+.calc-breakdown { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(240,236,223,0.1); border: 1px solid rgba(240,236,223,0.12); margin-bottom: 40px; }
+.breakdown-cell { background: var(--ink); padding: 28px 24px; }
+.breakdown-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: rgba(240,236,223,0.6); margin-bottom: 14px; }
+.breakdown-val { font-weight: 900; font-size: 32px; color: var(--bg); line-height: 1; letter-spacing: -0.02em; margin-bottom: 6px; }
+.breakdown-desc { font-size: 12px; color: rgba(240,236,223,0.65); line-height: 1.5; }
+.calc-result-cta { padding: 18px 32px; background: var(--moss); color: var(--ink); font-weight: 700; font-size: 16px; border: none; cursor: pointer; transition: all 0.2s var(--ease); }
+.calc-result-cta:hover { background: var(--moss-light); }
+.calc-result-fineprint { font-size: 13px; color: rgba(240,236,223,0.55); margin-top: 20px; font-style: italic; line-height: 1.55; }
+@media (max-width: 600px) { .calc-breakdown { grid-template-columns: 1fr; } .calc-result { padding: 40px 28px; } }
 
-  .calc-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    color: var(--moss-light);
-    margin-bottom: 24px;
-    font-weight: 600;
-  }
-  .calc-h {
-    font-weight: 900;
-    font-size: 32px;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 12px;
-    color: var(--bg);
-  }
-  .calc-intro {
-    font-size: 15px;
-    color: rgba(240, 236, 223, 0.7);
-    line-height: 1.6;
-    margin-bottom: 40px;
-  }
-
-  .field { margin-bottom: 36px; }
-  .field-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: rgba(240, 236, 223, 0.65);
-    margin-bottom: 16px;
-    display: block;
-    font-weight: 600;
-  }
-  .slider-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .slider-value {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 36px;
-    color: var(--moss-light);
-    line-height: 1;
-  }
-  input[type="range"] {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 4px;
-    background: rgba(154, 175, 122, 0.2);
-    border-radius: 2px;
-    outline: none;
-  }
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 22px;
-    height: 22px;
-    background: var(--moss);
-    border: 3px solid var(--ink);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.15s;
-  }
-  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
-
-  .trade-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-  }
-  .trade-btn {
-    background: rgba(240, 236, 223, 0.04);
-    border: 1px solid rgba(154, 175, 122, 0.2);
-    padding: 12px 8px;
-    color: rgba(240, 236, 223, 0.85);
-    font-size: 12px;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.2s;
-    text-align: center;
-  }
-  .trade-btn:hover {
-    border-color: var(--moss);
-    color: var(--moss-light);
-  }
-  .trade-btn.active {
-    background: var(--moss);
-    border-color: var(--moss);
-    color: var(--ink);
-    font-weight: 600;
-  }
-
-  /* Result panel */
-  .result-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    color: var(--moss-light);
-    margin-bottom: 24px;
-    font-weight: 600;
-  }
-  .result-num {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(56px, 7vw, 88px);
-    line-height: 1;
-    color: var(--bg);
-    margin-bottom: 12px;
-  }
-  .result-num .suffix { color: var(--moss-light); }
-  .result-caption {
-    font-size: 14px;
-    color: rgba(240, 236, 223, 0.65);
-    line-height: 1.5;
-    margin-bottom: 36px;
-  }
-  .result-line {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(154,175,122,0.3), transparent);
-    margin: 32px 0;
-  }
-  .result-detail {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(240,236,223,0.06);
-  }
-  .result-detail:last-child { border-bottom: none; }
-  .result-detail-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: rgba(240, 236, 223, 0.6);
-    letter-spacing: 0.05em;
-  }
-  .result-detail-val {
-    color: var(--moss-light);
-    font-weight: 700;
-    font-size: 18px;
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .result-yearly {
-    background: rgba(154,175,122,0.08);
-    padding: 24px;
-    margin: 32px 0;
-    border-left: 3px solid var(--moss);
-  }
-  .result-yearly-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--moss-light);
-    letter-spacing: 0.2em;
-    margin-bottom: 8px;
-  }
-  .result-yearly-num {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 1;
-    color: var(--bg);
-  }
-  .result-cta {
-    display: block;
-    width: 100%;
-    padding: 18px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 14px;
-    background: var(--moss);
-    color: var(--ink);
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    letter-spacing: 0.02em;
-    margin-top: 32px;
-    transition: background 0.2s;
-  }
-  .result-cta:hover { background: var(--moss-light); }
-
-  /* Source citations */
-  .source-section {
-    padding: 100px 32px 140px;
-    max-width: 1100px;
-    margin: 0 auto;
-    border-top: 1px solid rgba(240,236,223,0.1);
-  }
-  .source-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    color: var(--moss-light);
-    margin-bottom: 24px;
-  }
-  .source-h {
-    font-weight: 800;
-    font-size: 32px;
-    color: var(--bg);
-    margin-bottom: 32px;
-    letter-spacing: -0.02em;
-  }
-  .source-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 36px;
-  }
-  .source-card {
-    border: 1px solid rgba(154,175,122,0.18);
-    padding: 28px;
-  }
-  .source-card-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--moss-light);
-    margin-bottom: 12px;
-  }
-  .source-card-h {
-    font-weight: 700;
-    font-size: 17px;
-    color: var(--bg);
-    margin-bottom: 10px;
-    line-height: 1.3;
-  }
-  .source-card-body {
-    font-size: 14px;
-    color: rgba(240,236,223,0.65);
-    line-height: 1.55;
-  }
-
-  @media (max-width: 900px) {
-    .calc-wrap { grid-template-columns: 1fr; }
-    .calc-left { border-right: none; border-bottom: 1px solid rgba(240,236,223,0.12); }
-    .calc-left, .calc-right { padding: 40px 28px; }
-    .trade-grid { grid-template-columns: repeat(2, 1fr); }
-    .source-grid { grid-template-columns: 1fr; }
-  }
+.context-note { padding: 80px 32px 0; max-width: 800px; margin: 0 auto; }
+.context-note-inner { background: var(--paper); padding: 32px 36px; border-left: 3px solid var(--moss-deep); }
+.context-note-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss-deep); margin-bottom: 12px; font-weight: 600; }
+.context-note-text { font-size: 15px; color: var(--ink); line-height: 1.65; }
 </style>
 </head>
-<body class="calc-page">
+<body>
 
 <nav class="nav" id="main-nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-brand">
-      <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
+      <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#667B4A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
       GRAIN
     </a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
     <div class="nav-links" id="nav-links">
       <a href="method.html">Method</a>
-      <a href="pricing.html">Pricing</a>
+      <a href="dashboard.html">Dashboard</a>
       <a href="calculator.html" class="active">Calculator</a>
+      <a href="pricing.html">Pricing</a>
       <button class="nav-cta" onclick="openCalendly(event)">Apply for Audit</button>
     </div>
   </div>
 </nav>
 
-<section class="calc-hero">
-  <div class="eyebrow" style="color: var(--moss-light);">THE CALCULATOR</div>
-  <h1>How much are you <span class="italic">walking away from?</span></h1>
-  <p class="calc-hero-sub">Three quick questions. We'll show you the dollar figure of revenue sitting in your missed calls, unworked quotes, and uncontacted past customers — every single month.</p>
+<section class="page-hero">
+  <div class="eyebrow">REVENUE GAP CALCULATOR</div>
+  <h1>How much are you<br><span class="italic">walking away from?</span></h1>
+  <p class="page-hero-sub">Three quick questions. We'll show you the dollar figure you're losing every month to slow follow-up, dead quotes, and uncontacted past customers.</p>
+</section>
+
+<section class="context-note">
+  <div class="context-note-inner">
+    <div class="context-note-label">2026 CONTEXT</div>
+    <p class="context-note-text">Google Local Services Ads now cost $60 to $80 per lead, and Google takes 3 to 4 weeks to refund disputed leads — when they refund at all. A missed lead used to be a margin problem. In 2026 it's a cash-flow problem. These numbers reflect that.</p>
+  </div>
 </section>
 
 <div class="calc-wrap">
-  <div class="calc-left">
-    <div class="calc-eyebrow">YOUR INPUTS</div>
-    <h2 class="calc-h">Three numbers about your business.</h2>
-    <p class="calc-intro">Slide and click. The result updates live on the right.</p>
+  <div class="calc-card">
+    <div class="calc-section-label">QUESTION ONE</div>
+    <div class="calc-question">
+      <div class="calc-q-label">How many leads do you get per month?</div>
+      <div class="calc-q-help">Calls, web forms, missed calls, social DMs, paid ads, LSA, referrals — all of them combined.</div>
+      <input type="number" class="calc-input" id="leads" placeholder="e.g. 80" min="1" max="2000">
+    </div>
 
-    <div class="field">
-      <label class="field-label">ANNUAL REVENUE</label>
-      <div class="slider-wrap">
-        <div class="slider-value" id="rev-value">$1,500,000</div>
-        <input type="range" id="revenue" min="250000" max="10000000" step="50000" value="1500000">
+    <div class="calc-section-label">QUESTION TWO</div>
+    <div class="calc-question">
+      <div class="calc-q-label">What's your average job value?</div>
+      <div class="calc-q-help">Average ticket size. If you're not sure, ballpark it.</div>
+      <input type="number" class="calc-input" id="jobvalue" placeholder="e.g. 8500" min="100" max="500000">
+    </div>
+
+    <div class="calc-section-label">QUESTION THREE</div>
+    <div class="calc-question">
+      <div class="calc-q-label">How fast does your business actually respond to a new lead?</div>
+      <div class="calc-q-help">Be honest. Most owners think it's faster than it actually is.</div>
+      <div class="calc-options">
+        <button class="calc-option" data-speed="instant">
+          Under 5 minutes
+          <span class="calc-option-time">RARE · TOP 10%</span>
+        </button>
+        <button class="calc-option" data-speed="fast">
+          Under 1 hour
+          <span class="calc-option-time">DECENT · TOP 30%</span>
+        </button>
+        <button class="calc-option" data-speed="slow">
+          Same day, mostly
+          <span class="calc-option-time">AVERAGE</span>
+        </button>
+        <button class="calc-option" data-speed="next-day">
+          Next day or two
+          <span class="calc-option-time">BELOW AVERAGE</span>
+        </button>
+        <button class="calc-option" data-speed="when-i-can">
+          When I get to it
+          <span class="calc-option-time">COSTLY</span>
+        </button>
+        <button class="calc-option" data-speed="honestly-bad">
+          Honestly, badly
+          <span class="calc-option-time">LEAKING</span>
+        </button>
       </div>
     </div>
 
-    <div class="field">
-      <label class="field-label">LEADS PER MONTH (ESTIMATE)</label>
-      <div class="slider-wrap">
-        <div class="slider-value" id="leads-value">75</div>
-        <input type="range" id="leads" min="10" max="500" step="5" value="75">
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="field-label">YOUR TRADE</label>
-      <div class="trade-grid" id="trade-grid">
-        <button class="trade-btn active" data-avg="12500">Roofing</button>
-        <button class="trade-btn" data-avg="8500">HVAC</button>
-        <button class="trade-btn" data-avg="4500">Plumbing</button>
-        <button class="trade-btn" data-avg="1188">Pest Control</button>
-        <button class="trade-btn" data-avg="3500">Electrical</button>
-        <button class="trade-btn" data-avg="8000">Fencing</button>
-        <button class="trade-btn" data-avg="75000">Pool</button>
-        <button class="trade-btn" data-avg="8000">Painting</button>
-        <button class="trade-btn" data-avg="6500">Landscaping</button>
-        <button class="trade-btn" data-avg="60000">Remodeling</button>
-      </div>
-    </div>
+    <button class="offer-btn" id="calc-btn" style="margin-top: 24px; display: inline-flex; padding: 18px 32px; background: var(--ink); color: var(--bg); border: none; cursor: pointer; font-weight: 600; font-size: 16px; align-items: center; gap: 12px;">Calculate <span style="font-family:'JetBrains Mono',monospace;">→</span></button>
   </div>
 
-  <div class="calc-right">
-    <div class="result-eyebrow">YOUR MONTHLY REVENUE LEAK</div>
-    <div class="result-num" id="leak-num">$84,375<span class="suffix">/mo</span></div>
-    <div class="result-caption">Estimated revenue lost to slow response, dead quotes, and uncontacted past customers — every month, calculated from your inputs and industry benchmarks.</div>
+  <div class="calc-result" id="result">
+    <div class="calc-result-label">YOUR ESTIMATED MONTHLY LEAK</div>
+    <div class="calc-result-headline">You're walking away from approximately</div>
+    <div class="calc-result-big">$<span id="result-monthly">0</span><span class="calc-result-mo">/mo</span></div>
+    <div class="calc-result-year">THAT'S APPROXIMATELY $<span id="result-yearly">0</span> PER YEAR</div>
 
-    <div class="result-line"></div>
-
-    <div class="result-detail">
-      <span class="result-detail-label">SLOW RESPONSE</span>
-      <span class="result-detail-val" id="slow-val">$32,500</span>
-    </div>
-    <div class="result-detail">
-      <span class="result-detail-label">DEAD QUOTES</span>
-      <span class="result-detail-val" id="dead-val">$37,500</span>
-    </div>
-    <div class="result-detail">
-      <span class="result-detail-label">PAST CUSTOMERS</span>
-      <span class="result-detail-val" id="past-val">$14,375</span>
-    </div>
-
-    <div class="result-yearly">
-      <div class="result-yearly-label">PROJECTED ANNUAL LEAK</div>
-      <div class="result-yearly-num" id="yearly-num">$1,012,500</div>
+    <div class="calc-breakdown">
+      <div class="breakdown-cell">
+        <div class="breakdown-label">LEADS LOST TO SLOW RESPONSE</div>
+        <div class="breakdown-val">$<span id="bd-leads">0</span></div>
+        <div class="breakdown-desc">Calls and forms that died on voicemail or in a slow follow-up window.</div>
+      </div>
+      <div class="breakdown-cell">
+        <div class="breakdown-label">QUOTES THAT WENT COLD</div>
+        <div class="breakdown-val">$<span id="bd-quotes">0</span></div>
+        <div class="breakdown-desc">Quotes you sent that never got a follow-up, that would have closed with proper 90-day nurture.</div>
+      </div>
+      <div class="breakdown-cell">
+        <div class="breakdown-label">DORMANT CUSTOMERS</div>
+        <div class="breakdown-val">$<span id="bd-dormant">0</span></div>
+        <div class="breakdown-desc">Past customers you haven't reached back out to. The 8% who would re-book if asked.</div>
+      </div>
     </div>
 
-    <button class="result-cta" onclick="openCalendly(event)">Apply for an Audit →</button>
-  </div>
-</div>
-
-<!-- SOURCES -->
-<div class="source-section">
-  <div class="source-eyebrow">METHODOLOGY · WHERE THE NUMBERS COME FROM</div>
-  <h3 class="source-h">Real research. Real data.</h3>
-  <div class="source-grid">
-    <div class="source-card">
-      <div class="source-card-label">SLOW RESPONSE</div>
-      <div class="source-card-h">Blazeo 2026 Speed-to-Lead Benchmark</div>
-      <div class="source-card-body">74% of businesses miss the 5-minute response window. Conversion rates drop 80% after the first hour. Calculation assumes 50% of leads slip past the threshold and lose 60% of their conversion potential.</div>
-    </div>
-    <div class="source-card">
-      <div class="source-card-label">DEAD QUOTES</div>
-      <div class="source-card-h">InsideSales 50M Interaction Study</div>
-      <div class="source-card-body">First-touch responders win ~50% of competitive deals. Quotes without 90-day follow-up convert at 15% vs 33% with proper sequences. Calculation uses the gap between observed conversion and benchmark conversion.</div>
-    </div>
-    <div class="source-card">
-      <div class="source-card-label">PAST CUSTOMERS</div>
-      <div class="source-card-h">ServiceTitan 2024 Contractor Report</div>
-      <div class="source-card-body">Average home service business has 5–8x more dormant customers than active. Reactivation rates of 8–15% are typical. Calculation estimates 12% of trailing 12-month customer value can be reactivated annually.</div>
-    </div>
-    <div class="source-card">
-      <div class="source-card-label">FOUNDATIONAL RESEARCH</div>
-      <div class="source-card-h">Harvard Business Review</div>
-      <div class="source-card-body">Original speed-to-lead research showing 21x higher qualification likelihood for 5-minute response vs 30-minute. Findings replicated in every subsequent industry study from 2011 through 2026.</div>
-    </div>
+    <button class="calc-result-cta" onclick="openCalendly(event)">Apply for Your Audit →</button>
+    <p class="calc-result-fineprint">These are estimates based on industry averages and your inputs. The audit call uses your actual numbers and produces a precise figure. Audits are by application.</p>
   </div>
 </div>
 
-<footer class="footer">
+<!-- Persistent Ask GRAIN bar -->
+<div class="ask-bar-page" id="ask-bar-page">
+  <div class="ask-bar-page-dropdown" id="ask-bar-dropdown">
+    <div class="ask-bar-page-dropdown-inner">
+      <div class="ask-bar-page-dropdown-label">Pick a question — ask GRAIN anything about us</div>
+      <button class="ask-bar-page-q" data-q="What does GRAIN actually do?">What does GRAIN actually do?</button>
+      <button class="ask-bar-page-q" data-q="How are you different from other agencies?">How are you different from other agencies?</button>
+      <button class="ask-bar-page-q" data-q="Why can't I just hire a virtual receptionist?">Why can't I just hire a virtual receptionist?</button>
+      <button class="ask-bar-page-q" data-q="What's the difference between Greenhouse and Orchard?">What's the difference between Greenhouse and Orchard?</button>
+      <button class="ask-bar-page-q" data-q="Can you really deploy in 7 days?">Can you really deploy in 7 days?</button>
+      <button class="ask-bar-page-q" data-q="Is this AI answering my calls, or real people?">Is this AI answering my calls, or real people?</button>
+      <button class="ask-bar-page-q" data-q="What happens if you don't deliver 5 jobs in 60 days?">What happens if you don't deliver 5 jobs in 60 days?</button>
+      <button class="ask-bar-page-q" data-q="How do you keep my customer data private?">How do you keep my customer data private?</button>
+      <button class="ask-bar-page-q" data-q="What home service trades do you work with?">What home service trades do you work with?</button>
+      <button class="ask-bar-page-q" data-q="Why should I trust you with my business?">Why should I trust you with my business?</button>
+    </div>
+  </div>
+  <div class="ask-bar-page-inner">
+    <span class="ask-bar-page-label">Ask GRAIN</span>
+    <span class="ask-bar-page-sep"></span>
+    <span class="ask-bar-page-input" id="ask-bar-page-input">"What does GRAIN actually do?"</span>
+    <span class="ask-bar-page-cue">▾</span>
+  </div>
+</div>
+<div class="ask-bar-response" id="ask-bar-response">
+  <div class="ask-bar-response-inner">
+    <div class="ask-bar-response-label">GRAIN</div>
+    <div class="ask-bar-response-text" id="ask-bar-response-text"></div>
+    <button class="ask-bar-response-close" id="ask-bar-response-close" type="button" aria-label="Close">×</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var askAnswers = {
+    "What does GRAIN actually do?": "GRAIN is the operating system that runs in the background of your business. We catch every lead from every channel — phone, text, web form, social DM — answer every inquiry in under 60 seconds, follow up on every quote for 90 days, and keep your customer base warm so they come back. You see all of it in one dashboard. It's done-for-you. You focus on the work; we keep the business running.",
+    "How are you different from other agencies?": "Most agencies generate leads and hand them off. We do the opposite — we focus on what happens AFTER the lead arrives, which is where most home service businesses lose 35-50% of what comes in. We have a guaranteed deployment timeline (7 days), a measurable outcome (5 extra jobs in 60 days or we work free), and a private dashboard so you see every metric live. We're not selling more leads. We're selling a system that converts more of the leads you already have.",
+    "Why can't I just hire a virtual receptionist?": "A virtual receptionist answers calls. GRAIN catches every lead from every channel (calls, texts, forms, social DMs), responds in under 60 seconds 24/7, follows up automatically for 90 days on every quote, syncs with your CRM, runs reactivation campaigns on dormant customers, and shows you the whole picture in one dashboard. Receptionists are people. GRAIN is infrastructure.",
+    "What's the difference between Greenhouse and Orchard?": "Greenhouse ($2,497/mo) is for single-location, single-trade businesses doing $500K-$3M revenue with 30-150 leads/month. Orchard ($5,997/mo) is for multi-location or multi-trade businesses doing $3M-$10M with 150-500 leads/month. Orchard also includes Fertilizer (reputation engine), quarterly Compost campaigns, weekly strategy calls, priority support, and access to the GRAIN private community.",
+    "Can you really deploy in 7 days?": "Yes — we built this specifically for fast deployment. Day 1: kickoff and intelligence pull. Day 2: Day-1 Intelligence Report delivered. Days 2-3: voice agent built and tested. Days 3-4: SMS, email, and 90-day follow-up sequences live. Days 4-5: CRM integrated, dashboard live. Days 5-7: testing, training, go-live. By Day 7, your system is catching leads.",
+    "Is this AI answering my calls, or real people?": "The voice agent is a system, but it's trained on thousands of real home service conversations in your specific trade. It sounds natural. It can answer questions, book appointments, escalate emergencies to you, and qualify leads before they hit your team. Real people (your team and ours) handle the work after the conversation. The system makes sure no call gets missed.",
+    "What happens if you don't deliver 5 jobs in 60 days?": "We work for free until you get them. No fine print. Your setup fee is non-refundable, but the monthly fee stops accruing until we hit the threshold. Service continues uninterrupted. The bet is on us, not you.",
+    "How do you keep my customer data private?": "Your data lives in your private dashboard. It's not shared with other clients. The only thing we use cross-client is anonymized patterns (what scripts convert, what objections come up most often) which helps the system get smarter for everyone. Your actual customer list, contact info, and revenue are yours alone.",
+    "What home service trades do you work with?": "Roofing, HVAC, plumbing, pest control, electrical, fencing, pool, painting, landscaping, and remodeling. The system is built around what these trades have in common: high-value jobs, time-sensitive leads, repeat-purchase potential, and trust-driven decisions. If you're outside these trades, ask — odds are we can adapt the system.",
+    "Why should I trust you with my business?": "Because we work in public. Our dashboard is live and demo-able right now. Our pricing is on the website. Our guarantee is specific. Our deployment timeline is published. We don't lock you into long contracts — it's month-to-month after the first 60 days. And we built this because we sell using the same system. That's literally how we found you."
+  };
+
+  var askBarPage = document.getElementById('ask-bar-page');
+  var askBarDropdown = document.getElementById('ask-bar-dropdown');
+  var askBarInput = document.getElementById('ask-bar-page-input');
+  var askBarResponse = document.getElementById('ask-bar-response');
+  var askBarResponseText = document.getElementById('ask-bar-response-text');
+  var askBarResponseClose = document.getElementById('ask-bar-response-close');
+
+  if (!askBarPage || !askBarDropdown || !askBarInput || !askBarResponse || !askBarResponseText) return;
+
+  askBarPage.addEventListener('click', function(e) {
+    if (e.target.closest('.ask-bar-page-q')) return;
+    e.stopPropagation();
+    askBarDropdown.classList.toggle('open');
+    askBarPage.classList.toggle('open');
+  });
+
+  askBarDropdown.querySelectorAll('.ask-bar-page-q').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var q = btn.dataset.q;
+      askBarInput.textContent = '"' + q + '"';
+      askBarResponseText.textContent = askAnswers[q] || '';
+      askBarResponse.classList.add('open');
+      askBarDropdown.classList.remove('open');
+      askBarPage.classList.remove('open');
+    });
+  });
+
+  if (askBarResponseClose) {
+    askBarResponseClose.addEventListener('click', function(e) {
+      e.stopPropagation();
+      askBarResponse.classList.remove('open');
+      askBarInput.textContent = '"What does GRAIN actually do?"';
+    });
+  }
+
+  document.addEventListener('click', function() {
+    askBarDropdown.classList.remove('open');
+    askBarPage.classList.remove('open');
+  });
+})();
+</script>
+
+<footer class="site-footer">
+
+
   <div class="footer-inner">
-    <div class="footer-brand-block">
-      <div class="footer-brand">
-        <svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#1C2420" rx="40"/><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#F0ECDF"/></g></g></svg>
-        GRAIN
-      </div>
-      <div class="footer-tag">PLANT · NURTURE · SCALE</div>
+    <div class="footer-brand">
+      <div class="footer-logo">GRAIN</div>
       <div class="footer-mission">Done-for-you lead response for home service businesses. Nashville-based. Serving nationwide.</div>
     </div>
-    <div class="footer-col">
-      <h4>System</h4>
-      <a href="method.html">The Method</a>
-      <a href="pricing.html">Pricing</a>
+    <div class="footer-links">
+      <a href="method.html">Method</a>
+      <a href="dashboard.html">Dashboard</a>
       <a href="calculator.html">Calculator</a>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="#" onclick="openCalendly(event); return false;">Apply for Audit</a>
-      <a href="mailto:johnny@grainmethod.com">Contact</a>
-    </div>
-    <div class="footer-col">
-      <h4>Trust</h4>
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Guarantee</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="apply.html">Apply</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <div>© 2026 GRAIN Method LLC · Nashville, Tennessee</div>
-    <div>johnny@grainmethod.com</div>
-  </div>
+  <div class="footer-bottom">© 2026 GRAIN Method. All rights reserved.</div>
 </footer>
 
 <script>
-  // Calculator logic
-  let avgJob = 12500;
-  function fmt(n){ return '$' + Math.round(n).toLocaleString(); }
-  function calc() {
-    const revenue = parseFloat(document.getElementById('revenue').value);
-    const leads = parseFloat(document.getElementById('leads').value);
-    document.getElementById('rev-value').textContent = '$' + revenue.toLocaleString();
-    document.getElementById('leads-value').textContent = leads;
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+navToggle.addEventListener('click', () => { navToggle.classList.toggle('open'); navLinks.classList.toggle('open'); });
 
-    // Slow response: 50% of leads miss the response window, 60% of those would have converted
-    const closeRate = 0.20;
-    const slowResponseLost = leads * 0.5 * 0.6 * closeRate * avgJob;
-
-    // Dead quotes: ~70% of quotes go cold without 90-day follow-up
-    // Estimate quotes = leads * 0.4 (40% of leads get a quote)
-    const quotes = leads * 0.4;
-    const deadQuotesLost = quotes * 0.55 * 0.18 * avgJob;
-
-    // Past customers: 12% of trailing customer value reactivatable annually, monthly = /12
-    const pastCustomerLost = (revenue * 0.12) / 12;
-
-    const monthlyLeak = slowResponseLost + deadQuotesLost + pastCustomerLost;
-    const yearlyLeak = monthlyLeak * 12;
-
-    document.getElementById('leak-num').innerHTML = fmt(monthlyLeak) + '<span class="suffix">/mo</span>';
-    document.getElementById('slow-val').textContent = fmt(slowResponseLost);
-    document.getElementById('dead-val').textContent = fmt(deadQuotesLost);
-    document.getElementById('past-val').textContent = fmt(pastCustomerLost);
-    document.getElementById('yearly-num').textContent = fmt(yearlyLeak);
-  }
-  document.getElementById('revenue').addEventListener('input', calc);
-  document.getElementById('leads').addEventListener('input', calc);
-  document.querySelectorAll('.trade-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.trade-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      avgJob = parseFloat(btn.dataset.avg);
-      calc();
-    });
+// Speed selection
+let selectedSpeed = null;
+const speedMultipliers = {
+  'instant': 0.05,
+  'fast': 0.15,
+  'slow': 0.35,
+  'next-day': 0.50,
+  'when-i-can': 0.65,
+  'honestly-bad': 0.75
+};
+document.querySelectorAll('.calc-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('.calc-option').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    selectedSpeed = opt.dataset.speed;
   });
-  calc();
+});
 
-    const navToggle = document.getElementById('nav-toggle');
-  const navLinks = document.getElementById('nav-links');
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
-    });
+// Calculate
+document.getElementById('calc-btn').addEventListener('click', () => {
+  const leads = parseFloat(document.getElementById('leads').value);
+  const jobValue = parseFloat(document.getElementById('jobvalue').value);
+  if (!leads || !jobValue || !selectedSpeed) {
+    alert('Please answer all three questions to see your number.');
+    return;
   }
-  const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  });
+  const lossRate = speedMultipliers[selectedSpeed];
+  // Assume 20% of leads would convert if responded to fast
+  const baseConvert = 0.20;
+  const monthlyJobs = leads * baseConvert;
+  // Lost to slow response
+  const lostToResponse = monthlyJobs * lossRate * jobValue;
+  // Cold quotes — assume 60% of quotes go cold without follow-up, 17pp recoverable
+  const quotesSent = monthlyJobs * 0.60;
+  const lostToQuotes = quotesSent * 0.17 * jobValue;
+  // Dormant — assume 500 past customers, 8% would re-book / 12 months
+  const lostToDormant = (500 * 0.08 / 12) * jobValue;
+  const total = lostToResponse + lostToQuotes + lostToDormant;
+
+  document.getElementById('result-monthly').textContent = Math.round(total / 1000) + 'K';
+  document.getElementById('result-yearly').textContent = Math.round(total * 12 / 1000) + 'K';
+  document.getElementById('bd-leads').textContent = Math.round(lostToResponse / 1000) + 'K';
+  document.getElementById('bd-quotes').textContent = Math.round(lostToQuotes / 1000) + 'K';
+  document.getElementById('bd-dormant').textContent = Math.round(lostToDormant / 1000) + 'K';
+  document.getElementById('result').classList.add('visible');
+  document.getElementById('result').scrollIntoView({behavior: 'smooth', block: 'start'});
+  if (typeof gtag !== 'undefined') gtag('event', 'calculator_completed', { value: Math.round(total) });
+});
 </script>
+
 </body>
 </html>
