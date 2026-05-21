@@ -3,1204 +3,2425 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light only">
-<meta name="theme-color" content="#F0ECDF">
+<meta name="color-scheme" content="dark only">
+<meta name="theme-color" content="#141A17">
 <title>Pricing — GRAIN Method</title>
-<meta name="description" content="Three tiers. One standard. Greenhouse, Orchard, Estate. Done-for-you lead response for home service businesses. No usage fees. No surprises.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F0ECDF' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%231C2420' fill='none' stroke-width='20'/%3E%3C/g%3E%3C/svg%3E">
+<meta name="description" content="Three tiers. All inclusive. No usage fees, no overages, no cancellation penalties. Five extra jobs in 60 days, guaranteed.">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%231C2420' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%23F0ECDF' fill='none' stroke-width='18'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%239AAF7A' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%23BFD0A2'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%23BFD0A2'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%23BFD0A2'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%23BFD0A2'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%23F0ECDF'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:ital,wght@1,400;1,500&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<script>var CALENDLY_URL='https://calendly.com/YOUR-CALENDLY-URL';function openCalendly(e){if(e)e.preventDefault();Calendly.initPopupWidget({url:CALENDLY_URL});return false;}</script>
+<script>
+  var CALENDLY_URL='https://calendly.com/YOUR-CALENDLY-URL';
+  function openCalendly(e){if(e)e.preventDefault();if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:CALENDLY_URL});if(typeof gtag!=='undefined')gtag('event','calendly_open');return false;}
+</script>
 
-<style id="shared-styles">
-/* ====== SHARED STYLES (inlined from styles.css) ====== */
-/* ============================================
-   GRAIN METHOD — STYLES v4
-   Last updated: May 2026
-   ============================================ */
+<style>
+/* ==================================================================
+   GRAIN METHOD — v5 SHARED STYLES
+   Dark-dominant, atmospheric, restrained.
+   Brand DNA preserved: cream/ink/moss palette, Inter/Fraunces/JetBrains Mono.
+   ================================================================== */
 
-/* DESIGN TOKENS */
+/* ===== TOKENS ===== */
 :root {
-  --ink: #1C2420;
-  --ink-soft: #3F4F47;
-  --ink-light: #56685E;
-  --bg: #F0ECDF;
+  /* Palette */
+  --bg: #F0ECDF;            /* cream — contrast canvas only */
   --paper: #F7F4EA;
+  --ink: #1C2420;           /* default canvas */
+  --ink-soft: #2A332E;
+  --ink-deeper: #141A17;
+  --ink-light: #4A544E;
   --moss: #9AAF7A;
   --moss-deep: #667B4A;
+  --moss-darker: #4A5A36;
   --moss-light: #BFD0A2;
-  --line: #DAD6C7;
-  --muted: #8A8772;
-  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --muted: #6B6B62;
+  --line: #D4CEBD;
+  --line-dark: rgba(240, 236, 223, 0.10);
+  --line-dark-strong: rgba(240, 236, 223, 0.18);
+
+  /* Motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Layout */
+  --max-content: 1440px;
+  --max-text: 1160px;
 }
 
-/* FONTS */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Fraunces:ital,wght@1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
-/* RESET + BASE */
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
 html { scroll-behavior: smooth; }
+
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--ink);
-  background: var(--bg);
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--ink);
+  color: var(--bg);
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
-img, svg { max-width: 100%; display: block; }
-button { font-family: inherit; }
+
 a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+img, svg { display: block; max-width: 100%; }
 
-/* CONTAINERS */
-.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
-.container-narrow { max-width: 900px; margin: 0 auto; padding: 0 32px; }
-@media (max-width: 600px) { .container, .container-narrow { padding: 0 20px; } }
-
-/* TYPOGRAPHY UTILITIES */
+/* ===== TYPE ===== */
 .eyebrow {
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  color: var(--moss-deep);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+  font-weight: 600;
+  color: var(--moss);
   display: inline-flex;
   align-items: center;
-  margin-bottom: 24px;
+  gap: 12px;
 }
-.italic {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-weight: 400;
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--moss);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 0 rgba(154, 175, 122, 0);
+  animation: harvest-mark-pulse 4s ease-in-out infinite;
+}
+@keyframes harvest-mark-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(154, 175, 122, 0); }
+  50%      { box-shadow: 0 0 0 4px rgba(154, 175, 122, 0.16); }
+}
+.on-cream .eyebrow { color: var(--moss-deep); }
+.on-cream .eyebrow::before { background: var(--moss-deep); animation-name: harvest-mark-pulse-deep; }
+@keyframes harvest-mark-pulse-deep {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(102, 123, 74, 0); }
+  50%      { box-shadow: 0 0 0 4px rgba(102, 123, 74, 0.18); }
 }
 
-/* NAV */
+h1, h2, h3, h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.h-hero {
+  font-size: clamp(48px, 7.5vw, 104px);
+  letter-spacing: -0.035em;
+  line-height: 0.94;
+}
+.h-section {
+  font-size: clamp(36px, 5.2vw, 72px);
+  letter-spacing: -0.028em;
+  line-height: 1.02;
+}
+.h-sub { font-size: clamp(24px, 2.6vw, 36px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.italic-accent { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss); }
+.on-cream .italic-accent { color: var(--moss-deep); }
+
+.lede {
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.55;
+  color: rgba(240, 236, 223, 0.78);
+  max-width: 640px;
+}
+.on-cream .lede { color: var(--ink-light); }
+
+/* ===== LAYOUT ===== */
+.section { padding: clamp(80px, 12vw, 160px) 0; position: relative; }
+.section.compact { padding: clamp(60px, 8vw, 100px) 0; }
+.section.on-cream { background: var(--bg); color: var(--ink); }
+.section.on-paper { background: var(--paper); color: var(--ink); }
+
+.wrap {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 56px);
+}
+.wrap-narrow { max-width: var(--max-text); margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+
+/* ===== NAV ===== */
 .nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 24px 0;
-  background: rgba(240, 236, 223, 0);
-  transition: background 0.3s var(--ease), padding 0.3s var(--ease);
+  padding: 18px 0;
+  background: transparent;
+  transition: background 0.4s var(--ease), backdrop-filter 0.4s var(--ease), border-color 0.3s, padding 0.3s var(--ease);
+  border-bottom: 1px solid transparent;
 }
 .nav.scrolled {
-  background: rgba(240, 236, 223, 0.96);
-  backdrop-filter: blur(12px);
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
+  background: rgba(20, 26, 23, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: var(--line-dark);
+  padding: 12px 0;
 }
-.nav.over-dark .nav-brand,
-.nav.over-dark .nav-links a {
-  color: var(--bg);
+.nav.over-cream:not(.scrolled) .nav-link { color: var(--ink-light); }
+.nav.over-cream:not(.scrolled) .nav-brand-text { color: var(--ink); }
+.nav.over-cream:not(.scrolled) .nav-brand-logo path[data-stroke] { stroke: var(--ink); }
+.nav.over-cream:not(.scrolled) .nav-cta { background: var(--ink); color: var(--bg); }
+.nav.over-cream:not(.scrolled) .nav-toggle span { background: var(--ink); }
+.nav.over-cream.scrolled {
+  background: rgba(240, 236, 223, 0.86);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: var(--line);
 }
-.nav.over-dark.scrolled .nav-brand,
-.nav.over-dark.scrolled .nav-links a {
-  color: var(--ink);
-}
-.nav.over-dark .nav-toggle span { background: var(--bg); }
-.nav.over-dark.scrolled .nav-toggle span { background: var(--ink); }
+.nav.over-cream.scrolled .nav-link { color: var(--ink-light); }
+.nav.over-cream.scrolled .nav-brand-text { color: var(--ink); }
+.nav.over-cream.scrolled .nav-brand-logo path[data-stroke] { stroke: var(--ink); }
+.nav.over-cream.scrolled .nav-cta { background: var(--ink); color: var(--bg); }
 .nav-inner {
-  max-width: 1280px;
+  max-width: var(--max-content);
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 clamp(20px, 4vw, 56px);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 32px;
 }
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-weight: 900;
-  font-size: 18px;
-  letter-spacing: 0.05em;
-  color: var(--ink);
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
-.nav-brand svg {
-  width: 32px;
-  height: 32px;
-}
+.nav-brand-logo { width: 30px; height: 30px; }
+.nav-brand-text { font-size: 17px; color: var(--bg); transition: color 0.3s; }
 .nav-links {
   display: flex;
   align-items: center;
   gap: 36px;
-}
-.nav-links a {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--ink);
-  transition: color 0.2s var(--ease);
-}
-.nav-links a:hover { color: var(--moss-deep); }
-.nav-links a.active { color: var(--moss-deep); }
-.nav-cta {
-  padding: 10px 20px;
-  background: var(--ink);
-  color: var(--bg);
-  font-size: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s var(--ease);
 }
-.nav-cta:hover { background: var(--moss-deep); }
-.nav.over-dark .nav-cta {
+.nav-link {
+  color: rgba(240, 236, 223, 0.66);
+  transition: color 0.2s;
+  padding: 6px 0;
+  position: relative;
+}
+.nav-link:hover, .nav-link.active { color: var(--moss-light); }
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 100%; height: 1.5px;
   background: var(--moss);
-  color: var(--ink);
 }
-.nav.over-dark .nav-cta:hover { background: var(--moss-light); }
+.nav-cta {
+  background: var(--moss);
+  color: var(--ink) !important;
+  padding: 10px 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.nav-cta:hover { background: var(--moss-light); transform: translateY(-1px); }
 
-/* Mobile nav */
 .nav-toggle {
   display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
+  padding: 8px;
+  cursor: pointer;
 }
 .nav-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--ink);
-  transition: all 0.2s var(--ease);
+  width: 22px;
+  height: 1.5px;
+  background: var(--bg);
+  transition: all 0.3s var(--ease);
 }
-.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
-.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-@media (max-width: 900px) {
+.nav-toggle.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+@media (max-width: 880px) {
   .nav-toggle { display: flex; }
   .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
+    position: fixed;
+    top: 0; right: 0;
+    width: min(86vw, 360px);
+    height: 100vh;
+    background: var(--ink-deeper);
     flex-direction: column;
-    align-items: stretch;
-    padding: 24px 32px;
-    gap: 20px;
-    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 28px;
+    padding: 80px 40px;
+    transform: translateX(100%);
+    transition: transform 0.4s var(--ease);
+    font-size: 14px;
+    border-left: 1px solid var(--line-dark);
   }
-  .nav-links.open { display: flex; }
-  .nav-links a { padding: 8px 0; font-size: 16px; }
-  .nav.over-dark .nav-links a { color: var(--ink); }
-  .nav-cta { text-align: center; }
+  .nav-links.open { transform: translateX(0); }
+  .nav-link { font-size: 14px; }
+  .nav-cta { align-self: stretch; text-align: center; }
 }
 
-/* BUTTONS */
+/* ===== BUTTONS ===== */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 18px 32px;
-  font-weight: 600;
-  font-size: 16px;
-  border: none;
+  gap: 10px;
+  padding: 17px 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s var(--ease);
-  font-family: inherit;
+  transition: all 0.3s var(--ease);
+  border: none;
+  position: relative;
+  overflow: hidden;
 }
 .btn-primary {
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--moss);
+  color: var(--ink);
 }
 .btn-primary:hover {
-  background: var(--moss-deep);
+  background: var(--moss-light);
   transform: translateY(-2px);
+  box-shadow: 0 16px 40px -12px rgba(154, 175, 122, 0.4);
 }
 .btn-secondary {
   background: transparent;
   color: var(--bg);
-  border: 1px solid rgba(240,236,223,0.3);
+  border: 1px solid var(--line-dark-strong);
 }
 .btn-secondary:hover {
-  background: rgba(240,236,223,0.08);
-  border-color: var(--moss-light);
+  border-color: var(--moss);
+  color: var(--moss-light);
+  transform: translateY(-2px);
 }
+.on-cream .btn-secondary { color: var(--ink); border-color: rgba(28, 36, 32, 0.25); }
+.on-cream .btn-secondary:hover { border-color: var(--ink); color: var(--ink); }
 .btn-arrow {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 500;
+  font-size: 13px;
+  transition: transform 0.3s var(--ease);
 }
+.btn:hover .btn-arrow { transform: translateX(4px); }
 
-/* REVEAL ANIMATIONS */
+/* ===== REVEAL ANIMATIONS ===== */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
 }
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal[data-delay="1"] { transition-delay: 0.08s; }
+.reveal[data-delay="2"] { transition-delay: 0.16s; }
+.reveal[data-delay="3"] { transition-delay: 0.24s; }
+.reveal[data-delay="4"] { transition-delay: 0.32s; }
+.reveal[data-delay="5"] { transition-delay: 0.4s; }
+.reveal[data-delay="6"] { transition-delay: 0.48s; }
+.reveal[data-delay="7"] { transition-delay: 0.56s; }
+
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-/* FOOTER */
-.site-footer {
-  background: var(--ink);
-  color: var(--bg);
-  padding: 80px 32px 40px;
+/* ===== TICKER ===== */
+.ticker {
+  background: var(--ink-deeper);
+  border-top: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
+  padding: 18px 0;
+  overflow: hidden;
+  position: relative;
 }
-.footer-inner {
-  max-width: 1280px;
-  margin: 0 auto;
+.ticker-track {
+  display: flex;
+  gap: 56px;
+  white-space: nowrap;
+  animation: ticker-scroll 45s linear infinite;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(240, 236, 223, 0.55);
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item { display: inline-flex; align-items: center; gap: 56px; }
+.ticker-item::after {
+  content: "";
+  width: 5px; height: 5px;
+  background: var(--moss);
+  border-radius: 50%;
+  display: inline-block;
+}
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--ink-deeper);
+  padding: 96px 0 32px;
+  border-top: 1px solid var(--line-dark);
+  position: relative;
+}
+
+/* Audit callout — sits above the footer link grid */
+.footer-callout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  padding-bottom: 48px;
-  border-bottom: 1px solid rgba(240,236,223,0.12);
+  grid-template-columns: 1.6fr auto;
+  gap: 40px;
+  align-items: center;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--line-dark);
+  margin-bottom: 56px;
 }
-.footer-brand {}
-.footer-logo {
-  font-weight: 900;
-  font-size: 32px;
-  letter-spacing: 0.05em;
+.footer-callout .eyebrow { margin-bottom: 18px; }
+.footer-callout-text {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(26px, 2.8vw, 36px);
   color: var(--bg);
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+  max-width: 720px;
+}
+.footer-callout-text strong {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  color: var(--moss-light);
+  font-style: normal;
+  letter-spacing: -0.015em;
+}
+.footer-callout-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240, 236, 223, 0.42);
+  font-weight: 600;
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.footer-callout-meta .sep {
+  width: 14px;
+  height: 1px;
+  background: rgba(240,236,223,0.2);
+  display: inline-block;
+}
+@media (max-width: 880px) {
+  .footer-callout { grid-template-columns: 1fr; gap: 28px; }
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--line-dark);
+}
+.footer-brand-block .nav-brand { margin-bottom: 20px; }
+.footer-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--moss);
+  font-weight: 600;
   margin-bottom: 16px;
 }
 .footer-mission {
-  font-size: 15px;
-  color: rgba(240,236,223,0.7);
+  font-size: 14px;
+  color: rgba(240, 236, 223, 0.55);
+  max-width: 340px;
   line-height: 1.6;
-  max-width: 440px;
 }
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  justify-self: end;
-}
-.footer-links a {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.15em;
-  color: rgba(240,236,223,0.65);
-  text-transform: uppercase;
-  transition: color 0.2s var(--ease);
-}
-.footer-links a:hover { color: var(--moss-light); }
-.footer-bottom {
-  max-width: 1280px;
-  margin: 40px auto 0;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  color: rgba(240,236,223,0.4);
-  text-align: center;
-}
-@media (max-width: 768px) {
-  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-  .footer-links { justify-self: start; }
-}
-
-/* Headings reset within sections */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-}
-
-/* ============================================================
-   SHARED ASK GRAIN BAR — appears on every page above the footer
-   ============================================================ */
-.ask-bar-page {
-  background: var(--ink);
-  padding: 18px 32px;
-  cursor: pointer;
-  position: relative;
-  user-select: none;
-  border-top: 1px solid rgba(240,236,223,0.08);
-  transition: background 0.2s ease;
-}
-.ask-bar-page:hover { background: #0F1612; }
-.ask-bar-page .ask-bar-page-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  color: var(--bg);
-}
-.ask-bar-page .ask-bar-page-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  color: var(--moss-light);
-  font-weight: 700;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.ask-bar-page .ask-bar-page-sep {
-  width: 1px;
-  height: 18px;
-  background: rgba(240,236,223,0.2);
-  flex-shrink: 0;
-}
-.ask-bar-page .ask-bar-page-input {
-  flex: 1;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: rgba(240,236,223,0.7);
-  font-style: italic;
-  line-height: 1.4;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.ask-bar-page .ask-bar-page-cue {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
-  color: var(--moss-light);
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-.ask-bar-page.open .ask-bar-page-cue { transform: rotate(180deg); }
-
-.ask-bar-page-dropdown {
-  display: none;
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  right: 0;
-  background: var(--ink);
-  border-top: 1px solid var(--moss-light);
-  max-height: 380px;
-  overflow-y: auto;
-  z-index: 100;
-}
-.ask-bar-page-dropdown.open { display: block; }
-.ask-bar-page-dropdown-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 10px 32px 14px;
-}
-.ask-bar-page-dropdown-label {
+.footer-col-label {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  letter-spacing: 0.25em;
-  color: rgba(240,236,223,0.5);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moss);
   font-weight: 600;
-  text-transform: uppercase;
-  padding: 10px 0 6px;
-  border-bottom: 1px solid rgba(240,236,223,0.08);
+  margin-bottom: 18px;
 }
-.ask-bar-page-q {
-  display: block;
-  width: 100%;
-  padding: 13px 0;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(240,236,223,0.06);
-  color: rgba(240,236,223,0.85);
+.footer-col { display: flex; flex-direction: column; gap: 12px; }
+.footer-col a {
+  font-size: 14px;
+  color: rgba(240, 236, 223, 0.62);
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--moss-light); }
+
+/* Bottom row — © · system status · email */
+.footer-bottom {
+  padding-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  line-height: 1.4;
-  text-align: left;
-  cursor: pointer;
-  transition: color 0.15s ease, padding-left 0.15s ease;
-}
-.ask-bar-page-q:hover { color: var(--moss-light); padding-left: 8px; }
-.ask-bar-page-q:last-child { border-bottom: none; }
-.ask-bar-page-q::before {
-  content: "→ ";
-  color: var(--moss-light);
-  margin-right: 6px;
-  font-weight: 700;
-}
-
-@media (max-width: 768px) {
-  .ask-bar-page { padding: 14px 20px; }
-  .ask-bar-page .ask-bar-page-inner { gap: 14px; }
-  .ask-bar-page .ask-bar-page-label { font-size: 10px; letter-spacing: 0.2em; }
-  .ask-bar-page .ask-bar-page-input { font-size: 13px; }
-  .ask-bar-page-dropdown-inner { padding: 10px 20px 14px; }
-}
-
-/* Ask GRAIN response panel (appears below bar when a question is selected) */
-.ask-bar-response {
-  display: none;
-  background: var(--paper);
-  border-top: 1px solid var(--line);
-}
-.ask-bar-response.open { display: block; }
-.ask-bar-response-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 22px 32px;
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-}
-.ask-bar-response-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  color: var(--moss-deep);
-  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: rgba(240, 236, 223, 0.35);
   text-transform: uppercase;
-  flex-shrink: 0;
-  padding-top: 4px;
-  min-width: 64px;
 }
-.ask-bar-response-text {
-  flex: 1;
-  font-size: 15px;
-  color: var(--ink);
-  line-height: 1.65;
-  font-family: 'Inter', sans-serif;
-}
-.ask-bar-response-close {
-  background: transparent;
-  border: none;
-  color: var(--muted);
-  font-size: 26px;
-  cursor: pointer;
-  padding: 0 6px;
-  line-height: 1;
-  align-self: flex-start;
-  transition: color 0.2s ease;
-}
-.ask-bar-response-close:hover { color: var(--ink); }
-
-@media (max-width: 768px) {
-  .ask-bar-response-inner { padding: 18px 20px; gap: 14px; flex-direction: column; }
-  .ask-bar-response-label { min-width: 0; }
-  .ask-bar-response-close { position: absolute; top: 12px; right: 14px; }
-}
-
-/* ============================================================
-   SHARED PILL TOGGLE — used for view toggles and pricing toggles
-   ============================================================ */
-.pill-toggle-wrap {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-}
-.pill-toggle {
+.footer-bottom-mid {
+  justify-self: center;
   display: inline-flex;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  padding: 3px;
-  position: relative;
-  border-radius: 999px;
+  align-items: center;
+  gap: 10px;
+  color: rgba(240, 236, 223, 0.55);
+  letter-spacing: 0.18em;
 }
-.pill-toggle-btn {
-  padding: 8px 22px;
-  background: transparent;
-  border: none;
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  cursor: pointer;
-  position: relative;
-  z-index: 2;
-  transition: color 0.25s ease;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-.pill-toggle-btn.active { color: var(--paper); }
-.pill-toggle-slider {
-  position: absolute;
-  top: 3px;
-  bottom: 3px;
-  left: 3px;
-  width: calc(50% - 3px);
-  background: var(--ink);
-  border-radius: 999px;
-  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
-  z-index: 1;
-}
-.pill-toggle[data-active="right"] .pill-toggle-slider { transform: translateX(100%); }
-.pill-toggle-badge {
-  display: inline-block;
-  margin-left: 6px;
-  padding: 2px 6px;
+.footer-bottom-mid::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
   background: var(--moss);
-  color: var(--ink);
-  border-radius: 999px;
-  font-size: 9px;
+  box-shadow: 0 0 0 3px rgba(154,175,122,0.16);
+  animation: footer-status-pulse 2.6s ease-in-out infinite;
+}
+@keyframes footer-status-pulse {
+  0%, 100% { opacity: 1;    box-shadow: 0 0 0 3px rgba(154,175,122,0.16); }
+  50%      { opacity: 0.55; box-shadow: 0 0 0 6px rgba(154,175,122,0.04); }
+}
+.footer-bottom-right { justify-self: end; }
+.footer-bottom-right a { color: inherit; transition: color 0.2s; }
+.footer-bottom-right a:hover { color: var(--moss-light); }
+.footer-bottom-mid .sep { opacity: 0.4; padding: 0 2px; }
+.footer-bottom-mid .heartbeat {
+  font-family: 'JetBrains Mono', monospace;
+  color: rgba(240, 236, 223, 0.42);
+  min-width: 28px;
+  text-align: left;
+  transition: color 0.45s var(--ease);
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0.06em;
 }
-@media (max-width: 600px) {
-  .pill-toggle-btn { padding: 7px 16px; font-size: 10px; letter-spacing: 0.06em; }
+.footer-bottom-mid.flash { color: var(--moss-light); }
+.footer-bottom-mid.flash .heartbeat { color: var(--moss-light); }
+.footer-bottom-mid.flash::before {
+  box-shadow: 0 0 0 7px rgba(154,175,122,0.22), 0 0 14px rgba(154,175,122,0.45) !important;
 }
+
+@media (max-width: 1080px) {
+  .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+  .footer-brand-block { grid-column: 1 / -1; }
+}
+@media (max-width: 880px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-brand-block { grid-column: 1 / -1; }
+  .footer-bottom { grid-template-columns: 1fr; text-align: center; gap: 14px; }
+  .footer-bottom-mid, .footer-bottom-right { justify-self: center; }
+}
+@media (max-width: 520px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== ASK GRAIN — FLOATING PILL ===== */
+.ask-pill {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  z-index: 90;
+  background: var(--ink-deeper);
+  border: 1px solid var(--moss);
+  color: var(--bg);
+  padding: 14px 22px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 12px 32px -8px rgba(0,0,0,0.45);
+  animation: pill-entry 0.8s var(--ease-out) 0.6s backwards, pill-pulse 2.6s var(--ease-out) 1.5s 1;
+}
+.on-cream-body .ask-pill {
+  background: var(--ink);
+  border-color: var(--moss);
+}
+.ask-pill:hover {
+  background: var(--moss);
+  color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px -12px rgba(154, 175, 122, 0.5);
+}
+.ask-pill-icon { width: 14px; height: 14px; }
+.ask-pill-kbd {
+  font-size: 9px;
+  padding: 3px 6px;
+  background: rgba(240, 236, 223, 0.08);
+  border: 1px solid var(--line-dark-strong);
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  margin-left: 4px;
+  font-weight: 500;
+}
+.ask-pill:hover .ask-pill-kbd { background: rgba(28, 36, 32, 0.15); border-color: rgba(28, 36, 32, 0.2); }
+@keyframes pill-entry {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pill-pulse {
+  0%, 100% { box-shadow: 0 12px 32px -8px rgba(0,0,0,0.45), 0 0 0 0 rgba(154, 175, 122, 0); }
+  30% { box-shadow: 0 12px 32px -8px rgba(0,0,0,0.45), 0 0 0 14px rgba(154, 175, 122, 0.18); }
+  60% { box-shadow: 0 12px 32px -8px rgba(0,0,0,0.45), 0 0 0 22px rgba(154, 175, 122, 0); }
+}
+
+@media (max-width: 600px) {
+  .ask-pill { bottom: 20px; right: 20px; padding: 12px 18px; font-size: 10px; }
+  .ask-pill-kbd { display: none; }
+}
+
+/* ===== ASK GRAIN — MODAL ===== */
+.ask-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(10, 14, 12, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.ask-overlay.open { opacity: 1; pointer-events: auto; }
+.ask-modal {
+  background: var(--ink);
+  border: 1px solid var(--line-dark-strong);
+  width: 100%;
+  max-width: 640px;
+  max-height: min(80vh, 720px);
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.96) translateY(12px);
+  transition: transform 0.4s var(--ease-out);
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+.ask-overlay.open .ask-modal { transform: scale(1) translateY(0); }
+.ask-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line-dark);
+}
+.ask-modal-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moss);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.ask-modal-close {
+  width: 30px; height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(240, 236, 223, 0.5);
+  transition: color 0.2s;
+  font-size: 18px;
+}
+.ask-modal-close:hover { color: var(--bg); }
+.ask-input-wrap {
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--line-dark);
+}
+.ask-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--bg);
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 8px 0;
+  outline: none;
+}
+.ask-input::placeholder { color: rgba(240, 236, 223, 0.32); }
+.ask-suggestions {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+.ask-suggestion-label {
+  padding: 16px 24px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240, 236, 223, 0.4);
+  font-weight: 600;
+}
+.ask-suggestion {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 24px;
+  color: rgba(240, 236, 223, 0.85);
+  font-size: 14.5px;
+  transition: background 0.15s, color 0.15s;
+  border-left: 2px solid transparent;
+}
+.ask-suggestion:hover {
+  background: rgba(154, 175, 122, 0.08);
+  color: var(--moss-light);
+  border-left-color: var(--moss);
+}
+.ask-answer {
+  padding: 22px 24px;
+  border-top: 1px solid var(--line-dark);
+  background: var(--ink-deeper);
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(240, 236, 223, 0.86);
+  display: none;
+}
+.ask-answer.show { display: block; }
+.ask-answer .ask-answer-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .ask-overlay { padding: 0; align-items: flex-end; }
+  .ask-modal { max-height: 88vh; border-radius: 0; }
+  .ask-input { font-size: 17px; }
+}
+
+/* ===== UTILITY ===== */
+.no-scroll { overflow: hidden; }
+.divider-row {
+  border-top: 1px solid var(--line-dark);
+}
+.on-cream .divider-row { border-top-color: var(--line); }
 
 </style>
 
 <style>
-.page-hero { padding: 200px 32px 80px; max-width: 1280px; margin: 0 auto; text-align: center; }
-.page-hero h1 { font-weight: 900; font-size: clamp(48px, 7vw, 92px); line-height: 0.96; letter-spacing: -0.03em; margin-bottom: 32px; }
-.page-hero h1 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
-.page-hero-sub { font-size: clamp(17px, 1.6vw, 21px); color: var(--ink-soft); max-width: 720px; line-height: 1.55; margin: 0 auto; }
-@media (max-width: 768px) { .page-hero { padding: 140px 20px 60px; } }
+/* PAGE-SPECIFIC — PRICING */
 
-/* Featured Greenhouse Offer */
-.offer-section { padding: 80px 32px 140px; max-width: 1100px; margin: 0 auto; }
-.single-offer { background: var(--bg); border: 1px solid var(--line); padding: 72px 64px; }
-.offer-tier-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--moss-deep); margin-bottom: 28px; text-transform: uppercase; font-weight: 600; }
-.offer-name { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 72px; line-height: 1; margin-bottom: 16px; color: var(--ink); }
-.offer-tagline { font-size: 22px; color: var(--ink-soft); margin-bottom: 12px; line-height: 1.4; }
-.offer-fit-line { font-size: 15px; color: var(--muted); margin-bottom: 48px; line-height: 1.5; }
-.offer-pricing { display: grid; grid-template-columns: 1fr auto 1fr; gap: 40px; align-items: center; padding: 36px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 48px; }
-.offer-price-block { text-align: center; }
-.offer-price { font-weight: 900; font-size: 56px; line-height: 1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px; }
-.offer-mo { font-size: 24px; font-weight: 500; color: var(--ink-soft); }
-.offer-price-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
-.offer-divider { width: 1px; height: 80px; background: var(--line); }
-.standards-block { margin-bottom: 48px; }
-.standards-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--moss-deep); margin-bottom: 24px; font-weight: 600; }
-.standards-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 32px; }
-.standards-list li { font-size: 15px; color: var(--ink-light); padding-left: 24px; position: relative; line-height: 1.5; }
-.standards-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--moss-deep); font-weight: 700; }
-.guarantee-block { background: var(--paper); padding: 32px 36px; border-left: 3px solid var(--moss-deep); margin-bottom: 48px; }
-.guarantee-label-inline { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss-deep); margin-bottom: 12px; font-weight: 600; }
-.guarantee-text { font-size: 16px; color: var(--ink); line-height: 1.55; }
-.offer-btn { display: inline-flex; align-items: center; gap: 12px; padding: 20px 36px; background: var(--ink); color: var(--bg); font-weight: 600; font-size: 16px; border: none; cursor: pointer; transition: all 0.2s var(--ease); margin-bottom: 20px; }
-.offer-btn:hover { background: var(--moss-deep); transform: translateY(-2px); }
-.offer-fineprint { font-size: 13px; color: var(--muted); font-style: italic; line-height: 1.55; }
-@media (max-width: 768px) {
-  .single-offer { padding: 48px 28px; }
-  .offer-name { font-size: 48px; }
-  .offer-pricing { grid-template-columns: 1fr; gap: 32px; }
-  .offer-divider { display: none; }
-  .standards-list { grid-template-columns: 1fr; }
+/* PAGE HERO */
+.page-hero {
+  padding: 180px 0 80px;
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  text-align: center;
+}
+.page-hero::before {
+  content: "";
+  position: absolute;
+  top: 30%; left: 50%;
+  width: 1100px; height: 700px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(154,175,122,0.12) 0%, transparent 60%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+.page-hero-inner { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+.page-hero h1 { margin: 24px 0 22px; }
+.page-hero .lede { margin: 0 auto; }
+
+/* BILLING TOGGLE (PAGE-LEVEL) */
+.billing-toggle {
+  display: inline-flex;
+  margin-top: 44px;
+  background: var(--ink-deeper);
+  border: 1px solid var(--line-dark-strong);
+  padding: 4px;
+}
+.billing-toggle button {
+  padding: 11px 22px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(240, 236, 223, 0.55);
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+.billing-toggle button.active {
+  background: var(--moss);
+  color: var(--ink);
+}
+.billing-toggle .save-pill {
+  margin-left: 8px;
+  font-size: 9px;
+  padding: 2px 6px;
+  background: rgba(154,175,122,0.18);
+  color: var(--moss-light);
+  border: 1px solid rgba(154,175,122,0.32);
+  letter-spacing: 0.08em;
+}
+.billing-toggle button.active .save-pill { background: var(--ink); color: var(--moss-light); border-color: var(--ink); }
+
+/* TIER GRID */
+.tier-section { padding: 70px 0 140px; }
+.tier-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+  padding-top: 28px;
+}
+.tier {
+  background: var(--ink-deeper);
+  border: 1px solid var(--line-dark-strong);
+  padding: 44px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.5s var(--ease-out), border-color 0.4s var(--ease), box-shadow 0.5s var(--ease);
+}
+.tier:hover { transform: translateY(-4px); border-color: var(--moss-deep); }
+.tier.anchor {
+  background: var(--ink-deeper);
+  border: 1px solid var(--moss);
+  transform: translateY(-12px);
+  padding: 52px 40px 40px;
+  box-shadow:
+    0 32px 80px -28px rgba(0,0,0,0.6),
+    0 1px 0 0 rgba(154,175,122,0.18) inset;
+}
+.tier.anchor:hover { transform: translateY(-16px); border-color: var(--moss-light); }
+/* Subtle moss top-edge accent on anchor — breathes quietly */
+.tier.anchor::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--moss) 50%, transparent 100%);
+  opacity: 0.6;
+  animation: anchor-edge-breathe 5s ease-in-out infinite;
+}
+@keyframes anchor-edge-breathe {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}
+.tier-badge {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--moss);
+  color: var(--ink);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 7px 14px;
+  white-space: nowrap;
+}
+.tier-badge.subtle {
+  background: var(--ink-deeper);
+  color: rgba(240,236,223,0.55);
+  border: 1px solid var(--line-dark-strong);
+  font-weight: 600;
+}
+.tier-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--moss);
+  font-weight: 700;
+  margin-bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.tier-name::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--moss);
+}
+.tier.anchor .tier-name { color: var(--moss-light); }
+.tier.anchor .tier-name::before { background: var(--moss-light); }
+.tier-tagline {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 19px;
+  color: var(--bg);
+  margin-bottom: 36px;
+  line-height: 1.32;
+  min-height: 50px;
+  letter-spacing: -0.005em;
+}
+.tier.anchor .tier-tagline { font-size: 21px; min-height: 56px; }
+.tier-price {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.tier-price-num {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(44px, 5.4vw, 62px);
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  color: var(--bg);
+}
+.tier.anchor .tier-price-num { font-size: clamp(52px, 6.2vw, 72px); }
+.tier-price-prefix { font-size: 22px; font-weight: 700; color: rgba(240,236,223,0.5); letter-spacing: -0.01em; }
+.tier-price-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(240,236,223,0.5);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.tier-setup {
+  font-size: 13px;
+  color: rgba(240,236,223,0.55);
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line-dark);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.03em;
+}
+.tier-setup strong { color: var(--bg); font-weight: 700; }
+
+/* Annual savings badge — appears under the price when annual billing is toggled */
+.tier-saves {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 11px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: rgba(154,175,122,0.10);
+  color: var(--moss-light);
+  border: 1px solid rgba(154,175,122,0.30);
+  opacity: 0;
+  max-height: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  overflow: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.45s var(--ease),
+              max-height 0.45s var(--ease),
+              transform 0.45s var(--ease),
+              margin 0.45s var(--ease),
+              padding 0.45s var(--ease);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.tier-saves::before {
+  content: "+";
+  color: var(--moss);
+  font-weight: 800;
+}
+.billing-annual .tier-saves {
+  opacity: 1;
+  max-height: 40px;
+  transform: translateY(0);
+  margin-top: -14px;
+  margin-bottom: 18px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
-/* Mission Control Callout */
-.mc-callout { background: var(--ink); color: var(--bg); padding: 56px 48px; margin-top: 48px; position: relative; overflow: hidden; }
-.mc-callout::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--moss), transparent); }
-.mc-callout-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss-light); margin-bottom: 20px; }
-.mc-callout-title { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 36px; line-height: 1.15; margin-bottom: 16px; }
-.mc-callout-body { font-size: 16px; color: rgba(240,236,223,0.75); line-height: 1.6; max-width: 720px; }
-
-/* Other Tiers Cards */
-.other-tiers { padding: 100px 32px; background: var(--paper); }
-.other-tiers-head { text-align: center; max-width: 720px; margin: 0 auto 60px; }
-.other-tiers-head h2 { font-weight: 900; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
-.other-tiers-head h2 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
-.other-tiers-sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; }
-.tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 1100px; margin: 0 auto; }
-.tier-card { background: var(--bg); border: 1px solid var(--line); padding: 48px 40px; transition: all 0.3s var(--ease); }
-.tier-card:hover { border-color: var(--moss-deep); transform: translateY(-4px); }
-.tier-card-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--moss-deep); margin-bottom: 20px; font-weight: 600; text-transform: uppercase; }
-.tier-card-name { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 48px; line-height: 1; margin-bottom: 12px; color: var(--ink); }
-.tier-card-tagline { font-size: 16px; color: var(--ink-soft); margin-bottom: 28px; line-height: 1.4; min-height: 44px; }
-.tier-card-price { font-weight: 900; font-size: 40px; line-height: 1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 8px; }
-.tier-card-price-sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--muted); margin-bottom: 32px; text-transform: uppercase; }
-.tier-card-fit { background: var(--paper); padding: 20px; font-size: 14px; color: var(--ink-light); line-height: 1.55; margin-bottom: 28px; }
-.tier-card-fit strong { color: var(--ink); }
-.tier-card-includes { list-style: none; padding: 0; margin: 0 0 32px 0; }
-.tier-card-includes li { font-size: 14px; color: var(--ink-light); padding-left: 22px; position: relative; line-height: 1.5; margin-bottom: 10px; }
-.tier-card-includes li::before { content: "→"; position: absolute; left: 0; top: 0; color: var(--moss-deep); }
-.tier-card-cta { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; background: var(--ink); color: var(--bg); font-weight: 600; font-size: 14px; border: none; cursor: pointer; text-decoration: none; transition: all 0.2s var(--ease); }
-.tier-card-cta:hover { background: var(--moss-deep); }
-.tier-card.estate { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.tier-card.estate .tier-card-label { color: var(--moss-light); }
-.tier-card.estate .tier-card-name { color: var(--bg); }
-.tier-card.estate .tier-card-tagline { color: rgba(240,236,223,0.75); }
-.tier-card.estate .tier-card-price { color: var(--bg); }
-.tier-card.estate .tier-card-price-sub { color: rgba(240,236,223,0.5); }
-.tier-card.estate .tier-card-fit { background: rgba(240,236,223,0.06); color: rgba(240,236,223,0.8); }
-.tier-card.estate .tier-card-fit strong { color: var(--bg); }
-.tier-card.estate .tier-card-includes li { color: rgba(240,236,223,0.75); }
-.tier-card.estate .tier-card-includes li::before { color: var(--moss-light); }
-.tier-card.estate .tier-card-cta { background: var(--moss); color: var(--ink); }
-.tier-card.estate .tier-card-cta:hover { background: var(--moss-light); }
-@media (max-width: 768px) {
-  .tier-grid { grid-template-columns: 1fr; gap: 24px; }
-  .tier-card { padding: 36px 28px; }
-  .tier-card-name { font-size: 36px; }
-  .tier-card-tagline { min-height: 0; }
+/* BUNDLED RAIL — anchor only */
+.tier-bundled-rail {
+  display: none;
+  margin-bottom: 28px;
+  padding: 14px 16px;
+  background: rgba(154,175,122,0.05);
+  border-left: 2px solid var(--moss);
+}
+.tier.anchor .tier-bundled-rail { display: block; }
+.tier-bundled-rail-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--moss-light);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.tier-bundled-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 0;
+  margin: 0;
+}
+.tier-bundled-list li {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(240,236,223,0.8);
+  letter-spacing: 0.04em;
+}
+.tier-bundled-list li::before {
+  content: "+";
+  color: var(--moss);
+  font-weight: 700;
+  margin-right: 6px;
 }
 
-/* Add-Ons Section */
-.addons-section { padding: 140px 32px; background: var(--bg); }
-.addons-inner { max-width: 1200px; margin: 0 auto; }
-.addons-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
-.addons-head h2 { font-weight: 900; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
-.addons-head h2 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
-.addons-head p { font-size: 17px; color: var(--ink-soft); line-height: 1.6; }
-.addons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.addon-card { background: var(--paper); border: 1px solid var(--line); padding: 28px 26px 26px; display: flex; flex-direction: column; gap: 16px; transition: border-color 0.4s ease, transform 0.4s ease; min-height: 290px; }
-.addon-card:hover { border-color: var(--moss); transform: translateY(-3px); }
-.addon-mark { font-weight: 900; font-size: 32px; line-height: 1; letter-spacing: -0.02em; color: var(--moss-deep); width: 32px; font-family: 'Helvetica Neue', 'Arial Black', sans-serif; }
-.addon-name { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 28px; line-height: 1; color: var(--ink); letter-spacing: -0.01em; margin-top: -4px; }
-.addon-desc { font-size: 14px; line-height: 1.55; color: var(--ink-light); flex-grow: 1; }
-.addon-price-block { padding-top: 16px; border-top: 1px solid var(--line-soft); }
-.addon-price { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.05em; color: var(--ink); font-weight: 700; line-height: 1.4; }
-.addon-price-note { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; font-weight: 600; margin-top: 4px; }
-.addons-footnote { text-align: center; margin-top: 48px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; font-weight: 600; }
-@media (max-width: 960px) { .addons-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .addons-grid { grid-template-columns: 1fr; } .addon-card { min-height: auto; } }
+.tier-fit-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(240,236,223,0.42);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.tier-fit { font-size: 14px; color: var(--bg); margin-bottom: 28px; line-height: 1.55; font-weight: 500; }
+.tier-features {
+  list-style: none;
+  margin: 0 0 36px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.tier-features li {
+  font-size: 14px;
+  color: rgba(240,236,223,0.78);
+  line-height: 1.5;
+  padding-left: 24px;
+  position: relative;
+}
+.tier-features li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 9px;
+  width: 12px; height: 1.5px;
+  background: var(--moss);
+}
+.tier-features li.bundled::before { background: var(--moss-light); }
+.tier-features li.bundled { color: var(--moss-light); font-weight: 500; }
+.tier-cta { margin-top: auto; }
+.tier-cta .btn { width: 100%; justify-content: center; padding: 18px 24px; }
+.tier-foot {
+  margin-top: 16px;
+  font-size: 11px;
+  color: rgba(240,236,223,0.45);
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
-/* What's Included / Not Included */
-.what-included { padding: 100px 32px; background: var(--paper); }
-.container-narrow { max-width: 1000px; margin: 0 auto; }
-.section-head { text-align: center; margin-bottom: 64px; }
-.section-head .eyebrow { justify-content: center; }
-.section-head h2 { font-weight: 900; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
-.section-head h2 .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss-deep); }
-.section-sub { font-size: 17px; color: var(--ink-soft); line-height: 1.6; max-width: 600px; margin: 0 auto; }
-.included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.included-col { background: var(--bg); padding: 48px 40px; }
-.included-col h3 { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 32px; margin-bottom: 28px; color: var(--ink); }
-.included-col.no h3 { color: var(--muted); }
-.included-col ul { list-style: none; padding: 0; margin: 0; }
-.included-col li { font-size: 15px; color: var(--ink-light); padding-left: 24px; position: relative; line-height: 1.5; margin-bottom: 12px; }
-.included-col.yes li::before { content: "✓"; position: absolute; left: 0; color: var(--moss-deep); font-weight: 700; }
-.included-col.no li::before { content: "✗"; position: absolute; left: 0; color: var(--muted); font-weight: 700; }
-@media (max-width: 768px) { .included-grid { grid-template-columns: 1fr; } .included-col { padding: 36px 28px; } }
+@media (max-width: 980px) {
+  .tier-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; gap: 28px; }
+  .tier.anchor { order: -1; transform: none; padding: 44px 36px 36px; }
+  .tier.anchor:hover { transform: translateY(-4px); }
+}
+
+/* GUARANTEE BAND */
+.guarantee-band {
+  background: var(--ink-deeper);
+  border-top: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
+  padding: 80px 0;
+  text-align: center;
+}
+.guarantee-band .eyebrow { justify-content: center; margin-bottom: 22px; }
+.guarantee-band h3 {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 44px);
+  color: var(--bg);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.25;
+}
+.guarantee-band h3 strong { color: var(--moss-light); font-style: normal; font-family: 'Inter', sans-serif; font-weight: 800; }
+
+/* TRANSPARENCY SECTION */
+.transparency-section { padding: 140px 0; background: var(--bg); color: var(--ink); }
+.transparency-section .eyebrow { color: var(--moss-deep); }
+.transparency-section .eyebrow::before { background: var(--moss-deep); }
+.transparency-section h2 { color: var(--ink); }
+.transparency-section .lede { color: rgba(28,36,32,0.7); }
+.transparency-section .italic-accent { color: var(--moss-deep); }
+.transparency-intro { max-width: 760px; margin-bottom: 56px; }
+.transparency-intro h2 { margin: 22px 0 24px; }
+
+/* Visual proof — attribution report mockup
+   Treated as a real document fragment, not a marketing card.
+   Restrained, mono-heavy, dim. Lives on cream to look like a printed/exported report. */
+.transparency-proof {
+  background: var(--ink-deeper);
+  max-width: 980px;
+  margin: 0 auto;
+  box-shadow:
+    0 1px 0 0 rgba(28,36,32,0.06),
+    0 32px 80px -32px rgba(28,36,32,0.32),
+    0 12px 32px -16px rgba(28,36,32,0.18);
+  position: relative;
+  overflow: hidden;
+}
+.proof-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 26px 32px 22px;
+  border-bottom: 1px solid var(--line-dark);
+  flex-wrap: wrap;
+}
+.proof-title-block { min-width: 0; }
+.proof-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moss-light);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.proof-title {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--bg);
+  letter-spacing: -0.005em;
+}
+.proof-sample-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,236,223,0.55);
+  padding: 6px 10px;
+  border: 1px solid rgba(240,236,223,0.18);
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* Report meta strip — looks like a header you'd see on an exported PDF */
+.proof-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
+}
+.proof-meta-cell {
+  background: var(--ink-deeper);
+  padding: 14px 22px 14px;
+}
+.proof-meta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,236,223,0.42);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.proof-meta-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--bg);
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+
+.proof-table { display: block; }
+.proof-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1.5fr 1.3fr 0.9fr;
+  gap: 16px;
+  padding: 13px 32px;
+  border-bottom: 1px solid var(--line-dark);
+  font-size: 13.5px;
+  color: var(--bg);
+  align-items: center;
+}
+.proof-row:not(.proof-row-head):not(.proof-row-total):nth-child(even) {
+  background: rgba(240,236,223,0.018);
+}
+.proof-row-head {
+  background: rgba(240,236,223,0.025);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,236,223,0.5);
+  padding: 11px 32px;
+  font-weight: 600;
+}
+.proof-row-head > div:last-child { text-align: right; }
+.proof-cell-name { font-weight: 500; color: var(--bg); }
+.proof-cell-rev {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  text-align: right;
+  color: var(--moss-light);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.proof-cell-rev.dim { color: rgba(240,236,223,0.32); }
+.proof-source {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(240,236,223,0.72);
+  letter-spacing: 0.01em;
+}
+.proof-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+.proof-status::before {
+  content: "";
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.proof-status.booked {
+  color: var(--moss-light);
+  border: 1px solid rgba(154,175,122,0.32);
+  background: rgba(154,175,122,0.08);
+}
+.proof-status.booked::before { background: var(--moss); }
+.proof-status.quoted {
+  color: rgba(240,236,223,0.62);
+  border: 1px solid rgba(240,236,223,0.14);
+  background: rgba(240,236,223,0.025);
+}
+.proof-status.quoted::before { background: rgba(240,236,223,0.4); }
+.proof-status.followup {
+  color: rgba(191,208,162,0.7);
+  border: 1px solid rgba(191,208,162,0.18);
+  background: rgba(191,208,162,0.04);
+}
+.proof-status.followup::before { background: rgba(191,208,162,0.55); }
+
+.proof-row-total {
+  background: rgba(154,175,122,0.05);
+  padding: 16px 32px 17px;
+  border-top: 1px solid rgba(154,175,122,0.2);
+  border-bottom: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(240,236,223,0.7);
+  font-weight: 600;
+}
+.proof-row-total .proof-cell-rev { font-size: 17px; color: var(--moss-light); font-weight: 700; letter-spacing: 0.02em; }
+.proof-row-total > div:first-child { grid-column: 1 / span 3; }
+
+/* Report footer — methodology line, looks like fine print on an exported report */
+.proof-foot {
+  padding: 14px 32px 16px;
+  border-top: 1px solid var(--line-dark);
+  background: rgba(0,0,0,0.18);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(240,236,223,0.42);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.proof-foot-meth { max-width: 580px; line-height: 1.5; }
+.proof-foot-ref { letter-spacing: 0.12em; }
+
+@media (max-width: 860px) {
+  .proof-meta { grid-template-columns: repeat(2, 1fr); }
+  .proof-row { grid-template-columns: 1fr 1fr; padding: 12px 18px; gap: 8px 14px; }
+  .proof-row > div:nth-child(3), .proof-row > div:nth-child(4) { text-align: left; }
+  .proof-cell-rev { text-align: right; }
+  .proof-row-head { display: none; }
+  .proof-header { padding: 22px 18px 18px; }
+  .proof-meta-cell { padding: 12px 18px; }
+  .proof-foot { padding: 14px 18px; }
+}
+
+/* ADD-ONS */
+.addons-section { padding: 140px 0; }
+.addons-intro { max-width: 720px; margin-bottom: 80px; }
+.addons-intro h2 { margin: 22px 0 24px; }
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line-dark);
+  border: 1px solid var(--line-dark);
+}
+.addon {
+  background: var(--ink);
+  padding: 36px 32px 32px;
+  transition: background 0.3s var(--ease);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 340px;
+}
+.addon:hover { background: var(--ink-deeper); }
+.addon:hover .addon-glyph { color: var(--moss-light); transform: rotate(8deg); }
+
+/* Glyph corner mark — typographic */
+.addon-glyph {
+  position: absolute;
+  top: 30px;
+  right: 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  color: rgba(154,175,122,0.32);
+  font-weight: 400;
+  line-height: 1;
+  transition: color 0.4s var(--ease), transform 0.5s var(--ease);
+  user-select: none;
+}
+
+/* Plain headline — small mono tag describing function */
+.addon-plain {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,236,223,0.48);
+  margin-bottom: 14px;
+  font-weight: 600;
+  padding-right: 44px;
+}
+.addon-header {
+  display: block;
+  margin-bottom: 18px;
+}
+/* Branded name — Fraunces italic statement */
+.addon-name {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 34px;
+  color: var(--bg);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin-bottom: 0;
+}
+.addon-name .new-tag {
+  margin-left: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  background: rgba(154,175,122,0.18);
+  color: var(--moss-light);
+  padding: 2px 6px;
+  vertical-align: 6px;
+  font-weight: 700;
+}
+.addon-price {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--moss-light);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line-dark);
+  line-height: 1.55;
+  text-align: left;
+}
+.addon-desc {
+  font-size: 13.5px;
+  color: rgba(240,236,223,0.66);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+.addon-bundled {
+  margin-top: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moss);
+  font-weight: 700;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-dark);
+}
+.addon-bundled::before { content: "↳ "; }
+
+@media (max-width: 1080px) {
+  .addons-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .addons-grid { grid-template-columns: 1fr; }
+  .addon-name { font-size: 28px; }
+  .addon { min-height: 0; }
+}
+.addon-bundled {
+  margin-top: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--moss-light);
+  font-weight: 600;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-dark);
+}
+.addon-bundled::before { content: "↳ "; }
+
+@media (max-width: 720px) {
+  .addons-grid { grid-template-columns: 1fr; }
+}
+
+/* INCLUDED / NOT INCLUDED */
+.included-section {
+  background: var(--bg);
+  color: var(--ink);
+  padding: 120px 0;
+}
+.included-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-top: 60px;
+}
+.included-col h3 {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--ink);
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.included-col h3 .x { color: #B85050; }
+.included-col h3 .check { color: var(--moss-deep); }
+.included-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.included-col li {
+  font-size: 15px;
+  color: var(--ink-light);
+  padding-left: 22px;
+  position: relative;
+  line-height: 1.5;
+}
+.included-col.yes li::before {
+  content: "+";
+  position: absolute;
+  left: 0; top: 0;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--moss-deep);
+  font-weight: 700;
+}
+.included-col.no li::before {
+  content: "—";
+  position: absolute;
+  left: 0; top: 0;
+  font-family: 'JetBrains Mono', monospace;
+  color: rgba(28,36,32,0.35);
+  font-weight: 700;
+}
+@media (max-width: 720px) {
+  .included-grid { grid-template-columns: 1fr; gap: 48px; }
+}
 
 /* FAQ */
-.faq-section { padding: 140px 32px; }
-.faq-list { max-width: 800px; margin: 0 auto; }
-.faq-item { padding: 36px 0; border-bottom: 1px solid var(--line); }
-.faq-item:first-child { padding-top: 0; }
-.faq-item:last-child { border-bottom: none; }
-.faq-q { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 24px; color: var(--ink); margin-bottom: 14px; line-height: 1.3; }
-.faq-a { font-size: 16px; color: var(--ink-light); line-height: 1.65; }
+.faq-section { padding: 140px 0; }
+.faq-intro { max-width: 720px; margin-bottom: 60px; }
+.faq-intro h2 { margin: 22px 0 24px; }
+.faq-list { max-width: 920px; }
+.faq-item {
+  border-top: 1px solid var(--line-dark);
+  padding: 28px 0;
+  cursor: pointer;
+  transition: padding 0.3s var(--ease);
+}
+.faq-item:last-child { border-bottom: 1px solid var(--line-dark); }
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.faq-q-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(17px, 1.6vw, 22px);
+  color: var(--bg);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.faq-icon {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  position: relative;
+  transition: transform 0.4s var(--ease);
+}
+.faq-icon::before, .faq-icon::after {
+  content: "";
+  position: absolute;
+  background: var(--moss);
+  transition: transform 0.4s var(--ease);
+}
+.faq-icon::before { left: 4px; right: 4px; top: 50%; height: 1.5px; transform: translateY(-50%); }
+.faq-icon::after { top: 4px; bottom: 4px; left: 50%; width: 1.5px; transform: translateX(-50%); }
+.faq-item.open .faq-icon::after { transform: translateX(-50%) scaleY(0); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--ease), margin-top 0.4s var(--ease);
+  margin-top: 0;
+}
+.faq-a-inner {
+  font-size: 16px;
+  color: rgba(240,236,223,0.72);
+  line-height: 1.65;
+  max-width: 720px;
+}
+.faq-a-inner p { margin-bottom: 14px; }
+.faq-a-inner p:last-child { margin-bottom: 0; }
+.faq-item.open .faq-a { max-height: 600px; margin-top: 22px; }
 
-/* CTA */
-.cta-section { background: var(--ink); color: var(--bg); padding: 160px 32px; text-align: center; }
-.cta-section .eyebrow { color: var(--moss-light); justify-content: center; }
-.cta-section h2 { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: clamp(36px, 6vw, 72px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 32px; color: var(--bg); }
-.cta-section p { font-size: 18px; color: rgba(240,236,223,0.8); line-height: 1.6; max-width: 600px; margin: 0 auto 48px; }
-.cta-section .btn-primary { background: var(--moss); color: var(--ink); }
-.cta-section .btn-primary:hover { background: var(--moss-light); }
-
-/* Per-tier annual toggle */
-.tier-toggle-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
-.tier-toggle-area { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; padding-top: 4px; }
-.tier-toggle-lbl { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: var(--muted); font-weight: 700; text-transform: uppercase; }
-.tier-card.estate .tier-toggle-lbl { color: rgba(240,236,223,0.65); }
-.tier-sw { position: relative; width: 40px; height: 22px; cursor: pointer; display: inline-block; }
-.tier-sw input { opacity: 0; width: 0; height: 0; position: absolute; margin: 0; }
-.tier-sw-track { position: absolute; inset: 0; background: rgba(28,36,32,0.18); border-radius: 11px; transition: background 0.28s; }
-.tier-card.estate .tier-sw-track { background: rgba(240,236,223,0.2); }
-.tier-sw input:checked ~ .tier-sw-track { background: var(--moss-deep); }
-.tier-card.estate .tier-sw input:checked ~ .tier-sw-track { background: var(--moss); }
-.tier-sw-thumb { position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background: #fff; border-radius: 50%; transition: transform 0.28s cubic-bezier(0.16,1,0.3,1); box-shadow: 0 1px 4px rgba(0,0,0,0.18); }
-.tier-sw input:checked ~ .tier-sw-thumb { transform: translateX(18px); }
-
-/* Price flip animation */
-@keyframes priceFlip { 0% { transform: translateY(0); opacity: 1; } 45% { transform: translateY(-9px); opacity: 0; } 55% { transform: translateY(9px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-.price-flipping { animation: priceFlip 0.38s cubic-bezier(0.16,1,0.3,1); }
-
-/* Annual savings indicator */
-.price-save { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--moss-deep); font-weight: 700; text-transform: uppercase; opacity: 0; height: 0; overflow: hidden; transition: opacity 0.28s, height 0.3s cubic-bezier(0.16,1,0.3,1), margin 0.28s; }
-.tier-card.estate .price-save { color: var(--moss-light); }
-.price-save.on { opacity: 1; height: 16px; margin-top: 6px; }
+/* FINAL CTA */
+.cta-band-pricing {
+  background: var(--ink-deeper);
+  border-top: 1px solid var(--line-dark);
+  padding: 120px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-band-pricing::before {
+  content: "";
+  position: absolute;
+  bottom: -300px; left: 50%;
+  width: 900px; height: 600px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(154,175,122,0.10) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cta-band-pricing-inner { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.cta-band-pricing h2 { margin: 22px 0 24px; }
+.cta-band-pricing p { font-size: 18px; color: rgba(240,236,223,0.72); line-height: 1.55; margin-bottom: 36px; max-width: 580px; margin-left: auto; margin-right: auto; }
 </style>
 </head>
 <body>
 
+<!-- ===== NAV ===== -->
 <nav class="nav" id="main-nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-brand">
-      <svg viewBox="0 0 400 400"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#1C2420" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#667B4A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#9AAF7A"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#9AAF7A"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#9AAF7A"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#9AAF7A"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#1C2420"/></g></g></svg>
-      GRAIN
+      <svg class="nav-brand-logo" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(90,75)">
+          <path data-stroke d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" stroke-width="18"/>
+          <g transform="translate(110,230)">
+            <path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/>
+            <path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/>
+            <path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/>
+            <path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/>
+            <path d="M -32 0 Q 0 -14 32 0 Z" fill="#F0ECDF"/>
+          </g>
+        </g>
+      </svg>
+      <span class="nav-brand-text">GRAIN</span>
     </a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-    <div class="nav-links" id="nav-links">
-      <a href="method.html">Method</a>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="calculator.html">Calculator</a>
-      <a href="pricing.html" class="active">Pricing</a>
-      <button class="nav-cta" onclick="openCalendly(event)">Apply for Audit</button>
+    <div class="nav-toggle" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links">
+      <a href="method.html" class="nav-link">Method</a>
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="calculator.html" class="nav-link">Calculator</a>
+      <a href="pricing.html" class="nav-link active">Pricing</a>
+      <a href="apply.html" class="nav-cta">Apply</a>
     </div>
   </div>
 </nav>
 
+<!-- ===== PAGE HERO ===== -->
 <section class="page-hero">
-  <div class="eyebrow">PRICING</div>
-  <h1>Three tiers.<br><span class="italic">One standard.</span></h1>
-  <p class="page-hero-sub">Whether you run one location or many, the standards are the same. What changes is the scope of what we install. No usage fees. No upsells. No hidden charges.</p>
-</section>
-
-<section class="offer-section">
-  <div class="single-offer">
-    <div class="tier-toggle-row">
-      <div>
-        <div class="offer-tier-label">TIER ONE · MOST CLIENTS START HERE</div>
-      </div>
-      <div class="tier-toggle-area">
-        <div class="tier-toggle-lbl">Annual · Save 20%</div>
-        <label class="tier-sw">
-          <input type="checkbox" data-tier="greenhouse" onchange="setTierAnnual('greenhouse', this.checked)">
-          <span class="tier-sw-track"></span>
-          <span class="tier-sw-thumb"></span>
-        </label>
-      </div>
-    </div>
-    <div class="offer-name">Greenhouse</div>
-    <div class="offer-tagline">The complete lead response system, installed and run for you.</div>
-    <div class="offer-fit-line">Built for single-location businesses doing $500K to $3M, handling 30 to 150 leads per month.</div>
-
-    <div class="offer-pricing">
-      <div class="offer-price-block">
-        <div class="offer-price">$3,500</div>
-        <div class="offer-price-label">to install · covers your first 30 days</div>
-      </div>
-      <div class="offer-divider"></div>
-      <div class="offer-price-block">
-        <div class="offer-price" id="greenhouse-price"><span id="greenhouse-num">$2,497</span><span class="offer-mo">/mo</span></div>
-        <div class="offer-price-label" id="greenhouse-sub">starting day 31 · all-inclusive</div>
-        <div class="price-save" id="greenhouse-save">Save $6,000/year</div>
-      </div>
-    </div>
-
-    <div class="standards-block">
-      <div class="standards-label">WHAT YOU GET</div>
-      <ul class="standards-list">
-        <li>Every call answered in under 60 seconds, 24/7</li>
-        <li>Every web form responded to in under 30 seconds</li>
-        <li>Every quote followed up for 90 days, automatically</li>
-        <li>Every dormant customer reactivated quarterly</li>
-        <li>System live in 7 days from signed agreement</li>
-        <li>Day-1 Onboarding Intelligence Report</li>
-        <li>Your private Greenhouse dashboard at yourname.grainmethod.com</li>
-        <li>Monthly growth review with the founder</li>
-        <li>Direct Slack access for support</li>
-        <li>Quarterly industry benchmark report</li>
-      </ul>
-    </div>
-
-    <div class="guarantee-block">
-      <div class="guarantee-label-inline">THE GUARANTEE</div>
-      <p class="guarantee-text">5 extra jobs in your first 60 days, attributable to GRAIN, or we keep working free until you get them. No refund games. No fine print. We work until it works.</p>
-    </div>
-
-    <button class="offer-btn" onclick="openCalendly(event)">Apply for an Audit →</button>
-    <p class="offer-fineprint">Audits are by application. We work with a small number of home service businesses at a time to maintain our standards.</p>
-
-    <div class="mc-callout">
-      <div class="mc-callout-label">YOUR GREENHOUSE DASHBOARD · INCLUDED</div>
-      <div class="mc-callout-title">Every Greenhouse client gets their own dashboard.</div>
-      <p class="mc-callout-body">Built on your own subdomain at yourname.grainmethod.com. Live lead pipeline. Every call answered, with the recording. Every quote followed up, with the status. Every dollar attributed to the system, with the math. Plus Ask GRAIN — type a question in plain English, get an answer about your own data. No logging into someone else's CRM. Your business, your dashboard.</p>
+  <div class="page-hero-inner">
+    <div class="eyebrow reveal" style="justify-content:center;">Pricing</div>
+    <h1 class="h-section reveal" data-delay="1">
+      Three tiers. <span class="italic-accent">All inclusive.</span>
+    </h1>
+    <p class="lede reveal" data-delay="2" style="margin: 0 auto;">
+      No usage fees. No overage charges. No cancellation penalties. The price you see is the price you pay, every month, until you stop.
+    </p>
+    <div class="billing-toggle reveal" data-delay="3" role="tablist">
+      <button class="active" data-billing="monthly" role="tab">Monthly</button>
+      <button data-billing="annual" role="tab">Annual <span class="save-pill">2 mo free</span></button>
     </div>
   </div>
 </section>
 
-<section class="other-tiers">
-  <div class="other-tiers-head">
-    <div class="eyebrow" style="justify-content: center;">FOR LARGER OPERATIONS</div>
-    <h2>Two more <span class="italic">tiers.</span></h2>
-    <p class="other-tiers-sub">Same standards. Wider scope. For multi-trade businesses and multi-location companies.</p>
+<!-- ===== TIER GRID ===== -->
+<section class="tier-section">
+  <div class="wrap">
+    <div class="tier-grid">
+
+      <!-- GREENHOUSE -->
+      <article class="tier reveal">
+        <div class="tier-badge subtle">Most Popular</div>
+        <div class="tier-name">Greenhouse</div>
+        <div class="tier-tagline">A complete growth system for one trade. Built in 7 days. Run by us. Transparent to you.</div>
+        <div class="tier-price">
+          <span class="tier-price-num"><span data-price-monthly="2997" data-price-annual="2497">$2,997</span></span>
+          <span class="tier-price-period">/ month</span>
+        </div>
+        <div class="tier-setup"><strong>$3,500</strong> setup · 7-day deployment</div>
+        <div class="tier-saves">save $6,000 / yr</div>
+        <div class="tier-fit-label">Best for</div>
+        <div class="tier-fit">Single trade, single location. $500K–$3M revenue. 30–150 leads/month.</div>
+        <ul class="tier-features">
+          <li>60-second response, 24/7 — voice, form, and SMS</li>
+          <li>90-day follow-up on every quote</li>
+          <li>Quarterly dormant customer reactivation</li>
+          <li>CRM integration — your existing tools stay</li>
+          <li>Mission Control dashboard, live and yours</li>
+          <li>Monthly review call with the founder</li>
+        </ul>
+        <div class="tier-cta">
+          <button class="btn btn-secondary" onclick="openCalendly(event)">Apply for your free audit <span class="btn-arrow">→</span></button>
+        </div>
+        <div class="tier-foot">5-jobs-in-60-days guarantee</div>
+      </article>
+
+      <!-- ORCHARD -- ANCHOR -->
+      <article class="tier anchor reveal" data-delay="1">
+        <div class="tier-badge">Built for Growth</div>
+        <div class="tier-name">Orchard</div>
+        <div class="tier-tagline">Everything in Greenhouse, unified across your business — plus four add-on engines folded in at no extra cost.</div>
+        <div class="tier-price">
+          <span class="tier-price-num"><span data-price-monthly="6997" data-price-annual="5831">$6,997</span></span>
+          <span class="tier-price-period">/ month</span>
+        </div>
+        <div class="tier-setup"><strong>$9,997</strong> setup · 14-day deployment</div>
+        <div class="tier-saves">save $13,992 / yr</div>
+        <div class="tier-bundled-rail">
+          <div class="tier-bundled-rail-label">Bundled · 4 engines · ~$2,994 / mo value</div>
+          <ul class="tier-bundled-list">
+            <li>Roots</li>
+            <li>Fertilizer</li>
+            <li>Compost (qtrly)</li>
+            <li>Pruning (qtrly)</li>
+          </ul>
+        </div>
+        <div class="tier-fit-label">Best for</div>
+        <div class="tier-fit">Multi-trade or multi-location. $3M–$10M revenue. 150–500 leads/month.</div>
+        <ul class="tier-features">
+          <li>Everything in Greenhouse, at full scale</li>
+          <li>Unified Mission Control across trades and locations</li>
+          <li>Custom CRM integrations included</li>
+          <li>Weekly review call · Quarterly strategy session with founder</li>
+          <li>Dedicated Slack channel</li>
+          <li class="bundled">Fertilizer — the full reputation engine</li>
+          <li class="bundled">Roots — local SEO + Google Business Profile + AI visibility</li>
+          <li class="bundled">Quarterly Compost — dormant customer revival campaigns</li>
+          <li class="bundled">Quarterly Pruning — database cleanup</li>
+        </ul>
+        <div class="tier-cta">
+          <button class="btn btn-primary" onclick="openCalendly(event)">Apply for a strategy session <span class="btn-arrow">→</span></button>
+        </div>
+        <div class="tier-foot">5-jobs-in-60-days guarantee</div>
+      </article>
+
+      <!-- ESTATE -->
+      <article class="tier reveal" data-delay="2">
+        <div class="tier-name">Estate</div>
+        <div class="tier-tagline">Custom-scoped, custom-built. Multi-brand and multi-location infrastructure with a direct line to the founder.</div>
+        <div class="tier-price">
+          <span class="tier-price-prefix">from</span>
+          <span class="tier-price-num"><span data-price-monthly="14997" data-price-annual="12497">$14,997</span></span>
+          <span class="tier-price-period">/ month</span>
+        </div>
+        <div class="tier-setup">from <strong>$24,997</strong> setup · 30-day deployment</div>
+        <div class="tier-saves">save from $30,000 / yr</div>
+        <div class="tier-fit-label">Best for</div>
+        <div class="tier-fit">Multi-location enterprise. $10M+ revenue. 500+ leads/month. 3+ locations.</div>
+        <ul class="tier-features">
+          <li>Everything in Orchard, at enterprise scale</li>
+          <li>Dedicated implementation team</li>
+          <li>Custom voice agents trained on your actual call recordings</li>
+          <li>On-site kickoff and staff training</li>
+          <li>Custom integrations with proprietary tools</li>
+          <li>Quarterly executive review with the founder</li>
+          <li>Direct founder line for the life of the engagement</li>
+        </ul>
+        <div class="tier-cta">
+          <a class="btn btn-secondary" href="mailto:johnny@grainmethod.com?subject=Estate%20tier%20inquiry&amp;body=Hi%20Johnny%2C%0A%0AI%27m%20interested%20in%20discussing%20Estate%20for%20our%20business.%0A%0ABusiness%20name%3A%0ALocations%3A%0AAnnual%20revenue%3A%0ABest%20way%20to%20reach%20me%3A%0A%0AThanks">Talk to Johnny <span class="btn-arrow">→</span></a>
+        </div>
+        <div class="tier-foot">Custom scope · custom guarantee</div>
+      </article>
+
+    </div>
   </div>
-  <div class="tier-grid">
-    <div class="tier-card">
-      <div class="tier-toggle-row">
-        <div class="tier-card-label">TIER TWO</div>
-        <div class="tier-toggle-area">
-          <div class="tier-toggle-lbl">Annual · Save 20%</div>
-          <label class="tier-sw">
-            <input type="checkbox" data-tier="orchard" onchange="setTierAnnual('orchard', this.checked)">
-            <span class="tier-sw-track"></span>
-            <span class="tier-sw-thumb"></span>
-          </label>
+</section>
+
+<!-- ===== GUARANTEE BAND ===== -->
+<section class="guarantee-band">
+  <div class="wrap">
+    <div class="eyebrow reveal">The promise</div>
+    <h3 class="reveal" data-delay="1">
+      Five extra jobs in your first sixty days,<br>
+      or <strong>we work for free until you get them.</strong>
+    </h3>
+  </div>
+</section>
+
+<!-- ===== TRANSPARENCY ===== -->
+<section class="section transparency-section on-cream" id="transparency">
+  <div class="wrap">
+    <div class="transparency-intro">
+      <div class="eyebrow reveal">How you'll see it working</div>
+      <h2 class="h-section reveal" data-delay="1">
+        Every job, <span class="italic-accent">attributed to source.</span>
+      </h2>
+      <p class="lede reveal" data-delay="2">
+        You'll see this in your Mission Control dashboard live, get a version of it in your inbox each week, and walk through it together at Day 60 to count the extra jobs.
+      </p>
+    </div>
+
+    <!-- VISUAL PROOF — attribution panel mockup -->
+    <div class="transparency-proof reveal" data-delay="2">
+      <div class="proof-header">
+        <div class="proof-title-block">
+          <div class="proof-eyebrow">Weekly attribution report</div>
+          <div class="proof-title">Lead-to-revenue · last 7 days</div>
+        </div>
+        <div class="proof-sample-badge">Sample data</div>
+      </div>
+
+      <div class="proof-meta">
+        <div class="proof-meta-cell">
+          <div class="proof-meta-label">Report ID</div>
+          <div class="proof-meta-val">MAR-W12-ACME</div>
+        </div>
+        <div class="proof-meta-cell">
+          <div class="proof-meta-label">Range</div>
+          <div class="proof-meta-val">Mar 15 – Mar 21</div>
+        </div>
+        <div class="proof-meta-cell">
+          <div class="proof-meta-label">Leads</div>
+          <div class="proof-meta-val">14 captured · 7 booked</div>
+        </div>
+        <div class="proof-meta-cell">
+          <div class="proof-meta-label">Generated</div>
+          <div class="proof-meta-val">Mar 22 · 06:00 CT</div>
         </div>
       </div>
-      <div class="tier-card-name">Orchard</div>
-      <div class="tier-card-tagline">For multi-trade businesses or higher-volume single locations.</div>
-      <div class="tier-card-price">$7,500 <span style="font-size:18px;font-weight:600;color:var(--ink-soft)">setup</span></div>
-      <div class="tier-card-price-sub" id="orchard-sub"><span id="orchard-num">$5,997</span><span id="orchard-suffix">/MO · STARTING DAY 31</span></div>
-      <div class="price-save" id="orchard-save">Save $14,400/year</div>
-      <div class="tier-card-fit" style="margin-top: 28px;">
-        <strong>Built for:</strong> $3M to $10M revenue. 150 to 500 leads/month. Multi-trade or expanded service area. 14-day deployment.
-      </div>
-      <ul class="tier-card-includes">
-        <li>Everything in Greenhouse</li>
-        <li>Up to 3 voice agents (different trades or locations)</li>
-        <li>Multi-trade routing and trade-specific scripts</li>
-        <li>Custom CRM integrations</li>
-        <li>Voice cloning of your preferred staff member</li>
-        <li>Weekly review calls, priority Slack support</li>
-        <li>Quarterly strategy session with the founder</li>
-      </ul>
-      <button class="tier-card-cta" onclick="openCalendly(event)">Apply for an Audit →</button>
-    </div>
-    <div class="tier-card estate">
-      <div class="tier-toggle-row">
-        <div class="tier-card-label">TIER THREE</div>
-        <div class="tier-toggle-area">
-          <div class="tier-toggle-lbl">Annual · Save 20%</div>
-          <label class="tier-sw">
-            <input type="checkbox" data-tier="estate" onchange="setTierAnnual('estate', this.checked)">
-            <span class="tier-sw-track"></span>
-            <span class="tier-sw-thumb"></span>
-          </label>
+
+      <div class="proof-table" role="table" aria-label="Sample attribution report">
+        <div class="proof-row proof-row-head" role="row">
+          <div role="columnheader">Lead</div>
+          <div role="columnheader">Source</div>
+          <div role="columnheader">Outcome</div>
+          <div role="columnheader">Revenue</div>
+        </div>
+        <div class="proof-row" role="row">
+          <div role="cell" class="proof-cell-name">Sarah K.</div>
+          <div role="cell"><span class="proof-source">Google LSA</span></div>
+          <div role="cell"><span class="proof-status booked">Booked · Day 3</span></div>
+          <div role="cell" class="proof-cell-rev">$4,800</div>
+        </div>
+        <div class="proof-row" role="row">
+          <div role="cell" class="proof-cell-name">Dwight F.</div>
+          <div role="cell"><span class="proof-source">Reactivation</span></div>
+          <div role="cell"><span class="proof-status booked">Booked · Day 5</span></div>
+          <div role="cell" class="proof-cell-rev">$2,400</div>
+        </div>
+        <div class="proof-row" role="row">
+          <div role="cell" class="proof-cell-name">Maria L.</div>
+          <div role="cell"><span class="proof-source">Referral · Bob R.</span></div>
+          <div role="cell"><span class="proof-status booked">Booked · Day 6</span></div>
+          <div role="cell" class="proof-cell-rev">$6,200</div>
+        </div>
+        <div class="proof-row" role="row">
+          <div role="cell" class="proof-cell-name">Tom R.</div>
+          <div role="cell"><span class="proof-source">Website form</span></div>
+          <div role="cell"><span class="proof-status quoted">Quoted · Day 4</span></div>
+          <div role="cell" class="proof-cell-rev dim">—</div>
+        </div>
+        <div class="proof-row" role="row">
+          <div role="cell" class="proof-cell-name">Jenny P.</div>
+          <div role="cell"><span class="proof-source">Voice agent · inbound</span></div>
+          <div role="cell"><span class="proof-status booked">Booked · Day 7</span></div>
+          <div role="cell" class="proof-cell-rev">$3,400</div>
+        </div>
+        <div class="proof-row" role="row">
+          <div role="cell" class="proof-cell-name">Marcus B.</div>
+          <div role="cell"><span class="proof-source">Google organic</span></div>
+          <div role="cell"><span class="proof-status booked">Booked · Day 2</span></div>
+          <div role="cell" class="proof-cell-rev">$1,950</div>
+        </div>
+        <div class="proof-row" role="row">
+          <div role="cell" class="proof-cell-name">Linda H.</div>
+          <div role="cell"><span class="proof-source">Reactivation</span></div>
+          <div role="cell"><span class="proof-status quoted">Quoted · Day 6</span></div>
+          <div role="cell" class="proof-cell-rev dim">—</div>
+        </div>
+        <div class="proof-row" role="row">
+          <div role="cell" class="proof-cell-name">Carlos M.</div>
+          <div role="cell"><span class="proof-source">Referral · Linda H.</span></div>
+          <div role="cell"><span class="proof-status booked">Booked · Day 5</span></div>
+          <div role="cell" class="proof-cell-rev">$7,800</div>
+        </div>
+        <div class="proof-row" role="row">
+          <div role="cell" class="proof-cell-name">Rita S.</div>
+          <div role="cell"><span class="proof-source">Facebook · paid</span></div>
+          <div role="cell"><span class="proof-status followup">Follow-up · Day 14</span></div>
+          <div role="cell" class="proof-cell-rev dim">—</div>
+        </div>
+        <div class="proof-row" role="row">
+          <div role="cell" class="proof-cell-name">Eugene V.</div>
+          <div role="cell"><span class="proof-source">Voice agent · after-hrs</span></div>
+          <div role="cell"><span class="proof-status booked">Booked · Day 1</span></div>
+          <div role="cell" class="proof-cell-rev">$3,400</div>
+        </div>
+        <div class="proof-row proof-row-total" role="row">
+          <div role="cell">Booked this week</div>
+          <div role="cell" class="proof-cell-rev"><strong>$29,950</strong></div>
         </div>
       </div>
-      <div class="tier-card-name">Estate</div>
-      <div class="tier-card-tagline">For multi-location businesses running multiple brands.</div>
-      <div class="tier-card-price">Custom</div>
-      <div class="tier-card-price-sub" id="estate-sub">STARTS AFTER A CONVERSATION</div>
-      <div class="price-save" id="estate-save">Annual pricing available on inquiry</div>
-      <div class="tier-card-fit" style="margin-top: 28px;">
-        <strong>Built for:</strong> $10M+ revenue. 3+ locations. 500+ leads/month. Multi-brand rollouts. 30-day deployment with dedicated team.
+
+      <div class="proof-foot">
+        <div class="proof-foot-meth">Attribution methodology: first-touch source · 90-day window · revenue confirmed by CRM job-completion event.</div>
+        <div class="proof-foot-ref">PG · 1 / 1</div>
       </div>
-      <ul class="tier-card-includes">
-        <li>Everything in Orchard</li>
-        <li>Multi-location and multi-brand setup</li>
-        <li>Dedicated implementation team</li>
-        <li>Executive quarterly business reviews</li>
-        <li>Custom peer-set benchmarking</li>
-        <li>24/7 dedicated channel</li>
-        <li>Direct line to the founder</li>
-      </ul>
-      <a href="mailto:johnny@grainmethod.com?subject=Estate%20Tier%20Inquiry" class="tier-card-cta">Inquire →</a>
     </div>
   </div>
 </section>
 
-<section class="addons-section">
-  <div class="addons-inner">
-    <div class="addons-head reveal">
-      <div class="eyebrow" style="justify-content: center;">ADD-ONS</div>
-      <h2>More engines, <span class="italic">when you're ready.</span></h2>
-      <p>Greenhouse and Orchard cover the core. Add-Ons cover specialty work — paid ads, content, referrals, dead lead revival, CRM cleanup, local visibility. Add what you need, when you need it. Some flat monthly. A few one-time. Two only charge when they bring in revenue.</p>
+<!-- ===== ADD-ONS ===== -->
+<section class="section addons-section">
+  <div class="wrap">
+    <div class="addons-intro">
+      <div class="eyebrow reveal">Add-Ons</div>
+      <h2 class="h-section reveal" data-delay="1">
+        More engines, <span class="italic-accent">when you're ready.</span>
+      </h2>
+      <p class="lede reveal" data-delay="2">
+        Six bolt-on engines that plug into any tier. Several are folded into Orchard already. All can be added to Greenhouse anytime, paused, or removed with 30 days notice. Two only charge when they actually move revenue.
+      </p>
     </div>
+
     <div class="addons-grid">
-
-      <div class="addon-card reveal reveal-delay-1">
-        <div class="addon-mark">F</div>
-        <div class="addon-name">Fertilizer</div>
-        <p class="addon-desc">Four branded social posts a week across LinkedIn, Instagram, and Facebook. Plus we ask every recent customer for a review after their job. Keeps your name in front of people and your reviews compounding.</p>
-        <div class="addon-price-block">
-          <div class="addon-price">$497 / month</div>
-          <div class="addon-price-note">Recurring</div>
+      <article class="addon reveal">
+        <span class="addon-glyph" aria-hidden="true">↻</span>
+        <div class="addon-plain">Dead lead revival</div>
+        <div class="addon-header">
+          <div class="addon-name">Compost</div>
         </div>
-      </div>
+        <div class="addon-price">$1,500 setup · 15% recovered</div>
+        <p class="addon-desc">We work your last 24 months of dead leads and ghosted quotes through a 30-day revival sequence — voice, SMS, and email. You only pay the 15% when something we revive turns into actual booked revenue. 90-day attribution window.</p>
+        <div class="addon-bundled">Quarterly campaign included in Orchard</div>
+      </article>
 
-      <div class="addon-card reveal reveal-delay-2">
-        <div class="addon-mark">C</div>
-        <div class="addon-name">Compost</div>
-        <p class="addon-desc">We work your last 24 months of dead leads and ghosted quotes through a 30-to-45-day revival sequence. You pay the 15% only when something we revived turns into actual revenue.</p>
-        <div class="addon-price-block">
-          <div class="addon-price">$1,500 setup + 15% of recovered</div>
-          <div class="addon-price-note">One-time install · revenue share</div>
+      <article class="addon reveal" data-delay="1">
+        <span class="addon-glyph" aria-hidden="true">✻</span>
+        <div class="addon-plain">Referral program engine</div>
+        <div class="addon-header">
+          <div class="addon-name">Pollination</div>
         </div>
-      </div>
+        <div class="addon-price">$1,500 setup · 10% referred</div>
+        <p class="addon-desc">Branded referral materials, automated tracking, structured kickback rules. Your existing customers become your sales team. 10% on referred revenue for 12 months per referrer, then it's yours free.</p>
+      </article>
 
-      <div class="addon-card reveal reveal-delay-3">
-        <div class="addon-mark">P</div>
-        <div class="addon-name">Pollination</div>
-        <p class="addon-desc">A referral program built for your business — branded materials, automated tracking, kickback rules. Your existing customers become your sales team. 10% on referred revenue for 12 months, then it's yours free.</p>
-        <div class="addon-price-block">
-          <div class="addon-price">$1,500 setup + 10% of referred</div>
-          <div class="addon-price-note">12-month cap on revenue share</div>
+      <article class="addon reveal" data-delay="2">
+        <span class="addon-glyph" aria-hidden="true">▼</span>
+        <div class="addon-plain">Local search + AI visibility</div>
+        <div class="addon-header">
+          <div class="addon-name">Roots</div>
         </div>
-      </div>
+        <div class="addon-price">$2,500 setup · $497 / month</div>
+        <p class="addon-desc">Google Business Profile active management + local SEO + AI visibility (when homeowners ask ChatGPT, Perplexity, or Gemini for a contractor, your name shows up). Monthly AI visibility audit shows where you rank across the new search surfaces.</p>
+        <div class="addon-bundled">Bundled in Orchard</div>
+      </article>
 
-      <div class="addon-card reveal reveal-delay-1">
-        <div class="addon-mark">P</div>
-        <div class="addon-name">Pruning</div>
-        <p class="addon-desc">30-day cleanup of your customer database. Dedupe records, fix bad data, archive who's gone. The foundation everything else stands on. Recommended once a year.</p>
-        <div class="addon-price-block">
-          <div class="addon-price">$1,500 one-time</div>
-          <div class="addon-price-note">No recurring fee</div>
+      <article class="addon reveal" data-delay="3">
+        <span class="addon-glyph" aria-hidden="true">◐</span>
+        <div class="addon-plain">Reputation + content engine</div>
+        <div class="addon-header">
+          <div class="addon-name">Fertilizer</div>
         </div>
-      </div>
+        <div class="addon-price">$1,497 / month</div>
+        <p class="addon-desc">Five social posts a week, Stories and Reels on Instagram and Facebook, cross-platform review follow-up (Yelp, Facebook, BBB, Angi beyond Google), Google Business Profile active posting, monthly customer newsletter, trust signal buildout, monthly reputation report. You provide photos from the field.</p>
+        <div class="addon-bundled">Bundled in Orchard</div>
+      </article>
 
-      <div class="addon-card reveal reveal-delay-2">
-        <div class="addon-mark">S</div>
-        <div class="addon-name">Sunlight</div>
-        <p class="addon-desc">Google, Meta, and Local Service Ads — fully managed. You bring the ad budget, we run the campaigns. Every click flows into your Greenhouse as a tracked lead.</p>
-        <div class="addon-price-block">
-          <div class="addon-price">$1,997 / month</div>
-          <div class="addon-price-note">Recurring · ad spend separate</div>
+      <article class="addon reveal">
+        <span class="addon-glyph" aria-hidden="true">✕</span>
+        <div class="addon-plain">CRM database cleanup</div>
+        <div class="addon-header">
+          <div class="addon-name">Pruning</div>
         </div>
-      </div>
+        <div class="addon-price">$1,500 · one-time</div>
+        <p class="addon-desc">30-day deep clean of your customer database. Deduplication, tagging hygiene, dead record removal, contact info normalization, customer history threading. The foundation everything else stands on. Recommended annually.</p>
+        <div class="addon-bundled">Quarterly included in Orchard</div>
+      </article>
 
-      <div class="addon-card reveal reveal-delay-3">
-        <div class="addon-mark">R</div>
-        <div class="addon-name">Roots</div>
-        <p class="addon-desc">Local SEO, Google Business Profile, and AI visibility — getting found on Google search, Maps, and the AI tools customers now use (ChatGPT, Perplexity, Gemini, AI Overviews). Monthly visibility audit shows where you stand.</p>
-        <div class="addon-price-block">
-          <div class="addon-price">$2,500 setup + $497 / month</div>
-          <div class="addon-price-note">One-time install · recurring</div>
+      <article class="addon reveal" data-delay="1">
+        <span class="addon-glyph" aria-hidden="true">◉</span>
+        <div class="addon-plain">Paid ads management</div>
+        <div class="addon-header">
+          <div class="addon-name">Sunlight</div>
         </div>
-      </div>
-
+        <div class="addon-price">$1,997 / month + ad spend</div>
+        <p class="addon-desc">Google Ads, Meta, and Local Service Ads — fully managed. You fund the ad budget directly to the platforms. We run the campaigns, write the copy, optimize weekly. Every click flows into your Greenhouse as a tracked lead with full source attribution.</p>
+      </article>
     </div>
-    <p class="addons-footnote">Add-ons work with any tier · turn on or off month-to-month</p>
   </div>
 </section>
 
-<section class="what-included">
-  <div class="container-narrow">
-    <div class="section-head">
-      <div class="eyebrow">WHAT'S INCLUDED</div>
-      <h2>Everything in. <span class="italic">Nothing extra.</span></h2>
-      <p class="section-sub">What you see is what you pay. No usage fees. No surprise add-ons.</p>
-    </div>
+<!-- ===== INCLUDED / NOT INCLUDED ===== -->
+<section class="section included-section on-cream">
+  <div class="wrap">
+    <div class="eyebrow reveal">Every tier</div>
+    <h2 class="h-section reveal" data-delay="1" style="color:var(--ink); max-width:760px; margin-top: 22px;">
+      The price you see is the price you <span class="italic-accent" style="color:var(--moss-deep);">pay.</span>
+    </h2>
     <div class="included-grid">
-      <div class="included-col yes">
-        <h3>Included.</h3>
+      <div class="included-col yes reveal" data-delay="2">
+        <h3><span class="check">+</span> Included, no extra charge</h3>
         <ul>
-          <li>Voice agent calls (unlimited)</li>
-          <li>SMS messages (unlimited)</li>
-          <li>Email sequences (unlimited)</li>
-          <li>CRM integration setup and maintenance</li>
+          <li>Unlimited voice agent calls</li>
+          <li>Unlimited SMS and email messages</li>
+          <li>All CRM integration setup and maintenance</li>
           <li>Workflow updates and optimization</li>
-          <li>Your private dashboard at yourname.grainmethod.com</li>
-          <li>Ask GRAIN chat (your own data, in plain English)</li>
-          <li>Monthly review calls</li>
-          <li>System upgrades as we improve them</li>
-          <li>Industry benchmark reports</li>
-          <li>Direct support via Slack</li>
+          <li>Mission Control dashboard hosting</li>
+          <li>System upgrades and improvements</li>
+          <li>Direct support during business hours</li>
         </ul>
       </div>
-      <div class="included-col no">
-        <h3>Not included.</h3>
+      <div class="included-col no reveal" data-delay="3">
+        <h3><span class="x">—</span> Never charged</h3>
         <ul>
           <li>Per-minute voice usage fees</li>
           <li>Per-message SMS fees</li>
-          <li>Onboarding fees beyond the install</li>
           <li>Surprise overage charges</li>
-          <li>Long-term contracts</li>
           <li>Cancellation penalties</li>
-          <li>Hidden subscriptions</li>
+          <li>Hidden add-on subscriptions</li>
+          <li>Setup fee extensions</li>
+          <li>Annual contract lock-ins</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section class="faq-section">
-  <div class="container-narrow">
-    <div class="section-head">
-      <div class="eyebrow">QUESTIONS</div>
-      <h2>The straight <span class="italic">answers.</span></h2>
+<!-- ===== FAQ ===== -->
+<section class="section faq-section">
+  <div class="wrap">
+    <div class="faq-intro">
+      <div class="eyebrow reveal">Common questions</div>
+      <h2 class="h-section reveal" data-delay="1">
+        The fine print, <span class="italic-accent">spelled out.</span>
+      </h2>
     </div>
     <div class="faq-list">
+
       <div class="faq-item">
-        <div class="faq-q">How do I know which tier I need?</div>
-        <div class="faq-a">Most clients start with Greenhouse — single location, $500K to $3M revenue, 30 to 150 leads per month. Orchard fits multi-trade businesses or single locations doing $3M to $10M with higher lead volume. Estate is built for $10M+ businesses running three or more locations. The audit call sorts this out. We're not trying to upsell you into the wrong tier.</div>
+        <div class="faq-q">
+          <div class="faq-q-text">How do I know which tier I need?</div>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Single trade, one location, doing $500K–$3M a year? You're a Greenhouse. Multi-trade or multi-location doing $3M–$10M? You're an Orchard. 3+ locations or above $10M? You're Estate. Not sure? Apply for the audit — we'll tell you in 30 minutes, and we'll tell you honestly even if it means a smaller deal for us.</p>
+        </div></div>
       </div>
+
       <div class="faq-item">
-        <div class="faq-q">How does billing actually work?</div>
-        <div class="faq-a">For Greenhouse: $3,500 at signing covers the build and your first 30 days. $2,497/month begins on Day 31, all-inclusive. For Orchard: $7,500 setup, $5,997/month, same structure. Estate is custom — we have a discovery conversation first. All three are month-to-month after the first 60 days. Cancel anytime with 30 days notice. Setup fees are one-time. We default new clients to ACH for the monthly to save you the credit card fees, but card works fine if you prefer.</div>
+        <div class="faq-q">
+          <div class="faq-q-text">How does billing actually work?</div>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Setup fee charged at signing via Stripe. Monthly fee starts on Day 31. Auto-charged on the 1st of each month after that. Failed payments get a 7-day grace period. Annual prepay saves you two months — pay 10 months upfront for 12 months of service.</p>
+        </div></div>
       </div>
+
       <div class="faq-item">
-        <div class="faq-q">What does the guarantee actually mean?</div>
-        <div class="faq-a">We install your system in 7 days. For the next 60 days we track every extra job the system books that you wouldn't have booked without it. If the count is under 5, we keep working — at no additional cost — until you get there. No refund games. No fine print. The full methodology is published — we'll show you exactly how we count a job as ours.</div>
+        <div class="faq-q">
+          <div class="faq-q-text">What if you don't hit 5 extra jobs in 60 days?</div>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>We work for free until you do. No clawback of setup, no escape hatch, no fine print. We don't pause your billing — we credit it back as free months until you hit five attributable jobs. The system is designed around hitting that number. If we miss, the failure is ours.</p>
+        </div></div>
       </div>
+
       <div class="faq-item">
-        <div class="faq-q">What's the Greenhouse dashboard?</div>
-        <div class="faq-a">A live performance dashboard at your own subdomain — yourname.grainmethod.com. Built on your own data. Live lead pipeline, every call answered with the recording, every quote followed up with the status, every dollar attributed to the system. Plus Ask GRAIN — a chat interface where you can ask questions about your own business in plain English and get real answers. No logging into someone else's CRM. Your business, your dashboard.</div>
+        <div class="faq-q">
+          <div class="faq-q-text">Can I cancel anytime?</div>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes. 30 days written notice. No penalties, no clawback. If GRAIN stops working for you, you should leave. We'd rather earn your business every month than trap you in a contract.</p>
+        </div></div>
       </div>
+
       <div class="faq-item">
-        <div class="faq-q">Do I need to switch CRMs?</div>
-        <div class="faq-a">No. GRAIN plugs into whatever you're already using — ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, GoHighLevel, Leap, and others. Nothing rips out. Your existing system stays. We become the operating layer on top.</div>
+        <div class="faq-q">
+          <div class="faq-q-text">What if I'm on the annual prepay and need to cancel partway through?</div>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Same policy. 30 days written notice. We refund the unused months at the standard monthly rate — you keep the months you used at the regular price, and the rest comes back to you. No clawback on setup. The annual prepay is a price discount, not a lock-in.</p>
+        </div></div>
       </div>
+
       <div class="faq-item">
-        <div class="faq-q">What if my business doesn't fit any of these tiers?</div>
-        <div class="faq-a">If you're under $500K revenue, the math probably doesn't work yet. If you're between tiers, the audit call will help you choose. If you're a franchise or have unusual structure, that's an Estate conversation — email us directly with subject "Estate Tier Inquiry."</div>
+        <div class="faq-q">
+          <div class="faq-q-text">Can I move between tiers?</div>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Up or down, with 30 days notice. Upgrade from Greenhouse to Orchard takes about a week to expand the system. Downgrade is immediate. We'd rather keep you at the right tier than lose you because you outgrew or under-grew your current one.</p>
+        </div></div>
       </div>
+
       <div class="faq-item">
-        <div class="faq-q">Can I add Add-Ons later?</div>
-        <div class="faq-a">Yes. Add or drop any add-on month to month. The base tier and add-ons are billed separately. We'll never push an add-on you don't need — they're listed publicly so you can pick what fits.</div>
+        <div class="faq-q">
+          <div class="faq-q-text">What's included in setup vs monthly?</div>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Setup covers system design, build, configuration, integration, and the first 30 days of service. Monthly covers ongoing operation, optimization, upgrades, and support. Setup is one-time. Monthly is recurring until you cancel.</p>
+        </div></div>
       </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <div class="faq-q-text">What's the difference between Orchard and Greenhouse + add-ons?</div>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Orchard bundles four add-on engines (Roots, Fertilizer, quarterly Compost, and quarterly Pruning) plus multi-trade routing, weekly review calls, a quarterly strategy session with the founder, and a dedicated Slack channel. The bundled add-on value alone is about $1,994/month in recurring engines plus quarterly campaign value — roughly $2,994/month equivalent. You could buy them à la carte on top of Greenhouse — but at that point, Orchard is the cheaper path.</p>
+        </div></div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<section class="cta-section">
-  <div class="eyebrow reveal">THE AUDIT</div>
-  <h2 class="reveal reveal-delay-1">See what the gap is costing you.</h2>
-  <p class="reveal reveal-delay-2">A 30-minute call. We trace your real numbers. You leave with a specific dollar figure and a clear plan, whether or not you become a client.</p>
-  <button class="btn btn-primary reveal reveal-delay-3" onclick="openCalendly(event)">Apply for Your Audit <span class="btn-arrow">→</span></button>
+<!-- ===== FINAL CTA ===== -->
+<section class="cta-band-pricing">
+  <div class="cta-band-pricing-inner">
+    <div class="eyebrow reveal" style="justify-content:center;">Next step</div>
+    <h2 class="h-section reveal" data-delay="1">
+      Find your <span class="italic-accent">tier.</span>
+    </h2>
+    <p class="reveal" data-delay="2">
+      Thirty minutes on a call. We pull your real numbers and tell you which tier you actually need — or whether GRAIN is wrong for you. No pitch.
+    </p>
+    <button class="btn btn-primary reveal" data-delay="3" onclick="openCalendly(event)">
+      Apply for your audit <span class="btn-arrow">→</span>
+    </button>
+  </div>
 </section>
 
-<!-- Persistent Ask GRAIN bar -->
-<div class="ask-bar-page" id="ask-bar-page">
-  <div class="ask-bar-page-dropdown" id="ask-bar-dropdown">
-    <div class="ask-bar-page-dropdown-inner">
-      <div class="ask-bar-page-dropdown-label">Pick a question — ask GRAIN anything about us</div>
-      <button class="ask-bar-page-q" data-q="What does GRAIN actually do?">What does GRAIN actually do?</button>
-      <button class="ask-bar-page-q" data-q="How are you different from other agencies?">How are you different from other agencies?</button>
-      <button class="ask-bar-page-q" data-q="Why can't I just hire a virtual receptionist?">Why can't I just hire a virtual receptionist?</button>
-      <button class="ask-bar-page-q" data-q="What's the difference between Greenhouse and Orchard?">What's the difference between Greenhouse and Orchard?</button>
-      <button class="ask-bar-page-q" data-q="Can you really deploy in 7 days?">Can you really deploy in 7 days?</button>
-      <button class="ask-bar-page-q" data-q="Is this AI answering my calls, or real people?">Is this AI answering my calls, or real people?</button>
-      <button class="ask-bar-page-q" data-q="What happens if you don't deliver 5 jobs in 60 days?">What happens if you don't deliver 5 jobs in 60 days?</button>
-      <button class="ask-bar-page-q" data-q="How do you keep my customer data private?">How do you keep my customer data private?</button>
-      <button class="ask-bar-page-q" data-q="What home service trades do you work with?">What home service trades do you work with?</button>
-      <button class="ask-bar-page-q" data-q="Why should I trust you with my business?">Why should I trust you with my business?</button>
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-callout reveal">
+      <div>
+        <div class="eyebrow">The audit</div>
+        <p class="footer-callout-text">
+          Thirty minutes with the founder. We pull your real numbers and tell you what they're costing you. <strong>Whether or not you become a client.</strong>
+        </p>
+        <div class="footer-callout-meta">
+          <span>Free</span><span class="sep"></span><span>No pitch</span><span class="sep"></span><span>30 minutes</span>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="openCalendly(event)">
+        Apply for your audit <span class="btn-arrow">→</span>
+      </button>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-brand-block">
+        <div class="nav-brand">
+          <svg class="nav-brand-logo" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#F0ECDF"/></g></g></svg>
+          <span class="nav-brand-text">GRAIN</span>
+        </div>
+        <div class="footer-tag">PLANT · NURTURE · SCALE</div>
+        <p class="footer-mission">Done-for-you lead response infrastructure for home service businesses. Nashville-based, working nationwide.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Method</div>
+        <a href="method.html">How it works</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="calculator.html">Calculator</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Engage</div>
+        <a href="pricing.html">Pricing</a>
+        <a href="apply.html">Apply</a>
+        <a href="mailto:johnny@grainmethod.com">Email</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Trades</div>
+        <a href="apply.html">Roofing</a>
+        <a href="apply.html">HVAC</a>
+        <a href="apply.html">Plumbing</a>
+        <a href="apply.html">+ 7 more</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Trust</div>
+        <a href="privacy.html">Privacy policy</a>
+        <a href="terms.html">Terms of service</a>
+        <a href="security.html">Security</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">© GRAIN Method 2026 · Nashville, TN</div>
+      <div class="footer-bottom-mid">
+        <span>System · Live</span>
+        <span class="sep">·</span>
+        <span class="heartbeat" id="footer-heartbeat" aria-label="Time since last heartbeat">0s</span>
+      </div>
+      <div class="footer-bottom-right"><a href="mailto:audit@grainmethod.com">audit@grainmethod.com</a></div>
     </div>
   </div>
-  <div class="ask-bar-page-inner">
-    <span class="ask-bar-page-label">Ask GRAIN</span>
-    <span class="ask-bar-page-sep"></span>
-    <span class="ask-bar-page-input" id="ask-bar-page-input">"What does GRAIN actually do?"</span>
-    <span class="ask-bar-page-cue">▾</span>
-  </div>
-</div>
-<div class="ask-bar-response" id="ask-bar-response">
-  <div class="ask-bar-response-inner">
-    <div class="ask-bar-response-label">GRAIN</div>
-    <div class="ask-bar-response-text" id="ask-bar-response-text"></div>
-    <button class="ask-bar-response-close" id="ask-bar-response-close" type="button" aria-label="Close">×</button>
-  </div>
-</div>
-
-<script>
-(function() {
-  var askAnswers = {
-    "What does GRAIN actually do?": "GRAIN is the operating system that runs in the background of your business. We catch every lead from every channel — phone, text, web form, social DM — answer every inquiry in under 60 seconds, follow up on every quote for 90 days, and keep your customer base warm so they come back. You see all of it in one dashboard. It's done-for-you. You focus on the work; we keep the business running.",
-    "How are you different from other agencies?": "Most agencies generate leads and hand them off. We do the opposite — we focus on what happens AFTER the lead arrives, which is where most home service businesses lose 35-50% of what comes in. We have a guaranteed deployment timeline (7 days), a measurable outcome (5 extra jobs in 60 days or we work free), and a private dashboard so you see every metric live. We're not selling more leads. We're selling a system that converts more of the leads you already have.",
-    "Why can't I just hire a virtual receptionist?": "A virtual receptionist answers calls. GRAIN catches every lead from every channel (calls, texts, forms, social DMs), responds in under 60 seconds 24/7, follows up automatically for 90 days on every quote, syncs with your CRM, runs reactivation campaigns on dormant customers, and shows you the whole picture in one dashboard. Receptionists are people. GRAIN is infrastructure.",
-    "What's the difference between Greenhouse and Orchard?": "Greenhouse ($2,497/mo) is for single-location, single-trade businesses doing $500K-$3M revenue with 30-150 leads/month. Orchard ($5,997/mo) is for multi-location or multi-trade businesses doing $3M-$10M with 150-500 leads/month. Orchard also includes Fertilizer (reputation engine), quarterly Compost campaigns, weekly strategy calls, priority support, and access to the GRAIN private community.",
-    "Can you really deploy in 7 days?": "Yes — we built this specifically for fast deployment. Day 1: kickoff and intelligence pull. Day 2: Day-1 Intelligence Report delivered. Days 2-3: voice agent built and tested. Days 3-4: SMS, email, and 90-day follow-up sequences live. Days 4-5: CRM integrated, dashboard live. Days 5-7: testing, training, go-live. By Day 7, your system is catching leads.",
-    "Is this AI answering my calls, or real people?": "The voice agent is a system, but it's trained on thousands of real home service conversations in your specific trade. It sounds natural. It can answer questions, book appointments, escalate emergencies to you, and qualify leads before they hit your team. Real people (your team and ours) handle the work after the conversation. The system makes sure no call gets missed.",
-    "What happens if you don't deliver 5 jobs in 60 days?": "We work for free until you get them. No fine print. Your setup fee is non-refundable, but the monthly fee stops accruing until we hit the threshold. Service continues uninterrupted. The bet is on us, not you.",
-    "How do you keep my customer data private?": "Your data lives in your private dashboard. It's not shared with other clients. The only thing we use cross-client is anonymized patterns (what scripts convert, what objections come up most often) which helps the system get smarter for everyone. Your actual customer list, contact info, and revenue are yours alone.",
-    "What home service trades do you work with?": "Roofing, HVAC, plumbing, pest control, electrical, fencing, pool, painting, landscaping, and remodeling. The system is built around what these trades have in common: high-value jobs, time-sensitive leads, repeat-purchase potential, and trust-driven decisions. If you're outside these trades, ask — odds are we can adapt the system.",
-    "Why should I trust you with my business?": "Because we work in public. Our dashboard is live and demo-able right now. Our pricing is on the website. Our guarantee is specific. Our deployment timeline is published. We don't lock you into long contracts — it's month-to-month after the first 60 days. And we built this because we sell using the same system. That's literally how we found you."
-  };
-
-  var askBarPage = document.getElementById('ask-bar-page');
-  var askBarDropdown = document.getElementById('ask-bar-dropdown');
-  var askBarInput = document.getElementById('ask-bar-page-input');
-  var askBarResponse = document.getElementById('ask-bar-response');
-  var askBarResponseText = document.getElementById('ask-bar-response-text');
-  var askBarResponseClose = document.getElementById('ask-bar-response-close');
-
-  if (!askBarPage || !askBarDropdown || !askBarInput || !askBarResponse || !askBarResponseText) return;
-
-  askBarPage.addEventListener('click', function(e) {
-    if (e.target.closest('.ask-bar-page-q')) return;
-    e.stopPropagation();
-    askBarDropdown.classList.toggle('open');
-    askBarPage.classList.toggle('open');
-  });
-
-  askBarDropdown.querySelectorAll('.ask-bar-page-q').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var q = btn.dataset.q;
-      askBarInput.textContent = '"' + q + '"';
-      askBarResponseText.textContent = askAnswers[q] || '';
-      askBarResponse.classList.add('open');
-      askBarDropdown.classList.remove('open');
-      askBarPage.classList.remove('open');
-    });
-  });
-
-  if (askBarResponseClose) {
-    askBarResponseClose.addEventListener('click', function(e) {
-      e.stopPropagation();
-      askBarResponse.classList.remove('open');
-      askBarInput.textContent = '"What does GRAIN actually do?"';
-    });
-  }
-
-  document.addEventListener('click', function() {
-    askBarDropdown.classList.remove('open');
-    askBarPage.classList.remove('open');
-  });
-})();
-</script>
-
-<footer class="site-footer">
-
-
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-logo">GRAIN</div>
-      <div class="footer-mission">Done-for-you lead response for home service businesses. Nashville-based. Serving nationwide.</div>
-    </div>
-    <div class="footer-links">
-      <a href="method.html">Method</a>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="calculator.html">Calculator</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="apply.html">Apply</a>
-    </div>
-  </div>
-  <div class="footer-bottom">© 2026 GRAIN Method. All rights reserved.</div>
 </footer>
 
+<!-- ===== ASK GRAIN PILL ===== -->
+<button id="ask-pill" class="ask-pill" aria-label="Ask GRAIN — open question dialog">
+  <svg class="ask-pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 22V10"/><path d="M12 10c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 10c3 0 5-2 5-5-3 0-5 2-5 5z"/>
+  </svg>
+  Ask GRAIN
+  <span class="ask-pill-kbd">⌘K</span>
+</button>
+
 <script>
-const navToggle = document.getElementById('nav-toggle');
-const navLinks = document.getElementById('nav-links');
-navToggle.addEventListener('click', () => { navToggle.classList.toggle('open'); navLinks.classList.toggle('open'); });
-navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { navToggle.classList.remove('open'); navLinks.classList.remove('open'); }));
+/* ==================================================================
+   GRAIN METHOD — v5 SHARED SCRIPTS
+   Nav behavior, reveal observer, Ask GRAIN modal.
+   ================================================================== */
 
-const revealEls = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
-}, { threshold: 0.15 });
-revealEls.forEach(el => revealObserver.observe(el));
+(function () {
+  'use strict';
 
-// Per-tier annual toggle with price-flip animation
-(function() {
-  var tierData = {
-    greenhouse: {
-      monthly: { num: '$2,497', sub: 'starting day 31 · all-inclusive' },
-      annual:  { num: '$1,997', sub: 'billed annually · all-inclusive' }
-    },
-    orchard: {
-      monthly: { num: '$5,997', suffix: '/MO · STARTING DAY 31' },
-      annual:  { num: '$4,797', suffix: '/MO BILLED ANNUALLY' }
-    },
-    estate: {
-      monthly: { num: 'Custom', sub: 'STARTS AFTER A CONVERSATION' },
-      annual:  { num: 'Custom', sub: 'ANNUAL PRICING AVAILABLE ON INQUIRY' }
+  /* ---------- NAV ---------- */
+  function initNav() {
+    const nav = document.getElementById('main-nav');
+    if (!nav) return;
+    const toggle = nav.querySelector('.nav-toggle');
+    const links = nav.querySelector('.nav-links');
+
+    const onScroll = () => {
+      const sy = window.scrollY;
+      nav.classList.toggle('scrolled', sy > 24);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    if (toggle && links) {
+      toggle.addEventListener('click', () => {
+        toggle.classList.toggle('open');
+        links.classList.toggle('open');
+      });
+      links.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          toggle.classList.remove('open');
+          links.classList.remove('open');
+        });
+      });
     }
-  };
-
-  function flipText(el, newText) {
-    if (!el) return;
-    el.classList.remove('price-flipping');
-    void el.offsetWidth; // force reflow to restart animation
-    el.classList.add('price-flipping');
-    setTimeout(function() { el.textContent = newText; }, 170);
   }
 
-  window.setTierAnnual = function(tier, isAnnual) {
-    var data = tierData[tier];
-    var mode = isAnnual ? data.annual : data.monthly;
-    var numEl = document.getElementById(tier + '-num');
-    var subEl = document.getElementById(tier + '-sub');
-    var suffixEl = document.getElementById(tier + '-suffix');
-    var saveEl = document.getElementById(tier + '-save');
-
-    flipText(numEl, mode.num);
-    if (tier === 'orchard' && suffixEl) {
-      setTimeout(function() { suffixEl.textContent = mode.suffix; }, 170);
-    } else if (subEl && mode.sub !== undefined) {
-      setTimeout(function() { subEl.textContent = mode.sub; }, 170);
+  /* ---------- REVEAL ON SCROLL ---------- */
+  function initReveal() {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(el => el.classList.add('visible'));
+      return;
     }
-    if (saveEl) saveEl.classList.toggle('on', isAnnual);
-  };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => io.observe(el));
+  }
+
+  /* ---------- ANIMATED COUNT-UP ---------- */
+  function initCountUps() {
+    const els = document.querySelectorAll('[data-count]');
+    if (!els.length) return;
+    const animate = (el) => {
+      const target = parseFloat(el.dataset.count);
+      const duration = parseInt(el.dataset.duration || '1600', 10);
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = target * eased;
+        el.textContent = prefix + val.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = prefix + target.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + suffix;
+      };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    els.forEach(el => io.observe(el));
+  }
+
+  /* ---------- ASK GRAIN ---------- */
+  const ASK_EXAMPLES = [
+    { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every inbound lead in under 60 seconds, 24/7, and follow up on every quote for 90 days until they book or tell us to stop. The promise is 5 extra jobs in your first 60 days, or we work for free until you get them." },
+    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. We're the layer in between — the operating system that actually answers, qualifies, and nurtures every lead you generate. We work with the CRM and marketing you already have." },
+    { q: "How fast can I be live?", a: "Greenhouse deploys in 7 days from signed agreement. Orchard in 14 days. Estate in 30 days with a dedicated implementation team. Day 1 you receive a written Intelligence Report on your current lead flow. Day 7 the system is live and answering calls." },
+    { q: "What does it cost?", a: "Greenhouse: $3,500 setup + $2,997/month. Orchard: $9,997 setup + $6,997/month, with the full add-on family bundled. Estate: from $24,997 + from $14,997/month, custom-built for multi-location operators. All inclusive — no usage fees, no surprise overages, no cancellation penalties. Annual prepay saves two months." },
+    { q: "What's the 5-jobs guarantee?", a: "If you don't book 5 extra jobs you can directly attribute to GRAIN in your first 60 days, we work for free until you do. No fine print, no escape hatches. We've designed the system around hitting that number — if we don't, the failure is ours, not yours." },
+    { q: "Will this work for my trade?", a: "GRAIN is built for ten trades: roofing, HVAC, plumbing, pest control, electrical, fencing, pool, painting, landscaping, and remodeling. If you're outside those, we'll tell you on the audit call and we won't take your money." },
+    { q: "Do you replace my team?", a: "No. We replace the gaps your team can't cover — after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, the database of past customers nobody has time to reactivate. Your team handles what they're already good at." },
+    { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 — and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one as part of onboarding." },
+    { q: "What happens on the audit call?", a: "Thirty minutes. We pull your real lead flow, response times, and close rates and trace the specific dollars you're losing each month. You leave the call with a written number — whether you become a client or not. No high-pressure pitch." },
+    { q: "How do I cancel?", a: "Thirty days notice in writing. No penalties, no clawback of setup, nothing to recover. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month than trap you in a contract." }
+  ];
+
+  function initAskGrain() {
+    if (document.getElementById('ask-overlay')) return;
+
+    // Build overlay structure
+    const overlay = document.createElement('div');
+    overlay.id = 'ask-overlay';
+    overlay.className = 'ask-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.innerHTML = `
+      <div class="ask-modal" role="document">
+        <div class="ask-modal-header">
+          <div class="ask-modal-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V10"/><path d="M12 10c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 10c3 0 5-2 5-5-3 0-5 2-5 5z"/><path d="M12 13c-2 0-4-1-4-3 2 0 4 1 4 3z"/><path d="M12 13c2 0 4-1 4-3-2 0-4 1-4 3z"/></svg>
+            Ask GRAIN
+          </div>
+          <button class="ask-modal-close" aria-label="Close" data-ask-close>×</button>
+        </div>
+        <div class="ask-input-wrap">
+          <input class="ask-input" type="text" id="ask-input" placeholder="Ask anything about GRAIN..." autocomplete="off" />
+        </div>
+        <div class="ask-suggestions" id="ask-suggestions"></div>
+        <div class="ask-answer" id="ask-answer">
+          <div class="ask-answer-eyebrow">Answer</div>
+          <div id="ask-answer-body"></div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    const suggestionsEl = overlay.querySelector('#ask-suggestions');
+    const input = overlay.querySelector('#ask-input');
+    const answer = overlay.querySelector('#ask-answer');
+    const answerBody = overlay.querySelector('#ask-answer-body');
+    const closeBtn = overlay.querySelector('[data-ask-close]');
+
+    // Render example questions
+    const label = document.createElement('div');
+    label.className = 'ask-suggestion-label';
+    label.textContent = 'Try one of these';
+    suggestionsEl.appendChild(label);
+    ASK_EXAMPLES.forEach((ex, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'ask-suggestion';
+      btn.textContent = ex.q;
+      btn.addEventListener('click', () => {
+        input.value = ex.q;
+        answerBody.textContent = ex.a;
+        answer.classList.add('show');
+        suggestionsEl.style.display = 'none';
+      });
+      suggestionsEl.appendChild(btn);
+    });
+
+    // Input behavior — show suggestions filtered, hide answer until match
+    input.addEventListener('input', (e) => {
+      const v = e.target.value.toLowerCase().trim();
+      answer.classList.remove('show');
+      suggestionsEl.style.display = '';
+      const buttons = suggestionsEl.querySelectorAll('.ask-suggestion');
+      let any = false;
+      buttons.forEach(b => {
+        const match = !v || b.textContent.toLowerCase().includes(v);
+        b.style.display = match ? '' : 'none';
+        if (match) any = true;
+      });
+      if (!any && v.length > 2) {
+        suggestionsEl.innerHTML = `
+          <div class="ask-suggestion-label">No exact match — talk to us directly</div>
+          <a class="ask-suggestion" href="apply.html">Apply for an audit call →</a>
+        `;
+      }
+    });
+
+    // Open / close behavior
+    const open = () => {
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('no-scroll');
+      setTimeout(() => input.focus(), 100);
+    };
+    const close = () => {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('no-scroll');
+    };
+
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        overlay.classList.contains('open') ? close() : open();
+      }
+    });
+
+    // Wire up the pill
+    const pill = document.getElementById('ask-pill');
+    if (pill) pill.addEventListener('click', open);
+  }
+
+  /* ---------- INIT ---------- */
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+  ready(() => {
+    initNav();
+    initReveal();
+    initCountUps();
+    initAskGrain();
+  });
 })();
+
+</script>
+<script>
+  // Pricing page — billing toggle + FAQ
+  (function () {
+    const toggle = document.querySelector('.billing-toggle');
+    if (toggle) {
+      const buttons = toggle.querySelectorAll('button');
+      const priceEls = document.querySelectorAll('[data-price-monthly]');
+      buttons.forEach(b => {
+        b.addEventListener('click', () => {
+          buttons.forEach(x => x.classList.remove('active'));
+          b.classList.add('active');
+          const mode = b.dataset.billing;
+          document.body.classList.toggle('billing-annual', mode === 'annual');
+          priceEls.forEach(el => {
+            const val = mode === 'annual' ? el.dataset.priceAnnual : el.dataset.priceMonthly;
+            const formatted = '$' + parseInt(val, 10).toLocaleString('en-US');
+            el.textContent = formatted;
+            el.style.transition = 'opacity 0.3s';
+            el.style.opacity = '0';
+            setTimeout(() => { el.style.opacity = '1'; }, 150);
+          });
+        });
+      });
+    }
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('open');
+      });
+    });
+  })();
 </script>
 
+<script>
+/* Footer status heartbeat — ticks seconds, flashes every 12s. */
+(function () {
+  const el = document.getElementById('footer-heartbeat');
+  if (!el) return;
+  const mid = el.closest('.footer-bottom-mid');
+  let sec = 0;
+  setInterval(() => {
+    sec++;
+    if (sec >= 12) {
+      sec = 0;
+      if (mid) {
+        mid.classList.add('flash');
+        setTimeout(() => mid.classList.remove('flash'), 700);
+      }
+    }
+    el.textContent = sec + 's';
+  }, 1000);
+})();
+</script>
 </body>
+
 </html>
