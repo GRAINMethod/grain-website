@@ -1,124 +1,99 @@
-# GRAIN Method — Website v3
+# GRAIN Method — Master Documents Package (v5 update)
 
-**Last updated:** May 2026
-**Status:** Production-ready.
-
----
-
-## What's new in v3
-
-- Dark hero on homepage (ink background, moss accents)
-- Three pricing tiers: Greenhouse ($1,997/mo), Orchard ($4,997/mo), Estate (custom)
-- Plain-language sweep: removed "infrastructure," "operators," "scales" jargon
-- New CTA wording: "See Your Numbers" instead of "Calculate Your Gap"
-- Apply form: warmer success message, clearer field labels
-- Organic SVG section divider on homepage (sprout illustration)
-- Transparent nav over dark hero, solid nav after scroll
+**Generated:** June 2026
+**For:** Johnny, founder
+**What this is:** The v5 refresh of the strategy source-of-truth documents, synced to the live grainmethod.com v5 site. Drop these into your Drive `GRAIN METHOD/` structure, replacing the older versions.
 
 ---
 
-## Files
+## What's new in v5 (since the v4 package)
 
-```
-grain-site-v3/
-├── index.html       (homepage, dark hero)
-├── method.html      (the GRAIN process explained)
-├── pricing.html     (three tiers)
-├── calculator.html  (interactive lead-loss calculator)
-├── apply.html       (audit application form)
-├── styles.css       (all shared styles)
-└── README.md        (this file)
-```
+### Pricing moved up (replaces v4 numbers)
+- Greenhouse: $3,500 + **$2,997/mo** (was $2,497)
+- Orchard: **$9,997** + **$6,997/mo** (was $7,500 + $5,997)
+- Estate: from **$24,997** + from **$14,997/mo** (was custom $15K+/$10K+)
+- Annual is now **two months free** (was "20% off prepay")
 
----
+### Add-ons confirmed at the canonical six
+Compost · Pollination · Roots · Fertilizer · Pruning · Sunlight. Fertilizer is **one tier at $1,497/mo** (the old $497 "Lite" is dead). Roots is **one offer** (no Basic/Pro split). **Echo and Watershed are NOT add-ons** — they're core capabilities (voice cloning lives in Respond, lead-source unification in Generate). Anything suggesting otherwise from earlier explorations is retired.
 
-## Before deploying — three things to replace
+### Orchard bundle value rail (verified)
+Orchard shows "~$2,994/mo value" bundled (Fertilizer $1,497 + Roots $497 + quarterly Compost ~$500/mo + quarterly Pruning ~$500/mo). The math checks out and is conservative. **Do not** claim "Orchard is cheaper than Greenhouse + add-ons" — it isn't (~$1,000/mo more); position by use case (multi-location) instead.
 
-Open each HTML file and find/replace these placeholders:
+### Website grew to nine pages
+v4 was six pages. Claude Design added **terms.html, privacy.html, security.html** (the three contain placeholder legal text — attorney review required). New footer Trust column, live heartbeat, and a second email: **audit@grainmethod.com**.
 
-### 1. Google Analytics ID
-Find: `G-XXXXXXXXXX`
-Replace with your real GA4 ID (set up at analytics.google.com)
+### Differentiated tier CTAs
+Greenhouse → audit · Orchard → strategy session · Estate → "Talk to Johnny" (mailto, direct founder line).
 
-### 2. Calendly URL
-Find: `YOUR-CALENDLY-URL`
-Replace with your real Calendly link (e.g., `johnny-grainmethod/audit`)
+### New GTM section: Content & Authority
+Master context Section 11 now documents the inbound-primary strategy — founder-on-camera short-form video, public expert positioning, Nashville in-person layer, with cold outreach as the complement.
 
-### 3. Formspree form ID (apply.html only)
-Find: `FORMSPREE_ID_HERE`
-Replace with your Formspree form ID (sign up at formspree.io, free tier works)
+### Voice rules: "show, don't claim" + slop list
+v3 adds the show-don't-claim principle (demonstrate with artifacts, e.g. the attribution table) and an expanded banned list covering the AI-slop patterns ("Every X. Every Y.", "complete operating system," "one source of truth," "integrated engines").
 
 ---
 
-## Deployment to Vercel via GitHub
+## Files in this package — REPLACE these in Drive
 
-If you already have the v2 site deployed, this is the path:
+1. `00 Strategy/00_master_context.md` → **v5.0**
+2. `00 Strategy/01_pricing_and_offer.md` → **v5**
+3. `04 Brand & Assets/voice_and_copy_rules.md` → **v3**
+4. `README.md` (this file) → **v5 package**
 
-1. Download v3: drag the entire `grain-site-v3` folder out of Claude
-2. Open Cursor, navigate to your existing `grain-website` folder
-3. Replace the v2 files with the v3 files (drag in, overwrite when prompted)
-4. Open Cursor's Source Control panel (left sidebar, branching icon)
-5. Stage all changes (click the + next to "Changes")
-6. Commit message: `v3 final — dark hero, three tiers, copy polish`
-7. Click commit, then Push (sync changes button)
-8. Vercel auto-deploys in ~30 seconds
+## Keep your existing versions of (unchanged at v5)
 
-If Vercel isn't already connected:
-- Go to vercel.com → Add New → Project
-- Import your GitHub repo
-- Click Deploy
-- Add custom domain (grainmethod.com) under Settings → Domains
-- Update DNS:
-  - A record: `@` → `76.76.21.21`
-  - CNAME: `www` → `cname.vercel-dns.com`
+- `00 Strategy/02_target_market_and_icp.md` (v2 still accurate)
+- `00 Strategy/04_moat_and_longevity.md`
+- `00 Strategy/05_model_refinement_history.md`
+- All `01 Ops/` docs (note: `02_audit_framework` and `04_client_agreement` referenced by the new master context)
+- All `02 Execution/` and `03 Client Ops/` docs
+- `04 Brand & Assets/brand_guide.md`
 
----
+## Delete from Drive (duplicates / stale)
 
-## Brand Reference
-
-**Colors:**
-- Ink: `#1C2420`
-- Cream: `#F0ECDF`
-- Paper: `#F7F4EA`
-- Moss: `#9AAF7A`
-- Moss Deep: `#667B4A`
-- Moss Light: `#BFD0A2`
-
-**Type:**
-- Inter (body, headlines)
-- Fraunces italic (accent words)
-- JetBrains Mono (eyebrows, labels, stats)
-
-**Voice rules:**
-- Plain English, no industry jargon
-- No competitor mentions
-- No scarcity tactics
-- No emojis
-- No exclamation marks
-- Use the word an owner would use in their kitchen explaining this to their spouse
+- Any `website-v3/`, `website-v4/`, `website-v5/` folders under `04 Brand & Assets/` — the site lives in the `grain-website` GitHub repo, not Drive
+- Any duplicate `grain website/` or `master files/` folders that mirror content already in the canonical structure
 
 ---
 
-## What's NOT on the website that's part of the business
+## How to apply
 
-These exist in the SOP and audit script, but not on the public site:
-
-- Founding client pricing ($1,500 setup / $1,497/mo) — internal close lever for first 3-5 clients only
-- GRAIN Audit Pro ($2,500) — fallback for prospects who fail Greenhouse fit on the audit call
-- Referral program ($500 + $500 with milestone bonuses)
-- Prepay discount ladder (10/15/20% off for 3/6/12-month prepay)
+1. **Back up first:** right-click `GRAIN METHOD/` in Drive → Make a copy → name it `GRAIN METHOD BACKUP 2026-06`.
+2. **Replace** the four files above with these versions (same filenames; Drive keeps version history).
+3. **Delete** the duplicate/stale folders listed above.
+4. **Re-sync the Claude Project** (project knowledge doesn't auto-sync — re-upload if needed).
+5. **Verify:** ask the project to confirm v5 pricing (Greenhouse $2,997 / Orchard $6,997 / Estate from $14,997) and the canonical six add-ons. If it confirms, you're synced.
 
 ---
 
-## Three-tier reference
+## What still needs YOUR action (outside doc-sync)
 
-**Greenhouse** — single location, $500K-$3M, 30-150 leads/mo
-$2,500 setup + $1,997/month · 7-day deployment · monthly review
+**Pre-launch:**
+- [ ] Replace `G-XXXXXXXXXX` (or switch to Plausible — pending decision), `YOUR-CALENDLY-URL`, `FORMSPREE_ID_HERE`
+- [ ] Set up + monitor both johnny@ and audit@ inboxes
+- [ ] Email deliverability for grainmethod.com (SPF, DKIM, DMARC) before any outreach
+- [ ] Verify the live site in an incognito window (rule out stale-cache confusion)
 
-**Orchard** — multi-trade or $3M-$10M, 150-500 leads/mo
-$5,000 setup + $4,997/month · 14-day deployment · weekly review
+**Legal:**
+- [ ] Attorney review of terms.html, privacy.html, security.html (placeholder text right now)
+- [ ] Write the "attributable job" 1-pager for the guarantee
+- [ ] Tennessee attorney review of client agreement
+- [ ] Form LLC, EIN, business bank, insurance, Stripe
 
-**Estate** — multi-location, $10M+, 3+ locations, 500+ leads/mo
-Custom pricing · 30-day deployment · dedicated team
+**Open decisions to resolve:**
+- [ ] Plausible vs GA4 (determines the analytics tag)
+- [ ] Stripe, CallRail, Granola/Fathom, Loom — adopt or defer
 
-All three include the 5-jobs-in-60-days guarantee, 60-second response standard, and 90-day quote follow-up.
+**Next build phase:**
+- [ ] v6 website pass — trim index copy, reduce oversized fonts, resolve index/method explanation duplication (index teases + converts, method explains)
+
+---
+
+## Maintenance rule
+
+When something changes, update the relevant doc immediately and bump its version. Single source of truth: GitHub for code, Drive for strategy, Claude Project for conversation continuity. Don't let the truth live only in a chat.
+
+---
+
+## End of v5 package README
