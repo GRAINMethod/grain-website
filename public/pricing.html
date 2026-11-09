@@ -16,12 +16,9 @@
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T5DP2CY8NW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-T5DP2CY8NW');</script>
-
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
-  var CALENDLY_URL='https://calendly.com/YOUR-CALENDLY-URL';
-  function openCalendly(e){if(e)e.preventDefault();if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:CALENDLY_URL});if(typeof gtag!=='undefined')gtag('event','calendly_open');return false;}
+  var BOOKING_URL=''; /* GoHighLevel calendar link goes here when it's ready */
+  function openCalendly(e){if(e)e.preventDefault();if(typeof gtag!=='undefined')gtag('event','audit_click');window.location.href=BOOKING_URL||'apply.html';return false;}
 </script>
 
 <style>
@@ -740,6 +737,16 @@ h1, h2, h3, h4 {
 }
 .on-cream .divider-row { border-top-color: var(--line); }
 
+
+/* v7 guarantees: promise and conditions side by side */
+.g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 56px auto 0; max-width: 1160px; text-align: left; border-top: 1px solid var(--line-dark-strong); }
+.g3-cell { padding: 32px 28px 8px; border-right: 1px solid var(--line-dark); }
+.g3-cell:last-child { border-right: 0; }
+.g3-name { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--moss); margin-bottom: 14px; }
+.g3-promise { font-size: 19px; line-height: 1.4; font-weight: 600; color: var(--bg); margin-bottom: 16px; }
+.g3-cond { font-size: 14px; line-height: 1.6; color: rgba(240, 236, 223, 0.62); }
+.g3-note { margin: 36px auto 0; font-size: 14px; color: rgba(240, 236, 223, 0.5); }
+@media (max-width: 900px) { .g3 { grid-template-columns: 1fr; } .g3-cell { border-right: 0; border-bottom: 1px solid var(--line-dark); padding: 26px 4px; } }
 </style>
 
 <style>
@@ -1619,83 +1626,80 @@ h1, h2, h3, h4 {
 
       <!-- GREENHOUSE -->
       <article class="tier reveal">
-        <div class="tier-badge subtle">Most Popular</div>
+        <div class="tier-badge subtle">Founding · 5 spots</div>
         <div class="tier-name">Greenhouse</div>
-        <div class="tier-tagline">A complete growth system for one trade. Built in 7 days. Run by us. Transparent to you.</div>
+        <div class="tier-tagline">The complete growth system for one location. Built in 14 days. Run by us. Transparent to you.</div>
         <div class="tier-price">
-          <span class="tier-price-num"><span data-price-monthly="2997" data-price-annual="2497">$2,997</span></span>
+          <span class="tier-price-num"><span data-price-monthly="1497" data-price-annual="1247">$1,497</span></span>
           <span class="tier-price-period">/ month</span>
         </div>
-        <div class="tier-setup"><strong>$3,500</strong> setup · 7-day deployment</div>
-        <div class="tier-saves">save $6,000 / yr</div>
+        <div class="tier-setup"><strong>$1,500</strong> setup · <strong>$0</strong> until it&rsquo;s live · + 10% of revived jobs</div>
+        <div class="tier-saves">save $2,994 / yr</div>
         <div class="tier-fit-label">Best for</div>
-        <div class="tier-fit">Single trade, single location. $500K–$3M revenue. 30–150 leads/month.</div>
+        <div class="tier-fit">One location. $1M&ndash;$10M revenue. Any trade where jobs start with an estimate.</div>
         <ul class="tier-features">
-          <li>60-second response, 24/7 — voice, form, and SMS</li>
+          <li>60-second response, 24/7: voice, form and SMS</li>
           <li>90-day follow-up on every quote</li>
-          <li>Quarterly dormant customer reactivation</li>
-          <li>CRM integration — your existing tools stay</li>
+          <li>Old estimates revived, 10% only on jobs completed and paid</li>
+          <li>CRM integration: your existing tools stay</li>
           <li>Mission Control dashboard, live and yours</li>
           <li>Monthly review call with the founder</li>
         </ul>
         <div class="tier-cta">
           <button class="btn btn-secondary" onclick="openCalendly(event)">Apply for your free audit <span class="btn-arrow">→</span></button>
         </div>
-        <div class="tier-foot">5-jobs-in-60-days guarantee</div>
+        <div class="tier-foot">Start + Payback guarantees · $2,997 / mo after founding</div>
       </article>
 
       <!-- ORCHARD -- ANCHOR -->
       <article class="tier anchor reveal" data-delay="1">
         <div class="tier-badge">Built for Growth</div>
         <div class="tier-name">Orchard</div>
-        <div class="tier-tagline">Everything in Greenhouse, unified across your business — plus four add-on engines folded in at no extra cost.</div>
+        <div class="tier-tagline">Everything in Greenhouse at every location you run, with one Mission Control for the whole business.</div>
         <div class="tier-price">
-          <span class="tier-price-num"><span data-price-monthly="6997" data-price-annual="5831">$6,997</span></span>
+          <span class="tier-price-prefix">from</span>
+          <span class="tier-price-num"><span data-price-monthly="3494" data-price-annual="2911">$3,494</span></span>
           <span class="tier-price-period">/ month</span>
         </div>
-        <div class="tier-setup"><strong>$9,997</strong> setup · 14-day deployment</div>
-        <div class="tier-saves">save $13,992 / yr</div>
+        <div class="tier-setup">First location at Greenhouse pricing · each added location <strong>$1,997</strong> / mo + $1,500 setup</div>
+        <div class="tier-saves">save from $6,988 / yr</div>
         <div class="tier-bundled-rail">
-          <div class="tier-bundled-rail-label">Bundled · 4 engines · ~$2,994 / mo value</div>
+          <div class="tier-bundled-rail-label">Add per location, when you&rsquo;re ready</div>
           <ul class="tier-bundled-list">
             <li>Roots</li>
             <li>Fertilizer</li>
-            <li>Compost (qtrly)</li>
-            <li>Pruning (qtrly)</li>
+            <li>Sunlight</li>
           </ul>
         </div>
         <div class="tier-fit-label">Best for</div>
-        <div class="tier-fit">Multi-trade or multi-location. $3M–$10M revenue. 150–500 leads/month.</div>
+        <div class="tier-fit">2 to 9 locations, or multiple trades. $3M&ndash;$10M revenue.</div>
         <ul class="tier-features">
-          <li>Everything in Greenhouse, at full scale</li>
+          <li>Everything in Greenhouse, at every location</li>
           <li>Unified Mission Control across trades and locations</li>
           <li>Custom CRM integrations included</li>
-          <li>Weekly review call · Quarterly strategy session with founder</li>
+          <li>Weekly review call · quarterly strategy session with the founder</li>
           <li>Dedicated Slack channel</li>
-          <li class="bundled">Fertilizer — the full reputation engine</li>
-          <li class="bundled">Roots — local SEO + Google Business Profile + AI visibility</li>
-          <li class="bundled">Quarterly Compost — dormant customer revival campaigns</li>
-          <li class="bundled">Quarterly Pruning — database cleanup</li>
+          <li>10% of revived jobs, only on jobs completed and paid</li>
         </ul>
         <div class="tier-cta">
           <button class="btn btn-primary" onclick="openCalendly(event)">Apply for a strategy session <span class="btn-arrow">→</span></button>
         </div>
-        <div class="tier-foot">5-jobs-in-60-days guarantee</div>
+        <div class="tier-foot">Start + Payback guarantees, per location</div>
       </article>
 
       <!-- ESTATE -->
       <article class="tier reveal" data-delay="2">
         <div class="tier-name">Estate</div>
-        <div class="tier-tagline">Custom-scoped, custom-built. Multi-brand and multi-location infrastructure with a direct line to the founder.</div>
+        <div class="tier-tagline">Custom-scoped, custom-built. For platforms and roll-ups running 10+ locations on one contract, with a direct line to the founder.</div>
         <div class="tier-price">
           <span class="tier-price-prefix">from</span>
-          <span class="tier-price-num"><span data-price-monthly="14997" data-price-annual="12497">$14,997</span></span>
+          <span class="tier-price-num"><span data-price-monthly="14970" data-price-annual="12475">$14,970</span></span>
           <span class="tier-price-period">/ month</span>
         </div>
-        <div class="tier-setup">from <strong>$24,997</strong> setup · 30-day deployment</div>
-        <div class="tier-saves">save from $30,000 / yr</div>
+        <div class="tier-setup">About <strong>$1,497</strong> per location · 10+ locations · one contract</div>
+        <div class="tier-saves">save from $29,940 / yr</div>
         <div class="tier-fit-label">Best for</div>
-        <div class="tier-fit">Multi-location enterprise. $10M+ revenue. 500+ leads/month. 3+ locations.</div>
+        <div class="tier-fit">Multi-location enterprise and PE-backed platforms. $10M+ revenue. 10+ locations.</div>
         <ul class="tier-features">
           <li>Everything in Orchard, at enterprise scale</li>
           <li>Dedicated implementation team</li>
@@ -1706,7 +1710,7 @@ h1, h2, h3, h4 {
           <li>Direct founder line for the life of the engagement</li>
         </ul>
         <div class="tier-cta">
-          <a class="btn btn-secondary" href="mailto:johnny@grainmethod.com?subject=Estate%20tier%20inquiry&amp;body=Hi%20Johnny%2C%0A%0AI%27m%20interested%20in%20discussing%20Estate%20for%20our%20business.%0A%0ABusiness%20name%3A%0ALocations%3A%0AAnnual%20revenue%3A%0ABest%20way%20to%20reach%20me%3A%0A%0AThanks">Talk to Johnny <span class="btn-arrow">→</span></a>
+          <a class="btn btn-secondary" href="mailto:johnny@grainmethod.com?subject=Estate%20inquiry&amp;body=Hi%20Johnny%2C%0A%0AI%27m%20interested%20in%20discussing%20Estate%20for%20our%20business.%0A%0ABusiness%20name%3A%0ALocations%3A%0AAnnual%20revenue%3A%0ABest%20way%20to%20reach%20me%3A%0A%0AThanks">Talk to Johnny <span class="btn-arrow">→</span></a>
         </div>
         <div class="tier-foot">Custom scope · custom guarantee</div>
       </article>
@@ -1720,9 +1724,27 @@ h1, h2, h3, h4 {
   <div class="wrap">
     <div class="eyebrow reveal">The promise</div>
     <h3 class="reveal" data-delay="1">
-      Five extra jobs in your first sixty days,<br>
-      or <strong>we work for free until you get them.</strong>
+      $0 until it&rsquo;s live. Paid back by your old estimates,<br>
+      or <strong>we refund the difference.</strong>
     </h3>
+    <div class="g3 reveal" data-delay="2">
+      <div class="g3-cell">
+        <div class="g3-name">Start Guarantee</div>
+        <div class="g3-promise">$0 until it&rsquo;s live. Live in 14 days or month one is free.</div>
+        <div class="g3-cond">Needs: kickoff within 3 business days of signing · 24 months of estimates exported on day 1 · call forwarding on by day 10 · test calls approved within 48 hours. Late inputs pause the clock.</div>
+      </div>
+      <div class="g3-cell">
+        <div class="g3-name">Call promise</div>
+        <div class="g3-promise">99% of calls answered in 60 seconds, every month, or that month is free.</div>
+        <div class="g3-cond">Needs: call forwarding stays on. Covers every client, day and night.</div>
+      </div>
+      <div class="g3-cell">
+        <div class="g3-name">Payback Guarantee</div>
+        <div class="g3-promise">If revived jobs haven&rsquo;t covered everything you&rsquo;ve paid by day 90, your monthly pauses until they do. Still short at day 180, we refund the difference.</div>
+        <div class="g3-cond">Needs: $1.5M+ in unsold estimates from the last 24 months · revived appointments run within 2 business days · jobs marked completed and paid in your job software · the monthly reconciliation call.</div>
+      </div>
+    </div>
+    <p class="g3-note reveal" data-delay="3">We don&rsquo;t promise a set number of jobs or a Google ranking. Full terms are in your service agreement.</p>
   </div>
 </section>
 
@@ -1735,7 +1757,7 @@ h1, h2, h3, h4 {
         Every job, <span class="italic-accent">attributed to source.</span>
       </h2>
       <p class="lede reveal" data-delay="2">
-        You'll see this in your Mission Control dashboard live, get a version of it in your inbox each week, and walk through it together at Day 60 to count the extra jobs.
+        You'll see this in your Mission Control dashboard live, get a version of it in your inbox each week, and walk through it together on the monthly reconciliation call.
       </p>
     </div>
 
@@ -1858,77 +1880,78 @@ h1, h2, h3, h4 {
         More engines, <span class="italic-accent">when you're ready.</span>
       </h2>
       <p class="lede reveal" data-delay="2">
-        Six bolt-on engines that plug into any tier. Several are folded into Orchard already. All can be added to Greenhouse anytime, paused, or removed with 30 days notice. Two only charge when they actually move revenue.
+        Compost comes with every tier. The rest plug in at your day-60 review, priced per location, and can be paused or removed with 30 days notice.
       </p>
     </div>
 
     <div class="addons-grid">
       <article class="addon reveal">
         <span class="addon-glyph" aria-hidden="true">↻</span>
-        <div class="addon-plain">Dead lead revival</div>
+        <div class="addon-plain">Old estimate revival</div>
         <div class="addon-header">
           <div class="addon-name">Compost</div>
         </div>
-        <div class="addon-price">$1,500 setup · 15% recovered</div>
-        <p class="addon-desc">We work your last 24 months of dead leads and ghosted quotes through a 30-day revival sequence — voice, SMS, and email. You only pay the 15% when something we revive turns into actual booked revenue. 90-day attribution window.</p>
-        <div class="addon-bundled">Quarterly campaign included in Orchard</div>
+        <div class="addon-price">Included · 10% of revived jobs</div>
+        <p class="addon-desc">We work your last 24 months of unsold estimates and dead leads through a revival sequence: voice, SMS and email. You pay 10% only on revived jobs that are completed and paid.</p>
+        <div class="addon-bundled">Included in every tier</div>
       </article>
 
       <article class="addon reveal" data-delay="1">
-        <span class="addon-glyph" aria-hidden="true">✻</span>
-        <div class="addon-plain">Referral program engine</div>
-        <div class="addon-header">
-          <div class="addon-name">Pollination</div>
-        </div>
-        <div class="addon-price">$1,500 setup · 10% referred</div>
-        <p class="addon-desc">Branded referral materials, automated tracking, structured kickback rules. Your existing customers become your sales team. 10% on referred revenue for 12 months per referrer, then it's yours free.</p>
-      </article>
-
-      <article class="addon reveal" data-delay="2">
         <span class="addon-glyph" aria-hidden="true">▼</span>
         <div class="addon-plain">Local search + AI visibility</div>
         <div class="addon-header">
           <div class="addon-name">Roots</div>
         </div>
-        <div class="addon-price">$2,500 setup · $497 / month</div>
-        <p class="addon-desc">Google Business Profile active management + local SEO + AI visibility (when homeowners ask ChatGPT, Perplexity, or Gemini for a contractor, your name shows up). Monthly AI visibility audit shows where you rank across the new search surfaces.</p>
-        <div class="addon-bundled">Bundled in Orchard</div>
+        <div class="addon-price">$997 / month · 90-day minimum</div>
+        <p class="addon-desc">Google Business Profile management, local SEO, service pages and AI visibility, so your name comes up when homeowners ask Google, ChatGPT or Gemini for a contractor.</p>
+        <div class="addon-bundled">Priced per location</div>
       </article>
 
-      <article class="addon reveal" data-delay="3">
+      <article class="addon reveal" data-delay="2">
         <span class="addon-glyph" aria-hidden="true">◐</span>
-        <div class="addon-plain">Reputation + content engine</div>
+        <div class="addon-plain">Reputation engine</div>
         <div class="addon-header">
           <div class="addon-name">Fertilizer</div>
         </div>
-        <div class="addon-price">$1,497 / month</div>
-        <p class="addon-desc">Five social posts a week, Stories and Reels on Instagram and Facebook, cross-platform review follow-up (Yelp, Facebook, BBB, Angi beyond Google), Google Business Profile active posting, monthly customer newsletter, trust signal buildout, monthly reputation report. You provide photos from the field.</p>
-        <div class="addon-bundled">Bundled in Orchard</div>
+        <div class="addon-price">$297 / month · month to month</div>
+        <p class="addon-desc">A review request after every job, a reply to every review, and a monthly reputation report across Google, Facebook and Yelp.</p>
+        <div class="addon-bundled">Priced per location</div>
+      </article>
+
+      <article class="addon reveal" data-delay="3">
+        <span class="addon-glyph" aria-hidden="true">◉</span>
+        <div class="addon-plain">Google ads management</div>
+        <div class="addon-header">
+          <div class="addon-name">Sunlight</div>
+        </div>
+        <div class="addon-price">$750 / month or 15% of ad spend</div>
+        <p class="addon-desc">Local Services Ads first, then Google Search. You fund the budget directly with Google. We run the campaigns, write the copy and tune them weekly. Every click lands in your Greenhouse as a tracked lead.</p>
+        <div class="addon-bundled">Whichever is higher</div>
       </article>
 
       <article class="addon reveal">
+        <span class="addon-glyph" aria-hidden="true">✻</span>
+        <div class="addon-plain">Referral program engine</div>
+        <div class="addon-header">
+          <div class="addon-name">Pollination</div>
+        </div>
+        <div class="addon-price">Pricing on request</div>
+        <p class="addon-desc">Branded referral materials, automated tracking and simple reward rules, so your past customers send you their neighbors.</p>
+      </article>
+
+      <article class="addon reveal" data-delay="1">
         <span class="addon-glyph" aria-hidden="true">✕</span>
         <div class="addon-plain">CRM database cleanup</div>
         <div class="addon-header">
           <div class="addon-name">Pruning</div>
         </div>
-        <div class="addon-price">$1,500 · one-time</div>
-        <p class="addon-desc">30-day deep clean of your customer database. Deduplication, tagging hygiene, dead record removal, contact info normalization, customer history threading. The foundation everything else stands on. Recommended annually.</p>
-        <div class="addon-bundled">Quarterly included in Orchard</div>
-      </article>
-
-      <article class="addon reveal" data-delay="1">
-        <span class="addon-glyph" aria-hidden="true">◉</span>
-        <div class="addon-plain">Paid ads management</div>
-        <div class="addon-header">
-          <div class="addon-name">Sunlight</div>
-        </div>
-        <div class="addon-price">$1,997 / month + ad spend</div>
-        <p class="addon-desc">Google Ads, Meta, and Local Service Ads — fully managed. You fund the ad budget directly to the platforms. We run the campaigns, write the copy, optimize weekly. Every click flows into your Greenhouse as a tracked lead with full source attribution.</p>
+        <div class="addon-price">Pricing on request</div>
+        <p class="addon-desc">A deep clean of your customer database: duplicates merged, tags fixed, dead records removed, contact info cleaned up. The foundation everything else stands on.</p>
       </article>
     </div>
   </div>
 </section>
+
 
 <!-- ===== INCLUDED / NOT INCLUDED ===== -->
 <section class="section included-section on-cream">
@@ -1983,7 +2006,7 @@ h1, h2, h3, h4 {
           <div class="faq-icon"></div>
         </div>
         <div class="faq-a"><div class="faq-a-inner">
-          <p>Single trade, one location, doing $500K–$3M a year? You're a Greenhouse. Multi-trade or multi-location doing $3M–$10M? You're an Orchard. 3+ locations or above $10M? You're Estate. Not sure? Apply for the audit — we'll tell you in 30 minutes, and we'll tell you honestly even if it means a smaller deal for us.</p>
+          <p>One location? You're a Greenhouse. Two to nine locations, or multiple trades? You're an Orchard. Ten or more locations, or a platform rolling up shops? You're Estate. Not sure? Apply for the audit — we'll tell you in 30 minutes, and we'll tell you honestly even if it means a smaller deal for us.</p>
         </div></div>
       </div>
 
@@ -1993,17 +2016,17 @@ h1, h2, h3, h4 {
           <div class="faq-icon"></div>
         </div>
         <div class="faq-a"><div class="faq-a-inner">
-          <p>Setup fee charged at signing via Stripe. Monthly fee starts on Day 31. Auto-charged on the 1st of each month after that. Failed payments get a 7-day grace period. Annual prepay saves you two months — pay 10 months upfront for 12 months of service.</p>
+          <p>Nothing is charged at signing. At go-live we charge your setup and first month, then auto-charge monthly by card or ACH. The 10% revival share is billed monthly, only on revived jobs completed and paid. Annual prepay saves you two months: pay 10 months up front for 12 months of service.</p>
         </div></div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">
-          <div class="faq-q-text">What if you don't hit 5 extra jobs in 60 days?</div>
+          <div class="faq-q-text">What if it doesn't pay for itself?</div>
           <div class="faq-icon"></div>
         </div>
         <div class="faq-a"><div class="faq-a-inner">
-          <p>We work for free until you do. No clawback of setup, no escape hatch, no fine print. We don't pause your billing — we credit it back as free months until you hit five attributable jobs. The system is designed around hitting that number. If we miss, the failure is ours.</p>
+          <p>That's the Payback Guarantee. If revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do. Still short at day 180, we refund the difference. It applies to shops with $1.5M+ in unsold estimates from the last 24 months, with revived appointments run within 2 business days and jobs marked completed and paid.</p>
         </div></div>
       </div>
 
@@ -2013,7 +2036,7 @@ h1, h2, h3, h4 {
           <div class="faq-icon"></div>
         </div>
         <div class="faq-a"><div class="faq-a-inner">
-          <p>Yes. 30 days written notice. No penalties, no clawback. If GRAIN stops working for you, you should leave. We'd rather earn your business every month than trap you in a contract.</p>
+          <p>After the first 90 days, yes. 30 days written notice. No penalties, no clawback. If GRAIN stops working for you, you should leave. We'd rather earn your business every month than trap you in a contract.</p>
         </div></div>
       </div>
 
@@ -2049,11 +2072,11 @@ h1, h2, h3, h4 {
 
       <div class="faq-item">
         <div class="faq-q">
-          <div class="faq-q-text">What's the difference between Orchard and Greenhouse + add-ons?</div>
+          <div class="faq-q-text">What's the difference between Greenhouse and Orchard?</div>
           <div class="faq-icon"></div>
         </div>
         <div class="faq-a"><div class="faq-a-inner">
-          <p>Orchard bundles four add-on engines (Roots, Fertilizer, quarterly Compost, and quarterly Pruning) plus multi-trade routing, weekly review calls, a quarterly strategy session with the founder, and a dedicated Slack channel. The bundled add-on value alone is about $1,994/month in recurring engines plus quarterly campaign value — roughly $2,994/month equivalent. Greenhouse plus those four add-ons works if you're single-trade and single-location. Orchard is built for multiple trades or locations — it bundles the four engines in, adds the routing Greenhouse doesn't do, and steps service up to weekly calls and a quarterly strategy session.</p>
+          <p>Greenhouse runs one location. Orchard runs every location you have on one system: your first location at the Greenhouse price, each added location at $1,997 a month plus $1,500 setup, with one Mission Control across trades and locations, weekly review calls, a quarterly strategy session with the founder and a dedicated Slack channel. Add-ons like Roots, Fertilizer and Sunlight are priced per location on either tier.</p>
         </div></div>
       </div>
 
@@ -2133,9 +2156,9 @@ h1, h2, h3, h4 {
     <div class="footer-bottom">
       <div class="footer-bottom-left">© GRAIN Method 2026 · Nashville, TN</div>
       <div class="footer-bottom-mid">
-        <span>System · Live</span>
+        <span>Now taking 5 founding shops</span>
         <span class="sep">·</span>
-        <span class="heartbeat" id="footer-heartbeat" aria-label="Time since last heartbeat">0s</span>
+        <span>through Dec 31</span>
       </div>
       <div class="footer-bottom-right"><a href="mailto:audit@grainmethod.com">audit@grainmethod.com</a></div>
     </div>
@@ -2240,16 +2263,16 @@ h1, h2, h3, h4 {
 
   /* ---------- ASK GRAIN ---------- */
   const ASK_EXAMPLES = [
-    { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every inbound lead in under 60 seconds, 24/7, and follow up on every quote for 90 days until they book or tell us to stop. The promise is 5 extra jobs in your first 60 days, or we work for free until you get them." },
-    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. We're the layer in between — the operating system that actually answers, qualifies, and nurtures every lead you generate. We work with the CRM and marketing you already have." },
-    { q: "How fast can I be live?", a: "Greenhouse deploys in 7 days from signed agreement. Orchard in 14 days. Estate in 30 days with a dedicated implementation team. Day 1 you receive a written Intelligence Report on your current lead flow. Day 7 the system is live and answering calls." },
-    { q: "What does it cost?", a: "Greenhouse: $3,500 setup + $2,997/month. Orchard: $9,997 setup + $6,997/month, with the full add-on family bundled. Estate: from $24,997 + from $14,997/month, custom-built for multi-location operators. All inclusive — no usage fees, no surprise overages, no cancellation penalties. Annual prepay saves two months." },
-    { q: "What's the 5-jobs guarantee?", a: "If you don't book 5 extra jobs you can directly attribute to GRAIN in your first 60 days, we work for free until you do. No fine print, no escape hatches. We've designed the system around hitting that number — if we don't, the failure is ours, not yours." },
-    { q: "Will this work for my trade?", a: "GRAIN is built for ten trades: roofing, HVAC, plumbing, pest control, electrical, fencing, pool, painting, landscaping, and remodeling. If you're outside those, we'll tell you on the audit call and we won't take your money." },
-    { q: "Do you replace my team?", a: "No. We replace the gaps your team can't cover — after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, the database of past customers nobody has time to reactivate. Your team handles what they're already good at." },
-    { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 — and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one as part of onboarding." },
-    { q: "What happens on the audit call?", a: "Thirty minutes. We pull your real lead flow, response times, and close rates and trace the specific dollars you're losing each month. You leave the call with a written number — whether you become a client or not. No high-pressure pitch." },
-    { q: "How do I cancel?", a: "Thirty days notice in writing. No penalties, no clawback of setup, nothing to recover. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month than trap you in a contract." }
+    { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every call, text and form in under 60 seconds, 24/7, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days." },
+    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. GRAIN is what happens after the phone rings: every lead answered, qualified, booked and followed up, done for you. We work with the CRM and marketing you already have." },
+    { q: "How fast can I be live?", a: "Greenhouse is live within 14 days of kickoff, or month 1 is free. Kickoff happens within 3 business days of signing, and you approve the test calls before anything goes live. Orchard and Estate roll out location by location on the same 14-day build." },
+    { q: "What does it cost?", a: "Greenhouse, one location: $1,500 setup + $1,497/month + 10% of revived jobs, only on jobs completed and paid. That's the founding price for the first 5 shops, through Dec 31. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
+    { q: "What are the guarantees?", a: "Three. Start Guarantee: $0 until it's live, live in 14 days or month 1 is free. Call promise: 99% of calls answered in 60 seconds every month, or that month is free. Payback Guarantee: if revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do, and if you're still short at day 180 we refund the difference. Each has conditions, listed on the pricing page." },
+    { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, fencing, pools, painting, landscaping, garage doors, foundation and water treatment. If you're outside those, we'll tell you on the audit call and we won't take your money." },
+    { q: "Do you replace my team?", a: "No. We cover the gaps your team can't: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team handles what they're already good at." },
+    { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one during onboarding." },
+    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real lead flow, response times, close rates and unsold estimates, and trace the dollars you're losing each month. You leave with a written number, whether you become a client or not." },
+    { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month." }
   ];
 
   function initAskGrain() {

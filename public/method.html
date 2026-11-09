@@ -16,12 +16,9 @@
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T5DP2CY8NW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-T5DP2CY8NW');</script>
-
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
-  var CALENDLY_URL='https://calendly.com/YOUR-CALENDLY-URL';
-  function openCalendly(e){if(e)e.preventDefault();if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:CALENDLY_URL});if(typeof gtag!=='undefined')gtag('event','calendly_open');return false;}
+  var BOOKING_URL=''; /* GoHighLevel calendar link goes here when it's ready */
+  function openCalendly(e){if(e)e.preventDefault();if(typeof gtag!=='undefined')gtag('event','audit_click');window.location.href=BOOKING_URL||'apply.html';return false;}
 </script>
 
 <style>
@@ -1327,7 +1324,6 @@ h1, h2, h3, h4 {
 <!-- ===== DEEPER PER-ENGINE BREAKDOWN ===== -->
 <section class="engines-section">
   <div class="wrap">
-
     <div class="engine-block reveal">
       <div class="engine-marker">
         <div class="num">Engine 01</div>
@@ -1335,17 +1331,15 @@ h1, h2, h3, h4 {
         <div class="word">Generate</div>
       </div>
       <div class="engine-body">
-        <h3>The fastest path from a stranger to a booked appointment.</h3>
-        <p>Most home service businesses run three or four lead sources independently — and lose track of half of them. We consolidate every channel into a single feed, scored against your job-value benchmarks before they ever hit your team's attention.</p>
+        <h3>Every lead source in one feed.</h3>
+        <p>Google, ads, referrals and web forms captured in one place, tagged by source and scored before your team sees them.</p>
         <ul class="engine-details">
-          <li><strong>Channels covered</strong>Google Search, Local Service Ads, Meta, Thumbtack, Angi, Yelp, web forms, partner referrals, branded SMS short code</li>
-          <li><strong>Tracking</strong>Source-tagged at capture · UTM-preserved through CRM · attribution survives across touch points</li>
-          <li><strong>Scoring</strong>Trade-specific lead-quality models · hot leads flagged to your team in real time</li>
-          <li><strong>Speed</strong>From form submit to scored-and-routed in under 6 seconds</li>
+          <li><strong>Channels</strong>Google Search · Local Services Ads · Meta · web forms · referrals</li>
+          <li><strong>Tracking</strong>Source-tagged at capture, all the way to the booked job</li>
+          <li><strong>Scoring</strong>Hot leads flagged to your team in real time</li>
         </ul>
       </div>
     </div>
-
     <div class="engine-block reveal">
       <div class="engine-marker">
         <div class="num">Engine 02</div>
@@ -1353,17 +1347,15 @@ h1, h2, h3, h4 {
         <div class="word">Respond</div>
       </div>
       <div class="engine-body">
-        <h3>Every lead answered before they have time to call your competitor.</h3>
-        <p>The Harvard Business Review study is the one every contractor has heard but few actually act on: a five-minute response is 21× more likely to convert than a 30-minute one. We make the response immediate, every time, including at 2am on a Sunday in July.</p>
+        <h3>Answered before they call the next shop.</h3>
+        <p>Calls, texts and web forms answered in under 60 seconds, 24/7. Including 2am on a Sunday in July.</p>
         <ul class="engine-details">
-          <li><strong>Voice agent</strong>Custom voice that qualifies, books, and escalates the hot ones to a live team member</li>
-          <li><strong>Web form</strong>Instant confirmation · scheduling link in under 30 seconds</li>
-          <li><strong>SMS</strong>Two-way conversational · handoff to human when needed</li>
-          <li><strong>Coverage</strong>24 hours · 7 days · holidays · weekends · the calls your team can't take</li>
+          <li><strong>Voice agent</strong>Qualifies, books, and hands the hot ones to your team</li>
+          <li><strong>SMS</strong>Two-way, with a human handoff when needed</li>
+          <li><strong>Coverage</strong>Nights · weekends · holidays · overflow</li>
         </ul>
       </div>
     </div>
-
     <div class="engine-block reveal">
       <div class="engine-marker">
         <div class="num">Engine 03</div>
@@ -1371,17 +1363,15 @@ h1, h2, h3, h4 {
         <div class="word">Automate</div>
       </div>
       <div class="engine-body">
-        <h3>Ninety days of follow-up on every quote your team has ever sent.</h3>
-        <p>The average contractor follows up on a quote 1.3 times. Industry benchmark for closing a quote with proper follow-up is 5–7 touches. The gap between those two numbers is most of the money you're leaving on the table this year.</p>
+        <h3>Every quote followed up for 90 days.</h3>
+        <p>Text, email and voice touches until the homeowner books or says no.</p>
         <ul class="engine-details">
-          <li><strong>Touch cadence</strong>Day 1 thank-you · Day 3 SMS · Day 7 email · Day 14 voice · Day 30, 60, 90 follow-ups</li>
-          <li><strong>Personalization</strong>References the specific quote, job specs, and timeline — not generic blasts</li>
-          <li><strong>Exit conditions</strong>Auto-stops on booking, explicit no, or unsubscribe — no harassment, no awkwardness</li>
-          <li><strong>Handoff</strong>Live leads escalated to your team with full context · no cold transfers</li>
+          <li><strong>Cadence</strong>Day 1 · 3 · 7 · 14 · 30 · 60 · 90</li>
+          <li><strong>Personal</strong>References the actual quote and job, never a blast</li>
+          <li><strong>Stops</strong>Instantly on a booking, a no, or an opt-out</li>
         </ul>
       </div>
     </div>
-
     <div class="engine-block reveal">
       <div class="engine-marker">
         <div class="num">Engine 04</div>
@@ -1389,17 +1379,15 @@ h1, h2, h3, h4 {
         <div class="word">Integrate</div>
       </div>
       <div class="engine-body">
-        <h3>Plugs in where your data lives. Doesn't ask you to change anything.</h3>
-        <p>Your CRM, your phone system, your existing automation — we don't replace any of it. We become the operating layer that makes them all work together, in real time, without your team noticing.</p>
+        <h3>Plugs into what you already use.</h3>
+        <p>Your CRM, phone and calendar stay. GRAIN connects them.</p>
         <ul class="engine-details">
-          <li><strong>CRMs supported</strong>ServiceTitan · Jobber · Housecall Pro · JobNimbus · AccuLynx · FieldPulse · Leap · SalesRabbit · JobTread · Service Fusion · Improveit360</li>
-          <li><strong>Phone systems</strong>Forward to GRAIN, keep your existing number · or full port if preferred</li>
-          <li><strong>Calendar</strong>Direct integration with your team's existing scheduling</li>
-          <li><strong>Data ownership</strong>Your records stay yours · full export available any time · no lock-in</li>
+          <li><strong>CRMs</strong>ServiceTitan · Jobber · Housecall Pro · JobNimbus · AccuLynx · and more</li>
+          <li><strong>Phone</strong>Keep your number, forward to GRAIN</li>
+          <li><strong>Your data</strong>Stays yours · export any time · no lock-in</li>
         </ul>
       </div>
     </div>
-
     <div class="engine-block reveal">
       <div class="engine-marker">
         <div class="num">Engine 05</div>
@@ -1407,17 +1395,15 @@ h1, h2, h3, h4 {
         <div class="word">Nurture</div>
       </div>
       <div class="engine-body">
-        <h3>The customers you already earned, working for you again.</h3>
-        <p>Every roofer, plumber, and HVAC operator we work with has the same database problem: thousands of past customers, almost none of them being actively cultivated. We work the back catalog every quarter.</p>
+        <h3>Your old estimates, working again.</h3>
+        <p>We work your last 24 months of unsold estimates and past customers. You pay 10% only on revived jobs that are completed and paid.</p>
         <ul class="engine-details">
-          <li><strong>Reactivation campaigns</strong>Quarterly outreach to your full past-customer list · trade-specific seasonal hooks</li>
-          <li><strong>Review velocity</strong>Automated review asks after every job · response monitoring</li>
-          <li><strong>Anniversary touches</strong>Service anniversary, warranty expiration, maintenance reminders</li>
-          <li><strong>Referral activation</strong>Past customers turned into a referral channel via the Pollination add-on</li>
+          <li><strong>Revival</strong>Old estimates and dead leads worked back into jobs</li>
+          <li><strong>Reviews</strong>A review request after every job</li>
+          <li><strong>Reminders</strong>Maintenance, warranty and service anniversaries</li>
         </ul>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1557,51 +1543,50 @@ h1, h2, h3, h4 {
   </div>
 </section>
 
-<!-- ===== 7-DAY TIMELINE ===== -->
+<!-- ===== 14-DAY TIMELINE ===== -->
 <section class="section timeline-section on-cream">
   <div class="wrap">
     <div class="timeline-intro">
-      <div class="eyebrow reveal">7-day deployment</div>
+      <div class="eyebrow reveal">14-day deployment</div>
       <h2 class="h-section reveal" data-delay="1" style="color:var(--ink);">
         From signed agreement<br>to <span class="italic-accent" style="color:var(--moss-deep);">system live.</span>
       </h2>
     </div>
-
     <div class="timeline">
       <div class="timeline-row reveal">
         <div class="timeline-day">Day 1</div>
-        <div class="timeline-title">Kickoff call &amp; data pull</div>
-        <div class="timeline-desc">60-minute kickoff. We pull your CRM, phone system, lead sources, and past 90 days of data. You provide brand voice samples and team training preferences.</div>
+        <div class="timeline-title">Kickoff &amp; data pull</div>
+        <div class="timeline-desc">60-minute kickoff within 3 business days of signing. We pull your CRM, phone, lead sources and 24 months of estimates.</div>
       </div>
       <div class="timeline-row reveal">
         <div class="timeline-day">Day 2</div>
         <div class="timeline-title">Intelligence report delivered</div>
-        <div class="timeline-desc">Written report on your current state — response times, close rates, dormant database value, and the specific dollar leak we're closing. Baseline for measuring the guarantee.</div>
+        <div class="timeline-desc">Your response times, close rates, unsold estimate value and the dollar leak we're closing. The baseline for your guarantees.</div>
       </div>
       <div class="timeline-row reveal">
-        <div class="timeline-day">Day 3</div>
+        <div class="timeline-day">Days 3&ndash;5</div>
         <div class="timeline-title">Voice agent built</div>
-        <div class="timeline-desc">Custom voice agent trained on your services, pricing, common objections, and qualification questions. You approve the test recordings.</div>
+        <div class="timeline-desc">Trained on your services, pricing, common objections and qualification questions.</div>
       </div>
       <div class="timeline-row reveal">
-        <div class="timeline-day">Day 4</div>
+        <div class="timeline-day">Days 6&ndash;8</div>
         <div class="timeline-title">CRM &amp; phone integration</div>
-        <div class="timeline-desc">Two-way sync configured with your CRM. Phone forwarding set up. Web forms instrumented. Lead routing rules tested end-to-end.</div>
+        <div class="timeline-desc">Two-way CRM sync, web forms and lead routing, tested end to end.</div>
       </div>
       <div class="timeline-row reveal">
-        <div class="timeline-day">Day 5</div>
-        <div class="timeline-title">SMS &amp; email sequences live</div>
-        <div class="timeline-desc">90-day follow-up sequences built for your specific service types and average job timelines. Quarterly nurture campaigns scheduled. All copy approved by you.</div>
+        <div class="timeline-day">By day 10</div>
+        <div class="timeline-title">Forwarding on, sequences built</div>
+        <div class="timeline-desc">Call forwarding switched on. Follow-up and revival sequences built for your services, with every word approved by you.</div>
       </div>
       <div class="timeline-row reveal">
-        <div class="timeline-day">Day 6</div>
-        <div class="timeline-title">Team training &amp; dry run</div>
-        <div class="timeline-desc">Your team trained on Mission Control dashboard. Hot-lead handoff rehearsed. Final QA on every integration. Go-live checklist signed off.</div>
+        <div class="timeline-day">Days 11&ndash;13</div>
+        <div class="timeline-title">Test calls &amp; team training</div>
+        <div class="timeline-desc">You approve the test calls within 48 hours. Your team learns Mission Control.</div>
       </div>
       <div class="timeline-row go-live reveal">
-        <div class="timeline-day">Day 7 — live</div>
+        <div class="timeline-day">Day 14 · live</div>
         <div class="timeline-title">System answering, follow-up running, dashboard live</div>
-        <div class="timeline-desc">Voice agent live on inbound calls. SMS and email sequences active on every new quote. Past customer reactivation campaign in motion. 60-day guarantee clock starts.</div>
+        <div class="timeline-desc">Voice agent on inbound calls, follow-up on every new quote, old-estimate revival in motion. Setup and month one are charged at go-live, not before.</div>
       </div>
     </div>
   </div>
@@ -1679,9 +1664,9 @@ h1, h2, h3, h4 {
     <div class="footer-bottom">
       <div class="footer-bottom-left">© GRAIN Method 2026 · Nashville, TN</div>
       <div class="footer-bottom-mid">
-        <span>System · Live</span>
+        <span>Now taking 5 founding shops</span>
         <span class="sep">·</span>
-        <span class="heartbeat" id="footer-heartbeat" aria-label="Time since last heartbeat">0s</span>
+        <span>through Dec 31</span>
       </div>
       <div class="footer-bottom-right"><a href="mailto:audit@grainmethod.com">audit@grainmethod.com</a></div>
     </div>
@@ -1786,16 +1771,16 @@ h1, h2, h3, h4 {
 
   /* ---------- ASK GRAIN ---------- */
   const ASK_EXAMPLES = [
-    { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every inbound lead in under 60 seconds, 24/7, and follow up on every quote for 90 days until they book or tell us to stop. The promise is 5 extra jobs in your first 60 days, or we work for free until you get them." },
-    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. We're the layer in between — the operating system that actually answers, qualifies, and nurtures every lead you generate. We work with the CRM and marketing you already have." },
-    { q: "How fast can I be live?", a: "Greenhouse deploys in 7 days from signed agreement. Orchard in 14 days. Estate in 30 days with a dedicated implementation team. Day 1 you receive a written Intelligence Report on your current lead flow. Day 7 the system is live and answering calls." },
-    { q: "What does it cost?", a: "Greenhouse: $3,500 setup + $2,997/month. Orchard: $9,997 setup + $6,997/month, with the full add-on family bundled. Estate: from $24,997 + from $14,997/month, custom-built for multi-location operators. All inclusive — no usage fees, no surprise overages, no cancellation penalties. Annual prepay saves two months." },
-    { q: "What's the 5-jobs guarantee?", a: "If you don't book 5 extra jobs you can directly attribute to GRAIN in your first 60 days, we work for free until you do. No fine print, no escape hatches. We've designed the system around hitting that number — if we don't, the failure is ours, not yours." },
-    { q: "Will this work for my trade?", a: "GRAIN is built for ten trades: roofing, HVAC, plumbing, pest control, electrical, fencing, pool, painting, landscaping, and remodeling. If you're outside those, we'll tell you on the audit call and we won't take your money." },
-    { q: "Do you replace my team?", a: "No. We replace the gaps your team can't cover — after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, the database of past customers nobody has time to reactivate. Your team handles what they're already good at." },
-    { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 — and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one as part of onboarding." },
-    { q: "What happens on the audit call?", a: "Thirty minutes. We pull your real lead flow, response times, and close rates and trace the specific dollars you're losing each month. You leave the call with a written number — whether you become a client or not. No high-pressure pitch." },
-    { q: "How do I cancel?", a: "Thirty days notice in writing. No penalties, no clawback of setup, nothing to recover. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month than trap you in a contract." }
+    { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every call, text and form in under 60 seconds, 24/7, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days." },
+    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. GRAIN is what happens after the phone rings: every lead answered, qualified, booked and followed up, done for you. We work with the CRM and marketing you already have." },
+    { q: "How fast can I be live?", a: "Greenhouse is live within 14 days of kickoff, or month 1 is free. Kickoff happens within 3 business days of signing, and you approve the test calls before anything goes live. Orchard and Estate roll out location by location on the same 14-day build." },
+    { q: "What does it cost?", a: "Greenhouse, one location: $1,500 setup + $1,497/month + 10% of revived jobs, only on jobs completed and paid. That's the founding price for the first 5 shops, through Dec 31. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
+    { q: "What are the guarantees?", a: "Three. Start Guarantee: $0 until it's live, live in 14 days or month 1 is free. Call promise: 99% of calls answered in 60 seconds every month, or that month is free. Payback Guarantee: if revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do, and if you're still short at day 180 we refund the difference. Each has conditions, listed on the pricing page." },
+    { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, fencing, pools, painting, landscaping, garage doors, foundation and water treatment. If you're outside those, we'll tell you on the audit call and we won't take your money." },
+    { q: "Do you replace my team?", a: "No. We cover the gaps your team can't: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team handles what they're already good at." },
+    { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one during onboarding." },
+    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real lead flow, response times, close rates and unsold estimates, and trace the dollars you're losing each month. You leave with a written number, whether you become a client or not." },
+    { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month." }
   ];
 
   function initAskGrain() {

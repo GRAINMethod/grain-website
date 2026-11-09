@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark only">
 <meta name="theme-color" content="#141A17">
-<title>Terms of Service — GRAIN</title>
-<meta name="description" content="The terms under which GRAIN Method provides its lead-response infrastructure service.">
+<title>Security — GRAIN</title>
+<meta name="description" content="How GRAIN Method protects client data — infrastructure, access controls, and incident response.">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%231C2420' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%23F0ECDF' fill='none' stroke-width='18'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%239AAF7A' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%23BFD0A2'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%23BFD0A2'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%23BFD0A2'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%23BFD0A2'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%23F0ECDF'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
 
@@ -1276,9 +1276,9 @@ h1, h2, h3, h4 {
 <!-- ===== PAGE HERO ===== -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <div class="eyebrow reveal" style="justify-content:center;">Terms of service</div>
-    <h1 class="h-section reveal" data-delay="1">The terms, <span class="italic-accent">in plain English</span>.</h1>
-    <p class="lede reveal" data-delay="2" style="margin: 0 auto;">What we owe you, what you owe us, how the guarantee works, and how you leave if you ever want to. No buried clauses.</p>
+    <div class="eyebrow reveal" style="justify-content:center;">Security</div>
+    <h1 class="h-section reveal" data-delay="1">How your data <span class="italic-accent">stays your data</span>.</h1>
+    <p class="lede reveal" data-delay="2" style="margin: 0 auto;">Where it lives, who can touch it, how we protect it, and what happens if something goes wrong. Plain-language summary of our security posture.</p>
     <div class="doc-meta reveal" data-delay="3">
       <span>Effective May 20, 2026</span><span class="sep"></span><span>v1.0</span>
     </div>
@@ -1292,79 +1292,65 @@ h1, h2, h3, h4 {
       <div class="doc-toc-label">Contents</div>
       <ol class="doc-toc-list">
         <li><a href="#s-overview">Overview</a></li>
-        <li><a href="#s-services">Our services</a></li>
-        <li><a href="#s-billing">Fees & billing</a></li>
-        <li><a href="#s-guarantee">The 5-jobs guarantee</a></li>
-        <li><a href="#s-cancel">Cancellation & changes</a></li>
-        <li><a href="#s-use">Acceptable use</a></li>
-        <li><a href="#s-liability">Liability</a></li>
-        <li><a href="#s-disputes">Disputes</a></li>
-        <li><a href="#s-contact">Contact us</a></li>
+        <li><a href="#s-infra">Where your data lives</a></li>
+        <li><a href="#s-access">Access controls</a></li>
+        <li><a href="#s-encryption">Encryption</a></li>
+        <li><a href="#s-backups">Backups & recovery</a></li>
+        <li><a href="#s-subprocessors">Subprocessors</a></li>
+        <li><a href="#s-incident">Incident response</a></li>
+        <li><a href="#s-report">Reporting a security issue</a></li>
       </ol>
     </aside>
     <div class="doc-body">
       <section class="doc-block reveal" id="s-overview">
         <div class="doc-num">Section 01</div>
         <h2 class="doc-h2">Overview</h2>
-        <p>These terms govern your use of grainmethod.com and any services provided by GRAIN Method. By engaging us as a client, you accept these terms in full.</p>
-        <p class="doc-placeholder">[PLACEHOLDER: Standard preamble and acceptance language.]</p>
+        <p>Your client data is the most sensitive thing we touch. We treat it accordingly — with hardened infrastructure, narrow access, encryption in transit and at rest, and a documented incident response process.</p>
+        <p>This page summarizes our security posture in plain language. For detailed security documentation, SOC 2 status, or to request our Trust Center, email <a href="mailto:audit@grainmethod.com">audit@grainmethod.com</a>.</p>
       </section>
-      <section class="doc-block reveal" id="s-services">
+      <section class="doc-block reveal" id="s-infra">
         <div class="doc-num">Section 02</div>
-        <h2 class="doc-h2">Our services</h2>
-        <p>GRAIN provides lead-response infrastructure and related services for home service businesses. The specific scope of your engagement is defined in your tier (Greenhouse, Orchard, or Estate) and any add-on engines you elect.</p>
-        <p>What's included in each tier — and what isn't — is detailed on our <a href="pricing.html">pricing page</a> and in your signed service agreement.</p>
-        <p class="doc-placeholder">[PLACEHOLDER: Detailed scope of work and deliverables per tier.]</p>
+        <h2 class="doc-h2">Where your data lives</h2>
+        <p>Client data is stored in segregated environments per client. We use industry-standard cloud infrastructure (US-based regions) with encrypted storage and dedicated environments for each client account.</p>
+        <p>We do not commingle data across clients. Each client's Mission Control dashboard operates on isolated subdomain and database scoping.</p>
       </section>
-      <section class="doc-block reveal" id="s-billing">
+      <section class="doc-block reveal" id="s-access">
         <div class="doc-num">Section 03</div>
-        <h2 class="doc-h2">Fees & billing</h2>
-        <p>Setup fee is charged at signing. Monthly fees begin on Day 31 and recur on the 1st of each month. Annual prepay saves you two months — paid 10 months upfront for 12 months of service.</p>
-        <p>Failed payments get a 7-day grace period before service is paused. We never charge usage fees, overages, or surprise add-ons.</p>
-        <p class="doc-placeholder">[PLACEHOLDER: Tax treatment, currency, late-payment terms.]</p>
-      </section>
-      <section class="doc-block reveal" id="s-guarantee">
-        <div class="doc-num">Section 04</div>
-        <h2 class="doc-h2">The 5-jobs guarantee</h2>
-        <p>If, in your first 60 days as a client, you do not book at least 5 extra jobs that can be directly attributed to GRAIN's work, we continue working for free until you do.</p>
-        <p>"Directly attributed" means jobs traceable to GRAIN-handled leads through our attribution reporting. Both parties must reasonably cooperate with attribution review at Day 60.</p>
-        <p class="doc-placeholder">[PLACEHOLDER: Detailed conditions, attribution methodology, edge cases.]</p>
-      </section>
-      <section class="doc-block reveal" id="s-cancel">
-        <div class="doc-num">Section 05</div>
-        <h2 class="doc-h2">Cancellation & changes</h2>
-        <p>You can cancel at any time with 30 days written notice. No penalties, no clawback of setup fees.</p>
-        <p>If you cancel during an annual prepay term, we refund unused months at the standard monthly rate. The annual prepay is a price discount, not a contract lock-in.</p>
-        <p>We may suspend or terminate service for non-payment, abusive behavior, or material breach. We will give you 30 days notice and a chance to cure before doing so.</p>
-      </section>
-      <section class="doc-block reveal" id="s-use">
-        <div class="doc-num">Section 06</div>
-        <h2 class="doc-h2">Acceptable use</h2>
-        <p>You agree not to use GRAIN to:</p>
+        <h2 class="doc-h2">Access controls</h2>
+        <p>Access to production data is limited to the GRAIN operations team, requires multi-factor authentication, and is logged.</p>
         <ul>
-          <li>Send unsolicited communications outside of legitimate lead follow-up</li>
-          <li>Violate applicable laws including TCPA, CAN-SPAM, or state-specific regulations</li>
-          <li>Process data you do not have lawful basis to process</li>
+          <li>All employee accounts use hardware security keys</li>
+          <li>Production access is granted just-in-time, not standing</li>
+          <li>All production actions are audited and retained</li>
         </ul>
-        <p class="doc-placeholder">[PLACEHOLDER: Detailed acceptable use policy.]</p>
       </section>
-      <section class="doc-block reveal" id="s-liability">
+      <section class="doc-block reveal" id="s-encryption">
+        <div class="doc-num">Section 04</div>
+        <h2 class="doc-h2">Encryption</h2>
+        <p>All data is encrypted in transit using TLS 1.3 and at rest using AES-256. Encryption keys are managed through a dedicated key management service with rotation on a regular schedule.</p>
+      </section>
+      <section class="doc-block reveal" id="s-backups">
+        <div class="doc-num">Section 05</div>
+        <h2 class="doc-h2">Backups & recovery</h2>
+        <p>We back up all client data on a daily schedule with point-in-time recovery available for the past 30 days. Backups are encrypted, stored in a separate region from primary storage, and tested quarterly.</p>
+      </section>
+      <section class="doc-block reveal" id="s-subprocessors">
+        <div class="doc-num">Section 06</div>
+        <h2 class="doc-h2">Subprocessors</h2>
+        <p>We use a small number of vetted subprocessors to deliver the service. Each has a signed data processing agreement and is reviewed periodically. A current list is available on request.</p>
+      </section>
+      <section class="doc-block reveal" id="s-incident">
         <div class="doc-num">Section 07</div>
-        <h2 class="doc-h2">Liability</h2>
-        <p class="doc-placeholder">[PLACEHOLDER: Standard limitation of liability clauses to be drafted by counsel — cap on damages, exclusion of indirect / consequential damages, indemnification.]</p>
+        <h2 class="doc-h2">Incident response</h2>
+        <p>If we discover a security incident affecting your data, we will notify you within 72 hours of confirming the incident with what we know, what we don't know, and what we're doing about it.</p>
+        <p>Our incident response procedure is rehearsed regularly and includes coordination with law enforcement where required.</p>
       </section>
-      <section class="doc-block reveal" id="s-disputes">
+      <section class="doc-block reveal" id="s-report">
         <div class="doc-num">Section 08</div>
-        <h2 class="doc-h2">Disputes</h2>
-        <p>These terms are governed by the laws of the State of Tennessee, without regard to conflict-of-law rules. Disputes are resolved first by good-faith negotiation, then by binding arbitration in Davidson County, Tennessee.</p>
-        <p class="doc-placeholder">[PLACEHOLDER: Specific arbitration provider, class action waiver, jury waiver clauses.]</p>
-      </section>
-      <section class="doc-block reveal" id="s-contact">
-        <div class="doc-num">Section 09</div>
-        <h2 class="doc-h2">Contact us</h2>
-        <p>Questions about these terms:</p>
-        <p><strong>GRAIN Method</strong><br>Nashville, TN<br><a href="mailto:audit@grainmethod.com">audit@grainmethod.com</a></p>
-        <div class="doc-callout"><strong>Note for legal review:</strong> this is a structural template. All bracketed sections must be reviewed and rewritten by your attorney before deploying to production.</div>
+        <h2 class="doc-h2">Reporting a security issue</h2>
+        <p>If you've discovered a potential security issue with our service, please email <a href="mailto:audit@grainmethod.com">audit@grainmethod.com</a> with details. We respond to all good-faith reports within 24 hours.</p>
+        <p>We do not currently run a public bug bounty program, but we welcome responsible disclosure and will acknowledge contributors.</p>
+        <div class="doc-callout"><strong>Note for review:</strong> this page describes our security posture as it should be once fully implemented. Each bracketed section should be filled in with concrete answers before being public.</div>
       </section>
     </div>
   </div>
@@ -1423,9 +1409,9 @@ h1, h2, h3, h4 {
     <div class="footer-bottom">
       <div class="footer-bottom-left">© GRAIN Method 2026 · Nashville, TN</div>
       <div class="footer-bottom-mid">
-        <span>System · Live</span>
+        <span>Now taking 5 founding shops</span>
         <span class="sep">·</span>
-        <span class="heartbeat" id="footer-heartbeat" aria-label="Time since last heartbeat">0s</span>
+        <span>through Dec 31</span>
       </div>
       <div class="footer-bottom-right"><a href="mailto:audit@grainmethod.com">audit@grainmethod.com</a></div>
     </div>
@@ -1530,16 +1516,16 @@ h1, h2, h3, h4 {
 
   /* ---------- ASK GRAIN ---------- */
   const ASK_EXAMPLES = [
-    { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every inbound lead in under 60 seconds, 24/7, and follow up on every quote for 90 days until they book or tell us to stop. The promise is 5 extra jobs in your first 60 days, or we work for free until you get them." },
-    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. We're the layer in between — the operating system that actually answers, qualifies, and nurtures every lead you generate. We work with the CRM and marketing you already have." },
-    { q: "How fast can I be live?", a: "Greenhouse deploys in 7 days from signed agreement. Orchard in 14 days. Estate in 30 days with a dedicated implementation team. Day 1 you receive a written Intelligence Report on your current lead flow. Day 7 the system is live and answering calls." },
-    { q: "What does it cost?", a: "Greenhouse: $3,500 setup + $2,997/month. Orchard: $9,997 setup + $6,997/month, with the full add-on family bundled. Estate: from $24,997 + from $14,997/month, custom-built for multi-location operators. All inclusive — no usage fees, no surprise overages, no cancellation penalties. Annual prepay saves two months." },
-    { q: "What's the 5-jobs guarantee?", a: "If you don't book 5 extra jobs you can directly attribute to GRAIN in your first 60 days, we work for free until you do. No fine print, no escape hatches. We've designed the system around hitting that number — if we don't, the failure is ours, not yours." },
-    { q: "Will this work for my trade?", a: "GRAIN is built for ten trades: roofing, HVAC, plumbing, pest control, electrical, fencing, pool, painting, landscaping, and remodeling. If you're outside those, we'll tell you on the audit call and we won't take your money." },
-    { q: "Do you replace my team?", a: "No. We replace the gaps your team can't cover — after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, the database of past customers nobody has time to reactivate. Your team handles what they're already good at." },
-    { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 — and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one as part of onboarding." },
-    { q: "What happens on the audit call?", a: "Thirty minutes. We pull your real lead flow, response times, and close rates and trace the specific dollars you're losing each month. You leave the call with a written number — whether you become a client or not. No high-pressure pitch." },
-    { q: "How do I cancel?", a: "Thirty days notice in writing. No penalties, no clawback of setup, nothing to recover. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month than trap you in a contract." }
+    { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every call, text and form in under 60 seconds, 24/7, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days." },
+    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. GRAIN is what happens after the phone rings: every lead answered, qualified, booked and followed up, done for you. We work with the CRM and marketing you already have." },
+    { q: "How fast can I be live?", a: "Greenhouse is live within 14 days of kickoff, or month 1 is free. Kickoff happens within 3 business days of signing, and you approve the test calls before anything goes live. Orchard and Estate roll out location by location on the same 14-day build." },
+    { q: "What does it cost?", a: "Greenhouse, one location: $1,500 setup + $1,497/month + 10% of revived jobs, only on jobs completed and paid. That's the founding price for the first 5 shops, through Dec 31. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
+    { q: "What are the guarantees?", a: "Three. Start Guarantee: $0 until it's live, live in 14 days or month 1 is free. Call promise: 99% of calls answered in 60 seconds every month, or that month is free. Payback Guarantee: if revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do, and if you're still short at day 180 we refund the difference. Each has conditions, listed on the pricing page." },
+    { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, fencing, pools, painting, landscaping, garage doors, foundation and water treatment. If you're outside those, we'll tell you on the audit call and we won't take your money." },
+    { q: "Do you replace my team?", a: "No. We cover the gaps your team can't: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team handles what they're already good at." },
+    { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one during onboarding." },
+    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real lead flow, response times, close rates and unsold estimates, and trace the dollars you're losing each month. You leave with a written number, whether you become a client or not." },
+    { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month." }
   ];
 
   function initAskGrain() {

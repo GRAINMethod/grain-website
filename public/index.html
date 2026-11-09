@@ -16,12 +16,9 @@
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T5DP2CY8NW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-T5DP2CY8NW');</script>
-
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
-  var CALENDLY_URL='https://calendly.com/YOUR-CALENDLY-URL';
-  function openCalendly(e){if(e)e.preventDefault();if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:CALENDLY_URL});if(typeof gtag!=='undefined')gtag('event','calendly_open');return false;}
+  var BOOKING_URL=''; /* GoHighLevel calendar link goes here when it's ready */
+  function openCalendly(e){if(e)e.preventDefault();if(typeof gtag!=='undefined')gtag('event','audit_click');window.location.href=BOOKING_URL||'apply.html';return false;}
 </script>
 
 <style>
@@ -1526,12 +1523,12 @@ h1, h2, h3, h4 {
       </h1>
 
       <p class="hero-sub reveal" data-delay="2">
-        A done-for-you system that answers every lead in under <strong>60 seconds</strong>, follows up for <strong>90 days</strong>, and reactivates your past customers — so your team can spend its time on jobs, not chasing voicemails.
+        A done-for-you system that answers every lead in under <strong>60 seconds</strong>, follows up for <strong>90 days</strong>, and turns your old estimates back into booked jobs, so your team can spend its time on jobs, not chasing voicemails.
       </p>
 
       <div class="hero-guarantee reveal" data-delay="3">
         <span class="hero-guarantee-mark">Guarantee</span>
-        <span class="hero-guarantee-text">Five extra jobs in your first <strong>60 days</strong>, or we work free until you get them.</span>
+        <span class="hero-guarantee-text"><strong>$0</strong> until it&rsquo;s live. Live in <strong>14 days</strong> or month one is free.</span>
       </div>
 
       <div class="hero-ctas reveal" data-delay="4">
@@ -1554,11 +1551,11 @@ h1, h2, h3, h4 {
         </div>
         <div class="hero-meta-cell">
           <div class="hero-meta-label">Signed to live</div>
-          <div class="hero-meta-num"><span data-count="7">0</span><span class="unit">days</span></div>
+          <div class="hero-meta-num"><span data-count="14">0</span><span class="unit">days</span></div>
         </div>
         <div class="hero-meta-cell">
-          <div class="hero-meta-label">Leads missed</div>
-          <div class="hero-meta-num"><span class="moss">0</span></div>
+          <div class="hero-meta-label">Due until live</div>
+          <div class="hero-meta-num"><span class="moss">$0</span></div>
         </div>
       </div>
     </div>
@@ -1566,8 +1563,8 @@ h1, h2, h3, h4 {
     <!-- Live telemetry — ambient signal that the system is running -->
     <aside class="hero-telemetry" aria-hidden="true">
       <div class="tele-header">
-        <span class="tele-title">System · Aggregate</span>
-        <span class="tele-live">Live</span>
+        <span class="tele-title">Sample feed</span>
+        <span class="tele-live">Example</span>
       </div>
       <ul class="tele-stream" id="tele-stream">
         <li class="tele-line"><span class="tele-time">21:04:12</span><span class="tele-event"><span class="accent">→</span> lead captured · roofing · TN</span></li>
@@ -1589,15 +1586,15 @@ h1, h2, h3, h4 {
     <div class="ticker-item">SCALE</div>
     <div class="ticker-item">60-second response standard</div>
     <div class="ticker-item">90-day quote follow-up</div>
-    <div class="ticker-item">7-day deployment</div>
-    <div class="ticker-item">5 extra jobs in 60 days, guaranteed</div>
+    <div class="ticker-item">14-day deployment</div>
+    <div class="ticker-item">$0 until it's live</div>
     <div class="ticker-item">PLANT</div>
     <div class="ticker-item">NURTURE</div>
     <div class="ticker-item">SCALE</div>
     <div class="ticker-item">60-second response standard</div>
     <div class="ticker-item">90-day quote follow-up</div>
-    <div class="ticker-item">7-day deployment</div>
-    <div class="ticker-item">5 extra jobs in 60 days, guaranteed</div>
+    <div class="ticker-item">14-day deployment</div>
+    <div class="ticker-item">$0 until it's live</div>
   </div>
 </div>
 
@@ -1805,7 +1802,7 @@ h1, h2, h3, h4 {
         </svg>
         <div class="viz-caption">
           <span class="viz-caption-dot"></span>
-          <span>Signal events processed · <span class="num" id="viz-event-count">12,847</span> in last 24h</span>
+          <span>Illustration · every shop we add sharpens the playbook</span>
         </div>
       </div>
     </div>
@@ -1891,9 +1888,9 @@ h1, h2, h3, h4 {
     <div class="footer-bottom">
       <div class="footer-bottom-left">© GRAIN Method 2026 · Nashville, TN</div>
       <div class="footer-bottom-mid">
-        <span>System · Live</span>
+        <span>Now taking 5 founding shops</span>
         <span class="sep">·</span>
-        <span class="heartbeat" id="footer-heartbeat" aria-label="Time since last heartbeat">0s</span>
+        <span>through Dec 31</span>
       </div>
       <div class="footer-bottom-right"><a href="mailto:audit@grainmethod.com">audit@grainmethod.com</a></div>
     </div>
@@ -2084,16 +2081,16 @@ h1, h2, h3, h4 {
 
   /* ---------- ASK GRAIN ---------- */
   const ASK_EXAMPLES = [
-    { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every inbound lead in under 60 seconds, 24/7, and follow up on every quote for 90 days until they book or tell us to stop. The promise is 5 extra jobs in your first 60 days, or we work for free until you get them." },
-    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. We're the layer in between — the operating system that actually answers, qualifies, and nurtures every lead you generate. We work with the CRM and marketing you already have." },
-    { q: "How fast can I be live?", a: "Greenhouse deploys in 7 days from signed agreement. Orchard in 14 days. Estate in 30 days with a dedicated implementation team. Day 1 you receive a written Intelligence Report on your current lead flow. Day 7 the system is live and answering calls." },
-    { q: "What does it cost?", a: "Greenhouse: $3,500 setup + $2,997/month. Orchard: $9,997 setup + $6,997/month, with the full add-on family bundled. Estate: from $24,997 + from $14,997/month, custom-built for multi-location operators. All inclusive — no usage fees, no surprise overages, no cancellation penalties. Annual prepay saves two months." },
-    { q: "What's the 5-jobs guarantee?", a: "If you don't book 5 extra jobs you can directly attribute to GRAIN in your first 60 days, we work for free until you do. No fine print, no escape hatches. We've designed the system around hitting that number — if we don't, the failure is ours, not yours." },
-    { q: "Will this work for my trade?", a: "GRAIN is built for ten trades: roofing, HVAC, plumbing, pest control, electrical, fencing, pool, painting, landscaping, and remodeling. If you're outside those, we'll tell you on the audit call and we won't take your money." },
-    { q: "Do you replace my team?", a: "No. We replace the gaps your team can't cover — after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, the database of past customers nobody has time to reactivate. Your team handles what they're already good at." },
-    { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 — and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one as part of onboarding." },
-    { q: "What happens on the audit call?", a: "Thirty minutes. We pull your real lead flow, response times, and close rates and trace the specific dollars you're losing each month. You leave the call with a written number — whether you become a client or not. No high-pressure pitch." },
-    { q: "How do I cancel?", a: "Thirty days notice in writing. No penalties, no clawback of setup, nothing to recover. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month than trap you in a contract." }
+    { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every call, text and form in under 60 seconds, 24/7, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days." },
+    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. GRAIN is what happens after the phone rings: every lead answered, qualified, booked and followed up, done for you. We work with the CRM and marketing you already have." },
+    { q: "How fast can I be live?", a: "Greenhouse is live within 14 days of kickoff, or month 1 is free. Kickoff happens within 3 business days of signing, and you approve the test calls before anything goes live. Orchard and Estate roll out location by location on the same 14-day build." },
+    { q: "What does it cost?", a: "Greenhouse, one location: $1,500 setup + $1,497/month + 10% of revived jobs, only on jobs completed and paid. That's the founding price for the first 5 shops, through Dec 31. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
+    { q: "What are the guarantees?", a: "Three. Start Guarantee: $0 until it's live, live in 14 days or month 1 is free. Call promise: 99% of calls answered in 60 seconds every month, or that month is free. Payback Guarantee: if revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do, and if you're still short at day 180 we refund the difference. Each has conditions, listed on the pricing page." },
+    { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, fencing, pools, painting, landscaping, garage doors, foundation and water treatment. If you're outside those, we'll tell you on the audit call and we won't take your money." },
+    { q: "Do you replace my team?", a: "No. We cover the gaps your team can't: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team handles what they're already good at." },
+    { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one during onboarding." },
+    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real lead flow, response times, close rates and unsold estimates, and trace the dollars you're losing each month. You leave with a written number, whether you become a client or not." },
+    { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month." }
   ];
 
   function initAskGrain() {
