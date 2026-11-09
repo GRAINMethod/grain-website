@@ -1599,8 +1599,7 @@ h1, h2, h3, h4 {
       const fd = new FormData(form);
         const v = (k) => (fd.get(k) || '').toString().trim();
         const extra = [['Locations', v('locations')], ['Annual revenue', v('revenue')], ['Monthly leads', v('monthly_leads')], ['Founding cohort', v('founding_cohort')], ['Heard about GRAIN', v('referrer')]]
-          .filter(([, x]) => x).map(([k, x]) => k + ': ' + x).join('
-');
+          .filter(([, x]) => x).map(([k, x]) => k + ': ' + x).join('\n');
         const qs = new URLSearchParams(window.location.search);
         const utm = {}; ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(k => { if (qs.get(k)) utm[k] = qs.get(k); });
         const res = await fetch('/api/leads', {
@@ -1608,9 +1607,7 @@ h1, h2, h3, h4 {
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
             kind: 'leak_check', name: (v('first_name') + ' ' + v('last_name')).trim(), shop: v('company'), email: v('email'), phone: v('phone'),
-            trade: v('trade'), website: v('website'), software: v('crm'), message: [v('problem'), extra].filter(Boolean).join('
-
-'),
+            trade: v('trade'), website: v('website'), software: v('crm'), message: [v('problem'), extra].filter(Boolean).join('\n\n'),
             company_site: v('_gotcha'), source_page: window.location.pathname, referrer: document.referrer, utm
           })
         });
