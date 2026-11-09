@@ -5,8 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark only">
 <meta name="theme-color" content="#141A17">
-<title>Pricing — GRAIN Method</title>
-<meta name="description" content="Three tiers. All inclusive. No usage fees, no overages, no cancellation penalties. Five extra jobs in 60 days, guaranteed.">
+<title>Pricing | GRAIN Method</title>
+<meta name="description" content="Greenhouse, Orchard and Estate. $0 until it&#x27;s live, live in 14 days or month one is free, and a Payback Guarantee backed by your old estimates.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pricing | GRAIN Method">
+  <meta property="og:description" content="Greenhouse, Orchard and Estate. $0 until it&#x27;s live, live in 14 days or month one is free, and a Payback Guarantee backed by your old estimates.">
+  <meta property="og:url" content="https://www.grainmethod.com/pricing">
+  <meta name="twitter:card" content="summary">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%231C2420' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%23F0ECDF' fill='none' stroke-width='18'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%239AAF7A' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%23BFD0A2'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%23BFD0A2'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%23BFD0A2'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%23BFD0A2'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%23F0ECDF'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
 
@@ -114,12 +119,12 @@ h1, h2, h3, h4 {
   line-height: 1;
 }
 .h-hero {
-  font-size: clamp(48px, 7.5vw, 104px);
+  font-size: clamp(40px, 6vw, 84px);
   letter-spacing: -0.035em;
   line-height: 0.94;
 }
 .h-section {
-  font-size: clamp(36px, 5.2vw, 72px);
+  font-size: clamp(30px, 4.2vw, 56px);
   letter-spacing: -0.028em;
   line-height: 1.02;
 }
@@ -136,7 +141,7 @@ h1, h2, h3, h4 {
 .on-cream .lede { color: var(--ink-light); }
 
 /* ===== LAYOUT ===== */
-.section { padding: clamp(80px, 12vw, 160px) 0; position: relative; }
+.section { padding: clamp(64px, 9vw, 120px) 0; position: relative; }
 .section.compact { padding: clamp(60px, 8vw, 100px) 0; }
 .section.on-cream { background: var(--bg); color: var(--ink); }
 .section.on-paper { background: var(--paper); color: var(--ink); }
@@ -747,6 +752,11 @@ h1, h2, h3, h4 {
 .g3-cond { font-size: 14px; line-height: 1.6; color: rgba(240, 236, 223, 0.62); }
 .g3-note { margin: 36px auto 0; font-size: 14px; color: rgba(240, 236, 223, 0.5); }
 @media (max-width: 900px) { .g3 { grid-template-columns: 1fr; } .g3-cell { border-right: 0; border-bottom: 1px solid var(--line-dark); padding: 26px 4px; } }
+.tier-founding { margin: 2px 0 10px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.04em; color: var(--moss-light); }
+.tier-founding span { font-weight: 700; }
+.addons-grid.four { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1100px) { .addons-grid.four { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .addons-grid.four { grid-template-columns: 1fr; } }
 </style>
 
 <style>
@@ -812,7 +822,7 @@ h1, h2, h3, h4 {
 .tier-section { padding: 70px 0 140px; }
 .tier-grid {
   display: grid;
-  grid-template-columns: 1fr 1.3fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 24px;
   align-items: stretch;
   padding-top: 28px;
@@ -824,6 +834,7 @@ h1, h2, h3, h4 {
   display: flex;
   flex-direction: column;
   position: relative;
+  container-type: inline-size;
   transition: transform 0.5s var(--ease-out), border-color 0.4s var(--ease), box-shadow 0.5s var(--ease);
 }
 .tier:hover { transform: translateY(-4px); border-color: var(--moss-deep); }
@@ -906,20 +917,22 @@ h1, h2, h3, h4 {
 .tier-price {
   margin-bottom: 10px;
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 6px;
+  gap: 10px 6px;
 }
 .tier-price-num {
   font-family: 'Inter', sans-serif;
   font-weight: 900;
-  font-size: clamp(44px, 5.4vw, 62px);
+  font-size: clamp(34px, 18cqi, 62px);
   letter-spacing: -0.035em;
   line-height: 0.92;
   color: var(--bg);
 }
-.tier.anchor .tier-price-num { font-size: clamp(52px, 6.2vw, 72px); }
-.tier-price-prefix { font-size: 22px; font-weight: 700; color: rgba(240,236,223,0.5); letter-spacing: -0.01em; }
+.tier.anchor .tier-price-num { font-size: clamp(48px, 19cqi, 72px); }
+.tier-price-prefix { flex-basis: 100%; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(240,236,223,0.45); }
 .tier-price-period {
+  white-space: nowrap;
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   color: rgba(240,236,223,0.5);
@@ -1594,6 +1607,7 @@ h1, h2, h3, h4 {
     </div>
     <div class="nav-links">
       <a href="method.html" class="nav-link">Method</a>
+      <a href="industries.html" class="nav-link">Industries</a>
       <a href="dashboard.html" class="nav-link">Dashboard</a>
       <a href="calculator.html" class="nav-link">Calculator</a>
       <a href="pricing.html" class="nav-link active">Pricing</a>
@@ -1624,17 +1638,46 @@ h1, h2, h3, h4 {
   <div class="wrap">
     <div class="tier-grid">
 
-      <!-- GREENHOUSE -->
+      <!-- ORCHARD -->
       <article class="tier reveal">
-        <div class="tier-badge subtle">Founding · 5 spots</div>
+        <div class="tier-badge subtle">Built for growth</div>
+        <div class="tier-name">Orchard</div>
+        <div class="tier-tagline">Everything in Greenhouse at every location you run, with one Greenhouse Dashboard for the whole business.</div>
+        <div class="tier-price">
+          <span class="tier-price-prefix">from</span>
+          <span class="tier-price-num"><span data-price-monthly="4994" data-price-annual="4161">$4,994</span></span>
+          <span class="tier-price-period">/ month</span>
+        </div>
+        <div class="tier-setup">First location at Greenhouse pricing · each added location <strong>$1,997</strong> / mo + $1,500 setup</div>
+        <div class="tier-saves">save from $9,988 / yr</div>
+        <div class="tier-fit-label">Best for</div>
+        <div class="tier-fit">2 to 9 locations, or multiple trades. $3M&ndash;$10M revenue.</div>
+        <ul class="tier-features">
+          <li>Everything in Greenhouse, at every location</li>
+          <li>One Greenhouse Dashboard across trades and locations</li>
+          <li>Custom CRM integrations included</li>
+          <li>Weekly review call · quarterly strategy session with the founder</li>
+          <li>Dedicated Slack channel</li>
+          <li>10% of revived jobs, only on jobs completed and paid</li>
+        </ul>
+        <div class="tier-cta">
+          <button class="btn btn-secondary" onclick="openCalendly(event)">Apply for a strategy session <span class="btn-arrow">→</span></button>
+        </div>
+        <div class="tier-foot">Start + Payback guarantees, per location</div>
+      </article>
+
+      <!-- GREENHOUSE -->
+      <article class="tier anchor reveal" data-delay="1">
+        <div class="tier-badge">Recommended</div>
         <div class="tier-name">Greenhouse</div>
         <div class="tier-tagline">The complete growth system for one location. Built in 14 days. Run by us. Transparent to you.</div>
         <div class="tier-price">
-          <span class="tier-price-num"><span data-price-monthly="1497" data-price-annual="1247">$1,497</span></span>
+          <span class="tier-price-num"><span data-price-monthly="2997" data-price-annual="2497">$2,997</span></span>
           <span class="tier-price-period">/ month</span>
         </div>
+        <div class="tier-founding">Founding rate <span data-price-monthly="1497" data-price-annual="1247">$1,497</span> / month through Dec 31</div>
         <div class="tier-setup"><strong>$1,500</strong> setup · <strong>$0</strong> until it&rsquo;s live · + 10% of revived jobs</div>
-        <div class="tier-saves">save $2,994 / yr</div>
+        <div class="tier-saves">save $5,994 / yr</div>
         <div class="tier-fit-label">Best for</div>
         <div class="tier-fit">One location. $1M&ndash;$10M revenue. Any trade where jobs start with an estimate.</div>
         <ul class="tier-features">
@@ -1642,49 +1685,13 @@ h1, h2, h3, h4 {
           <li>90-day follow-up on every quote</li>
           <li>Old estimates revived, 10% only on jobs completed and paid</li>
           <li>CRM integration: your existing tools stay</li>
-          <li>Mission Control dashboard, live and yours</li>
+          <li>Greenhouse Dashboard, live and yours</li>
           <li>Monthly review call with the founder</li>
         </ul>
         <div class="tier-cta">
-          <button class="btn btn-secondary" onclick="openCalendly(event)">Apply for your free audit <span class="btn-arrow">→</span></button>
+          <button class="btn btn-primary" onclick="openCalendly(event)">Apply for your free audit <span class="btn-arrow">→</span></button>
         </div>
-        <div class="tier-foot">Start + Payback guarantees · $2,997 / mo after founding</div>
-      </article>
-
-      <!-- ORCHARD -- ANCHOR -->
-      <article class="tier anchor reveal" data-delay="1">
-        <div class="tier-badge">Built for Growth</div>
-        <div class="tier-name">Orchard</div>
-        <div class="tier-tagline">Everything in Greenhouse at every location you run, with one Mission Control for the whole business.</div>
-        <div class="tier-price">
-          <span class="tier-price-prefix">from</span>
-          <span class="tier-price-num"><span data-price-monthly="3494" data-price-annual="2911">$3,494</span></span>
-          <span class="tier-price-period">/ month</span>
-        </div>
-        <div class="tier-setup">First location at Greenhouse pricing · each added location <strong>$1,997</strong> / mo + $1,500 setup</div>
-        <div class="tier-saves">save from $6,988 / yr</div>
-        <div class="tier-bundled-rail">
-          <div class="tier-bundled-rail-label">Add per location, when you&rsquo;re ready</div>
-          <ul class="tier-bundled-list">
-            <li>Roots</li>
-            <li>Fertilizer</li>
-            <li>Sunlight</li>
-          </ul>
-        </div>
-        <div class="tier-fit-label">Best for</div>
-        <div class="tier-fit">2 to 9 locations, or multiple trades. $3M&ndash;$10M revenue.</div>
-        <ul class="tier-features">
-          <li>Everything in Greenhouse, at every location</li>
-          <li>Unified Mission Control across trades and locations</li>
-          <li>Custom CRM integrations included</li>
-          <li>Weekly review call · quarterly strategy session with the founder</li>
-          <li>Dedicated Slack channel</li>
-          <li>10% of revived jobs, only on jobs completed and paid</li>
-        </ul>
-        <div class="tier-cta">
-          <button class="btn btn-primary" onclick="openCalendly(event)">Apply for a strategy session <span class="btn-arrow">→</span></button>
-        </div>
-        <div class="tier-foot">Start + Payback guarantees, per location</div>
+        <div class="tier-foot">Start + Payback guarantees</div>
       </article>
 
       <!-- ESTATE -->
@@ -1757,11 +1764,11 @@ h1, h2, h3, h4 {
         Every job, <span class="italic-accent">attributed to source.</span>
       </h2>
       <p class="lede reveal" data-delay="2">
-        You'll see this in your Mission Control dashboard live, get a version of it in your inbox each week, and walk through it together on the monthly reconciliation call.
+        You'll see this in your Greenhouse Dashboard live, get a version of it in your inbox each week, and walk through it together on the monthly reconciliation call.
       </p>
     </div>
 
-    <!-- VISUAL PROOF — attribution panel mockup -->
+    <!-- VISUAL PROOF, attribution panel mockup -->
     <div class="transparency-proof reveal" data-delay="2">
       <div class="proof-header">
         <div class="proof-title-block">
@@ -1872,7 +1879,7 @@ h1, h2, h3, h4 {
 </section>
 
 <!-- ===== ADD-ONS ===== -->
-<section class="section addons-section">
+<section class="section addons-section" id="addons">
   <div class="wrap">
     <div class="addons-intro">
       <div class="eyebrow reveal">Add-Ons</div>
@@ -1884,7 +1891,7 @@ h1, h2, h3, h4 {
       </p>
     </div>
 
-    <div class="addons-grid">
+    <div class="addons-grid four">
       <article class="addon reveal">
         <span class="addon-glyph" aria-hidden="true">↻</span>
         <div class="addon-plain">Old estimate revival</div>
@@ -1909,12 +1916,12 @@ h1, h2, h3, h4 {
 
       <article class="addon reveal" data-delay="2">
         <span class="addon-glyph" aria-hidden="true">◐</span>
-        <div class="addon-plain">Reputation engine</div>
+        <div class="addon-plain">Reputation + content engine</div>
         <div class="addon-header">
           <div class="addon-name">Fertilizer</div>
         </div>
-        <div class="addon-price">$297 / month · month to month</div>
-        <p class="addon-desc">A review request after every job, a reply to every review, and a monthly reputation report across Google, Facebook and Yelp.</p>
+        <div class="addon-price">$997 / month</div>
+        <p class="addon-desc">A review request after every job, a reply to every review, weekly Google Business Profile posts and fresh social content from your jobs, with a monthly reputation report.</p>
         <div class="addon-bundled">Priced per location</div>
       </article>
 
@@ -1924,29 +1931,9 @@ h1, h2, h3, h4 {
         <div class="addon-header">
           <div class="addon-name">Sunlight</div>
         </div>
-        <div class="addon-price">$750 / month or 15% of ad spend</div>
-        <p class="addon-desc">Local Services Ads first, then Google Search. You fund the budget directly with Google. We run the campaigns, write the copy and tune them weekly. Every click lands in your Greenhouse as a tracked lead.</p>
+        <div class="addon-price">$997 / month or 15% of ad spend</div>
+        <p class="addon-desc">Google Local Services Ads first, then Google Search and Meta. You fund the budget directly with the platforms. We run the campaigns, write the copy and tune them weekly. Every click lands in your Greenhouse as a tracked lead.</p>
         <div class="addon-bundled">Whichever is higher</div>
-      </article>
-
-      <article class="addon reveal">
-        <span class="addon-glyph" aria-hidden="true">✻</span>
-        <div class="addon-plain">Referral program engine</div>
-        <div class="addon-header">
-          <div class="addon-name">Pollination</div>
-        </div>
-        <div class="addon-price">Pricing on request</div>
-        <p class="addon-desc">Branded referral materials, automated tracking and simple reward rules, so your past customers send you their neighbors.</p>
-      </article>
-
-      <article class="addon reveal" data-delay="1">
-        <span class="addon-glyph" aria-hidden="true">✕</span>
-        <div class="addon-plain">CRM database cleanup</div>
-        <div class="addon-header">
-          <div class="addon-name">Pruning</div>
-        </div>
-        <div class="addon-price">Pricing on request</div>
-        <p class="addon-desc">A deep clean of your customer database: duplicates merged, tags fixed, dead records removed, contact info cleaned up. The foundation everything else stands on.</p>
       </article>
     </div>
   </div>
@@ -1968,7 +1955,7 @@ h1, h2, h3, h4 {
           <li>Unlimited SMS and email messages</li>
           <li>All CRM integration setup and maintenance</li>
           <li>Workflow updates and optimization</li>
-          <li>Mission Control dashboard hosting</li>
+          <li>Greenhouse Dashboard hosting</li>
           <li>System upgrades and improvements</li>
           <li>Direct support during business hours</li>
         </ul>
@@ -2006,7 +1993,7 @@ h1, h2, h3, h4 {
           <div class="faq-icon"></div>
         </div>
         <div class="faq-a"><div class="faq-a-inner">
-          <p>One location? You're a Greenhouse. Two to nine locations, or multiple trades? You're an Orchard. Ten or more locations, or a platform rolling up shops? You're Estate. Not sure? Apply for the audit — we'll tell you in 30 minutes, and we'll tell you honestly even if it means a smaller deal for us.</p>
+          <p>One location? You're a Greenhouse. Two to nine locations, or multiple trades? You're an Orchard. Ten or more locations, or a platform rolling up shops? You're Estate. Not sure? Apply for the audit. We'll tell you in 30 minutes, honestly, even if it means a smaller deal for us.</p>
         </div></div>
       </div>
 
@@ -2046,7 +2033,7 @@ h1, h2, h3, h4 {
           <div class="faq-icon"></div>
         </div>
         <div class="faq-a"><div class="faq-a-inner">
-          <p>Same policy. 30 days written notice. We refund the unused months at the standard monthly rate — you keep the months you used at the regular price, and the rest comes back to you. No clawback on setup. The annual prepay is a price discount, not a lock-in.</p>
+          <p>Same policy. 30 days written notice. We refund the unused months at the standard monthly rate: you keep the months you used at the regular price, and the rest comes back to you. No clawback on setup. The annual prepay is a price discount, not a lock-in.</p>
         </div></div>
       </div>
 
@@ -2076,7 +2063,7 @@ h1, h2, h3, h4 {
           <div class="faq-icon"></div>
         </div>
         <div class="faq-a"><div class="faq-a-inner">
-          <p>Greenhouse runs one location. Orchard runs every location you have on one system: your first location at the Greenhouse price, each added location at $1,997 a month plus $1,500 setup, with one Mission Control across trades and locations, weekly review calls, a quarterly strategy session with the founder and a dedicated Slack channel. Add-ons like Roots, Fertilizer and Sunlight are priced per location on either tier.</p>
+          <p>Greenhouse runs one location. Orchard runs every location you have on one system: your first location at the Greenhouse price, each added location at $1,997 a month plus $1,500 setup, with one Greenhouse Dashboard across trades and locations, weekly review calls, a quarterly strategy session with the founder and a dedicated Slack channel. Add-ons like Roots, Fertilizer and Sunlight are priced per location on either tier.</p>
         </div></div>
       </div>
 
@@ -2092,7 +2079,7 @@ h1, h2, h3, h4 {
       Find your <span class="italic-accent">tier.</span>
     </h2>
     <p class="reveal" data-delay="2">
-      Thirty minutes on a call. We pull your real numbers and tell you which tier you actually need — or whether GRAIN is wrong for you. No pitch.
+      Thirty minutes on a call. We pull your real numbers and tell you which tier you actually need, or whether GRAIN is wrong for you. No pitch.
     </p>
     <button class="btn btn-primary reveal" data-delay="3" onclick="openCalendly(event)">
       Apply for your audit <span class="btn-arrow">→</span>
@@ -2125,7 +2112,7 @@ h1, h2, h3, h4 {
           <span class="nav-brand-text">GRAIN</span>
         </div>
         <div class="footer-tag">PLANT · NURTURE · SCALE</div>
-        <p class="footer-mission">Done-for-you lead response infrastructure for home service businesses. Nashville-based, working nationwide.</p>
+        <p class="footer-mission">Done-for-you call answering, booking and follow-up for businesses that run on inbound demand. Nashville-based, working nationwide.</p>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Method</div>
@@ -2140,11 +2127,11 @@ h1, h2, h3, h4 {
         <a href="mailto:johnny@grainmethod.com">Email</a>
       </div>
       <div class="footer-col">
-        <div class="footer-col-label">Trades</div>
-        <a href="apply.html">Roofing</a>
-        <a href="apply.html">HVAC</a>
-        <a href="apply.html">Plumbing</a>
-        <a href="apply.html">+ 7 more</a>
+        <div class="footer-col-label">Industries</div>
+        <a href="home-services.html">Home services</a>
+        <a href="industries.html#health">Health and fitness</a>
+        <a href="industries.html#real-estate">Real estate</a>
+        <a href="industries.html#multi-location">Multi-location</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Trust</div>
@@ -2156,7 +2143,7 @@ h1, h2, h3, h4 {
     <div class="footer-bottom">
       <div class="footer-bottom-left">© GRAIN Method 2026 · Nashville, TN</div>
       <div class="footer-bottom-mid">
-        <span>Now taking 5 founding shops</span>
+        <span>Founding rate</span>
         <span class="sep">·</span>
         <span>through Dec 31</span>
       </div>
@@ -2166,7 +2153,7 @@ h1, h2, h3, h4 {
 </footer>
 
 <!-- ===== ASK GRAIN PILL ===== -->
-<button id="ask-pill" class="ask-pill" aria-label="Ask GRAIN — open question dialog">
+<button id="ask-pill" class="ask-pill" aria-label="Ask GRAIN, open question dialog">
   <svg class="ask-pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M12 22V10"/><path d="M12 10c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 10c3 0 5-2 5-5-3 0-5 2-5 5z"/>
   </svg>
@@ -2266,12 +2253,13 @@ h1, h2, h3, h4 {
     { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every call, text and form in under 60 seconds, 24/7, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days." },
     { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. GRAIN is what happens after the phone rings: every lead answered, qualified, booked and followed up, done for you. We work with the CRM and marketing you already have." },
     { q: "How fast can I be live?", a: "Greenhouse is live within 14 days of kickoff, or month 1 is free. Kickoff happens within 3 business days of signing, and you approve the test calls before anything goes live. Orchard and Estate roll out location by location on the same 14-day build." },
-    { q: "What does it cost?", a: "Greenhouse, one location: $1,500 setup + $1,497/month + 10% of revived jobs, only on jobs completed and paid. That's the founding price for the first 5 shops, through Dec 31. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
+    { q: "What does it cost?", a: "Greenhouse, one location: $2,997/month, with a founding rate of $1,497/month through Dec 31, plus $1,500 setup and 10% of revived jobs, only on jobs completed and paid. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
     { q: "What are the guarantees?", a: "Three. Start Guarantee: $0 until it's live, live in 14 days or month 1 is free. Call promise: 99% of calls answered in 60 seconds every month, or that month is free. Payback Guarantee: if revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do, and if you're still short at day 180 we refund the difference. Each has conditions, listed on the pricing page." },
-    { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, fencing, pools, painting, landscaping, garage doors, foundation and water treatment. If you're outside those, we'll tell you on the audit call and we won't take your money." },
+    { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, painting, fencing, pools, landscaping and garage doors. If you're outside those, we'll tell you on the audit call and we won't take your money." },
     { q: "Do you replace my team?", a: "No. We cover the gaps your team can't: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team handles what they're already good at." },
     { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one during onboarding." },
     { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real lead flow, response times, close rates and unsold estimates, and trace the dollars you're losing each month. You leave with a written number, whether you become a client or not." },
+    { q: "Do you run ads?", a: "Yes. Sunlight runs your Google Local Services Ads, Google Search and Meta campaigns: $997/month or 15% of ad spend, whichever is higher. You pay the platforms directly and we never mark up spend. Every lead lands in your Greenhouse and gets answered in under 60 seconds." },
     { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month." }
   ];
 
@@ -2344,7 +2332,7 @@ h1, h2, h3, h4 {
       });
       if (!any && v.length > 2) {
         suggestionsEl.innerHTML = `
-          <div class="ask-suggestion-label">No exact match — talk to us directly</div>
+          <div class="ask-suggestion-label">No exact match. Talk to us directly.</div>
           <a class="ask-suggestion" href="apply.html">Apply for an audit call →</a>
         `;
       }

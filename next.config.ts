@@ -5,7 +5,7 @@ import type { NextConfig } from "next";
   Clean URLs map onto those files. Next.js runs underneath for /api routes
   and the Mission Control dashboard.
 */
-const PAGES = ["method", "pricing", "calculator", "dashboard", "apply", "privacy", "terms", "security"];
+const PAGES = ["method", "industries", "home-services", "pricing", "calculator", "dashboard", "apply", "privacy", "terms", "security"];
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,

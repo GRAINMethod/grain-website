@@ -5,8 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark only">
 <meta name="theme-color" content="#141A17">
-<title>The Method — GRAIN</title>
-<meta name="description" content="One system. Five engines. How GRAIN turns inbound leads into booked jobs in seven days.">
+<title>What we do | GRAIN Method</title>
+<meta name="description" content="How GRAIN answers, books, follows up and revives old leads for you: five engines, one Greenhouse Dashboard, live in 14 days.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="What we do | GRAIN Method">
+  <meta property="og:description" content="How GRAIN answers, books, follows up and revives old leads for you: five engines, one Greenhouse Dashboard, live in 14 days.">
+  <meta property="og:url" content="https://www.grainmethod.com/method">
+  <meta name="twitter:card" content="summary">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%231C2420' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%23F0ECDF' fill='none' stroke-width='18'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%239AAF7A' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%23BFD0A2'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%23BFD0A2'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%23BFD0A2'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%23BFD0A2'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%23F0ECDF'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
 
@@ -114,12 +119,12 @@ h1, h2, h3, h4 {
   line-height: 1;
 }
 .h-hero {
-  font-size: clamp(48px, 7.5vw, 104px);
+  font-size: clamp(40px, 6vw, 84px);
   letter-spacing: -0.035em;
   line-height: 0.94;
 }
 .h-section {
-  font-size: clamp(36px, 5.2vw, 72px);
+  font-size: clamp(30px, 4.2vw, 56px);
   letter-spacing: -0.028em;
   line-height: 1.02;
 }
@@ -136,7 +141,7 @@ h1, h2, h3, h4 {
 .on-cream .lede { color: var(--ink-light); }
 
 /* ===== LAYOUT ===== */
-.section { padding: clamp(80px, 12vw, 160px) 0; position: relative; }
+.section { padding: clamp(64px, 9vw, 120px) 0; position: relative; }
 .section.compact { padding: clamp(60px, 8vw, 100px) 0; }
 .section.on-cream { background: var(--bg); color: var(--ink); }
 .section.on-paper { background: var(--paper); color: var(--ink); }
@@ -737,6 +742,33 @@ h1, h2, h3, h4 {
 }
 .on-cream .divider-row { border-top-color: var(--line); }
 
+/* What we do */
+.wwd-section { border-bottom: 1px solid var(--line-dark); }
+.wwd-flow { list-style: none; margin: 52px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+.wwd-flow::before { content: ""; position: absolute; top: 14px; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, var(--moss) 0%, rgba(154,175,122,0.15) 100%); }
+.wwd-flow li { position: relative; padding: 40px 22px 0 0; display: flex; flex-direction: column; gap: 10px; }
+.wwd-flow li::before { content: ""; position: absolute; top: 9px; left: 0; width: 11px; height: 11px; border-radius: 50%; background: var(--ink); border: 2px solid var(--moss); }
+.wwd-n { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss); }
+.wwd-flow strong { font-size: 19px; line-height: 1.25; color: var(--bg); font-weight: 700; letter-spacing: -0.01em; }
+.wwd-flow li > span:last-child { font-size: 15px; line-height: 1.5; color: rgba(240, 236, 223, 0.7); }
+.wwd-foot { margin-top: 48px; font-size: 18px; color: rgba(240, 236, 223, 0.85); }
+.wwd-foot strong { color: var(--moss-light); }
+@media (max-width: 960px) { .wwd-flow { grid-template-columns: 1fr; } .wwd-flow::before { top: 0; bottom: 0; left: 5px; right: auto; width: 1px; height: auto; background: linear-gradient(180deg, var(--moss), rgba(154,175,122,0.15)); } .wwd-flow li { padding: 0 0 28px 34px; } .wwd-flow li::before { top: 4px; } }
+/* Sunlight */
+.ads-section { background: var(--ink-deeper); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
+.ads-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.ads-lede { margin-top: 24px; font-size: 18px; line-height: 1.55; color: rgba(240, 236, 223, 0.8); max-width: 520px; }
+.ads-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-dark-strong); }
+.ads-list li { padding: 18px 0; border-bottom: 1px solid var(--line-dark); display: flex; flex-direction: column; gap: 4px; font-size: 15px; color: rgba(240, 236, 223, 0.7); }
+.ads-list strong { font-size: 17px; color: var(--bg); }
+.ads-list .ads-price strong { color: var(--moss-light); }
+@media (max-width: 960px) { .ads-inner { grid-template-columns: 1fr; gap: 32px; } }
+/* Trades */
+.trades-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px; }
+.trade-pill { display: inline-block; padding: 12px 18px; border: 1px solid var(--line-dark-strong); color: var(--bg); text-decoration: none; font-size: 15px; transition: border-color .2s, color .2s; }
+.trade-pill:hover { border-color: var(--moss); color: var(--moss-light); }
+.trades-note { margin-top: 28px; color: rgba(240, 236, 223, 0.65); }
+.trades-note a { color: var(--moss-light); }
 </style>
 
 <style>
@@ -1257,6 +1289,7 @@ h1, h2, h3, h4 {
     </div>
     <div class="nav-links">
       <a href="method.html" class="nav-link active">Method</a>
+      <a href="industries.html" class="nav-link">Industries</a>
       <a href="dashboard.html" class="nav-link">Dashboard</a>
       <a href="calculator.html" class="nav-link">Calculator</a>
       <a href="pricing.html" class="nav-link">Pricing</a>
@@ -1273,8 +1306,24 @@ h1, h2, h3, h4 {
       One system. <span class="italic-accent">Five engines.</span>
     </h1>
     <p class="lede reveal" data-delay="2" style="margin: 0 auto;">
-      Every part of your lead funnel — generation, response, automation, integration, nurture — built once, run forever, measured every day.
+      Every part of your lead funnel (generation, response, automation, integration and nurture), built once, run forever, measured every day.
     </p>
+  </div>
+</section>
+
+<!-- ===== WHAT WE DO (plain English) ===== -->
+<section class="section wwd-section">
+  <div class="wrap">
+    <div class="eyebrow reveal">What we do</div>
+    <h2 class="h-section reveal" data-delay="1">Everything between<br><span class="italic-accent">the ring and the job.</span></h2>
+    <ol class="wwd-flow reveal" data-delay="2">
+      <li><span class="wwd-n">01</span><strong>A lead comes in</strong><span>Call, text, web form or ad. Day or night.</span></li>
+      <li><span class="wwd-n">02</span><strong>We answer in under 60 seconds</strong><span>A voice agent trained on your services, prices and area.</span></li>
+      <li><span class="wwd-n">03</span><strong>We book it</strong><span>Straight onto your calendar. Your tech just shows up.</span></li>
+      <li><span class="wwd-n">04</span><strong>We follow up every quote</strong><span>For 90 days, until it's a yes or a no.</span></li>
+      <li><span class="wwd-n">05</span><strong>We revive old estimates</strong><span>Two years of unsold quotes, worked back into jobs.</span></li>
+    </ol>
+    <p class="wwd-foot reveal" data-delay="3">You see every call, booking and dollar in your <strong>Greenhouse Dashboard</strong>. You run the jobs. We run the rest.</p>
   </div>
 </section>
 
@@ -1286,14 +1335,14 @@ h1, h2, h3, h4 {
         <div class="grain-letter">G</div>
         <div class="grain-cell-body">
           <div class="grain-word">Generate</div>
-          <p class="grain-desc">Lead capture across every channel — Google, ads, referrals, partners — captured, scored, routed.</p>
+          <p class="grain-desc">Lead capture across every channel: Google, ads, referrals, partners. Captured, scored, routed.</p>
         </div>
       </div>
       <div class="grain-cell reveal" data-delay="1">
         <div class="grain-letter">R</div>
         <div class="grain-cell-body">
           <div class="grain-word">Respond</div>
-          <p class="grain-desc">Every lead answered in under 60 seconds, 24/7. Voice, form, SMS — no gap, no voicemail.</p>
+          <p class="grain-desc">Every lead answered in under 60 seconds, 24/7. Voice, form and SMS. No gap, no voicemail.</p>
         </div>
       </div>
       <div class="grain-cell reveal" data-delay="2">
@@ -1347,7 +1396,7 @@ h1, h2, h3, h4 {
         <div class="word">Respond</div>
       </div>
       <div class="engine-body">
-        <h3>Answered before they call the next shop.</h3>
+        <h3>Answered before they call your competitor.</h3>
         <p>Calls, texts and web forms answered in under 60 seconds, 24/7. Including 2am on a Sunday in July.</p>
         <ul class="engine-details">
           <li><strong>Voice agent</strong>Qualifies, books, and hands the hot ones to your team</li>
@@ -1407,16 +1456,36 @@ h1, h2, h3, h4 {
   </div>
 </section>
 
-<!-- ===== NETWORK EFFECT — FEATURED ===== -->
+<!-- ===== SUNLIGHT: ADS ===== -->
+<section class="section ads-section">
+  <div class="wrap">
+    <div class="ads-inner">
+      <div>
+        <div class="eyebrow reveal">Sunlight · ads, run for you</div>
+        <h2 class="h-section reveal" data-delay="1">Need more calls?<br><span class="italic-accent">We run the ads too.</span></h2>
+        <p class="ads-lede reveal" data-delay="2">Most agencies stop at the click. Every lead your ads bring lands in your Greenhouse, answered in under 60 seconds and followed up until it books.</p>
+      </div>
+      <ul class="ads-list reveal" data-delay="2">
+        <li><strong>Google Local Services Ads</strong>Set up, verified and managed, with junk leads disputed</li>
+        <li><strong>Google Search and Meta</strong>Campaigns, copy and weekly tuning</li>
+        <li><strong>Your money, your accounts</strong>You pay the platforms directly. We never mark up spend.</li>
+        <li><strong>Cost per booked job</strong>Not just cost per click, right in your dashboard</li>
+        <li class="ads-price"><strong>$997 / month or 15% of ad spend</strong>Whichever is higher. Added at your day-60 review.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NETWORK EFFECT, FEATURED ===== -->
 <section class="network-feature">
   <div class="wrap network-feature-inner">
     <div class="network-feature-intro">
       <div class="eyebrow reveal" style="justify-content:center;">The compounding advantage</div>
       <h2 class="h-section reveal" data-delay="1">
-        The longer the network runs,<br>the <span class="italic-accent">better it performs.</span>
+        Every client makes<br>the system <span class="italic-accent">smarter.</span>
       </h2>
       <p class="lede reveal" data-delay="2" style="margin: 0 auto;">
-        Every client's anonymized data — what subject lines book the most calls, what cadence wins which trades, what scripts close the highest-value jobs — flows back into the shared intelligence layer.
+        What books calls, which follow-ups close and which seasons spike demand, learned across clients with names and numbers stripped out, and built into everyone's playbook.
       </p>
     </div>
 
@@ -1428,7 +1497,7 @@ h1, h2, h3, h4 {
           <circle class="viz2-ring" cx="280" cy="270" r="56" style="animation-delay:1.8s"/>
           <circle class="viz2-ring" cx="280" cy="270" r="56" style="animation-delay:3.6s"/>
 
-          <!-- Per-trade groups (9) — line + pulse + node + label + hitbox + burst -->
+          <!-- Per-trade groups (9), line + pulse + node + label + hitbox + burst -->
           <g class="trade" style="--dx:-180px; --dy:-190px">
             <line class="viz2-line" x1="280" y1="270" x2="100" y2="80"/>
             <circle class="viz2-pulse" cx="100" cy="80" r="6"/>
@@ -1465,7 +1534,7 @@ h1, h2, h3, h4 {
             <line class="viz2-line" x1="280" y1="270" x2="490" y2="380"/>
             <circle class="viz2-pulse" cx="490" cy="380" r="6" style="animation-delay:1.6s"/>
             <circle class="viz2-node" cx="490" cy="380" r="24"/>
-            <text class="viz2-label" x="490" y="384" text-anchor="middle" fill="#F0ECDF" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700">PEST</text>
+            <text class="viz2-label" x="490" y="384" text-anchor="middle" fill="#F0ECDF" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700">GARAGE</text>
             <circle class="viz2-burst" cx="280" cy="270" r="3"/>
             <circle class="viz2-hitbox" cx="490" cy="380" r="44"/>
           </g>
@@ -1502,7 +1571,7 @@ h1, h2, h3, h4 {
             <circle class="viz2-hitbox" cx="50" cy="250" r="44"/>
           </g>
 
-          <!-- Inbound particles (9) — trade → center, "data flowing in" -->
+          <!-- Inbound particles (9), trade → center, "data flowing in" -->
           <circle class="viz2-particle-in" cx="100" cy="80"  r="2.5" style="--dx:180px;  --dy:190px;  animation-delay:0s"/>
           <circle class="viz2-particle-in" cx="280" cy="60"  r="2.5" style="--dx:0px;    --dy:210px;  animation-delay:0.4s"/>
           <circle class="viz2-particle-in" cx="460" cy="80"  r="2.5" style="--dx:-180px; --dy:190px;  animation-delay:0.8s"/>
@@ -1513,7 +1582,7 @@ h1, h2, h3, h4 {
           <circle class="viz2-particle-in" cx="80"  cy="400" r="2.5" style="--dx:200px;  --dy:-130px; animation-delay:2.8s"/>
           <circle class="viz2-particle-in" cx="50"  cy="250" r="2.5" style="--dx:230px;  --dy:20px;   animation-delay:3.2s"/>
 
-          <!-- Outbound particles (9) — center → trade, "intelligence flowing out" -->
+          <!-- Outbound particles (9), center → trade, "intelligence flowing out" -->
           <circle class="viz2-particle-out" cx="280" cy="270" r="2" style="--dx:-180px; --dy:-190px; animation-delay:0.9s"/>
           <circle class="viz2-particle-out" cx="280" cy="270" r="2" style="--dx:0px;    --dy:-210px; animation-delay:1.4s"/>
           <circle class="viz2-particle-out" cx="280" cy="270" r="2" style="--dx:180px;  --dy:-190px; animation-delay:1.9s"/>
@@ -1530,14 +1599,14 @@ h1, h2, h3, h4 {
         </svg>
         <div class="viz2-caption">
           <span class="viz2-caption-dot"></span>
-          <span>Signal events processed · <span class="num" id="viz2-event-count">12,847</span> in last 24h</span>
+          <span>Illustration · every client we add sharpens the playbook</span>
         </div>
       </div>
       <div class="network-feature-text">
-        <h3 class="reveal" data-delay="1">Your business benefits from every other client's results without ever seeing their data.</h3>
-        <p class="reveal" data-delay="2">The voice scripts that book the most appointments. The follow-up cadences with the highest close rates per trade. The subject lines that get opened. The hot-lead signals that predict a closed job.</p>
-        <p class="reveal" data-delay="3"><strong>All of it gets better, every month, across the entire network.</strong> A pattern that wins in roofing in Tampa gets tested in roofing in Nashville. A subject line that works in HVAC gets evaluated for plumbing.</p>
-        <p class="reveal" data-delay="4">This is the asset that doesn't exist when you run lead response yourself, and it's the reason a small operator on the network outperforms a larger one running it solo.</p>
+        <h3 class="reveal" data-delay="1">You get the playbook. Never anyone else's data.</h3>
+        <p class="reveal" data-delay="2">The scripts that book the most appointments. The follow-up timing that closes the most quotes in your trade. The seasonal triggers that tell us when to reach out.</p>
+        <p class="reveal" data-delay="3"><strong>New clients start on the best playbook for their industry, not a blank script.</strong> What works gets tested across clients and rolled out to everyone.</p>
+        <p class="reveal" data-delay="4"><strong>Your data stays yours.</strong> No client ever sees another client's numbers, and we never take on two direct competitors in the same area.</p>
       </div>
     </div>
   </div>
@@ -1555,38 +1624,23 @@ h1, h2, h3, h4 {
     <div class="timeline">
       <div class="timeline-row reveal">
         <div class="timeline-day">Day 1</div>
-        <div class="timeline-title">Kickoff &amp; data pull</div>
-        <div class="timeline-desc">60-minute kickoff within 3 business days of signing. We pull your CRM, phone, lead sources and 24 months of estimates.</div>
+        <div class="timeline-title">Kickoff</div>
+        <div class="timeline-desc">60 minutes with your team. We pull your CRM, phone setup and 24 months of estimates.</div>
       </div>
       <div class="timeline-row reveal">
         <div class="timeline-day">Day 2</div>
-        <div class="timeline-title">Intelligence report delivered</div>
-        <div class="timeline-desc">Your response times, close rates, unsold estimate value and the dollar leak we're closing. The baseline for your guarantees.</div>
+        <div class="timeline-title">Your report</div>
+        <div class="timeline-desc">Where your calls, quotes and old estimates stand today, in dollars. The baseline we measure against.</div>
       </div>
       <div class="timeline-row reveal">
-        <div class="timeline-day">Days 3&ndash;5</div>
-        <div class="timeline-title">Voice agent built</div>
-        <div class="timeline-desc">Trained on your services, pricing, common objections and qualification questions.</div>
-      </div>
-      <div class="timeline-row reveal">
-        <div class="timeline-day">Days 6&ndash;8</div>
-        <div class="timeline-title">CRM &amp; phone integration</div>
-        <div class="timeline-desc">Two-way CRM sync, web forms and lead routing, tested end to end.</div>
-      </div>
-      <div class="timeline-row reveal">
-        <div class="timeline-day">By day 10</div>
-        <div class="timeline-title">Forwarding on, sequences built</div>
-        <div class="timeline-desc">Call forwarding switched on. Follow-up and revival sequences built for your services, with every word approved by you.</div>
-      </div>
-      <div class="timeline-row reveal">
-        <div class="timeline-day">Days 11&ndash;13</div>
-        <div class="timeline-title">Test calls &amp; team training</div>
-        <div class="timeline-desc">You approve the test calls within 48 hours. Your team learns Mission Control.</div>
+        <div class="timeline-day">Days 3&ndash;13</div>
+        <div class="timeline-title">We build, you approve</div>
+        <div class="timeline-desc">Voice agent, booking, follow-up and revival, built around your business. You approve the test calls before anything goes live.</div>
       </div>
       <div class="timeline-row go-live reveal">
         <div class="timeline-day">Day 14 · live</div>
-        <div class="timeline-title">System answering, follow-up running, dashboard live</div>
-        <div class="timeline-desc">Voice agent on inbound calls, follow-up on every new quote, old-estimate revival in motion. Setup and month one are charged at go-live, not before.</div>
+        <div class="timeline-title">Answering, booking, following up</div>
+        <div class="timeline-desc">Calls answered and booked, every quote followed up, old estimates in motion. Setup and month one are charged at go-live, not before.</div>
       </div>
     </div>
   </div>
@@ -1600,7 +1654,7 @@ h1, h2, h3, h4 {
       Trace your <span class="italic-accent">real numbers.</span>
     </h2>
     <p class="reveal" data-delay="2">
-      The audit is 30 minutes. You leave with a written dollar figure of what your current response gaps are costing you each month — whether you become a client or not.
+      The audit is 30 minutes. You leave with a written dollar figure of what your current response gaps are costing you each month, whether you become a client or not.
     </p>
     <button class="btn btn-primary reveal" data-delay="3" onclick="openCalendly(event)">
       Apply for your audit <span class="btn-arrow">→</span>
@@ -1633,7 +1687,7 @@ h1, h2, h3, h4 {
           <span class="nav-brand-text">GRAIN</span>
         </div>
         <div class="footer-tag">PLANT · NURTURE · SCALE</div>
-        <p class="footer-mission">Done-for-you lead response infrastructure for home service businesses. Nashville-based, working nationwide.</p>
+        <p class="footer-mission">Done-for-you call answering, booking and follow-up for businesses that run on inbound demand. Nashville-based, working nationwide.</p>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Method</div>
@@ -1648,11 +1702,11 @@ h1, h2, h3, h4 {
         <a href="mailto:johnny@grainmethod.com">Email</a>
       </div>
       <div class="footer-col">
-        <div class="footer-col-label">Trades</div>
-        <a href="apply.html">Roofing</a>
-        <a href="apply.html">HVAC</a>
-        <a href="apply.html">Plumbing</a>
-        <a href="apply.html">+ 7 more</a>
+        <div class="footer-col-label">Industries</div>
+        <a href="home-services.html">Home services</a>
+        <a href="industries.html#health">Health and fitness</a>
+        <a href="industries.html#real-estate">Real estate</a>
+        <a href="industries.html#multi-location">Multi-location</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Trust</div>
@@ -1664,7 +1718,7 @@ h1, h2, h3, h4 {
     <div class="footer-bottom">
       <div class="footer-bottom-left">© GRAIN Method 2026 · Nashville, TN</div>
       <div class="footer-bottom-mid">
-        <span>Now taking 5 founding shops</span>
+        <span>Founding rate</span>
         <span class="sep">·</span>
         <span>through Dec 31</span>
       </div>
@@ -1674,7 +1728,7 @@ h1, h2, h3, h4 {
 </footer>
 
 <!-- ===== ASK GRAIN PILL ===== -->
-<button id="ask-pill" class="ask-pill" aria-label="Ask GRAIN — open question dialog">
+<button id="ask-pill" class="ask-pill" aria-label="Ask GRAIN, open question dialog">
   <svg class="ask-pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M12 22V10"/><path d="M12 10c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 10c3 0 5-2 5-5-3 0-5 2-5 5z"/>
   </svg>
@@ -1774,12 +1828,13 @@ h1, h2, h3, h4 {
     { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every call, text and form in under 60 seconds, 24/7, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days." },
     { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. GRAIN is what happens after the phone rings: every lead answered, qualified, booked and followed up, done for you. We work with the CRM and marketing you already have." },
     { q: "How fast can I be live?", a: "Greenhouse is live within 14 days of kickoff, or month 1 is free. Kickoff happens within 3 business days of signing, and you approve the test calls before anything goes live. Orchard and Estate roll out location by location on the same 14-day build." },
-    { q: "What does it cost?", a: "Greenhouse, one location: $1,500 setup + $1,497/month + 10% of revived jobs, only on jobs completed and paid. That's the founding price for the first 5 shops, through Dec 31. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
+    { q: "What does it cost?", a: "Greenhouse, one location: $2,997/month, with a founding rate of $1,497/month through Dec 31, plus $1,500 setup and 10% of revived jobs, only on jobs completed and paid. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
     { q: "What are the guarantees?", a: "Three. Start Guarantee: $0 until it's live, live in 14 days or month 1 is free. Call promise: 99% of calls answered in 60 seconds every month, or that month is free. Payback Guarantee: if revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do, and if you're still short at day 180 we refund the difference. Each has conditions, listed on the pricing page." },
-    { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, fencing, pools, painting, landscaping, garage doors, foundation and water treatment. If you're outside those, we'll tell you on the audit call and we won't take your money." },
+    { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, painting, fencing, pools, landscaping and garage doors. If you're outside those, we'll tell you on the audit call and we won't take your money." },
     { q: "Do you replace my team?", a: "No. We cover the gaps your team can't: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team handles what they're already good at." },
     { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one during onboarding." },
     { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real lead flow, response times, close rates and unsold estimates, and trace the dollars you're losing each month. You leave with a written number, whether you become a client or not." },
+    { q: "Do you run ads?", a: "Yes. Sunlight runs your Google Local Services Ads, Google Search and Meta campaigns: $997/month or 15% of ad spend, whichever is higher. You pay the platforms directly and we never mark up spend. Every lead lands in your Greenhouse and gets answered in under 60 seconds." },
     { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month." }
   ];
 
@@ -1852,7 +1907,7 @@ h1, h2, h3, h4 {
       });
       if (!any && v.length > 2) {
         suggestionsEl.innerHTML = `
-          <div class="ask-suggestion-label">No exact match — talk to us directly</div>
+          <div class="ask-suggestion-label">No exact match. Talk to us directly.</div>
           <a class="ask-suggestion" href="apply.html">Apply for an audit call →</a>
         `;
       }

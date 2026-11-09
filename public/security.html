@@ -5,8 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark only">
 <meta name="theme-color" content="#141A17">
-<title>Security — GRAIN</title>
-<meta name="description" content="How GRAIN Method protects client data — infrastructure, access controls, and incident response.">
+<title>Security | GRAIN Method</title>
+<meta name="description" content="How GRAIN Method protects your data and your customers&#x27; data.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Security | GRAIN Method">
+  <meta property="og:description" content="How GRAIN Method protects your data and your customers&#x27; data.">
+  <meta property="og:url" content="https://www.grainmethod.com/security">
+  <meta name="twitter:card" content="summary">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%231C2420' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%23F0ECDF' fill='none' stroke-width='18'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%239AAF7A' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%23BFD0A2'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%23BFD0A2'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%23BFD0A2'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%23BFD0A2'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%23F0ECDF'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
 
@@ -110,12 +115,12 @@ h1, h2, h3, h4 {
   line-height: 1;
 }
 .h-hero {
-  font-size: clamp(48px, 7.5vw, 104px);
+  font-size: clamp(40px, 6vw, 84px);
   letter-spacing: -0.035em;
   line-height: 0.94;
 }
 .h-section {
-  font-size: clamp(36px, 5.2vw, 72px);
+  font-size: clamp(30px, 4.2vw, 56px);
   letter-spacing: -0.028em;
   line-height: 1.02;
 }
@@ -132,7 +137,7 @@ h1, h2, h3, h4 {
 .on-cream .lede { color: var(--ink-light); }
 
 /* ===== LAYOUT ===== */
-.section { padding: clamp(80px, 12vw, 160px) 0; position: relative; }
+.section { padding: clamp(64px, 9vw, 120px) 0; position: relative; }
 .section.compact { padding: clamp(60px, 8vw, 100px) 0; }
 .section.on-cream { background: var(--bg); color: var(--ink); }
 .section.on-paper { background: var(--paper); color: var(--ink); }
@@ -1265,6 +1270,7 @@ h1, h2, h3, h4 {
     </div>
     <div class="nav-links">
       <a href="method.html" class="nav-link">Method</a>
+      <a href="industries.html" class="nav-link">Industries</a>
       <a href="dashboard.html" class="nav-link">Dashboard</a>
       <a href="calculator.html" class="nav-link">Calculator</a>
       <a href="pricing.html" class="nav-link">Pricing</a>
@@ -1305,14 +1311,14 @@ h1, h2, h3, h4 {
       <section class="doc-block reveal" id="s-overview">
         <div class="doc-num">Section 01</div>
         <h2 class="doc-h2">Overview</h2>
-        <p>Your client data is the most sensitive thing we touch. We treat it accordingly — with hardened infrastructure, narrow access, encryption in transit and at rest, and a documented incident response process.</p>
+        <p>Your client data is the most sensitive thing we touch. We treat it accordingly: narrow access, encryption in transit and at rest through our hosting providers, and a prompt heads-up if anything ever goes wrong.</p>
         <p>This page summarizes our security posture in plain language. For detailed security documentation, SOC 2 status, or to request our Trust Center, email <a href="mailto:audit@grainmethod.com">audit@grainmethod.com</a>.</p>
       </section>
       <section class="doc-block reveal" id="s-infra">
         <div class="doc-num">Section 02</div>
         <h2 class="doc-h2">Where your data lives</h2>
         <p>Client data is stored in segregated environments per client. We use industry-standard cloud infrastructure (US-based regions) with encrypted storage and dedicated environments for each client account.</p>
-        <p>We do not commingle data across clients. Each client's Mission Control dashboard operates on isolated subdomain and database scoping.</p>
+        <p>We do not commingle data across clients. Each client's Greenhouse Dashboard operates on isolated subdomain and database scoping.</p>
       </section>
       <section class="doc-block reveal" id="s-access">
         <div class="doc-num">Section 03</div>
@@ -1378,7 +1384,7 @@ h1, h2, h3, h4 {
           <span class="nav-brand-text">GRAIN</span>
         </div>
         <div class="footer-tag">PLANT · NURTURE · SCALE</div>
-        <p class="footer-mission">Done-for-you lead response infrastructure for home service businesses. Nashville-based, working nationwide.</p>
+        <p class="footer-mission">Done-for-you call answering, booking and follow-up for businesses that run on inbound demand. Nashville-based, working nationwide.</p>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Method</div>
@@ -1393,11 +1399,11 @@ h1, h2, h3, h4 {
         <a href="mailto:johnny@grainmethod.com">Email</a>
       </div>
       <div class="footer-col">
-        <div class="footer-col-label">Trades</div>
-        <a href="apply.html">Roofing</a>
-        <a href="apply.html">HVAC</a>
-        <a href="apply.html">Plumbing</a>
-        <a href="apply.html">+ 7 more</a>
+        <div class="footer-col-label">Industries</div>
+        <a href="home-services.html">Home services</a>
+        <a href="industries.html#health">Health and fitness</a>
+        <a href="industries.html#real-estate">Real estate</a>
+        <a href="industries.html#multi-location">Multi-location</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Trust</div>
@@ -1409,7 +1415,7 @@ h1, h2, h3, h4 {
     <div class="footer-bottom">
       <div class="footer-bottom-left">© GRAIN Method 2026 · Nashville, TN</div>
       <div class="footer-bottom-mid">
-        <span>Now taking 5 founding shops</span>
+        <span>Founding rate</span>
         <span class="sep">·</span>
         <span>through Dec 31</span>
       </div>
@@ -1419,7 +1425,7 @@ h1, h2, h3, h4 {
 </footer>
 
 <!-- ===== ASK GRAIN PILL ===== -->
-<button id="ask-pill" class="ask-pill" aria-label="Ask GRAIN — open question dialog">
+<button id="ask-pill" class="ask-pill" aria-label="Ask GRAIN, open question dialog">
   <svg class="ask-pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M12 22V10"/><path d="M12 10c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 10c3 0 5-2 5-5-3 0-5 2-5 5z"/>
   </svg>
@@ -1519,12 +1525,13 @@ h1, h2, h3, h4 {
     { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every call, text and form in under 60 seconds, 24/7, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days." },
     { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. GRAIN is what happens after the phone rings: every lead answered, qualified, booked and followed up, done for you. We work with the CRM and marketing you already have." },
     { q: "How fast can I be live?", a: "Greenhouse is live within 14 days of kickoff, or month 1 is free. Kickoff happens within 3 business days of signing, and you approve the test calls before anything goes live. Orchard and Estate roll out location by location on the same 14-day build." },
-    { q: "What does it cost?", a: "Greenhouse, one location: $1,500 setup + $1,497/month + 10% of revived jobs, only on jobs completed and paid. That's the founding price for the first 5 shops, through Dec 31. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
+    { q: "What does it cost?", a: "Greenhouse, one location: $2,997/month, with a founding rate of $1,497/month through Dec 31, plus $1,500 setup and 10% of revived jobs, only on jobs completed and paid. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
     { q: "What are the guarantees?", a: "Three. Start Guarantee: $0 until it's live, live in 14 days or month 1 is free. Call promise: 99% of calls answered in 60 seconds every month, or that month is free. Payback Guarantee: if revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do, and if you're still short at day 180 we refund the difference. Each has conditions, listed on the pricing page." },
-    { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, fencing, pools, painting, landscaping, garage doors, foundation and water treatment. If you're outside those, we'll tell you on the audit call and we won't take your money." },
+    { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, painting, fencing, pools, landscaping and garage doors. If you're outside those, we'll tell you on the audit call and we won't take your money." },
     { q: "Do you replace my team?", a: "No. We cover the gaps your team can't: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team handles what they're already good at." },
     { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one during onboarding." },
     { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real lead flow, response times, close rates and unsold estimates, and trace the dollars you're losing each month. You leave with a written number, whether you become a client or not." },
+    { q: "Do you run ads?", a: "Yes. Sunlight runs your Google Local Services Ads, Google Search and Meta campaigns: $997/month or 15% of ad spend, whichever is higher. You pay the platforms directly and we never mark up spend. Every lead lands in your Greenhouse and gets answered in under 60 seconds." },
     { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month." }
   ];
 
@@ -1597,7 +1604,7 @@ h1, h2, h3, h4 {
       });
       if (!any && v.length > 2) {
         suggestionsEl.innerHTML = `
-          <div class="ask-suggestion-label">No exact match — talk to us directly</div>
+          <div class="ask-suggestion-label">No exact match. Talk to us directly.</div>
           <a class="ask-suggestion" href="apply.html">Apply for an audit call →</a>
         `;
       }

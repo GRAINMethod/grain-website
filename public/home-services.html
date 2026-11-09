@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark only">
+<meta name="theme-color" content="#141A17">
+<title>Call answering and follow-up for home service companies | GRAIN Method</title>
+<meta name="description" content="For owners of HVAC, plumbing, roofing and other shops that write estimates: every call answered in under a minute, jobs booked, quotes followed up and old estimates revived.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Call answering and follow-up for home service companies | GRAIN Method">
+  <meta property="og:description" content="For owners of HVAC, plumbing, roofing and other shops that write estimates: every call answered in under a minute, jobs booked, quotes followed up and old estimates revived.">
+  <meta property="og:url" content="https://www.grainmethod.com/home-services">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%231C2420' rx='40'/%3E%3Cg transform='translate(90,75)'%3E%3Cpath d='M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z' stroke='%23F0ECDF' fill='none' stroke-width='18'/%3E%3Cg transform='translate(110,230)'%3E%3Cpath d='M 0 0 L 0 -115' stroke='%239AAF7A' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z' fill='%23BFD0A2'/%3E%3Cpath d='M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z' fill='%23BFD0A2'/%3E%3Cpath d='M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z' fill='%23BFD0A2'/%3E%3Cpath d='M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z' fill='%23BFD0A2'/%3E%3Cpath d='M -32 0 Q 0 -14 32 0 Z' fill='%23F0ECDF'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:ital,wght@1,400;1,500&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T5DP2CY8NW"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-T5DP2CY8NW');</script>
+<script>
+  var BOOKING_URL=''; /* GoHighLevel calendar link goes here when it's ready */
+  function openCalendly(e){if(e)e.preventDefault();if(typeof gtag!=='undefined')gtag('event','audit_click');window.location.href=BOOKING_URL||'apply.html';return false;}
+</script>
+
+<style>
+/* ==================================================================
+   GRAIN METHOD — v5 SHARED STYLES
+   Dark-dominant, atmospheric, restrained.
+   Brand DNA preserved: cream/ink/moss palette, Inter/Fraunces/JetBrains Mono.
+   ================================================================== */
+
+/* ===== TOKENS ===== */
+:root {
+  /* Palette */
+  --bg: #F0ECDF;            /* cream — contrast canvas only */
+  --paper: #F7F4EA;
+  --ink: #1C2420;           /* default canvas */
+  --ink-soft: #2A332E;
+  --ink-deeper: #141A17;
+  --ink-light: #4A544E;
+  --moss: #9AAF7A;
+  --moss-deep: #667B4A;
+  --moss-darker: #4A5A36;
+  --moss-light: #BFD0A2;
+  --muted: #6B6B62;
+  --line: #D4CEBD;
+  --line-dark: rgba(240, 236, 223, 0.10);
+  --line-dark-strong: rgba(240, 236, 223, 0.18);
+
+  /* Motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Layout */
+  --max-content: 1440px;
+  --max-text: 1160px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--ink);
+  color: var(--bg);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+img, svg { display: block; max-width: 100%; }
+
+/* ===== TYPE ===== */
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--moss);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--moss);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 0 rgba(154, 175, 122, 0);
+  animation: harvest-mark-pulse 4s ease-in-out infinite;
+}
+@keyframes harvest-mark-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(154, 175, 122, 0); }
+  50%      { box-shadow: 0 0 0 4px rgba(154, 175, 122, 0.16); }
+}
+.on-cream .eyebrow { color: var(--moss-deep); }
+.on-cream .eyebrow::before { background: var(--moss-deep); animation-name: harvest-mark-pulse-deep; }
+@keyframes harvest-mark-pulse-deep {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(102, 123, 74, 0); }
+  50%      { box-shadow: 0 0 0 4px rgba(102, 123, 74, 0.18); }
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.h-hero {
+  font-size: clamp(40px, 6vw, 84px);
+  letter-spacing: -0.035em;
+  line-height: 0.94;
+}
+.h-section {
+  font-size: clamp(30px, 4.2vw, 56px);
+  letter-spacing: -0.028em;
+  line-height: 1.02;
+}
+.h-sub { font-size: clamp(24px, 2.6vw, 36px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.italic-accent { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color: var(--moss); }
+.on-cream .italic-accent { color: var(--moss-deep); }
+
+.lede {
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.55;
+  color: rgba(240, 236, 223, 0.78);
+  max-width: 640px;
+}
+.on-cream .lede { color: var(--ink-light); }
+
+/* ===== LAYOUT ===== */
+.section { padding: clamp(64px, 9vw, 120px) 0; position: relative; }
+.section.compact { padding: clamp(60px, 8vw, 100px) 0; }
+.section.on-cream { background: var(--bg); color: var(--ink); }
+.section.on-paper { background: var(--paper); color: var(--ink); }
+
+.wrap {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 56px);
+}
+.wrap-narrow { max-width: var(--max-text); margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+
+/* ===== NAV ===== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 0;
+  background: transparent;
+  transition: background 0.4s var(--ease), backdrop-filter 0.4s var(--ease), border-color 0.3s, padding 0.3s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  background: rgba(20, 26, 23, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: var(--line-dark);
+  padding: 12px 0;
+}
+.nav.over-cream:not(.scrolled) .nav-link { color: var(--ink-light); }
+.nav.over-cream:not(.scrolled) .nav-brand-text { color: var(--ink); }
+.nav.over-cream:not(.scrolled) .nav-brand-logo path[data-stroke] { stroke: var(--ink); }
+.nav.over-cream:not(.scrolled) .nav-cta { background: var(--ink); color: var(--bg); }
+.nav.over-cream:not(.scrolled) .nav-toggle span { background: var(--ink); }
+.nav.over-cream.scrolled {
+  background: rgba(240, 236, 223, 0.86);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: var(--line);
+}
+.nav.over-cream.scrolled .nav-link { color: var(--ink-light); }
+.nav.over-cream.scrolled .nav-brand-text { color: var(--ink); }
+.nav.over-cream.scrolled .nav-brand-logo path[data-stroke] { stroke: var(--ink); }
+.nav.over-cream.scrolled .nav-cta { background: var(--ink); color: var(--bg); }
+.nav-inner {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 56px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.nav-brand-logo { width: 30px; height: 30px; }
+.nav-brand-text { font-size: 17px; color: var(--bg); transition: color 0.3s; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.nav-link {
+  color: rgba(240, 236, 223, 0.66);
+  transition: color 0.2s;
+  padding: 6px 0;
+  position: relative;
+}
+.nav-link:hover, .nav-link.active { color: var(--moss-light); }
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 100%; height: 1.5px;
+  background: var(--moss);
+}
+.nav-cta {
+  background: var(--moss);
+  color: var(--ink) !important;
+  padding: 10px 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.nav-cta:hover { background: var(--moss-light); transform: translateY(-1px); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  cursor: pointer;
+}
+.nav-toggle span {
+  width: 22px;
+  height: 1.5px;
+  background: var(--bg);
+  transition: all 0.3s var(--ease);
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+@media (max-width: 880px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: 0; right: 0;
+    width: min(86vw, 360px);
+    height: 100vh;
+    background: var(--ink-deeper);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 28px;
+    padding: 80px 40px;
+    transform: translateX(100%);
+    transition: transform 0.4s var(--ease);
+    font-size: 14px;
+    border-left: 1px solid var(--line-dark);
+  }
+  .nav-links.open { transform: translateX(0); }
+  .nav-link { font-size: 14px; }
+  .nav-cta { align-self: stretch; text-align: center; }
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 17px 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary {
+  background: var(--moss);
+  color: var(--ink);
+}
+.btn-primary:hover {
+  background: var(--moss-light);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px -12px rgba(154, 175, 122, 0.4);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--bg);
+  border: 1px solid var(--line-dark-strong);
+}
+.btn-secondary:hover {
+  border-color: var(--moss);
+  color: var(--moss-light);
+  transform: translateY(-2px);
+}
+.on-cream .btn-secondary { color: var(--ink); border-color: rgba(28, 36, 32, 0.25); }
+.on-cream .btn-secondary:hover { border-color: var(--ink); color: var(--ink); }
+.btn-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 13px;
+  transition: transform 0.3s var(--ease);
+}
+.btn:hover .btn-arrow { transform: translateX(4px); }
+
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal[data-delay="1"] { transition-delay: 0.08s; }
+.reveal[data-delay="2"] { transition-delay: 0.16s; }
+.reveal[data-delay="3"] { transition-delay: 0.24s; }
+.reveal[data-delay="4"] { transition-delay: 0.32s; }
+.reveal[data-delay="5"] { transition-delay: 0.4s; }
+.reveal[data-delay="6"] { transition-delay: 0.48s; }
+.reveal[data-delay="7"] { transition-delay: 0.56s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ===== TICKER ===== */
+.ticker {
+  background: var(--ink-deeper);
+  border-top: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
+  padding: 18px 0;
+  overflow: hidden;
+  position: relative;
+}
+.ticker-track {
+  display: flex;
+  gap: 56px;
+  white-space: nowrap;
+  animation: ticker-scroll 45s linear infinite;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(240, 236, 223, 0.55);
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item { display: inline-flex; align-items: center; gap: 56px; }
+.ticker-item::after {
+  content: "";
+  width: 5px; height: 5px;
+  background: var(--moss);
+  border-radius: 50%;
+  display: inline-block;
+}
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--ink-deeper);
+  padding: 96px 0 32px;
+  border-top: 1px solid var(--line-dark);
+  position: relative;
+}
+
+/* Audit callout — sits above the footer link grid */
+.footer-callout {
+  display: grid;
+  grid-template-columns: 1.6fr auto;
+  gap: 40px;
+  align-items: center;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--line-dark);
+  margin-bottom: 56px;
+}
+.footer-callout .eyebrow { margin-bottom: 18px; }
+.footer-callout-text {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(26px, 2.8vw, 36px);
+  color: var(--bg);
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+  max-width: 720px;
+}
+.footer-callout-text strong {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  color: var(--moss-light);
+  font-style: normal;
+  letter-spacing: -0.015em;
+}
+.footer-callout-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240, 236, 223, 0.42);
+  font-weight: 600;
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.footer-callout-meta .sep {
+  width: 14px;
+  height: 1px;
+  background: rgba(240,236,223,0.2);
+  display: inline-block;
+}
+@media (max-width: 880px) {
+  .footer-callout { grid-template-columns: 1fr; gap: 28px; }
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--line-dark);
+}
+.footer-brand-block .nav-brand { margin-bottom: 20px; }
+.footer-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--moss);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.footer-mission {
+  font-size: 14px;
+  color: rgba(240, 236, 223, 0.55);
+  max-width: 340px;
+  line-height: 1.6;
+}
+.footer-col-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moss);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.footer-col { display: flex; flex-direction: column; gap: 12px; }
+.footer-col a {
+  font-size: 14px;
+  color: rgba(240, 236, 223, 0.62);
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--moss-light); }
+
+/* Bottom row — © · system status · email */
+.footer-bottom {
+  padding-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: rgba(240, 236, 223, 0.35);
+  text-transform: uppercase;
+}
+.footer-bottom-mid {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(240, 236, 223, 0.55);
+  letter-spacing: 0.18em;
+}
+.footer-bottom-mid::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--moss);
+  box-shadow: 0 0 0 3px rgba(154,175,122,0.16);
+  animation: footer-status-pulse 2.6s ease-in-out infinite;
+}
+@keyframes footer-status-pulse {
+  0%, 100% { opacity: 1;    box-shadow: 0 0 0 3px rgba(154,175,122,0.16); }
+  50%      { opacity: 0.55; box-shadow: 0 0 0 6px rgba(154,175,122,0.04); }
+}
+.footer-bottom-right { justify-self: end; }
+.footer-bottom-right a { color: inherit; transition: color 0.2s; }
+.footer-bottom-right a:hover { color: var(--moss-light); }
+.footer-bottom-mid .sep { opacity: 0.4; padding: 0 2px; }
+.footer-bottom-mid .heartbeat {
+  font-family: 'JetBrains Mono', monospace;
+  color: rgba(240, 236, 223, 0.42);
+  min-width: 28px;
+  text-align: left;
+  transition: color 0.45s var(--ease);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+.footer-bottom-mid.flash { color: var(--moss-light); }
+.footer-bottom-mid.flash .heartbeat { color: var(--moss-light); }
+.footer-bottom-mid.flash::before {
+  box-shadow: 0 0 0 7px rgba(154,175,122,0.22), 0 0 14px rgba(154,175,122,0.45) !important;
+}
+
+@media (max-width: 1080px) {
+  .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+  .footer-brand-block { grid-column: 1 / -1; }
+}
+@media (max-width: 880px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-brand-block { grid-column: 1 / -1; }
+  .footer-bottom { grid-template-columns: 1fr; text-align: center; gap: 14px; }
+  .footer-bottom-mid, .footer-bottom-right { justify-self: center; }
+}
+@media (max-width: 520px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== ASK GRAIN — FLOATING PILL ===== */
+.ask-pill {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  z-index: 90;
+  background: var(--ink-deeper);
+  border: 1px solid var(--moss);
+  color: var(--bg);
+  padding: 14px 22px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 12px 32px -8px rgba(0,0,0,0.45);
+  animation: pill-entry 0.8s var(--ease-out) 0.6s backwards, pill-pulse 2.6s var(--ease-out) 1.5s 1;
+}
+.on-cream-body .ask-pill {
+  background: var(--ink);
+  border-color: var(--moss);
+}
+.ask-pill:hover {
+  background: var(--moss);
+  color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px -12px rgba(154, 175, 122, 0.5);
+}
+.ask-pill-icon { width: 14px; height: 14px; }
+.ask-pill-kbd {
+  font-size: 9px;
+  padding: 3px 6px;
+  background: rgba(240, 236, 223, 0.08);
+  border: 1px solid var(--line-dark-strong);
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  margin-left: 4px;
+  font-weight: 500;
+}
+.ask-pill:hover .ask-pill-kbd { background: rgba(28, 36, 32, 0.15); border-color: rgba(28, 36, 32, 0.2); }
+@keyframes pill-entry {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pill-pulse {
+  0%, 100% { box-shadow: 0 12px 32px -8px rgba(0,0,0,0.45), 0 0 0 0 rgba(154, 175, 122, 0); }
+  30% { box-shadow: 0 12px 32px -8px rgba(0,0,0,0.45), 0 0 0 14px rgba(154, 175, 122, 0.18); }
+  60% { box-shadow: 0 12px 32px -8px rgba(0,0,0,0.45), 0 0 0 22px rgba(154, 175, 122, 0); }
+}
+
+@media (max-width: 600px) {
+  .ask-pill { bottom: 20px; right: 20px; padding: 12px 18px; font-size: 10px; }
+  .ask-pill-kbd { display: none; }
+}
+
+/* ===== ASK GRAIN — MODAL ===== */
+.ask-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(10, 14, 12, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.ask-overlay.open { opacity: 1; pointer-events: auto; }
+.ask-modal {
+  background: var(--ink);
+  border: 1px solid var(--line-dark-strong);
+  width: 100%;
+  max-width: 640px;
+  max-height: min(80vh, 720px);
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.96) translateY(12px);
+  transition: transform 0.4s var(--ease-out);
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+.ask-overlay.open .ask-modal { transform: scale(1) translateY(0); }
+.ask-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line-dark);
+}
+.ask-modal-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moss);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.ask-modal-close {
+  width: 30px; height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(240, 236, 223, 0.5);
+  transition: color 0.2s;
+  font-size: 18px;
+}
+.ask-modal-close:hover { color: var(--bg); }
+.ask-input-wrap {
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--line-dark);
+}
+.ask-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--bg);
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 8px 0;
+  outline: none;
+}
+.ask-input::placeholder { color: rgba(240, 236, 223, 0.32); }
+.ask-suggestions {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+.ask-suggestion-label {
+  padding: 16px 24px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240, 236, 223, 0.4);
+  font-weight: 600;
+}
+.ask-suggestion {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 24px;
+  color: rgba(240, 236, 223, 0.85);
+  font-size: 14.5px;
+  transition: background 0.15s, color 0.15s;
+  border-left: 2px solid transparent;
+}
+.ask-suggestion:hover {
+  background: rgba(154, 175, 122, 0.08);
+  color: var(--moss-light);
+  border-left-color: var(--moss);
+}
+.ask-answer {
+  padding: 22px 24px;
+  border-top: 1px solid var(--line-dark);
+  background: var(--ink-deeper);
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(240, 236, 223, 0.86);
+  display: none;
+}
+.ask-answer.show { display: block; }
+.ask-answer .ask-answer-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .ask-overlay { padding: 0; align-items: flex-end; }
+  .ask-modal { max-height: 88vh; border-radius: 0; }
+  .ask-input { font-size: 17px; }
+}
+
+/* ===== UTILITY ===== */
+.no-scroll { overflow: hidden; }
+.divider-row {
+  border-top: 1px solid var(--line-dark);
+}
+.on-cream .divider-row { border-top-color: var(--line); }
+
+/* What we do */
+.wwd-section { border-bottom: 1px solid var(--line-dark); }
+.wwd-flow { list-style: none; margin: 52px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+.wwd-flow::before { content: ""; position: absolute; top: 14px; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, var(--moss) 0%, rgba(154,175,122,0.15) 100%); }
+.wwd-flow li { position: relative; padding: 40px 22px 0 0; display: flex; flex-direction: column; gap: 10px; }
+.wwd-flow li::before { content: ""; position: absolute; top: 9px; left: 0; width: 11px; height: 11px; border-radius: 50%; background: var(--ink); border: 2px solid var(--moss); }
+.wwd-n { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss); }
+.wwd-flow strong { font-size: 19px; line-height: 1.25; color: var(--bg); font-weight: 700; letter-spacing: -0.01em; }
+.wwd-flow li > span:last-child { font-size: 15px; line-height: 1.5; color: rgba(240, 236, 223, 0.7); }
+.wwd-foot { margin-top: 48px; font-size: 18px; color: rgba(240, 236, 223, 0.85); }
+.wwd-foot strong { color: var(--moss-light); }
+@media (max-width: 960px) { .wwd-flow { grid-template-columns: 1fr; } .wwd-flow::before { top: 0; bottom: 0; left: 5px; right: auto; width: 1px; height: auto; background: linear-gradient(180deg, var(--moss), rgba(154,175,122,0.15)); } .wwd-flow li { padding: 0 0 28px 34px; } .wwd-flow li::before { top: 4px; } }
+/* Sunlight */
+.ads-section { background: var(--ink-deeper); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
+.ads-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.ads-lede { margin-top: 24px; font-size: 18px; line-height: 1.55; color: rgba(240, 236, 223, 0.8); max-width: 520px; }
+.ads-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-dark-strong); }
+.ads-list li { padding: 18px 0; border-bottom: 1px solid var(--line-dark); display: flex; flex-direction: column; gap: 4px; font-size: 15px; color: rgba(240, 236, 223, 0.7); }
+.ads-list strong { font-size: 17px; color: var(--bg); }
+.ads-list .ads-price strong { color: var(--moss-light); }
+@media (max-width: 960px) { .ads-inner { grid-template-columns: 1fr; gap: 32px; } }
+/* Trades */
+.trades-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px; }
+.trade-pill { display: inline-block; padding: 12px 18px; border: 1px solid var(--line-dark-strong); color: var(--bg); text-decoration: none; font-size: 15px; transition: border-color .2s, color .2s; }
+.trade-pill:hover { border-color: var(--moss); color: var(--moss-light); }
+.trades-note { margin-top: 28px; color: rgba(240, 236, 223, 0.65); }
+.trades-note a { color: var(--moss-light); }
+/* The leak: sourced market data */
+.leak-section { background: var(--ink-deeper); border-bottom: 1px solid var(--line-dark); }
+.leak-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 48px; border-top: 1px solid var(--line-dark-strong); }
+.leak-cell { padding: 30px 26px 26px 0; border-right: 1px solid var(--line-dark); }
+.leak-cell + .leak-cell { padding-left: 26px; }
+.leak-cell:last-child { border-right: 0; }
+.leak-num { font-size: clamp(36px, 4vw, 54px); font-weight: 800; letter-spacing: -0.03em; color: var(--moss); line-height: 1; }
+.leak-text { margin-top: 16px; font-size: 16px; line-height: 1.5; color: rgba(240, 236, 223, 0.86); }
+.leak-src { margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(240, 236, 223, 0.45); }
+.leak-close { margin-top: 40px; max-width: 760px; font-size: 18px; line-height: 1.55; color: var(--bg); }
+@media (max-width: 960px) { .leak-grid { grid-template-columns: 1fr 1fr; } .leak-cell { padding: 26px 18px 22px 0 !important; border-right: 0; border-bottom: 1px solid var(--line-dark); } }
+@media (max-width: 560px) { .leak-grid { grid-template-columns: 1fr; } }
+
+/* Industry pages */
+.hs-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+.ind-list { margin-top: 8px; border-top: 1px solid var(--line-dark-strong); }
+.ind-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; padding: 44px 0; border-bottom: 1px solid var(--line-dark); scroll-margin-top: 90px; }
+.ind-name { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--moss); }
+.ind-head { margin-top: 14px; font-size: clamp(24px, 2.6vw, 34px); line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; color: var(--bg); }
+.ind-link { display: inline-block; margin-top: 18px; color: var(--moss-light); text-decoration: none; border-bottom: 1px solid rgba(191, 208, 162, 0.4); padding-bottom: 2px; cursor: pointer; background: none; border-top: 0; border-left: 0; border-right: 0; font: inherit; }
+.ind-link:hover { border-bottom-color: var(--moss-light); }
+.hs-faq { list-style: none; margin: 40px 0 0; padding: 0; border-top: 1px solid var(--line-dark-strong); }
+.hs-faq li { padding: 22px 0; border-bottom: 1px solid var(--line-dark); }
+.hs-faq strong { display: block; font-size: 18px; color: var(--bg); margin-bottom: 6px; }
+.hs-faq span { color: rgba(240, 236, 223, 0.72); font-size: 16px; line-height: 1.55; }
+@media (max-width: 900px) { .ind-row { grid-template-columns: 1fr; gap: 18px; padding: 34px 0; } }
+
+</style>
+
+<style>
+/* PAGE-SPECIFIC — METHOD */
+
+.page-hero {
+  padding: 180px 0 60px;
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  text-align: center;
+}
+.page-hero::before {
+  content: "";
+  position: absolute;
+  top: 30%; left: 50%;
+  width: 1100px; height: 700px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(154,175,122,0.10) 0%, transparent 60%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+.page-hero-inner { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+.page-hero h1 { margin: 24px 0 22px; }
+.page-hero .lede { margin: 0 auto; }
+
+/* 5-CELL GRID */
+.grain-grid-section { padding: 80px 0 140px; }
+.grain-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--line-dark);
+  border: 1px solid var(--line-dark);
+  margin-top: 20px;
+}
+.grain-cell {
+  background: var(--ink);
+  padding: 56px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 360px;
+  position: relative;
+  cursor: default;
+  transition: background 0.5s var(--ease);
+  overflow: hidden;
+}
+.grain-cell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(154,175,122,0.10) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease);
+  pointer-events: none;
+}
+.grain-cell:hover { background: var(--ink-deeper); }
+.grain-cell:hover::before { opacity: 1; }
+.grain-cell:hover .grain-letter { color: var(--moss); transform: translateY(-4px); }
+.grain-letter {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(72px, 7vw, 116px);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: var(--bg);
+  transition: all 0.5s var(--ease);
+}
+.grain-cell-body { position: relative; z-index: 2; }
+.grain-word {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 26px;
+  color: var(--moss-light);
+  margin-bottom: 12px;
+  line-height: 1;
+}
+.grain-desc {
+  font-size: 14px;
+  color: rgba(240,236,223,0.72);
+  line-height: 1.55;
+}
+
+@media (max-width: 1080px) {
+  .grain-grid { grid-template-columns: repeat(2, 1fr); }
+  .grain-cell { min-height: 280px; padding: 40px 28px 32px; }
+}
+@media (max-width: 600px) {
+  .grain-grid { grid-template-columns: 1fr; }
+}
+
+/* DEEPER ENGINE BREAKDOWN */
+.engines-section {
+  background: var(--ink-deeper);
+  border-top: 1px solid var(--line-dark);
+  padding: 140px 0;
+}
+.engine-block {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 72px;
+  padding: 100px 0;
+  border-bottom: 1px solid var(--line-dark);
+  align-items: start;
+}
+.engine-block:last-child { border-bottom: none; padding-bottom: 0; }
+.engine-block:first-child { padding-top: 0; }
+.engine-marker { position: sticky; top: 120px; }
+.engine-marker .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(240,236,223,0.42);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.engine-marker .letter {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 112px;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--moss);
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 22px rgba(154,175,122,0.18));
+}
+.engine-marker .word {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 26px;
+  color: var(--bg);
+}
+.engine-body h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 3vw, 40px);
+  letter-spacing: -0.022em;
+  line-height: 1.12;
+  margin-bottom: 28px;
+  max-width: 720px;
+  text-wrap: balance;
+}
+.engine-body > p {
+  font-size: 17.5px;
+  color: rgba(240,236,223,0.78);
+  line-height: 1.7;
+  max-width: 680px;
+  margin-bottom: 36px;
+}
+.engine-details {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line-dark);
+  border: 1px solid var(--line-dark);
+  margin-top: 40px;
+}
+.engine-details li {
+  background: var(--ink);
+  padding: 28px 28px 26px;
+  font-size: 14.5px;
+  color: rgba(240,236,223,0.78);
+  line-height: 1.65;
+  transition: background 0.25s var(--ease);
+}
+.engine-details li:hover { background: var(--ink-deeper); }
+.engine-details li strong {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moss);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 880px) {
+  .engine-block { grid-template-columns: 1fr; gap: 28px; padding: 72px 0; }
+  .engine-marker { position: relative; top: 0; }
+  .engine-marker .letter { font-size: 72px; }
+  .engine-details { grid-template-columns: 1fr; }
+}
+
+/* NETWORK EFFECT — FEATURED */
+.network-feature {
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+}
+.network-feature::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 1400px; height: 1400px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(154,175,122,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.network-feature-inner { position: relative; z-index: 2; }
+.network-feature-intro { text-align: center; max-width: 760px; margin: 0 auto 80px; }
+.network-feature-intro h2 { margin: 22px 0 24px; }
+.network-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+.network-feature-viz {
+  position: relative;
+  height: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.network-feature-viz svg { width: 100%; height: 100%; max-width: 560px; flex: 1 1 auto; min-height: 0; }
+
+.network-feature-text { max-width: 540px; }
+.network-feature-text h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 2.4vw, 32px);
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-bottom: 18px;
+  color: var(--bg);
+}
+.network-feature-text p {
+  font-size: 17px;
+  color: rgba(240,236,223,0.75);
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+.network-feature-text p strong { color: var(--bg); font-weight: 600; }
+
+.viz2-node {
+  fill: var(--ink-deeper);
+  stroke: var(--moss);
+  stroke-width: 1.5;
+}
+.viz2-node.center {
+  fill: var(--moss-deep);
+  stroke: var(--moss-light);
+  stroke-width: 2;
+}
+.viz2-line {
+  stroke: var(--moss);
+  stroke-width: 1;
+  fill: none;
+  opacity: 0;
+  stroke-dasharray: 280;
+  stroke-dashoffset: 280;
+  animation: viz2-draw 2.6s var(--ease-out) forwards;
+}
+.visible .viz2-line { opacity: 0.35; }
+.viz2-line:nth-child(2) { animation-delay: 0.15s; }
+.viz2-line:nth-child(3) { animation-delay: 0.30s; }
+.viz2-line:nth-child(4) { animation-delay: 0.45s; }
+.viz2-line:nth-child(5) { animation-delay: 0.60s; }
+.viz2-line:nth-child(6) { animation-delay: 0.75s; }
+.viz2-line:nth-child(7) { animation-delay: 0.90s; }
+.viz2-line:nth-child(8) { animation-delay: 1.05s; }
+.viz2-line:nth-child(9) { animation-delay: 1.20s; }
+.viz2-line:nth-child(10) { animation-delay: 1.35s; }
+@keyframes viz2-draw { to { stroke-dashoffset: 0; } }
+.viz2-pulse {
+  fill: var(--moss-light);
+  opacity: 0;
+  animation: viz2-pulse-anim 3.6s ease-out infinite;
+}
+@keyframes viz2-pulse-anim {
+  0% { opacity: 0; r: 4; }
+  25% { opacity: 0.7; }
+  100% { opacity: 0; r: 24; }
+}
+
+/* Concentric rings emanating from center — intelligence radiating outward */
+.viz2-ring {
+  fill: none;
+  stroke: var(--moss);
+  stroke-width: 1;
+  opacity: 0;
+  transform-origin: 280px 270px;
+  animation: viz2-ring-emanate 5.4s ease-out infinite;
+}
+@keyframes viz2-ring-emanate {
+  0%   { opacity: 0;    r: 56;  stroke-width: 1.4; }
+  10%  { opacity: 0.55; }
+  100% { opacity: 0;    r: 240; stroke-width: 0.25; }
+}
+
+/* Inbound particles (trade → center) and outbound (center → trade) */
+.viz2-particle-in,
+.viz2-particle-out {
+  fill: var(--moss-light);
+  opacity: 0;
+}
+.viz2-particle-in { animation: viz2-particle-in 3.6s linear infinite; }
+@keyframes viz2-particle-in {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  10%  { opacity: 0.95; }
+  85%  { opacity: 0.95; }
+  100% { transform: translate(var(--dx, 0), var(--dy, 0)); opacity: 0; }
+}
+.viz2-particle-out { animation: viz2-particle-out 4.4s linear infinite; }
+@keyframes viz2-particle-out {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  15%  { opacity: 0.7; }
+  90%  { opacity: 0.25; }
+  100% { transform: translate(var(--dx, 0), var(--dy, 0)); opacity: 0; }
+}
+
+/* Center node breathes — drop-shadow glow + stroke oscillation */
+.viz2-node.center {
+  animation: viz2-center-breathe 4.4s ease-in-out infinite;
+  transform-origin: 280px 270px;
+}
+@keyframes viz2-center-breathe {
+  0%, 100% { stroke-width: 2;   filter: drop-shadow(0 0 10px rgba(154,175,122,0.32)); }
+  50%      { stroke-width: 2.6; filter: drop-shadow(0 0 22px rgba(154,175,122,0.55)); }
+}
+
+/* Per-trade groups — line + pulse + node + label + hitbox + burst.
+   Hovering any element in the group lights the whole trade up. */
+.trade {
+  cursor: pointer;
+}
+.trade .viz2-hitbox {
+  fill: transparent;
+  stroke: none;
+  pointer-events: all;
+}
+.trade .viz2-line,
+.trade .viz2-node,
+.trade .viz2-pulse {
+  transition: stroke 0.3s var(--ease),
+              stroke-width 0.3s var(--ease),
+              fill 0.3s var(--ease),
+              opacity 0.3s var(--ease),
+              r 0.4s var(--ease);
+}
+.trade:hover .viz2-node {
+  fill: var(--moss);
+  stroke: var(--moss-light);
+  stroke-width: 2.2;
+}
+.trade:hover .viz2-line {
+  stroke: var(--moss-light);
+  stroke-width: 1.5;
+  opacity: 0.9;
+}
+.trade:hover .viz2-pulse {
+  animation-duration: 1.4s;
+}
+
+/* One-off burst from center to the hovered trade */
+.viz2-burst {
+  fill: var(--moss-light);
+  opacity: 0;
+  pointer-events: none;
+}
+.trade:hover .viz2-burst {
+  animation: viz2-burst-fire 0.85s ease-out;
+}
+@keyframes viz2-burst-fire {
+  0%   { transform: translate(0, 0);                    opacity: 0; }
+  18%  { opacity: 1; }
+  85%  { opacity: 0.6; }
+  100% { transform: translate(var(--dx, 0), var(--dy, 0)); opacity: 0; }
+}
+
+/* Caption below SVG — operational telemetry feel */
+.viz2-caption {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border: 1px solid var(--line-dark);
+  background: rgba(20,26,23,0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,236,223,0.62);
+  font-weight: 600;
+}
+.viz2-caption-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--moss);
+  animation: viz2-caption-pulse 1.8s ease-in-out infinite;
+}
+@keyframes viz2-caption-pulse {
+  0%, 100% { opacity: 0.5; box-shadow: 0 0 0 0 rgba(154,175,122,0); }
+  50%      { opacity: 1;   box-shadow: 0 0 0 4px rgba(154,175,122,0.2); }
+}
+.viz2-caption .num {
+  color: var(--moss-light);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 880px) {
+  .network-feature-grid { grid-template-columns: 1fr; gap: 40px; }
+  .network-feature-viz { height: 400px; }
+}
+
+/* 7-DAY TIMELINE */
+.timeline-section {
+  background: var(--bg);
+  color: var(--ink);
+  padding: 140px 0;
+}
+.timeline-intro { max-width: 720px; margin-bottom: 80px; }
+.timeline-intro h2 { margin: 22px 0 24px; color: var(--ink); }
+.timeline {
+  position: relative;
+  padding-left: 0;
+}
+.timeline-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr;
+  gap: 40px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+  transition: background 0.3s var(--ease);
+}
+.timeline-row:hover { background: rgba(154,175,122,0.04); }
+.timeline-row:first-child { border-top: 1px solid var(--line); }
+.timeline-day {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moss-deep);
+  font-weight: 700;
+}
+.timeline-row.go-live .timeline-day { color: var(--ink); font-weight: 800; }
+.timeline-row.go-live { background: rgba(154,175,122,0.08); }
+.timeline-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.timeline-desc {
+  font-size: 15px;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+@media (max-width: 880px) {
+  .timeline-row { grid-template-columns: 100px 1fr; gap: 20px; padding: 24px 0; }
+  .timeline-desc { grid-column: 1 / -1; padding-left: 120px; }
+}
+@media (max-width: 600px) {
+  .timeline-row { grid-template-columns: 1fr; gap: 8px; }
+  .timeline-desc { padding-left: 0; }
+}
+
+/* FINAL CTA */
+.cta-band-method {
+  padding: 120px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+.cta-band-method::before {
+  content: "";
+  position: absolute;
+  bottom: -300px; left: 50%;
+  width: 900px; height: 600px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(154,175,122,0.10) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cta-band-method-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; padding: 0 24px; }
+.cta-band-method h2 { margin: 22px 0 24px; }
+.cta-band-method p { font-size: 18px; color: rgba(240,236,223,0.72); line-height: 1.55; margin-bottom: 36px; max-width: 600px; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-logo" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(90,75)">
+          <path data-stroke d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" stroke-width="18"/>
+          <g transform="translate(110,230)">
+            <path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/>
+            <path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/>
+            <path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/>
+            <path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/>
+            <path d="M -32 0 Q 0 -14 32 0 Z" fill="#F0ECDF"/>
+          </g>
+        </g>
+      </svg>
+      <span class="nav-brand-text">GRAIN</span>
+    </a>
+    <div class="nav-toggle" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links">
+      <a href="method.html" class="nav-link ">Method</a>
+      <a href="industries.html" class="nav-link">Industries</a>
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="calculator.html" class="nav-link">Calculator</a>
+      <a href="pricing.html" class="nav-link">Pricing</a>
+      <a href="apply.html" class="nav-cta">Apply</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow reveal" style="justify-content:center;">Home services</div>
+    <h1 class="h-section reveal" data-delay="1">Answer every call. <span class="italic-accent">Book more jobs.</span></h1>
+    <p class="lede reveal" data-delay="2" style="margin: 0 auto;">For owners of HVAC, plumbing, roofing and other shops that write estimates. GRAIN answers every call and text in under a minute, books the job, follows up every quote for 90 days and works the old estimates you gave up on. Your old estimates pay for it.</p>
+    <div class="hs-ctas reveal" data-delay="3">
+      <button class="btn btn-primary" onclick="openCalendly(event)">Apply for your free audit <span class="btn-arrow">→</span></button>
+      <a class="btn btn-secondary" href="pricing.html">See pricing <span class="btn-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== A NIGHT WITH GRAIN ===== -->
+<section class="section wwd-section">
+  <div class="wrap">
+    <div class="eyebrow reveal">A night with GRAIN · example</div>
+    <h2 class="h-section reveal" data-delay="1">The 9 pm no-heat call,<br><span class="italic-accent">handled.</span></h2>
+    <ol class="wwd-flow reveal" data-delay="2">
+      <li><span class="wwd-n">9:14 PM</span><strong>A homeowner calls</strong><span>No heat, kids at home. Your office closed at 5.</span></li>
+      <li><span class="wwd-n">9:14 PM</span><strong>Answered in 38 seconds</strong><span>A voice agent trained on your services, prices and service area.</span></li>
+      <li><span class="wwd-n">9:17 PM</span><strong>Booked for Tuesday, 8 am</strong><span>On your calendar, with the details your tech needs.</span></li>
+      <li><span class="wwd-n">Next day</span><strong>The quote gets followed up</strong><span>Day 1, 3, 7, 14, 30, 60 and 90, until it's a yes or a no.</span></li>
+      <li><span class="wwd-n">All year</span><strong>Old estimates come back</strong><span>Two years of unsold quotes, worked into jobs. You pay 10% only on jobs completed and paid.</span></li>
+    </ol>
+    <p class="wwd-foot reveal" data-delay="3">You see every call, booking and dollar in your <strong>Greenhouse Dashboard</strong>. You run the jobs. We run the rest.</p>
+  </div>
+</section>
+
+<!-- ===== THE LEAK (market data, sourced) ===== -->
+<section class="section leak-section">
+  <div class="wrap">
+    <div class="eyebrow reveal">The leak</div>
+    <h2 class="h-section reveal" data-delay="1">You're already paying for<br><span class="italic-accent">the jobs you lose.</span></h2>
+    <div class="leak-grid reveal" data-delay="2">
+      <div class="leak-cell"><div class="leak-num">1 in 3</div><div class="leak-text">calls to home service shops goes unanswered. Owners guessed they answered 97%.</div><div class="leak-src">Service Direct, call performance study</div></div>
+      <div class="leak-cell"><div class="leak-num">$91&ndash;$228</div><div class="leak-text">paid for every Google search lead, depending on the trade.</div><div class="leak-src">LocaliQ, 2025 search ad benchmarks</div></div>
+      <div class="leak-cell"><div class="leak-num">21&times;</div><div class="leak-text">more likely to qualify a lead you answer in 5 minutes instead of 30.</div><div class="leak-src">MIT and InsideSales.com, Lead Response Management study</div></div>
+      <div class="leak-cell"><div class="leak-num">56%</div><div class="leak-text">of Local Services Ads leads never turn into a booked job.</div><div class="leak-src">SearchLight, home services benchmark, Feb 2026</div></div>
+    </div>
+    <p class="leak-close reveal" data-delay="3">GRAIN answers every one of those calls in under 60 seconds, follows up every quote, and works the old estimates nobody called back.</p>
+  </div>
+</section>
+
+<!-- ===== TRADES ===== -->
+<section class="section trades-section" id="trades">
+  <div class="wrap">
+    <div class="eyebrow reveal">Who we work with</div>
+    <h2 class="h-section reveal" data-delay="1">Built for shops<br><span class="italic-accent">that write estimates.</span></h2>
+    <div class="trades-grid reveal" data-delay="2">
+      <a class="trade-pill" href="apply.html?trade=hvac">HVAC</a>
+      <a class="trade-pill" href="apply.html?trade=plumbing">Plumbing</a>
+      <a class="trade-pill" href="apply.html?trade=roofing">Roofing</a>
+      <a class="trade-pill" href="apply.html?trade=electrical">Electrical</a>
+      <a class="trade-pill" href="apply.html?trade=remodeling">Remodeling</a>
+      <a class="trade-pill" href="apply.html?trade=painting">Painting</a>
+      <a class="trade-pill" href="apply.html?trade=fencing">Fencing</a>
+      <a class="trade-pill" href="apply.html?trade=pools">Pools</a>
+      <a class="trade-pill" href="apply.html?trade=landscaping">Landscaping</a>
+      <a class="trade-pill" href="apply.html?trade=garage-doors">Garage doors</a>
+    </div>
+    <p class="trades-note reveal" data-delay="3">One shop per trade in each area. Don't see yours? <a href="apply.html">Ask us</a>.</p>
+  </div>
+</section>
+
+<!-- ===== THE PROMISE ===== -->
+<section class="section ads-section">
+  <div class="wrap">
+    <div class="ads-inner">
+      <div>
+        <div class="eyebrow reveal">The promise</div>
+        <h2 class="h-section reveal" data-delay="1">$0 until it's live.<br><span class="italic-accent">Paid back by your old estimates.</span></h2>
+        <p class="ads-lede reveal" data-delay="2">Two guarantees take the risk out of starting and the risk of it not working. Full conditions are on the pricing page.</p>
+        <a class="ind-link reveal" data-delay="3" href="pricing.html">See the guarantees and pricing</a>
+      </div>
+      <ul class="ads-list reveal" data-delay="2">
+          <li><strong>Start Guarantee</strong>Nothing is charged until you're live. Live in 14 days or month one is free.</li>
+          <li><strong>Call promise</strong>99% of calls answered in 60 seconds, every month, or that month is free.</li>
+          <li><strong>Payback Guarantee</strong>If revived jobs haven't covered what you've paid by day 90, your monthly pauses until they do. Still short at day 180, we refund the difference.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUESTIONS ===== -->
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow reveal">Questions owners ask</div>
+    <h2 class="h-section reveal" data-delay="1">Straight answers.</h2>
+    <ul class="hs-faq reveal" data-delay="2">
+      <li><strong>Do I have to change software?</strong><span>Usually not. We work with ServiceTitan, Jobber, Housecall Pro and most others, and confirm yours on the audit.</span></li>
+      <li><strong>What happens to my office staff?</strong><span>They keep doing what they do best. GRAIN covers nights, weekends and overflow, and does the follow-up nobody has time for.</span></li>
+      <li><strong>Will it sound like a robot?</strong><span>You'll hear it before your customers do. You approve the test calls, and you decide which calls go straight to your team.</span></li>
+      <li><strong>What does it cost?</strong><span>Greenhouse is $2,997 a month, with a founding rate of $1,497 a month through Dec 31, plus $1,500 setup and 10% of revived jobs. Nothing is due until it's live.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="cta-band-method">
+  <div class="cta-band-method-inner">
+    <div class="eyebrow reveal" style="justify-content:center;">Start here</div>
+    <h2 class="h-section reveal" data-delay="1">
+      Trace your <span class="italic-accent">real numbers.</span>
+    </h2>
+    <p class="reveal" data-delay="2">
+      The audit is 30 minutes. You leave with a written dollar figure of what your current response gaps are costing you each month, whether you become a client or not.
+    </p>
+    <button class="btn btn-primary reveal" data-delay="3" onclick="openCalendly(event)">
+      Apply for your audit <span class="btn-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-callout reveal">
+      <div>
+        <div class="eyebrow">The audit</div>
+        <p class="footer-callout-text">
+          Thirty minutes with the founder. We pull your real numbers and tell you what they're costing you. <strong>Whether or not you become a client.</strong>
+        </p>
+        <div class="footer-callout-meta">
+          <span>Free</span><span class="sep"></span><span>No pitch</span><span class="sep"></span><span>30 minutes</span>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="openCalendly(event)">
+        Apply for your audit <span class="btn-arrow">→</span>
+      </button>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-brand-block">
+        <div class="nav-brand">
+          <svg class="nav-brand-logo" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#F0ECDF"/></g></g></svg>
+          <span class="nav-brand-text">GRAIN</span>
+        </div>
+        <div class="footer-tag">PLANT · NURTURE · SCALE</div>
+        <p class="footer-mission">Done-for-you call answering, booking and follow-up for businesses that run on inbound demand. Nashville-based, working nationwide.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Method</div>
+        <a href="method.html">How it works</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="calculator.html">Calculator</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Engage</div>
+        <a href="pricing.html">Pricing</a>
+        <a href="apply.html">Apply</a>
+        <a href="mailto:johnny@grainmethod.com">Email</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Industries</div>
+        <a href="home-services.html">Home services</a>
+        <a href="industries.html#health">Health and fitness</a>
+        <a href="industries.html#real-estate">Real estate</a>
+        <a href="industries.html#multi-location">Multi-location</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Trust</div>
+        <a href="privacy.html">Privacy policy</a>
+        <a href="terms.html">Terms of service</a>
+        <a href="security.html">Security</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">© GRAIN Method 2026 · Nashville, TN</div>
+      <div class="footer-bottom-mid">
+        <span>Founding rate</span>
+        <span class="sep">·</span>
+        <span>through Dec 31</span>
+      </div>
+      <div class="footer-bottom-right"><a href="mailto:audit@grainmethod.com">audit@grainmethod.com</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== ASK GRAIN PILL ===== -->
+<button id="ask-pill" class="ask-pill" aria-label="Ask GRAIN, open question dialog">
+  <svg class="ask-pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 22V10"/><path d="M12 10c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 10c3 0 5-2 5-5-3 0-5 2-5 5z"/>
+  </svg>
+  Ask GRAIN
+  <span class="ask-pill-kbd">⌘K</span>
+</button>
+
+<script>
+/* ==================================================================
+   GRAIN METHOD — v5 SHARED SCRIPTS
+   Nav behavior, reveal observer, Ask GRAIN modal.
+   ================================================================== */
+
+(function () {
+  'use strict';
+
+  /* ---------- NAV ---------- */
+  function initNav() {
+    const nav = document.getElementById('main-nav');
+    if (!nav) return;
+    const toggle = nav.querySelector('.nav-toggle');
+    const links = nav.querySelector('.nav-links');
+
+    const onScroll = () => {
+      const sy = window.scrollY;
+      nav.classList.toggle('scrolled', sy > 24);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    if (toggle && links) {
+      toggle.addEventListener('click', () => {
+        toggle.classList.toggle('open');
+        links.classList.toggle('open');
+      });
+      links.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          toggle.classList.remove('open');
+          links.classList.remove('open');
+        });
+      });
+    }
+  }
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  function initReveal() {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(el => el.classList.add('visible'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => io.observe(el));
+  }
+
+  /* ---------- ANIMATED COUNT-UP ---------- */
+  function initCountUps() {
+    const els = document.querySelectorAll('[data-count]');
+    if (!els.length) return;
+    const animate = (el) => {
+      const target = parseFloat(el.dataset.count);
+      const duration = parseInt(el.dataset.duration || '1600', 10);
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = target * eased;
+        el.textContent = prefix + val.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = prefix + target.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + suffix;
+      };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    els.forEach(el => io.observe(el));
+  }
+
+  /* ---------- ASK GRAIN ---------- */
+  const ASK_EXAMPLES = [
+    { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every call, text and form in under 60 seconds, 24/7, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days." },
+    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. GRAIN is what happens after the phone rings: every lead answered, qualified, booked and followed up, done for you. We work with the CRM and marketing you already have." },
+    { q: "How fast can I be live?", a: "Greenhouse is live within 14 days of kickoff, or month 1 is free. Kickoff happens within 3 business days of signing, and you approve the test calls before anything goes live. Orchard and Estate roll out location by location on the same 14-day build." },
+    { q: "What does it cost?", a: "Greenhouse, one location: $2,997/month, with a founding rate of $1,497/month through Dec 31, plus $1,500 setup and 10% of revived jobs, only on jobs completed and paid. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
+    { q: "What are the guarantees?", a: "Three. Start Guarantee: $0 until it's live, live in 14 days or month 1 is free. Call promise: 99% of calls answered in 60 seconds every month, or that month is free. Payback Guarantee: if revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do, and if you're still short at day 180 we refund the difference. Each has conditions, listed on the pricing page." },
+    { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, painting, fencing, pools, landscaping and garage doors. If you're outside those, we'll tell you on the audit call and we won't take your money." },
+    { q: "Do you replace my team?", a: "No. We cover the gaps your team can't: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team handles what they're already good at." },
+    { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one during onboarding." },
+    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real lead flow, response times, close rates and unsold estimates, and trace the dollars you're losing each month. You leave with a written number, whether you become a client or not." },
+    { q: "Do you run ads?", a: "Yes. Sunlight runs your Google Local Services Ads, Google Search and Meta campaigns: $997/month or 15% of ad spend, whichever is higher. You pay the platforms directly and we never mark up spend. Every lead lands in your Greenhouse and gets answered in under 60 seconds." },
+    { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month." }
+  ];
+
+  function initAskGrain() {
+    if (document.getElementById('ask-overlay')) return;
+
+    // Build overlay structure
+    const overlay = document.createElement('div');
+    overlay.id = 'ask-overlay';
+    overlay.className = 'ask-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.innerHTML = `
+      <div class="ask-modal" role="document">
+        <div class="ask-modal-header">
+          <div class="ask-modal-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V10"/><path d="M12 10c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 10c3 0 5-2 5-5-3 0-5 2-5 5z"/><path d="M12 13c-2 0-4-1-4-3 2 0 4 1 4 3z"/><path d="M12 13c2 0 4-1 4-3-2 0-4 1-4 3z"/></svg>
+            Ask GRAIN
+          </div>
+          <button class="ask-modal-close" aria-label="Close" data-ask-close>×</button>
+        </div>
+        <div class="ask-input-wrap">
+          <input class="ask-input" type="text" id="ask-input" placeholder="Ask anything about GRAIN..." autocomplete="off" />
+        </div>
+        <div class="ask-suggestions" id="ask-suggestions"></div>
+        <div class="ask-answer" id="ask-answer">
+          <div class="ask-answer-eyebrow">Answer</div>
+          <div id="ask-answer-body"></div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    const suggestionsEl = overlay.querySelector('#ask-suggestions');
+    const input = overlay.querySelector('#ask-input');
+    const answer = overlay.querySelector('#ask-answer');
+    const answerBody = overlay.querySelector('#ask-answer-body');
+    const closeBtn = overlay.querySelector('[data-ask-close]');
+
+    // Render example questions
+    const label = document.createElement('div');
+    label.className = 'ask-suggestion-label';
+    label.textContent = 'Try one of these';
+    suggestionsEl.appendChild(label);
+    ASK_EXAMPLES.forEach((ex, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'ask-suggestion';
+      btn.textContent = ex.q;
+      btn.addEventListener('click', () => {
+        input.value = ex.q;
+        answerBody.textContent = ex.a;
+        answer.classList.add('show');
+        suggestionsEl.style.display = 'none';
+      });
+      suggestionsEl.appendChild(btn);
+    });
+
+    // Input behavior — show suggestions filtered, hide answer until match
+    input.addEventListener('input', (e) => {
+      const v = e.target.value.toLowerCase().trim();
+      answer.classList.remove('show');
+      suggestionsEl.style.display = '';
+      const buttons = suggestionsEl.querySelectorAll('.ask-suggestion');
+      let any = false;
+      buttons.forEach(b => {
+        const match = !v || b.textContent.toLowerCase().includes(v);
+        b.style.display = match ? '' : 'none';
+        if (match) any = true;
+      });
+      if (!any && v.length > 2) {
+        suggestionsEl.innerHTML = `
+          <div class="ask-suggestion-label">No exact match. Talk to us directly.</div>
+          <a class="ask-suggestion" href="apply.html">Apply for an audit call →</a>
+        `;
+      }
+    });
+
+    // Open / close behavior
+    const open = () => {
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('no-scroll');
+      setTimeout(() => input.focus(), 100);
+    };
+    const close = () => {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('no-scroll');
+    };
+
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        overlay.classList.contains('open') ? close() : open();
+      }
+    });
+
+    // Wire up the pill
+    const pill = document.getElementById('ask-pill');
+    if (pill) pill.addEventListener('click', open);
+  }
+
+  /* ---------- COMPOUNDING ADVANTAGE — viz event counter ---------- */
+  function initVizCount2() {
+    const el = document.getElementById('viz2-event-count');
+    if (!el) return;
+    let n = 12847;
+    const fmt = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    setInterval(() => {
+      n += 1 + Math.floor(Math.random() * 3);
+      el.textContent = fmt(n);
+    }, 2400);
+  }
+
+  /* ---------- INIT ---------- */
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+  ready(() => {
+    initNav();
+    initReveal();
+    initCountUps();
+    initVizCount2();
+    initAskGrain();
+  });
+})();
+
+</script>
+
+<script>
+/* Footer status heartbeat — ticks seconds, flashes every 12s. */
+(function () {
+  const el = document.getElementById('footer-heartbeat');
+  if (!el) return;
+  const mid = el.closest('.footer-bottom-mid');
+  let sec = 0;
+  setInterval(() => {
+    sec++;
+    if (sec >= 12) {
+      sec = 0;
+      if (mid) {
+        mid.classList.add('flash');
+        setTimeout(() => mid.classList.remove('flash'), 700);
+      }
+    }
+    el.textContent = sec + 's';
+  }, 1000);
+})();
+</script>
+</body>
+
+</html>
