@@ -66,27 +66,12 @@ export default function LoginPage() {
       <div className="gl-grid" aria-hidden="true" />
       <div className="gl-glow" aria-hidden="true" />
 
-      <section className="gl-brand">
+      <section className="gl-panel">
         <a className="gl-logo" href="/" aria-label="GRAIN Method home">
-          <Mark size={44} />
+          <Mark size={88} grow />
           <span>GRAIN</span>
         </a>
-        <div className="gl-hero">
-          <Mark size={168} grow />
-          <p className="gl-eyebrow">The Greenhouse</p>
-          <h2>Every call answered. <em>Every job booked.</em></h2>
-          <ul className="gl-lines">
-            <li><b>60s</b>Every call, text and form answered</li>
-            <li><b>90d</b>Every estimate followed up</li>
-            <li><b>24/7</b>Booked straight onto the calendar</li>
-          </ul>
-        </div>
-        <p className="gl-foot">PLANT · NURTURE · SCALE</p>
-      </section>
-
-      <section className="gl-panel">
         <div className="gl-card">
-          <p className="gl-eyebrow">Client and team sign-in</p>
           <h1>Sign <em>in.</em></h1>
           {state === "checking" && <p className="gl-muted">One second.</p>}
           {state === "sent" && (
