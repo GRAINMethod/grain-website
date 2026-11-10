@@ -74,7 +74,7 @@ export default function LoginPage() {
         <div className="gl-hero">
           <Mark size={168} grow />
           <p className="gl-eyebrow">The Greenhouse</p>
-          <h2>Every lead, <em>planted.</em></h2>
+          <h2>Every call answered. <em>Every job booked.</em></h2>
           <ul className="gl-lines">
             <li><b>60s</b>Every call, text and form answered</li>
             <li><b>90d</b>Every estimate followed up</li>
