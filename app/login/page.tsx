@@ -2,6 +2,25 @@
 
 import { useEffect, useState } from "react";
 import { browserClient } from "@/lib/supabase";
+import "./login.css";
+
+/** The greenhouse mark from grainmethod.com. `grow` animates the sprout in. */
+function Mark({ size, grow }: { size: number; grow?: boolean }) {
+  return (
+    <svg className={grow ? "gl-mark grow" : "gl-mark"} width={size} height={size} viewBox="0 0 400 400" aria-hidden="true">
+      <g transform="translate(90,75)">
+        <g transform="translate(110,230)">
+          <path className="gl-stem" d="M 0 -9 L 0 -115" stroke="#9AAF7A" strokeWidth="7" fill="none" strokeLinecap="round" />
+          <path className="gl-leaf l1" d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2" />
+          <path className="gl-leaf l2" d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2" />
+          <path className="gl-leaf l3" d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2" />
+          <path className="gl-leaf l4" d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2" />
+        </g>
+        <path className="gl-house" d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" strokeWidth="18" />
+      </g>
+    </svg>
+  );
+}
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -43,26 +62,58 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="hq hq-login">
-      <a className="hq-brand" href="/">GRAIN</a>
-      <h1>Sign <em>in.</em></h1>
-      {state === "checking" && <p className="hq-muted">One second.</p>}
-      {state === "sent" && <p>Check {email} for a sign-in link. Open it on this device.</p>}
-      {state === "nomatch" && (
-        <>
-          <p>You&apos;re signed in, but this email isn&apos;t linked to a GRAIN account yet. Text Johnny and he&apos;ll connect it.</p>
-          <button className="hq-btn ghost" onClick={async () => { await browserClient().auth.signOut(); setState("idle"); }}>Use a different email</button>
-        </>
-      )}
-      {(state === "idle" || state === "sending") && (
-        <form onSubmit={send} className="hq-form">
-          <label htmlFor="email">Email</label>
-          <input id="email" type="email" required autoComplete="email" inputMode="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com" />
-          <button className="hq-btn" disabled={state === "sending"}>{state === "sending" ? "Sending" : "Email me a sign-in link"}</button>
-          {error && <p className="hq-error">{error}</p>}
-          <p className="hq-muted">No password. The link signs you in.</p>
-        </form>
-      )}
+    <main className="gl">
+      <div className="gl-grid" aria-hidden="true" />
+      <div className="gl-glow" aria-hidden="true" />
+
+      <section className="gl-brand">
+        <a className="gl-logo" href="/" aria-label="GRAIN Method home">
+          <Mark size={44} />
+          <span>GRAIN</span>
+        </a>
+        <div className="gl-hero">
+          <Mark size={168} grow />
+          <p className="gl-eyebrow">The Greenhouse</p>
+          <h2>Every lead, <em>planted.</em></h2>
+          <ul className="gl-lines">
+            <li><b>60s</b>Every call, text and form answered</li>
+            <li><b>90d</b>Every estimate followed up</li>
+            <li><b>24/7</b>Booked straight onto the calendar</li>
+          </ul>
+        </div>
+        <p className="gl-foot">PLANT · NURTURE · SCALE</p>
+      </section>
+
+      <section className="gl-panel">
+        <div className="gl-card">
+          <p className="gl-eyebrow">Client and team sign-in</p>
+          <h1>Sign <em>in.</em></h1>
+          {state === "checking" && <p className="gl-muted">One second.</p>}
+          {state === "sent" && (
+            <div className="gl-sent">
+              <p className="gl-sent-t">Check your inbox.</p>
+              <p>We sent a sign-in link to <b>{email}</b>. Open it on this device.</p>
+              <button className="gl-link" onClick={() => setState("idle")}>Use a different email</button>
+            </div>
+          )}
+          {state === "nomatch" && (
+            <>
+              <p>You&apos;re signed in, but this email isn&apos;t linked to a GRAIN account yet. Text Johnny and he&apos;ll connect it.</p>
+              <button className="gl-btn ghost" onClick={async () => { await browserClient().auth.signOut(); setState("idle"); }}>Use a different email</button>
+            </>
+          )}
+          {(state === "idle" || state === "sending") && (
+            <form onSubmit={send} className="gl-form">
+              <label htmlFor="email">Work email</label>
+              <input id="email" type="email" required autoComplete="email" inputMode="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com" />
+              <button className="gl-btn" disabled={state === "sending"}>{state === "sending" ? "Sending" : "Email me a sign-in link"} <span aria-hidden="true">→</span></button>
+              {error && <p className="gl-error">{error}</p>}
+              <p className="gl-muted">No password. The link signs you in.</p>
+            </form>
+          )}
+        </div>
+        <p className="gl-help">Not a client yet? <a href="/apply">Apply for your free audit</a></p>
+      </section>
     </main>
   );
 }
