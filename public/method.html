@@ -1282,26 +1282,35 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
 .cta-band-method h2 { margin: 22px 0 24px; }
 .cta-band-method p { font-size: 18px; color: rgba(240,236,223,0.72); line-height: 1.55; margin-bottom: 36px; max-width: 600px; margin-left: auto; margin-right: auto; }
 </style>
-<script>try{if(!sessionStorage.getItem('grainIntro')){document.documentElement.classList.add('logo-intro');sessionStorage.setItem('grainIntro','1');}}catch(e){}</script>
+<script>try{if(!sessionStorage.getItem('grainIntro')){var d=document.documentElement;d.classList.add('logo-intro');sessionStorage.setItem('grainIntro','1');var started=false,go=function(){if(started)return;started=true;requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('logo-go');});});};if(document.readyState==='complete'){go();}else{window.addEventListener('load',go);setTimeout(go,1500);}}}catch(e){}</script>
 <style>
 @media (max-width: 880px) {
   .nav-brand-logo { width: 34px; height: 34px; }
   .nav-brand-text { font-size: 19px; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .logo-intro .nav .nav-brand-logo path[data-stroke] { stroke-dasharray: 740; stroke-dashoffset: 740; animation: grain-draw 1s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards; }
-  .logo-intro .nav .nav-brand-logo g g path { transform-box: fill-box; opacity: 0; animation: grain-grow 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-  .logo-intro .nav .nav-brand-logo g g path:nth-child(6) { transform-origin: 50% 100%; animation-delay: 0.85s; }
-  .logo-intro .nav .nav-brand-logo g g path:nth-child(1) { transform-origin: 50% 100%; animation-delay: 0.95s; }
-  .logo-intro .nav .nav-brand-logo g g path:nth-child(2) { transform-origin: 100% 50%; animation-delay: 1.1s; }
-  .logo-intro .nav .nav-brand-logo g g path:nth-child(3) { transform-origin: 0% 50%; animation-delay: 1.18s; }
-  .logo-intro .nav .nav-brand-logo g g path:nth-child(4) { transform-origin: 100% 100%; animation-delay: 1.26s; }
-  .logo-intro .nav .nav-brand-logo g g path:nth-child(5) { transform-origin: 0% 100%; animation-delay: 1.3s; }
-  .logo-intro .nav .nav-brand-text { opacity: 0; animation: grain-fade 0.6s ease 0.55s forwards; }
+  .logo-intro .nav .nav-brand-logo path[data-stroke] { stroke-dasharray: 740; stroke-dashoffset: 740; will-change: stroke-dashoffset; }
+  .logo-intro .nav .nav-brand-logo g g path { opacity: 0; transform-box: fill-box; will-change: opacity, transform; }
+  .logo-intro .nav .nav-brand-text { opacity: 0; will-change: opacity, transform; }
+  .logo-go .nav .nav-brand-logo path[data-stroke] { animation: grain-draw 1.3s cubic-bezier(0.45, 0, 0.15, 1) forwards; }
+  .logo-go .nav .nav-brand-logo g g path { animation: grain-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+  .logo-go .nav .nav-brand-logo g g path:nth-child(6) { transform-origin: 50% 100%; animation-delay: 0.75s; }
+  .logo-go .nav .nav-brand-logo g g path:nth-child(1) { transform-origin: 50% 100%; animation-name: grain-stem; animation-delay: 0.85s; }
+  .logo-go .nav .nav-brand-logo g g path:nth-child(2) { transform-origin: 100% 50%; animation-delay: 1.05s; }
+  .logo-go .nav .nav-brand-logo g g path:nth-child(3) { transform-origin: 0% 50%; animation-delay: 1.13s; }
+  .logo-go .nav .nav-brand-logo g g path:nth-child(4) { transform-origin: 100% 100%; animation-delay: 1.21s; }
+  .logo-go .nav .nav-brand-logo g g path:nth-child(5) { transform-origin: 0% 100%; animation-delay: 1.25s; }
+  .logo-go .nav .nav-brand-text { animation: grain-fade 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards; }
 }
 @keyframes grain-draw { to { stroke-dashoffset: 0; } }
-@keyframes grain-grow { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
-@keyframes grain-fade { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
+@keyframes grain-grow { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: scale(1); } }
+@keyframes grain-stem { from { opacity: 0; transform: scaleY(0.25); } to { opacity: 1; transform: scaleY(1); } }
+@keyframes grain-fade { from { opacity: 0; transform: translateX(-4px); } to { opacity: 1; transform: none; } }
+.client-strip { background: var(--ink-deeper); border-top: 1px solid var(--line-dark); padding: 18px 20px; display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(240, 236, 223, 0.6); }
+.client-strip a { color: var(--moss-light); display: inline-flex; align-items: center; gap: 6px; line-height: 1; transition: color 0.2s; }
+.client-strip a:hover { color: var(--bg); }
+.client-strip svg { width: 13px; height: 13px; }
+.client-strip + .footer { border-top: 0; }
 </style>
 </head>
 <body>
@@ -1549,7 +1558,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
             <line class="viz2-line" x1="280" y1="270" x2="100" y2="80"/>
             <circle class="viz2-pulse" cx="100" cy="80" r="6"/>
             <circle class="viz2-node" cx="100" cy="80" r="24"/>
-            <text class="viz2-label" x="100" y="84" text-anchor="middle" fill="#F0ECDF" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700">ROOF</text>
+            <text class="viz2-label" x="100" y="46" text-anchor="middle" fill="#F0ECDF" fill-opacity="0.85" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" letter-spacing="1">ROOFING</text>
             <circle class="viz2-burst" cx="280" cy="270" r="3"/>
             <circle class="viz2-hitbox" cx="100" cy="80" r="44"/>
           </g>
@@ -1557,7 +1566,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
             <line class="viz2-line" x1="280" y1="270" x2="280" y2="60"/>
             <circle class="viz2-pulse" cx="280" cy="60" r="6" style="animation-delay:0.4s"/>
             <circle class="viz2-node" cx="280" cy="60" r="24"/>
-            <text class="viz2-label" x="280" y="64" text-anchor="middle" fill="#F0ECDF" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700">HVAC</text>
+            <text class="viz2-label" x="280" y="26" text-anchor="middle" fill="#F0ECDF" fill-opacity="0.85" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" letter-spacing="1">HVAC</text>
             <circle class="viz2-burst" cx="280" cy="270" r="3"/>
             <circle class="viz2-hitbox" cx="280" cy="60" r="44"/>
           </g>
@@ -1565,7 +1574,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
             <line class="viz2-line" x1="280" y1="270" x2="460" y2="80"/>
             <circle class="viz2-pulse" cx="460" cy="80" r="6" style="animation-delay:0.8s"/>
             <circle class="viz2-node" cx="460" cy="80" r="24"/>
-            <text class="viz2-label" x="460" y="84" text-anchor="middle" fill="#F0ECDF" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700">PLUM</text>
+            <text class="viz2-label" x="460" y="46" text-anchor="middle" fill="#F0ECDF" fill-opacity="0.85" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" letter-spacing="1">PLUMBING</text>
             <circle class="viz2-burst" cx="280" cy="270" r="3"/>
             <circle class="viz2-hitbox" cx="460" cy="80" r="44"/>
           </g>
@@ -1573,7 +1582,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
             <line class="viz2-line" x1="280" y1="270" x2="510" y2="220"/>
             <circle class="viz2-pulse" cx="510" cy="220" r="6" style="animation-delay:1.2s"/>
             <circle class="viz2-node" cx="510" cy="220" r="24"/>
-            <text class="viz2-label" x="510" y="224" text-anchor="middle" fill="#F0ECDF" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700">ELEC</text>
+            <text class="viz2-label" x="510" y="264" text-anchor="middle" fill="#F0ECDF" fill-opacity="0.85" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" letter-spacing="1">ELECTRICAL</text>
             <circle class="viz2-burst" cx="280" cy="270" r="3"/>
             <circle class="viz2-hitbox" cx="510" cy="220" r="44"/>
           </g>
@@ -1581,7 +1590,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
             <line class="viz2-line" x1="280" y1="270" x2="490" y2="380"/>
             <circle class="viz2-pulse" cx="490" cy="380" r="6" style="animation-delay:1.6s"/>
             <circle class="viz2-node" cx="490" cy="380" r="24"/>
-            <text class="viz2-label" x="490" y="384" text-anchor="middle" fill="#F0ECDF" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700">GARAGE</text>
+            <text class="viz2-label" x="490" y="424" text-anchor="middle" fill="#F0ECDF" fill-opacity="0.85" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" letter-spacing="1">GARAGE DOORS</text>
             <circle class="viz2-burst" cx="280" cy="270" r="3"/>
             <circle class="viz2-hitbox" cx="490" cy="380" r="44"/>
           </g>
@@ -1589,7 +1598,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
             <line class="viz2-line" x1="280" y1="270" x2="400" y2="480"/>
             <circle class="viz2-pulse" cx="400" cy="480" r="6" style="animation-delay:2.0s"/>
             <circle class="viz2-node" cx="400" cy="480" r="24"/>
-            <text class="viz2-label" x="400" y="484" text-anchor="middle" fill="#F0ECDF" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700">POOL</text>
+            <text class="viz2-label" x="400" y="522" text-anchor="middle" fill="#F0ECDF" fill-opacity="0.85" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" letter-spacing="1">POOLS</text>
             <circle class="viz2-burst" cx="280" cy="270" r="3"/>
             <circle class="viz2-hitbox" cx="400" cy="480" r="44"/>
           </g>
@@ -1597,7 +1606,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
             <line class="viz2-line" x1="280" y1="270" x2="200" y2="490"/>
             <circle class="viz2-pulse" cx="200" cy="490" r="6" style="animation-delay:2.4s"/>
             <circle class="viz2-node" cx="200" cy="490" r="24"/>
-            <text class="viz2-label" x="200" y="494" text-anchor="middle" fill="#F0ECDF" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700">FENC</text>
+            <text class="viz2-label" x="200" y="532" text-anchor="middle" fill="#F0ECDF" fill-opacity="0.85" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" letter-spacing="1">FENCING</text>
             <circle class="viz2-burst" cx="280" cy="270" r="3"/>
             <circle class="viz2-hitbox" cx="200" cy="490" r="44"/>
           </g>
@@ -1605,7 +1614,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
             <line class="viz2-line" x1="280" y1="270" x2="80" y2="400"/>
             <circle class="viz2-pulse" cx="80" cy="400" r="6" style="animation-delay:2.8s"/>
             <circle class="viz2-node" cx="80" cy="400" r="24"/>
-            <text class="viz2-label" x="80" y="404" text-anchor="middle" fill="#F0ECDF" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700">PAINT</text>
+            <text class="viz2-label" x="80" y="444" text-anchor="middle" fill="#F0ECDF" fill-opacity="0.85" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" letter-spacing="1">PAINTING</text>
             <circle class="viz2-burst" cx="280" cy="270" r="3"/>
             <circle class="viz2-hitbox" cx="80" cy="400" r="44"/>
           </g>
@@ -1613,7 +1622,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
             <line class="viz2-line" x1="280" y1="270" x2="50" y2="250"/>
             <circle class="viz2-pulse" cx="50" cy="250" r="6" style="animation-delay:3.2s"/>
             <circle class="viz2-node" cx="50" cy="250" r="24"/>
-            <text class="viz2-label" x="50" y="254" text-anchor="middle" fill="#F0ECDF" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700">LAND</text>
+            <text class="viz2-label" x="50" y="294" text-anchor="middle" fill="#F0ECDF" fill-opacity="0.85" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" letter-spacing="1">LANDSCAPING</text>
             <circle class="viz2-burst" cx="280" cy="270" r="3"/>
             <circle class="viz2-hitbox" cx="50" cy="250" r="44"/>
           </g>
@@ -1642,7 +1651,8 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
 
           <!-- Center hub -->
           <circle class="viz2-node center" cx="280" cy="270" r="48"/>
-          <text x="280" y="278" text-anchor="middle" fill="#F0ECDF" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" letter-spacing="2.5">GRAIN</text>
+          <g transform="translate(280,258) scale(0.2) translate(-200,-195)"><g transform="translate(90,75)"><path d="M 110 10 L 210 90 L 210 230 L 10 230 L 10 90 Z" stroke="#F0ECDF" fill="none" stroke-width="18"/><g transform="translate(110,230)"><path d="M 0 0 L 0 -115" stroke="#9AAF7A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M -2 -55 Q -32 -68 -42 -55 Q -36 -42 -2 -48 Z" fill="#BFD0A2"/><path d="M 2 -80 Q 34 -93 44 -80 Q 38 -67 2 -73 Z" fill="#BFD0A2"/><path d="M -1 -115 Q -18 -128 -22 -118 Q -14 -108 -1 -110 Z" fill="#BFD0A2"/><path d="M 1 -115 Q 18 -128 22 -118 Q 14 -108 1 -110 Z" fill="#BFD0A2"/><path d="M -32 0 Q 0 -14 32 0 Z" fill="#F0ECDF"/></g></g></g>
+          <text x="280" y="300" text-anchor="middle" fill="#F0ECDF" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" letter-spacing="2.5">GRAIN</text>
         </svg>
         <div class="viz2-caption">
           <span class="viz2-caption-dot"></span>
@@ -1652,7 +1662,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
       <div class="network-feature-text">
         <h3 class="reveal" data-delay="1">You get the playbook. Never anyone else's data.</h3>
         <p class="reveal" data-delay="2"><strong>Your playbook gets sharper with every client,</strong> not a blank script.</p>
-        <p class="reveal" data-delay="3"><strong>Your data stays yours.</strong> No client ever sees another client's numbers, and we never take on two direct competitors in the same area.</p>
+        <p class="reveal" data-delay="3"><strong>Your data stays private.</strong> No client ever sees another client's numbers, and we never take on two direct competitors in the same area.</p>
       </div>
     </div>
   </div>
@@ -1709,6 +1719,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
 </section>
 
 <!-- ===== FOOTER ===== -->
+<div class="client-strip">Already a client?<a href="/login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>Sign in &rarr;</a></div>
 <footer class="footer">
   <div class="wrap">
     <div class="footer-grid">
