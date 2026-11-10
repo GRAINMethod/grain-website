@@ -1,0 +1,72 @@
+/* GRAIN sign-in. Same tokens as grainmethod.com. */
+.gl { --ink:#1C2420; --deep:#141A17; --soft:#2A332E; --cream:#F0ECDF; --moss:#9AAF7A; --moss-l:#BFD0A2; --moss-d:#667B4A; --line:rgba(240,236,223,.10);
+  position: relative; min-height: 100vh; display: grid; grid-template-columns: 1.1fr 1fr; overflow: hidden;
+  background: var(--deep); color: var(--cream); font-family: Inter, system-ui, sans-serif; }
+.gl * { box-sizing: border-box; }
+.gl em { font-family: Fraunces, serif; font-style: italic; font-weight: 400; color: var(--moss); letter-spacing: 0; }
+.gl-grid { position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px; mask-image: radial-gradient(ellipse at 30% 50%, #000 20%, transparent 75%); opacity: .55; }
+.gl-glow { position: absolute; width: 760px; height: 760px; left: -160px; top: 50%; transform: translateY(-50%); pointer-events: none;
+  background: radial-gradient(circle, rgba(154,175,122,.16), transparent 62%); animation: gl-breathe 9s ease-in-out infinite; }
+@keyframes gl-breathe { 0%,100% { opacity: .7; transform: translateY(-50%) scale(1); } 50% { opacity: 1; transform: translateY(-50%) scale(1.06); } }
+
+.gl-brand { position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 40px 56px; background: var(--ink); border-right: 1px solid var(--line); }
+.gl-logo { display: inline-flex; align-items: center; gap: 10px; color: var(--cream); text-decoration: none; font-weight: 900; font-size: 22px; letter-spacing: .02em; }
+.gl-hero { max-width: 460px; }
+.gl-eyebrow { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--moss); margin: 0 0 14px; display: flex; align-items: center; gap: 10px; }
+.gl-eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--moss); box-shadow: 0 0 0 4px rgba(154,175,122,.18); }
+.gl-hero h2 { font-weight: 900; font-size: clamp(40px, 4.6vw, 60px); letter-spacing: -.035em; line-height: 1; margin: 0 0 32px; }
+.gl-hero .gl-mark { display: block; margin: 0 0 28px -18px; filter: drop-shadow(0 0 40px rgba(154,175,122,.18)); }
+.gl-lines { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+.gl-lines li { display: flex; align-items: baseline; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); color: rgba(240,236,223,.78); font-size: 15px; }
+.gl-lines b { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px; color: var(--moss-l); min-width: 44px; }
+.gl-foot { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: .3em; color: rgba(240,236,223,.4); margin: 0; }
+
+.gl-panel { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 28px; gap: 22px; }
+.gl-card { width: 100%; max-width: 420px; background: rgba(28,36,32,.72); border: 1px solid rgba(240,236,223,.14); padding: 40px 36px;
+  backdrop-filter: blur(8px); animation: gl-rise .7s cubic-bezier(.2,.7,.2,1) both .15s; }
+@keyframes gl-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.gl-card h1 { font-weight: 900; font-size: 48px; letter-spacing: -.035em; line-height: 1; margin: 0 0 26px; }
+.gl-card p { margin: 0 0 16px; line-height: 1.55; color: rgba(240,236,223,.85); }
+.gl-form { display: grid; gap: 10px; }
+.gl-form label { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(240,236,223,.6); }
+.gl-form input { width: 100%; font: inherit; font-size: 16px; color: var(--cream); background: var(--deep); border: 1px solid rgba(240,236,223,.18); padding: 14px 14px; outline: none; transition: border-color .2s, box-shadow .2s; }
+.gl-form input:focus { border-color: var(--moss); box-shadow: 0 0 0 3px rgba(154,175,122,.18); }
+.gl-btn { margin-top: 6px; font: inherit; font-weight: 700; font-size: 15px; color: var(--ink); background: var(--moss); border: 0; padding: 15px 18px; cursor: pointer; transition: background .2s, transform .2s; }
+.gl-btn span { display: inline-block; transition: transform .2s; }
+.gl-btn:hover { background: var(--moss-l); } .gl-btn:hover span { transform: translateX(3px); }
+.gl-btn:disabled { opacity: .7; cursor: default; }
+.gl-btn.ghost { background: transparent; color: var(--cream); border: 1px solid rgba(240,236,223,.25); }
+.gl-muted { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px !important; letter-spacing: .04em; color: rgba(240,236,223,.5) !important; margin: 6px 0 0 !important; }
+.gl-error { color: #E3A98C !important; font-size: 14px; margin: 4px 0 0 !important; }
+.gl-sent { border-left: 3px solid var(--moss); padding-left: 16px; }
+.gl-sent-t { font-weight: 800; font-size: 18px; color: var(--cream) !important; margin-bottom: 6px !important; }
+.gl-link { background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: var(--moss-l); text-decoration: underline; cursor: pointer; }
+.gl-help { font-size: 14px; color: rgba(240,236,223,.55); margin: 0; }
+.gl-help a { color: var(--moss-l); }
+
+/* the sprout grows in */
+.gl-mark.grow .gl-house { stroke-dasharray: 760; stroke-dashoffset: 760; animation: gl-draw 1.4s ease-out forwards .1s; }
+.gl-mark.grow .gl-stem { stroke-dasharray: 120; stroke-dashoffset: 120; animation: gl-draw .9s ease-out forwards 1.1s; }
+.gl-mark.grow .gl-leaf { transform-box: fill-box; transform: scale(0); opacity: 0; animation: gl-leaf .6s cubic-bezier(.3,1.5,.5,1) forwards; }
+.gl-mark.grow .l1 { transform-origin: right center; animation-delay: 1.5s; }
+.gl-mark.grow .l2 { transform-origin: left center; animation-delay: 1.75s; }
+.gl-mark.grow .l3 { transform-origin: right center; animation-delay: 2s; }
+.gl-mark.grow .l4 { transform-origin: left center; animation-delay: 2s; }
+@keyframes gl-draw { to { stroke-dashoffset: 0; } }
+@keyframes gl-leaf { to { transform: scale(1); opacity: 1; } }
+.gl-mark.grow .gl-stem, .gl-mark.grow .gl-leaf { animation-fill-mode: forwards; }
+
+@media (max-width: 900px) {
+  .gl { grid-template-columns: 1fr; }
+  .gl-brand { padding: 24px 22px 8px; border-right: 0; background: transparent; }
+  .gl-hero, .gl-foot { display: none; }
+  .gl-panel { justify-content: flex-start; padding: 6vh 20px 40px; }
+  .gl-card { padding: 30px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gl *, .gl-glow { animation: none !important; }
+  .gl-mark.grow .gl-house, .gl-mark.grow .gl-stem { stroke-dashoffset: 0; }
+  .gl-mark.grow .gl-leaf { transform: none; opacity: 1; }
+}
