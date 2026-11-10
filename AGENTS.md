@@ -4,7 +4,7 @@ GRAIN Method: the done-for-you system between a business's leads and its booked 
 
 ## How the site is built
 
-- **The marketing site is Johnny's hand-built HTML in `public/`.** Edit those files directly. Do not redesign or "port" them: the dark sections, animations, ticker, GRAIN letter engines, network diagram, Greenhouse Dashboard mockup, calculator and three-tier pricing are the brand.
+- **The marketing site is Johnny's hand-built HTML in `public/`.** Edit those files directly. Do not redesign or "port" them: the dark sections, animations, ticker, GRAIN letter engines, network diagram (Method page only; Johnny moved the compounding section off the homepage), Greenhouse Dashboard mockup, calculator and three-tier pricing are the brand.
 - Pages: `index`, `method`, `industries`, `home-services`, `pricing`, `calculator`, `dashboard`, `apply`, `privacy`, `terms`, `security`. Clean URLs (`/pricing`, `/method`, ...) map onto the `.html` files through the `PAGES` list in `next.config.ts`. Add a page there when you add a file.
 - Next.js 16 runs underneath for `/api/*` routes, `/login` and `/hq` (GRAIN HQ, staff only), built on the same visual language (tokens below).
 - Every page carries the same inline CSS tokens, nav, footer and `ASK_EXAMPLES` (Ask GRAIN answers). Change those in every file at once.
@@ -36,8 +36,8 @@ ink #1C2420 · ink-deeper #141A17 · ink-soft #2A332E · cream #F0ECDF · paper 
 
 ## Voice
 
-- Master brand (homepage, method, footer, industries): broad, premium, human. Say "business" and "client". Lead with outcomes: answered, booked, followed up, revived.
-- Industry pages speak their own dialect. Home services: "shop", "trade", "jobs", "estimates". `/industries` lists five, picked because revenue starts with a call, the ticket covers the fee and there are unsold quotes to revive: home services, med spas and dental, auto repair and collision, real estate and property management, multi-location groups. Other industries get their own words there before they get a page.
+- The site speaks to home service owners (decided Nov 10, 2026): one industry until there is a client in another. Premium and human. Lead with outcomes: answered, booked, followed up, revived, then growth. Stop the leak first, more leads second, so GRAIN never reads as one more agency.
+- Home services words: "shop", "trade", "jobs", "estimates". `/industries` is built but unlinked and `noindex` (not in the nav or footer). It lists five tested verticals: home services, med spas and dental, auto repair and collision, real estate and property management, multi-location groups. Link a row back in only when GRAIN has a client there, with their result. The footer keeps one quiet line: "Not in home services? Apply and we'll tell you if it fits."
 - No buzzwords and no invented product names for the sales call: it's a "free audit", not a "Leak Check". Short sentences, fewer words.
 - The dashboard is the **Greenhouse Dashboard** (it used to be Mission Control).
 - No competitor names on the site.
