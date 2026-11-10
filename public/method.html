@@ -1319,7 +1319,6 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
 <style>
 .vault .v-link { stroke-linecap: round; transition: opacity 0.35s ease, stroke 0.35s ease; }
 .vault .v-hub-link { stroke: rgba(154, 175, 122, 0.42); stroke-width: 1; }
-.vault .v-cross { stroke: rgba(240, 236, 223, 0.10); stroke-width: 0.8; }
 .vault .v-sat-link { stroke: rgba(240, 236, 223, 0.14); stroke-width: 0.7; }
 .vault .v-particle { fill: var(--moss-light); opacity: 0; }
 .vault .v-sat { fill: rgba(240, 236, 223, 0.38); transition: opacity 0.35s ease; }
@@ -1336,7 +1335,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
 .vault .v-node.on .v-dot { fill: #F0ECDF; }
 .vault .v-node.on .v-label { fill: #F0ECDF; }
 .vault .v-link.on.v-hub-link { stroke: var(--moss-light); }
-.vault .v-link.on.v-cross, .vault .v-link.on.v-sat-link { stroke: rgba(191, 208, 162, 0.55); }
+.vault .v-link.on.v-sat-link { stroke: rgba(191, 208, 162, 0.55); }
 @media (prefers-reduced-motion: reduce) { .vault .v-hub { animation: none; } }
 </style>
 </head>
@@ -1582,15 +1581,6 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
             <line class="v-link v-hub-link" data-a="hub" data-b="6" x1="280" y1="270" x2="200" y2="490"/>
             <line class="v-link v-hub-link" data-a="hub" data-b="7" x1="280" y1="270" x2="80" y2="400"/>
             <line class="v-link v-hub-link" data-a="hub" data-b="8" x1="280" y1="270" x2="50" y2="250"/>
-            <line class="v-link v-cross" data-a="0" data-b="1" x1="100" y1="80" x2="280" y2="60"/>
-            <line class="v-link v-cross" data-a="1" data-b="2" x1="280" y1="60" x2="460" y2="80"/>
-            <line class="v-link v-cross" data-a="2" data-b="3" x1="460" y1="80" x2="510" y2="220"/>
-            <line class="v-link v-cross" data-a="3" data-b="4" x1="510" y1="220" x2="490" y2="380"/>
-            <line class="v-link v-cross" data-a="4" data-b="5" x1="490" y1="380" x2="400" y2="480"/>
-            <line class="v-link v-cross" data-a="5" data-b="6" x1="400" y1="480" x2="200" y2="490"/>
-            <line class="v-link v-cross" data-a="6" data-b="7" x1="200" y1="490" x2="80" y2="400"/>
-            <line class="v-link v-cross" data-a="7" data-b="8" x1="80" y1="400" x2="50" y2="250"/>
-            <line class="v-link v-cross" data-a="8" data-b="0" x1="50" y1="250" x2="100" y2="80"/>
             <line class="v-link v-sat-link" data-a="0" data-b="0.0" x1="100" y1="80" x2="64" y2="72"/>
             <line class="v-link v-sat-link" data-a="0" data-b="0.1" x1="100" y1="80" x2="86" y2="48"/>
             <line class="v-link v-sat-link" data-a="1" data-b="1.0" x1="280" y1="60" x2="244" y2="50"/>
