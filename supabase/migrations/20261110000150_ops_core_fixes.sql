@@ -7,7 +7,7 @@
 alter table public.prospects drop constraint prospects_trade_check;
 alter table public.prospects add constraint prospects_trade_check check (trade is null or trade in (
   'hvac','plumbing','roofing','electrical','remodeling','painting','fencing','pools','landscaping','garage_doors',
-  'health_fitness','real_estate','tech','other'));
+  'health_fitness','real_estate','auto','tech','other'));
 
 -- An after-hours test can be picked up by someone who is not the owner.
 alter table public.prospect_touches drop constraint prospect_touches_outcome_check;
@@ -52,7 +52,7 @@ begin
   begin
     t := case
       when raw in ('hvac','plumbing','roofing','electrical','remodeling','painting','fencing','pools','landscaping','garage_doors',
-                   'health_fitness','real_estate','tech') then raw
+                   'health_fitness','real_estate','auto','tech') then raw
       when raw = '' then null
       else 'other' end;
     band := case

@@ -12,7 +12,7 @@ import { browserClient } from "@/lib/supabase";
 type Row = Record<string, any>;
 
 const STAGES = ["sourced", "qualified", "contacted", "conversation", "audit_booked", "audit_held", "proposal", "won", "lost", "nurture"];
-const TRADES = ["hvac", "plumbing", "roofing", "electrical", "remodeling", "painting", "fencing", "pools", "landscaping", "garage_doors", "health_fitness", "real_estate", "tech", "other"];
+const TRADES = ["hvac", "plumbing", "roofing", "electrical", "remodeling", "painting", "fencing", "pools", "landscaping", "garage_doors", "health_fitness", "real_estate", "auto", "tech", "other"];
 const CHANNELS = ["call", "sms", "email", "linkedin", "loom", "in_person", "after_hours_test"];
 const OUTCOMES = ["no_answer", "voicemail", "conversation", "audit_booked", "follow_up", "not_interested"];
 const TABS = ["Today", "Pipeline", "Clients", "Updates", "System"] as const;

@@ -1,6 +1,6 @@
 # grainmethod.com: notes for Cursor, Claude Code and anyone editing this repo
 
-GRAIN Method: done-for-you lead response. Every inquiry answered in under 60 seconds, booked, followed up and revived. Home services is the first industry. Founder Johnny Dibb, Nashville.
+GRAIN Method: the done-for-you system between a business's leads and its booked revenue. Every call, text and form answered in under 60 seconds, qualified and booked; every quote followed up; old estimates revived; and, when the client wants more leads, the ads, reviews and search that bring them. It is not an answering service: every part is tied to a number the owner can see. Home services is the first industry. Founder Johnny Dibb, Nashville.
 
 ## How the site is built
 
@@ -29,7 +29,7 @@ ink #1C2420 · ink-deeper #141A17 · ink-soft #2A332E · cream #F0ECDF · paper 
 - Orchard and Estate stay on the pricing page as anchors. Greenhouse sits in the center with the "Recommended" badge.
 - Annual prepay: two months free (monthly/annual toggle on the pricing page).
 - Guarantees, always shown with their conditions: Start Guarantee ($0 until live, live in 14 days or month one free), call promise (99% answered in 60 seconds or that month free), Payback Guarantee ($1.5M+ unsold estimates; monthly pauses at day 90 until revived jobs cover what's paid; refund the difference at day 180).
-- Add-ons on the site: Compost included; Roots $997/mo (90-day minimum); Fertilizer $997/mo (reviews + content); Sunlight $997/mo or 15% of ad spend (Google Local Services, Search, Meta). Pollination and Pruning are parked; keep them off the site.
+- Growth add-ons, shown on the homepage (`#growth`) and the pricing page (`#addons`) with the same four cards, Sunlight first: Sunlight $997/mo or 15% of ad spend (Google Local Services, Search, Meta); Roots $997/mo (90-day minimum; Google profile, local SEO, AI answers); Fertilizer $997/mo (reviews, content, referral ask); Almanac, scoped on the audit (the team's pricing, policies and how-tos in one place they can ask). Compost (old-estimate revival) is included in every tier. Pollination and Pruning are parked; keep them off the site.
 - One client per trade per area (home services: one shop per trade per service area). Never two direct competitors in the same area.
 - 14-day deployment, shown as 4 milestones. Never "7 days", never the old 5-jobs guarantee.
 - Home services trades: HVAC, Plumbing, Roofing, Electrical, Remodeling, Painting, Fencing, Pools, Landscaping, Garage doors.
@@ -37,7 +37,7 @@ ink #1C2420 · ink-deeper #141A17 · ink-soft #2A332E · cream #F0ECDF · paper 
 ## Voice
 
 - Master brand (homepage, method, footer, industries): broad, premium, human. Say "business" and "client". Lead with outcomes: answered, booked, followed up, revived.
-- Industry pages speak their own dialect. Home services: "shop", "trade", "jobs", "estimates". Other industries get their own words on `/industries` before they get a page.
+- Industry pages speak their own dialect. Home services: "shop", "trade", "jobs", "estimates". `/industries` lists five, picked because revenue starts with a call, the ticket covers the fee and there are unsold quotes to revive: home services, med spas and dental, auto repair and collision, real estate and property management, multi-location groups. Other industries get their own words there before they get a page.
 - No buzzwords and no invented product names for the sales call: it's a "free audit", not a "Leak Check". Short sentences, fewer words.
 - The dashboard is the **Greenhouse Dashboard** (it used to be Mission Control).
 - No competitor names on the site.
