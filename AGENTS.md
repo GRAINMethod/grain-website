@@ -6,7 +6,7 @@ GRAIN Method: done-for-you lead response. Every inquiry answered in under 60 sec
 
 - **The marketing site is Johnny's hand-built HTML in `public/`.** Edit those files directly. Do not redesign or "port" them: the dark sections, animations, ticker, GRAIN letter engines, network diagram, Greenhouse Dashboard mockup, calculator and three-tier pricing are the brand.
 - Pages: `index`, `method`, `industries`, `home-services`, `pricing`, `calculator`, `dashboard`, `apply`, `privacy`, `terms`, `security`. Clean URLs (`/pricing`, `/method`, ...) map onto the `.html` files through the `PAGES` list in `next.config.ts`. Add a page there when you add a file.
-- Next.js 16 runs underneath for `/api/*` routes and, next, the real Greenhouse Dashboard (client login + GRAIN HQ), built on the same visual language (tokens below). The dashboard tables live in Supabase (`orgs`, `mc_*`); see `supabase/migrations/`.
+- Next.js 16 runs underneath for `/api/*` routes, `/login` and `/hq` (GRAIN HQ, staff only), built on the same visual language (tokens below).
 - Every page carries the same inline CSS tokens, nav, footer and `ASK_EXAMPLES` (Ask GRAIN answers). Change those in every file at once.
 - Pricing cards size their numbers with container units (`cqi`) on `minmax(0, …)` grid tracks so long prices never push the Estate card off small laptops. Keep that if you touch `.tier-grid`.
 
@@ -49,6 +49,19 @@ ink #1C2420 · ink-deeper #141A17 · ink-soft #2A332E · cream #F0ECDF · paper 
 - Booking buttons call `openCalendly()`, which goes to `BOOKING_URL` (GoHighLevel calendar, set in each page) or falls back to `/apply`.
 - No em dashes in new client-facing copy.
 - Never commit secrets. The Supabase service role key never goes in the repo or a `NEXT_PUBLIC_` variable.
+
+## The backend (Supabase project `emmgtxumhaqfbcjzddpa`)
+
+How GRAIN runs is written down in Notion: GRAIN HQ, Operations (nine short SOPs). The database is the record those SOPs run on.
+
+- **Pipeline:** `prospects`, `prospect_touches`. A website form (`leads`) lands in the pipeline by trigger and queues a "call within 5 minutes" alert. Prospects score 0 to 100 on write (`prospect_score`); 60+ with no disqualifier is qualified. One client per trade per area is enforced as an auto-disqualifier.
+- **Clients:** `orgs` (status onboarding, live, paused, churned), `onboarding_template` and `onboarding_tasks` (signing day, then M1 to M4, due dates from kickoff), `onboarding_pauses` (the 14-day clock), `client_log`, `client_daily_metrics`, `mc_*` (leads, estimates, appointments, events, payments).
+- **Messages:** everything GRAIN would send lands in `outbox` first. Slack posts send only once a webhook is saved in HQ, System. Texts and emails wait there until GoHighLevel is connected.
+- **Schedule:** one `pg_cron` job, `grain-ops-tick`, every 15 minutes. Central time: daily numbers at 00:15, the HQ digest at 07:00, client updates at 07:30, the Monday scorecard, and on the 1st the call-promise check and the 10% share invoice task.
+- **Intake:** `POST /api/ingest/ghl` and `/api/ingest/retell` with the ingest key from HQ, System. The event shape is documented at the top of that route. Bookings are counted from `appointment` events (the calendar is the truth).
+- **Dashboard feed:** `GET /api/mc/<slug>` calls `mc_view`. The two sample orgs (`is_demo`) are public and labeled "Sample data" on the page. A real client's dashboard is `/dashboard?org=<slug>` and needs their sign-in.
+- **Access:** sign-in is a link by email, never a password. `staff` is the allowlist; a session opened with a password never counts (`session_proves_inbox`). Every table has row level security. Logic lives in `ops_private` (not exposed); `public` functions are thin wrappers that check the caller.
+- **Changing the database:** apply through the Supabase MCP, then mirror the change in `supabase/migrations/` so the files always describe what is live. No service role key in this repo or in a `NEXT_PUBLIC_` variable.
 
 ## History
 

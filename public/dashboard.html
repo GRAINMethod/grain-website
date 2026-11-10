@@ -6,10 +6,10 @@
 <meta name="color-scheme" content="dark only">
 <meta name="theme-color" content="#141A17">
 <title>Greenhouse Dashboard | GRAIN Method</title>
-<meta name="description" content="Every call, booking and dollar in one live view. See the Greenhouse Dashboard every GRAIN client gets.">
+<meta name="description" content="Every call, booking and dollar in one place. See the Greenhouse Dashboard every client gets, with sample data.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Greenhouse Dashboard | GRAIN Method">
-  <meta property="og:description" content="Every call, booking and dollar in one live view. See the Greenhouse Dashboard every GRAIN client gets.">
+  <meta property="og:description" content="Every call, booking and dollar in one place. See the Greenhouse Dashboard every client gets, with sample data.">
   <meta property="og:url" content="https://www.grainmethod.com/dashboard">
   <meta name="twitter:card" content="summary">
 
@@ -1327,10 +1327,10 @@ h1, h2, h3, h4 {
   <div class="page-hero-inner">
     <div class="eyebrow reveal" style="justify-content:center;">Greenhouse Dashboard</div>
     <h1 class="h-section reveal" data-delay="1">
-      One dashboard. <span class="italic-accent">Five engines.</span>
+      Every call, booking and dollar, <span class="italic-accent">in one place.</span>
     </h1>
     <p class="lede reveal" data-delay="2" style="margin: 0 auto;">
-      Every lead, quote and reactivation: visible, measured and traceable to the dollar. This is the view your client account opens to every morning.
+      What came in, what got answered, what got booked and what it was worth. This is the view your account opens to every morning.
     </p>
     <div class="view-toggle-wrap reveal" data-delay="3">
       <div class="view-toggle" role="tablist">
@@ -1369,7 +1369,7 @@ h1, h2, h3, h4 {
       </div>
       <div class="air-corner air-corner-right">
         <span class="live-dot"></span>
-        <span class="status-live">Live</span><span class="status-detail" id="last-updated">&nbsp;· updated 4s ago</span>
+        <span class="status-live">Sample data</span><span class="status-detail" id="last-updated"></span>
       </div>
 
       <div class="dashboard">
@@ -1400,9 +1400,9 @@ h1, h2, h3, h4 {
 
     </div>
 
-    <div class="disclaimer-strip">
+    <div class="disclaimer-strip" id="sample-note">
       <strong>Sample data</strong>
-      Numbers shown are representative of a Greenhouse or Orchard client in their first 90 days. Your real Greenhouse Dashboard will reflect your actual lead flow, response data, and revenue attribution from day one.
+      An example of what a Greenhouse or Orchard dashboard looks like in the first 90 days. Yours shows your own calls, bookings and revenue from day one.
     </div>
   </div>
 </section>
@@ -1415,7 +1415,7 @@ h1, h2, h3, h4 {
       See your real numbers <span class="italic-accent">live.</span>
     </h2>
     <p class="reveal" data-delay="2">
-      Within 14 days of kickoff, this is the view that opens to your actual operation: your CRM, your phone, your follow-up, every quote tracked end-to-end.
+      Within 14 days of kickoff this view opens on your own business: your calls, your bookings, every quote followed up and every dollar it brought in.
     </p>
     <button class="btn btn-primary reveal" data-delay="3" onclick="openCalendly(event)">
       Apply for your audit <span class="btn-arrow">→</span>
@@ -1426,21 +1426,6 @@ h1, h2, h3, h4 {
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="wrap">
-    <div class="footer-callout reveal">
-      <div>
-        <div class="eyebrow">The audit</div>
-        <p class="footer-callout-text">
-          Thirty minutes with the founder. We pull your real numbers and tell you what they're costing you. <strong>Whether or not you become a client.</strong>
-        </p>
-        <div class="footer-callout-meta">
-          <span>Free</span><span class="sep"></span><span>No pitch</span><span class="sep"></span><span>30 minutes</span>
-        </div>
-      </div>
-      <button class="btn btn-primary" onclick="openCalendly(event)">
-        Apply for your audit <span class="btn-arrow">→</span>
-      </button>
-    </div>
-
     <div class="footer-grid">
       <div class="footer-brand-block">
         <div class="nav-brand">
@@ -1448,7 +1433,7 @@ h1, h2, h3, h4 {
           <span class="nav-brand-text">GRAIN</span>
         </div>
         <div class="footer-tag">PLANT · NURTURE · SCALE</div>
-        <p class="footer-mission">Done-for-you call answering, booking and follow-up for businesses that run on inbound demand. Nashville-based, working nationwide.</p>
+        <p class="footer-mission">Done-for-you call answering, booking and follow-up. Nashville-based, working nationwide.</p>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Method</div>
@@ -1586,17 +1571,17 @@ h1, h2, h3, h4 {
 
   /* ---------- ASK GRAIN ---------- */
   const ASK_EXAMPLES = [
-    { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every call, text and form in under 60 seconds, 24/7, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days." },
+    { q: "What does GRAIN actually do?", a: "GRAIN is done-for-you lead response. We answer every call, text and form in under 60 seconds, 24/7, book it, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days. Home services is our first industry." },
     { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. GRAIN is what happens after the phone rings: every lead answered, qualified, booked and followed up, done for you. We work with the CRM and marketing you already have." },
     { q: "How fast can I be live?", a: "Greenhouse is live within 14 days of kickoff, or month 1 is free. Kickoff happens within 3 business days of signing, and you approve the test calls before anything goes live. Orchard and Estate roll out location by location on the same 14-day build." },
     { q: "What does it cost?", a: "Greenhouse, one location: $2,997/month, with a founding rate of $1,497/month through Dec 31, plus $1,500 setup and 10% of revived jobs, only on jobs completed and paid. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
     { q: "What are the guarantees?", a: "Three. Start Guarantee: $0 until it's live, live in 14 days or month 1 is free. Call promise: 99% of calls answered in 60 seconds every month, or that month is free. Payback Guarantee: if revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do, and if you're still short at day 180 we refund the difference. Each has conditions, listed on the pricing page." },
     { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, painting, fencing, pools, landscaping and garage doors. If you're outside those, we'll tell you on the audit call and we won't take your money." },
-    { q: "Do you replace my team?", a: "No. We cover the gaps your team can't: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team handles what they're already good at." },
-    { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one during onboarding." },
-    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real lead flow, response times, close rates and unsold estimates, and trace the dollars you're losing each month. You leave with a written number, whether you become a client or not." },
+    { q: "Do you replace my team?", a: "No. We cover what your team can't get to: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team keeps doing what they're already good at." },
+    { q: "What CRMs do you work with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx and most others. Where your software takes outside bookings, jobs go straight in. Where it doesn't, they land on a shared calendar your office confirms. We check yours on the audit." },
+    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real response times, close rates and unsold estimates, and show you what they're costing you each month. You leave with a written number, whether you become a client or not." },
     { q: "Do you run ads?", a: "Yes. Sunlight runs your Google Local Services Ads, Google Search and Meta campaigns: $997/month or 15% of ad spend, whichever is higher. You pay the platforms directly and we never mark up spend. Every lead lands in your Greenhouse and gets answered in under 60 seconds." },
-    { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month." }
+    { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave." }
   ];
 
   function initAskGrain() {
@@ -1943,7 +1928,7 @@ h1, h2, h3, h4 {
     });
   }
 
-  function renderKPIs(view) {
+  function renderKPIs(view, quiet) {
     const data = VIEW_DATA[view].kpi;
     kpiStrip.innerHTML = data.map(k => {
       const p = parseKPIValue(k.value);
@@ -1956,12 +1941,20 @@ h1, h2, h3, h4 {
       </div>
     `;
     }).join('');
-    animateKPINumbers();
+    if (quiet) {
+      // A background refresh swaps the numbers in place, no count-up
+      kpiStrip.querySelectorAll('.kpi-num').forEach(el => {
+        const d = parseInt(el.dataset.decimals, 10) || 0;
+        el.textContent = (el.dataset.prefix || '') + Number(el.dataset.target).toFixed(d).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + (el.dataset.suffix || '');
+      });
+    } else {
+      animateKPINumbers();
+    }
   }
 
   function renderEnginePanel(view, engine) {
     const data = VIEW_DATA[view].engines[engine];
-    const maxBar = Math.max(...data.chart.bars);
+    const maxBar = Math.max(1, ...data.chart.bars);
     const barsHtml = data.chart.bars.map((v, i) => {
       const isToday = i === data.chart.bars.length - 1;
       return `<div class="bar${isToday ? ' today' : ''}" style="height:${(v/maxBar)*100}%" title="${v}"></div>`;
@@ -1992,7 +1985,7 @@ h1, h2, h3, h4 {
           </div>
         </div>
         <div class="activity-feed">
-          <div class="activity-header">Live activity</div>
+          <div class="activity-header">Latest activity</div>
           <div class="activity-list">
             ${data.activity.map(a => `
               <div class="activity-row">
@@ -2007,9 +2000,9 @@ h1, h2, h3, h4 {
     `;
   }
 
-  function update() {
+  function update(quiet) {
     clientName.textContent = VIEW_DATA[currentView].client;
-    renderKPIs(currentView);
+    renderKPIs(currentView, quiet);
     renderEnginePanel(currentView, currentEngine);
   }
 
@@ -2030,13 +2023,6 @@ h1, h2, h3, h4 {
       update();
     });
   });
-
-  // Simulated "last updated" ticker
-  let s = 4;
-  setInterval(() => {
-    s = s > 58 ? 1 : s + 1;
-    document.getElementById('last-updated').textContent = `\u00A0· updated ${s}s ago`;
-  }, 1000);
 
   // ---- Greenhouse polygon sizer ----
   // Sizes the pentagon outline polygon AND clips the dashboard's dark fill to the same pentagon,
@@ -2067,10 +2053,30 @@ h1, h2, h3, h4 {
   }
 
   // Initial
+  // The live feed (/js/greenhouse-live.js) swaps real data in through this.
+  const liveViews = {};
+  window.GreenhouseDashboard = {
+    set(view, data) {
+      const refresh = liveViews[view] === true;
+      liveViews[view] = true;
+      VIEW_DATA[view] = data;
+      if (view === currentView) update(refresh);
+    },
+    show(view) {
+      if (!VIEW_DATA[view]) return;
+      currentView = view;
+      viewBtns.forEach(x => x.classList.toggle('active', x.dataset.view === view));
+      update();
+    },
+    current() { return currentView; },
+    stopClock() {}
+  };
+
   update();
   updateGreenhousePolygon();
 })();
 </script>
+<script src="/js/greenhouse-live.js" defer></script>
 
 <script>
 /* Footer status heartbeat — ticks seconds, flashes every 12s. */

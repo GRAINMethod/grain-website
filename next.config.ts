@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 /*
   The marketing site is Johnny's hand-built HTML in /public, served as-is.
   Clean URLs map onto those files. Next.js runs underneath for /api routes
-  and the Mission Control dashboard.
+  /login, /hq (GRAIN HQ) and the Greenhouse Dashboard feed.
 */
 const PAGES = ["method", "industries", "home-services", "pricing", "calculator", "dashboard", "apply", "privacy", "terms", "security"];
 

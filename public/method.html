@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark only">
 <meta name="theme-color" content="#141A17">
-<title>What we do | GRAIN Method</title>
-<meta name="description" content="How GRAIN answers, books, follows up and revives old leads for you: five engines, one Greenhouse Dashboard, live in 14 days.">
+<title>How it works | GRAIN Method</title>
+<meta name="description" content="How GRAIN answers every call in under 60 seconds, books it, follows up every quote for 90 days and turns old estimates back into revenue. Built in 14 days, run by us.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="What we do | GRAIN Method">
-  <meta property="og:description" content="How GRAIN answers, books, follows up and revives old leads for you: five engines, one Greenhouse Dashboard, live in 14 days.">
+  <meta property="og:title" content="How it works | GRAIN Method">
+  <meta property="og:description" content="How GRAIN answers every call in under 60 seconds, books it, follows up every quote for 90 days and turns old estimates back into revenue. Built in 14 days, run by us.">
   <meta property="og:url" content="https://www.grainmethod.com/method">
   <meta name="twitter:card" content="summary">
 
@@ -848,10 +848,21 @@ h1, h2, h3, h4 {
   margin-bottom: 12px;
   line-height: 1;
 }
-.grain-desc {
-  font-size: 14px;
-  color: rgba(240,236,223,0.72);
-  line-height: 1.55;
+.grain-result {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,236,223,0.5);
+}
+a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
+.engine-block { scroll-margin-top: 96px; }
+.engine-details li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+@media (max-width: 600px) {
+  a.grain-cell { min-height: 0; flex-direction: row; justify-content: flex-start; align-items: center; gap: 22px; padding: 22px 24px; }
+  a.grain-cell .grain-letter { font-size: 56px; width: 52px; }
+  a.grain-cell .grain-word { margin-bottom: 8px; }
 }
 
 @media (max-width: 1080px) {
@@ -1303,10 +1314,10 @@ h1, h2, h3, h4 {
   <div class="page-hero-inner">
     <div class="eyebrow reveal" style="justify-content:center;">The method</div>
     <h1 class="h-section reveal" data-delay="1">
-      One system. <span class="italic-accent">Five engines.</span>
+      Answered, booked,<br>followed up, <span class="italic-accent">revived.</span>
     </h1>
     <p class="lede reveal" data-delay="2" style="margin: 0 auto;">
-      Every part of your lead funnel (generation, response, automation, integration and nurture), built once, run forever, measured every day.
+      What GRAIN does with every call, text and form, step by step, and how it gets built in 14 days.
     </p>
   </div>
 </section>
@@ -1331,41 +1342,41 @@ h1, h2, h3, h4 {
 <section class="grain-grid-section">
   <div class="wrap">
     <div class="grain-grid">
-      <div class="grain-cell reveal">
+      <a class="grain-cell reveal" href="#engine-g" aria-label="Generate: jump to the details">
         <div class="grain-letter">G</div>
         <div class="grain-cell-body">
           <div class="grain-word">Generate</div>
-          <p class="grain-desc">Lead capture across every channel: Google, ads, referrals, partners. Captured, scored, routed.</p>
+          <div class="grain-result">captured</div>
         </div>
-      </div>
-      <div class="grain-cell reveal" data-delay="1">
+      </a>
+      <a class="grain-cell reveal" data-delay="1" href="#engine-r" aria-label="Respond: jump to the details">
         <div class="grain-letter">R</div>
         <div class="grain-cell-body">
           <div class="grain-word">Respond</div>
-          <p class="grain-desc">Every lead answered in under 60 seconds, 24/7. Voice, form and SMS. No gap, no voicemail.</p>
+          <div class="grain-result">answered</div>
         </div>
-      </div>
-      <div class="grain-cell reveal" data-delay="2">
+      </a>
+      <a class="grain-cell reveal" data-delay="2" href="#engine-a" aria-label="Automate: jump to the details">
         <div class="grain-letter">A</div>
         <div class="grain-cell-body">
           <div class="grain-word">Automate</div>
-          <p class="grain-desc">90 days of qualified follow-up on every quote, hands-off. Until they book or tell us to stop.</p>
+          <div class="grain-result">followed up</div>
         </div>
-      </div>
-      <div class="grain-cell reveal" data-delay="3">
+      </a>
+      <a class="grain-cell reveal" data-delay="3" href="#engine-i" aria-label="Integrate: jump to the details">
         <div class="grain-letter">I</div>
         <div class="grain-cell-body">
           <div class="grain-word">Integrate</div>
-          <p class="grain-desc">Plugs into the CRM you already use. ServiceTitan, Jobber, Housecall Pro, and the rest.</p>
+          <div class="grain-result">connected</div>
         </div>
-      </div>
-      <div class="grain-cell reveal" data-delay="4">
+      </a>
+      <a class="grain-cell reveal" data-delay="4" href="#engine-n" aria-label="Nurture: jump to the details">
         <div class="grain-letter">N</div>
         <div class="grain-cell-body">
           <div class="grain-word">Nurture</div>
-          <p class="grain-desc">Quarterly reactivation of past customers and cold quotes. Revenue you already earned, working again.</p>
+          <div class="grain-result">revived</div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -1373,7 +1384,7 @@ h1, h2, h3, h4 {
 <!-- ===== DEEPER PER-ENGINE BREAKDOWN ===== -->
 <section class="engines-section">
   <div class="wrap">
-    <div class="engine-block reveal">
+    <div class="engine-block reveal" id="engine-g">
       <div class="engine-marker">
         <div class="num">Engine 01</div>
         <div class="letter">G</div>
@@ -1381,15 +1392,16 @@ h1, h2, h3, h4 {
       </div>
       <div class="engine-body">
         <h3>Every lead source in one feed.</h3>
-        <p>Google, ads, referrals and web forms captured in one place, tagged by source and scored before your team sees them.</p>
+        <p>A tracking number on every lead source, so every call, form and booked job is tied to what brought it in.</p>
         <ul class="engine-details">
           <li><strong>Channels</strong>Google Search · Local Services Ads · Meta · web forms · referrals</li>
           <li><strong>Tracking</strong>Source-tagged at capture, all the way to the booked job</li>
-          <li><strong>Scoring</strong>Hot leads flagged to your team in real time</li>
+          <li><strong>Scorecard</strong>Cost per booked job by source, every month</li>
+          <li><strong>Local Services Ads</strong>Calls answered fast, which Google weighs in ad ranking</li>
         </ul>
       </div>
     </div>
-    <div class="engine-block reveal">
+    <div class="engine-block reveal" id="engine-r">
       <div class="engine-marker">
         <div class="num">Engine 02</div>
         <div class="letter">R</div>
@@ -1402,10 +1414,11 @@ h1, h2, h3, h4 {
           <li><strong>Voice agent</strong>Qualifies, books, and hands the hot ones to your team</li>
           <li><strong>SMS</strong>Two-way, with a human handoff when needed</li>
           <li><strong>Coverage</strong>Nights · weekends · holidays · overflow</li>
+          <li><strong>Owner summary</strong>A text to you within 5 minutes of every call</li>
         </ul>
       </div>
     </div>
-    <div class="engine-block reveal">
+    <div class="engine-block reveal" id="engine-a">
       <div class="engine-marker">
         <div class="num">Engine 03</div>
         <div class="letter">A</div>
@@ -1413,15 +1426,16 @@ h1, h2, h3, h4 {
       </div>
       <div class="engine-body">
         <h3>Every quote followed up for 90 days.</h3>
-        <p>Text, email and voice touches until the homeowner books or says no.</p>
+        <p>Text and email follow-up until the customer books or says no.</p>
         <ul class="engine-details">
           <li><strong>Cadence</strong>Day 1 · 3 · 7 · 14 · 30 · 60 · 90</li>
           <li><strong>Personal</strong>References the actual quote and job, never a blast</li>
           <li><strong>Stops</strong>Instantly on a booking, a no, or an opt-out</li>
+          <li><strong>Your office</strong>A reminder to call at day 14 and day 30</li>
         </ul>
       </div>
     </div>
-    <div class="engine-block reveal">
+    <div class="engine-block reveal" id="engine-i">
       <div class="engine-marker">
         <div class="num">Engine 04</div>
         <div class="letter">I</div>
@@ -1433,11 +1447,12 @@ h1, h2, h3, h4 {
         <ul class="engine-details">
           <li><strong>CRMs</strong>ServiceTitan · Jobber · Housecall Pro · JobNimbus · AccuLynx · and more</li>
           <li><strong>Phone</strong>Keep your number, forward to GRAIN</li>
+          <li><strong>Booking</strong>Into your job software where it allows, or a shared calendar your office confirms</li>
           <li><strong>Your data</strong>Stays yours · export any time · no lock-in</li>
         </ul>
       </div>
     </div>
-    <div class="engine-block reveal">
+    <div class="engine-block reveal" id="engine-n">
       <div class="engine-marker">
         <div class="num">Engine 05</div>
         <div class="letter">N</div>
@@ -1449,7 +1464,8 @@ h1, h2, h3, h4 {
         <ul class="engine-details">
           <li><strong>Revival</strong>Old estimates and dead leads worked back into jobs</li>
           <li><strong>Reviews</strong>A review request after every job</li>
-          <li><strong>Reminders</strong>Maintenance, warranty and service anniversaries</li>
+          <li><strong>Every quarter</strong>A fresh pass on estimates that went unsold in the last 90 days</li>
+          <li><strong>The list</strong>Frozen on day 1. You keep a copy, and your own CRM report decides what counts.</li>
         </ul>
       </div>
     </div>
@@ -1482,10 +1498,10 @@ h1, h2, h3, h4 {
     <div class="network-feature-intro">
       <div class="eyebrow reveal" style="justify-content:center;">The compounding advantage</div>
       <h2 class="h-section reveal" data-delay="1">
-        Every client makes<br>the system <span class="italic-accent">smarter.</span>
+        A playbook that gets sharper<br><span class="italic-accent">with every client.</span>
       </h2>
       <p class="lede reveal" data-delay="2" style="margin: 0 auto;">
-        What books calls, which follow-ups close and which seasons spike demand, learned across clients with names and numbers stripped out, and built into everyone's playbook.
+        What books calls, what closes quotes and when demand spikes: learned across clients, names and numbers stripped out, and built into every playbook.
       </p>
     </div>
 
@@ -1604,9 +1620,8 @@ h1, h2, h3, h4 {
       </div>
       <div class="network-feature-text">
         <h3 class="reveal" data-delay="1">You get the playbook. Never anyone else's data.</h3>
-        <p class="reveal" data-delay="2">The scripts that book the most appointments. The follow-up timing that closes the most quotes in your trade. The seasonal triggers that tell us when to reach out.</p>
-        <p class="reveal" data-delay="3"><strong>New clients start on the best playbook for their industry, not a blank script.</strong> What works gets tested across clients and rolled out to everyone.</p>
-        <p class="reveal" data-delay="4"><strong>Your data stays yours.</strong> No client ever sees another client's numbers, and we never take on two direct competitors in the same area.</p>
+        <p class="reveal" data-delay="2"><strong>You start on the best playbook for your industry,</strong> not a blank script.</p>
+        <p class="reveal" data-delay="3"><strong>Your data stays yours.</strong> No client ever sees another client's numbers, and we never take on two direct competitors in the same area.</p>
       </div>
     </div>
   </div>
@@ -1651,10 +1666,10 @@ h1, h2, h3, h4 {
   <div class="cta-band-method-inner">
     <div class="eyebrow reveal" style="justify-content:center;">Start here</div>
     <h2 class="h-section reveal" data-delay="1">
-      Trace your <span class="italic-accent">real numbers.</span>
+      See your <span class="italic-accent">real numbers.</span>
     </h2>
     <p class="reveal" data-delay="2">
-      The audit is 30 minutes. You leave with a written dollar figure of what your current response gaps are costing you each month, whether you become a client or not.
+      Thirty minutes with the founder. You leave with a written dollar figure of what missed calls and slow follow-up are costing you each month, whether you become a client or not.
     </p>
     <button class="btn btn-primary reveal" data-delay="3" onclick="openCalendly(event)">
       Apply for your audit <span class="btn-arrow">→</span>
@@ -1665,21 +1680,6 @@ h1, h2, h3, h4 {
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="wrap">
-    <div class="footer-callout reveal">
-      <div>
-        <div class="eyebrow">The audit</div>
-        <p class="footer-callout-text">
-          Thirty minutes with the founder. We pull your real numbers and tell you what they're costing you. <strong>Whether or not you become a client.</strong>
-        </p>
-        <div class="footer-callout-meta">
-          <span>Free</span><span class="sep"></span><span>No pitch</span><span class="sep"></span><span>30 minutes</span>
-        </div>
-      </div>
-      <button class="btn btn-primary" onclick="openCalendly(event)">
-        Apply for your audit <span class="btn-arrow">→</span>
-      </button>
-    </div>
-
     <div class="footer-grid">
       <div class="footer-brand-block">
         <div class="nav-brand">
@@ -1687,7 +1687,7 @@ h1, h2, h3, h4 {
           <span class="nav-brand-text">GRAIN</span>
         </div>
         <div class="footer-tag">PLANT · NURTURE · SCALE</div>
-        <p class="footer-mission">Done-for-you call answering, booking and follow-up for businesses that run on inbound demand. Nashville-based, working nationwide.</p>
+        <p class="footer-mission">Done-for-you call answering, booking and follow-up. Nashville-based, working nationwide.</p>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Method</div>
@@ -1825,17 +1825,17 @@ h1, h2, h3, h4 {
 
   /* ---------- ASK GRAIN ---------- */
   const ASK_EXAMPLES = [
-    { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every call, text and form in under 60 seconds, 24/7, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days." },
+    { q: "What does GRAIN actually do?", a: "GRAIN is done-for-you lead response. We answer every call, text and form in under 60 seconds, 24/7, book it, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days. Home services is our first industry." },
     { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. GRAIN is what happens after the phone rings: every lead answered, qualified, booked and followed up, done for you. We work with the CRM and marketing you already have." },
     { q: "How fast can I be live?", a: "Greenhouse is live within 14 days of kickoff, or month 1 is free. Kickoff happens within 3 business days of signing, and you approve the test calls before anything goes live. Orchard and Estate roll out location by location on the same 14-day build." },
     { q: "What does it cost?", a: "Greenhouse, one location: $2,997/month, with a founding rate of $1,497/month through Dec 31, plus $1,500 setup and 10% of revived jobs, only on jobs completed and paid. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
     { q: "What are the guarantees?", a: "Three. Start Guarantee: $0 until it's live, live in 14 days or month 1 is free. Call promise: 99% of calls answered in 60 seconds every month, or that month is free. Payback Guarantee: if revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do, and if you're still short at day 180 we refund the difference. Each has conditions, listed on the pricing page." },
     { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, painting, fencing, pools, landscaping and garage doors. If you're outside those, we'll tell you on the audit call and we won't take your money." },
-    { q: "Do you replace my team?", a: "No. We cover the gaps your team can't: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team handles what they're already good at." },
-    { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one during onboarding." },
-    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real lead flow, response times, close rates and unsold estimates, and trace the dollars you're losing each month. You leave with a written number, whether you become a client or not." },
+    { q: "Do you replace my team?", a: "No. We cover what your team can't get to: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team keeps doing what they're already good at." },
+    { q: "What CRMs do you work with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx and most others. Where your software takes outside bookings, jobs go straight in. Where it doesn't, they land on a shared calendar your office confirms. We check yours on the audit." },
+    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real response times, close rates and unsold estimates, and show you what they're costing you each month. You leave with a written number, whether you become a client or not." },
     { q: "Do you run ads?", a: "Yes. Sunlight runs your Google Local Services Ads, Google Search and Meta campaigns: $997/month or 15% of ad spend, whichever is higher. You pay the platforms directly and we never mark up spend. Every lead lands in your Greenhouse and gets answered in under 60 seconds." },
-    { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month." }
+    { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave." }
   ];
 
   function initAskGrain() {

@@ -1099,10 +1099,10 @@ h1, h2, h3, h4 {
   <div class="page-hero-inner">
     <div class="eyebrow reveal" style="justify-content:center;">Apply for an audit</div>
     <h1 class="h-section reveal" data-delay="1">
-      Thirty minutes. No pitch. <span class="italic-accent">Real numbers.</span>
+      Thirty minutes. No&nbsp;pitch.<br><span class="italic-accent">Real numbers.</span>
     </h1>
     <p class="lede reveal" data-delay="2" style="margin: 0 auto;">
-      Tell us about your business. If GRAIN fits your business, we'll schedule a 30-minute call and walk you through your actual lead-flow leak, whether or not you become a client.
+      Tell us about your business. If GRAIN is a fit, we'll schedule a 30&#8209;minute call and show you what missed calls and slow follow-up are costing you, whether or not you become a client.
     </p>
   </div>
 </section>
@@ -1135,7 +1135,7 @@ h1, h2, h3, h4 {
             <div class="apply-step-num">03</div>
             <div class="apply-step-body">
               <h4>The call itself</h4>
-              <p>We pull your real numbers live: response time, close rate and past customers. We do most of the talking only when answering your questions.</p>
+              <p>We pull your real numbers live: response time, close rate and past customers. You hear what we found. We talk mostly to answer your questions.</p>
             </div>
           </div>
           <div class="apply-step">
@@ -1147,7 +1147,7 @@ h1, h2, h3, h4 {
           </div>
         </div>
         <div class="apply-sidebar-foot">
-          If GRAIN isn't right for your business, we'll tell you on the call. We'd rather give you the truth than your money.
+          If GRAIN isn't right for your business, we'll tell you on the call.
         </div>
       </aside>
 
@@ -1194,9 +1194,9 @@ h1, h2, h3, h4 {
 
           <div class="field-grid">
             <div class="field">
-              <label for="trade">Your trade <span class="req">*</span></label>
+              <label for="trade">Your industry <span class="req">*</span></label>
               <select id="trade" name="trade" required>
-                <option value="">Select your primary trade...</option>
+                <option value="">Select your trade or industry...</option>
                 <option value="roofing">Roofing</option>
                 <option value="hvac">HVAC</option>
                 <option value="plumbing">Plumbing</option>
@@ -1207,6 +1207,9 @@ h1, h2, h3, h4 {
                 <option value="painting">Painting</option>
                 <option value="landscaping">Landscaping</option>
                 <option value="remodeling">Remodeling</option>
+                <option value="health-fitness">Health, fitness or med spa</option>
+                <option value="real-estate">Real estate</option>
+                <option value="tech">Tech or SaaS</option>
                 <option value="other">Other (we'll tell you on the call)</option>
               </select>
             </div>
@@ -1254,16 +1257,16 @@ h1, h2, h3, h4 {
           </div>
 
           <div class="field full">
-            <label for="problem">What's the biggest lead-flow problem you're trying to solve? <span class="req">*</span></label>
-            <textarea id="problem" name="problem" required placeholder="One or two sentences. After-hours calls going to voicemail? Quotes going cold? Database of past customers nobody's reactivating? Tell us in your own words."></textarea>
-            <div class="field-hint">This is the most important field. Be honest, even if it's messy. It helps us prepare the right audit for your call.</div>
+            <label for="problem">What's the biggest problem you want fixed? <span class="req">*</span></label>
+            <textarea id="problem" name="problem" required placeholder="One or two sentences. After-hours calls going to voicemail? Quotes going cold? Past customers nobody calls back? Tell us in your own words."></textarea>
+            <div class="field-hint">The most important field. Be honest, even if it's messy.</div>
           </div>
 
           <label class="checkbox-card" for="founding">
             <input type="checkbox" id="founding" name="founding_cohort" value="yes">
             <div class="checkbox-card-body">
-              <div class="checkbox-card-title">I'm interested in the founding cohort</div>
-              <div class="checkbox-card-desc">First 5 clients get grandfathered founding pricing ($1,500 setup + $1,997/mo Greenhouse or $4,997 + $4,997/mo Orchard) in exchange for a case study + one reference call per month for 6 months.</div>
+              <div class="checkbox-card-title">I want the founding rate</div>
+              <div class="checkbox-card-desc">Greenhouse at $1,497 a month instead of $2,997, for agreements signed by Dec 31.</div>
             </div>
           </label>
 
@@ -1313,7 +1316,7 @@ h1, h2, h3, h4 {
           <span class="nav-brand-text">GRAIN</span>
         </div>
         <div class="footer-tag">PLANT · NURTURE · SCALE</div>
-        <p class="footer-mission">Done-for-you call answering, booking and follow-up for businesses that run on inbound demand. Nashville-based, working nationwide.</p>
+        <p class="footer-mission">Done-for-you call answering, booking and follow-up. Nashville-based, working nationwide.</p>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Method</div>
@@ -1451,17 +1454,17 @@ h1, h2, h3, h4 {
 
   /* ---------- ASK GRAIN ---------- */
   const ASK_EXAMPLES = [
-    { q: "What does GRAIN actually do?", a: "GRAIN is a done-for-you lead response system for home service businesses. We answer every call, text and form in under 60 seconds, 24/7, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days." },
+    { q: "What does GRAIN actually do?", a: "GRAIN is done-for-you lead response. We answer every call, text and form in under 60 seconds, 24/7, book it, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days. Home services is our first industry." },
     { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. GRAIN is what happens after the phone rings: every lead answered, qualified, booked and followed up, done for you. We work with the CRM and marketing you already have." },
     { q: "How fast can I be live?", a: "Greenhouse is live within 14 days of kickoff, or month 1 is free. Kickoff happens within 3 business days of signing, and you approve the test calls before anything goes live. Orchard and Estate roll out location by location on the same 14-day build." },
     { q: "What does it cost?", a: "Greenhouse, one location: $2,997/month, with a founding rate of $1,497/month through Dec 31, plus $1,500 setup and 10% of revived jobs, only on jobs completed and paid. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
     { q: "What are the guarantees?", a: "Three. Start Guarantee: $0 until it's live, live in 14 days or month 1 is free. Call promise: 99% of calls answered in 60 seconds every month, or that month is free. Payback Guarantee: if revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do, and if you're still short at day 180 we refund the difference. Each has conditions, listed on the pricing page." },
     { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, painting, fencing, pools, landscaping and garage doors. If you're outside those, we'll tell you on the audit call and we won't take your money." },
-    { q: "Do you replace my team?", a: "No. We cover the gaps your team can't: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team handles what they're already good at." },
-    { q: "What CRMs do you integrate with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx, FieldPulse, Leap, SalesRabbit, JobTread, Service Fusion, Improveit360 and more. If you have a CRM, we connect to it. If you don't, we'll set you up with one during onboarding." },
-    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real lead flow, response times, close rates and unsold estimates, and trace the dollars you're losing each month. You leave with a written number, whether you become a client or not." },
+    { q: "Do you replace my team?", a: "No. We cover what your team can't get to: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team keeps doing what they're already good at." },
+    { q: "What CRMs do you work with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx and most others. Where your software takes outside bookings, jobs go straight in. Where it doesn't, they land on a shared calendar your office confirms. We check yours on the audit." },
+    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real response times, close rates and unsold estimates, and show you what they're costing you each month. You leave with a written number, whether you become a client or not." },
     { q: "Do you run ads?", a: "Yes. Sunlight runs your Google Local Services Ads, Google Search and Meta campaigns: $997/month or 15% of ad spend, whichever is higher. You pay the platforms directly and we never mark up spend. Every lead lands in your Greenhouse and gets answered in under 60 seconds." },
-    { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave. We'd rather earn your business every month." }
+    { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave." }
   ];
 
   function initAskGrain() {
