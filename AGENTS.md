@@ -21,6 +21,8 @@ Vercel project `grain-website`: `main` deploys to www.grainmethod.com, other bra
 
 ink #1C2420 · ink-deeper #141A17 · ink-soft #2A332E · cream #F0ECDF · paper #F7F4EA · moss #9AAF7A · moss-light #BFD0A2 · moss-deep #667B4A · muted #6B6B62. Inter (heavy headlines), Fraunces italic (accents), JetBrains Mono (labels, data).
 
+The mark (greenhouse with a plant): the plant stands on the floor and never reaches into the floor line (Johnny's call, Nov 10, 2026). In the SVG the plant group comes first and the house outline is drawn on top of it; the stem starts at the floor's top edge, half the outline stroke above the floor line (`M 0 -9` for the 18-wide outline, `M 0 -11` for the 22-wide dashboard peak logo); there is no soil mound. The same mark is the favicon, the nav and footer logo, the Method network hub and the dashboard peak logo.
+
 ## The v7 offer (canon lives in Notion: GRAIN HQ, Pricing and Growth)
 
 - Greenhouse (one location): standard $2,997/mo. Shown on the site as "$2,997 / month" with "Founding rate $1,497 / month through Dec 31". $1,500 setup, $0 until it's live (setup + month one charged at go-live), plus 10% of revived jobs, only on jobs completed and paid. Never write "first 5 shops" or "spots left" on the site.
