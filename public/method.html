@@ -754,6 +754,8 @@ h1, h2, h3, h4 {
 /* What we do */
 .wwd-section { border-bottom: 1px solid var(--line-dark); padding-top: clamp(24px, 3vw, 40px); }
 .wwd-section .wwd-flow { margin-top: 0; }
+.wwd-link { color: inherit; text-decoration: underline; text-decoration-color: rgba(191, 208, 162, 0.45); text-underline-offset: 4px; transition: text-decoration-color 0.2s; }
+.wwd-link:hover { text-decoration-color: var(--moss-light); }
 @media (max-width: 960px) { .wwd-section .wwd-flow::before { top: 10px; } }
 .wwd-flow { list-style: none; margin: 52px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
 .wwd-flow::before { content: ""; position: absolute; top: 14px; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, var(--moss) 0%, rgba(154,175,122,0.15) 100%); }
@@ -1374,7 +1376,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
       <li><span class="wwd-n">04</span><strong>We follow up every quote</strong><span>For 90 days, until it's a yes or a no.</span></li>
       <li><span class="wwd-n">05</span><strong>We revive old estimates</strong><span>Two years of unsold quotes, worked back into jobs.</span></li>
     </ol>
-    <p class="wwd-foot reveal" data-delay="3">You see every call, booking and dollar in your <strong>Greenhouse Dashboard</strong>. You run the jobs. We run the rest.</p>
+    <p class="wwd-foot reveal" data-delay="3">You see every call, booking and dollar in your <a class="wwd-link" href="dashboard.html"><strong>Greenhouse Dashboard</strong></a>. You run the jobs. We run the rest.</p>
   </div>
 </section>
 
