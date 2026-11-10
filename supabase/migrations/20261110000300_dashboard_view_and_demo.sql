@@ -149,8 +149,9 @@ begin
   for i in 1..greatest(need, 0) loop
     hr := case when random() < 0.32 then 18 + random() * 14 else 8 + random() * 10 end;
     ts := d0 + (hr - case when hr >= 24 then 24 else 0 end) * interval '1 hour';
-    continue when ts >= lim;
-    ah := hr >= 18 or extract(isodow from p_day) > 5;
+    if ts >= lim then ts := d0 + random() * (lim - d0); end if;
+    ah := extract(hour from ts at time zone 'America/Chicago') >= 18 or extract(hour from ts at time zone 'America/Chicago') < 8
+          or extract(isodow from p_day) > 5;
     ch := (array['call', 'call', 'call', 'form', 'sms'])[1 + floor(random() * 5)::int];
     src := sources[1 + floor(random() * 7)::int];
     is_install := random() < 0.15;

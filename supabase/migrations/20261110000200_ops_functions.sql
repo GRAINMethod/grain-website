@@ -358,6 +358,9 @@ begin
       perform ops_private.generate_updates(today);
     end if;
   end if;
+  -- Keep the sample accounts current, so the public dashboard never opens on a stale feed
+  perform ops_private.demo_day(o.id, today, case when o.tier = 'greenhouse' then 1 else 2.4 end, now())
+  from public.orgs o where o.is_demo;
   perform ops_private.send_due();
   delete from ops_private.job_runs where day < today - 30;
 end $$;
