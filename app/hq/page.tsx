@@ -75,7 +75,10 @@ export default function HQ() {
     <main className="hq">
       <header className="hq-top">
         <a className="hq-brand" href="/">GRAIN <span>HQ</span></a>
-        <span className="hq-date">{new Date(o.now).toLocaleDateString("en-US", { timeZone: "America/Chicago", weekday: "long", month: "short", day: "numeric" })}</span>
+        <span className="hq-top-right">
+          <span className="hq-date">{new Date(o.now).toLocaleDateString("en-US", { timeZone: "America/Chicago", weekday: "long", month: "short", day: "numeric" })}</span>
+          <button className="hq-signout" onClick={async () => { await sb.auth.signOut(); window.location.replace("/login"); }}>Sign out</button>
+        </span>
       </header>
 
       <section className="hq-score">
@@ -356,7 +359,6 @@ function System({ o, sb, run }: { o: Row; sb: any; run: (l: string, f: () => Pro
         <p className="hq-line">Website leads, last 7 days: {s.website_leads_7d}</p>
         <p className="hq-line">Sample dashboards: {s.demo_orgs.map((d: string) => <a key={d} href={`/dashboard?org=${d}`}>{d} </a>)}</p>
       </Card>
-      <button className="hq-btn ghost" onClick={async () => { await sb.auth.signOut(); window.location.replace("/login"); }}>Sign out</button>
     </>
   );
 }

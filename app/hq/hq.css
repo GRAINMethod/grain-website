@@ -6,6 +6,9 @@
 .hq h1 em, .hq-brand span { font-family: Fraunces, serif; font-style: italic; font-weight: 400; color: var(--moss); letter-spacing: 0; }
 .hq a { color: var(--moss-l); }
 .hq-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.hq-top-right { display: inline-flex; align-items: center; gap: 14px; }
+.hq-signout { background: none; border: 1px solid rgba(240,236,223,.3); color: var(--cream); font: 600 11px "JetBrains Mono", ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; padding: 8px 12px; min-height: 36px; cursor: pointer; }
+.hq-signout:hover { border-color: var(--moss); color: var(--moss-light, #BFD0A2); }
 .hq-brand { font-weight: 900; font-size: 20px; letter-spacing: .02em; color: var(--cream) !important; text-decoration: none; }
 .hq-date, .hq-muted, .hq small, .hq-meter-l, .hq-meter-t, .hq-msg-head, .hq label { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .05em; color: rgba(240,236,223,.6); }
 .hq-muted { margin: 8px 0; }
