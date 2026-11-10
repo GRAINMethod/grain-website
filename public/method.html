@@ -752,7 +752,9 @@ h1, h2, h3, h4 {
 .on-cream .divider-row { border-top-color: var(--line); }
 
 /* What we do */
-.wwd-section { border-bottom: 1px solid var(--line-dark); }
+.wwd-section { border-bottom: 1px solid var(--line-dark); padding-top: clamp(24px, 3vw, 40px); }
+.wwd-section .wwd-flow { margin-top: 0; }
+@media (max-width: 960px) { .wwd-section .wwd-flow::before { top: 10px; } }
 .wwd-flow { list-style: none; margin: 52px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
 .wwd-flow::before { content: ""; position: absolute; top: 14px; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, var(--moss) 0%, rgba(154,175,122,0.15) 100%); }
 .wwd-flow li { position: relative; padding: 40px 22px 0 0; display: flex; flex-direction: column; gap: 10px; }
@@ -1354,10 +1356,10 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
   <div class="page-hero-inner">
     <div class="eyebrow reveal" style="justify-content:center;">The method</div>
     <h1 class="h-section reveal" data-delay="1">
-      Answered, booked,<br>followed up, <span class="italic-accent">revived.</span>
+      Five engines.<br><span class="italic-accent">One system.</span>
     </h1>
     <p class="lede reveal" data-delay="2" style="margin: 0 auto;">
-      What GRAIN does with every call, text and form, step by step, and how it gets built in 14 days.
+      How GRAIN turns more leads into more booked jobs, with less work for your team. Done for you, live in 14 days.
     </p>
   </div>
 </section>
@@ -1365,9 +1367,7 @@ a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
 <!-- ===== WHAT WE DO (plain English) ===== -->
 <section class="section wwd-section">
   <div class="wrap">
-    <div class="eyebrow reveal">What we do</div>
-    <h2 class="h-section reveal" data-delay="1">Everything between<br><span class="italic-accent">the ring and the job.</span></h2>
-    <ol class="wwd-flow reveal" data-delay="2">
+    <ol class="wwd-flow reveal" data-delay="1">
       <li><span class="wwd-n">01</span><strong>A lead comes in</strong><span>Call, text, web form or ad. Day or night.</span></li>
       <li><span class="wwd-n">02</span><strong>We answer in under 60 seconds</strong><span>A voice agent trained on your services, prices and area.</span></li>
       <li><span class="wwd-n">03</span><strong>We book it</strong><span>Straight onto your calendar. Your tech just shows up.</span></li>
