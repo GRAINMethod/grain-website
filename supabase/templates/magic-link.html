@@ -1,0 +1,77 @@
+<!-- Supabase Auth email template: Magic Link (also used for Confirm signup).
+     Subject: Your GRAIN sign-in link
+     Set in Supabase > Authentication > Emails > Templates. Keep this file in sync with what's live. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Your GRAIN sign-in link</title>
+</head>
+<body style="margin:0;padding:0;background:#141A17;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">One tap and you're in. The link works once and expires soon.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#141A17;">
+  <tr>
+    <td align="center" style="padding:40px 16px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:520px;background:#1C2420;border:1px solid #2A332E;">
+        <tr>
+          <td style="padding:36px 36px 0 36px;font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-weight:900;font-size:20px;letter-spacing:2px;color:#F0ECDF;">
+            GRAIN
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:6px 36px 0 36px;font-family:'JetBrains Mono',Menlo,Consolas,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9AAF7A;">
+            Plant &middot; Nurture &middot; Scale
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:32px 36px 0 36px;font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-weight:800;font-size:30px;line-height:1.15;color:#F0ECDF;">
+            Sign <span style="font-family:Fraunces,Georgia,'Times New Roman',serif;font-style:italic;font-weight:400;color:#BFD0A2;">in.</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:14px 36px 0 36px;font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.6;color:#D4D1C6;">
+            Tap the button to sign in to GRAIN. No password needed.
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:28px 36px 0 36px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="background:#9AAF7A;">
+                  <a href="{{ .ConfirmationURL }}" style="display:inline-block;padding:16px 26px;font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:15px;color:#1C2420;text-decoration:none;">Sign in to GRAIN &rarr;</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:24px 36px 0 36px;font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.6;color:#A9A79D;">
+            The link works once and expires soon. Open it on the device you want to use.
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:28px 36px 36px 36px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #2A332E;">
+              <tr>
+                <td style="padding-top:18px;font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-size:12px;line-height:1.6;color:#8C8A80;">
+                  Didn't ask for this? You can ignore it. Nobody gets in without this link.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:520px;">
+        <tr>
+          <td align="center" style="padding:18px 16px 0 16px;font-family:'JetBrains Mono',Menlo,Consolas,monospace;font-size:11px;letter-spacing:1px;color:#6B6B62;">
+            GRAIN Method &middot; Nashville, TN &middot; <a href="https://grainmethod.com" style="color:#6B6B62;text-decoration:underline;">grainmethod.com</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
