@@ -7,6 +7,7 @@
 */
 import { useCallback, useEffect, useState } from "react";
 import { browserClient } from "@/lib/supabase";
+import { clayRows, type ImportRow } from "@/lib/demand";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type Row = Record<string, any>;
@@ -23,6 +24,15 @@ const when = (t?: string | null) =>
 const day = (t?: string | null) => (t ? new Date(t).toLocaleDateString("en-US", { timeZone: "America/Chicago", month: "short", day: "numeric" }) : "");
 const money = (n?: number | null) => "$" + Math.round(Number(n ?? 0)).toLocaleString("en-US");
 const pct = (r?: number | null) => (r == null ? "none yet" : (Number(r) * 100).toFixed(1) + "%");
+const short = (n?: number | null) => {
+  const v = Number(n ?? 0);
+  return v >= 1000 ? "$" + (v / 1000).toFixed(v >= 10000 ? 0 : 1) + "k" : "$" + Math.round(v);
+};
+const numOrNull = (v: string | null) => {
+  if (v == null) return null;
+  const n = Number(v.replace(/[$,%\s]/g, ""));
+  return Number.isFinite(n) ? n : null;
+};
 
 export default function HQ() {
   const sb = browserClient();
@@ -122,7 +132,14 @@ export default function HQ() {
           <div className="hq-chips">
             {STAGES.map((s) => <span key={s} className="hq-chip">{nice(s)} <b>{o.pipeline[s] ?? 0}</b></span>)}
           </div>
-          <AddProspect onAdd={(row) => run("Prospect", () => sb.from("prospects").insert(row))} />
+          <div className="hq-chips">
+            {["A", "B", "C"].map((t) => <span key={t} className={"hq-chip hq-tier-chip t-" + t}>Tier {t} <b>{prospects.filter((p) => p.demand_tier === t).length}</b></span>)}
+            <span className="hq-chip">No demand yet <b>{prospects.filter((p) => p.demand_tier == null).length}</b></span>
+          </div>
+          <div className="hq-row">
+            <AddProspect onAdd={(row) => run("Prospect", () => sb.from("prospects").insert(row))} />
+            <ImportClay sb={sb} run={run} />
+          </div>
           <Card title="Active prospects" count={prospects.length}>
             {prospects.length === 0 && <p className="hq-muted">Empty. Website leads land here on their own. Add the rest above.</p>}
             {prospects.map((p) => <Prospect key={p.id} p={p} uid={uid} sb={sb} run={run} />)}
@@ -198,6 +215,8 @@ function AddProspect({ onAdd }: { onAdd: (row: Row) => void }) {
       after_hours_result: v("after_hours_result") ?? "not_tested", callback_minutes: v("callback_minutes") ? Number(v("callback_minutes")) : null,
       est_unsold_band: v("est_unsold_band") ?? "unknown", runs_ads: f.get("runs_ads") === "on", google_reviews: v("google_reviews") ? Number(v("google_reviews")) : null,
       source: v("source") ?? "outbound", notes: v("notes"),
+      main_service: v("main_service"), searches_monthly: numOrNull(v("searches_monthly")), map_rank: numOrNull(v("map_rank")),
+      avg_ticket: numOrNull(v("avg_ticket")), close_rate: v("close_rate") ? (numOrNull(v("close_rate")) ?? 0) / 100 : null,
     });
     e.currentTarget.reset(); setOpen(false);
   };
@@ -224,6 +243,12 @@ function AddProspect({ onAdd }: { onAdd: (row: Row) => void }) {
       <label>Google reviews<input name="google_reviews" inputMode="numeric" /></label>
       <label>Source<select name="source" defaultValue="outbound">{["outbound", "after_hours_test", "referral", "linkedin", "event", "website", "other"].map((s) => <option key={s} value={s}>{nice(s)}</option>)}</select></label>
       <label className="hq-tick"><input type="checkbox" name="runs_ads" /> Runs ads or Local Services</label>
+      <p className="wide hq-muted">Demand (optional): his biggest service, searches a month in his area (Keyword Planner), his map rank (blank if not in the top 20), ticket and close rate.</p>
+      <label>Main service<input name="main_service" placeholder="AC repair" /></label>
+      <label>Searches a month<input name="searches_monthly" inputMode="numeric" /></label>
+      <label>Map rank<input name="map_rank" inputMode="numeric" /></label>
+      <label>Average ticket ($)<input name="avg_ticket" inputMode="numeric" placeholder="450" /></label>
+      <label>Close rate (%)<input name="close_rate" inputMode="numeric" placeholder="90" /></label>
       <label className="wide">Notes<textarea name="notes" rows={2} /></label>
       <div className="wide hq-row"><button className="hq-btn">Save prospect</button><button type="button" className="hq-btn ghost" onClick={() => setOpen(false)}>Cancel</button></div>
     </form>
@@ -248,6 +273,7 @@ function Prospect({ p, uid, sb, run, compact }: { p: Row; uid: string | null; sb
       <button className="hq-prospect-head" onClick={() => setOpen(!open)} aria-expanded={open}>
         <span className={"hq-score-pill" + (p.qualified ? " q" : "")}>{p.score}</span>
         <span className="hq-prospect-name">{p.business_name}<small>{[nice(p.trade), p.city, nice(p.stage)].filter(Boolean).join(" · ")}</small></span>
+        {p.missed_monthly != null && <span className={"hq-tier t-" + (p.demand_tier ?? "C")} title="Search demand he's missing, a month">{p.demand_tier ?? "C"} · {short(p.missed_monthly)}/mo</span>}
       </button>
       {p.next_action && <p className="hq-line">{p.next_action}{p.next_action_at ? ` · ${day(p.next_action_at)}` : ""}</p>}
       {p.disqualified_reason && <p className="hq-line hq-error">Out: {nice(p.disqualified_reason)}</p>}
@@ -256,6 +282,13 @@ function Prospect({ p, uid, sb, run, compact }: { p: Row; uid: string | null; sb
         <div className="hq-detail">
           {!compact && <p className="hq-muted">{[p.owner_name, p.owner_email, p.website, `${p.touch_count} touches`, p.last_touch_at ? `last ${day(p.last_touch_at)}` : null, `after hours: ${nice(p.after_hours_result) || "not tested"}`].filter(Boolean).join(" · ")}</p>}
           {p.notes && !compact && <pre>{p.notes}</pre>}
+          {p.missed_monthly != null && (
+            <p className="hq-line">{[p.biggest_gap || p.main_service, p.searches_monthly != null ? `${Number(p.searches_monthly).toLocaleString("en-US")} searches a month` : null,
+              p.map_rank ? `#${p.map_rank} on the map` : "not in the top 20", `demand ${money(p.market_demand_monthly)}`, `missing ${money(p.missed_monthly)} a month`,
+              p.demand_source === "audit" ? "his numbers" : p.demand_source === "clay" ? "from Clay" : "planning defaults"].filter(Boolean).join(" · ")}</p>
+          )}
+          {p.opener && <pre className="hq-opener">{p.opener}</pre>}
+          {!compact && <DemandEdit p={p} sb={sb} run={run} />}
           <form className="hq-grid" onSubmit={touch}>
             <label>Channel<select name="channel">{CHANNELS.map((c) => <option key={c} value={c}>{nice(c)}</option>)}</select></label>
             <label>What happened<select name="outcome">{OUTCOMES.map((c) => <option key={c} value={c}>{nice(c)}</option>)}</select></label>
@@ -272,6 +305,76 @@ function Prospect({ p, uid, sb, run, compact }: { p: Row; uid: string | null; sb
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+/** His biggest service, in his numbers. Saving recalculates demand and missed $ from this one service. */
+function DemandEdit({ p, sb, run }: { p: Row; sb: any; run: (l: string, f: () => PromiseLike<{ error: any }>) => Promise<void> }) {
+  const [open, setOpen] = useState(false);
+  if (!open) return <button className="hq-btn small ghost" onClick={() => setOpen(true)}>{p.missed_monthly != null ? "Edit demand" : "Add demand"}</button>;
+  const save = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const f = new FormData(e.currentTarget); const v = (k: string) => (String(f.get(k) ?? "").trim() || null);
+    const close = numOrNull(v("close_rate"));
+    void run("Demand", () => sb.from("prospects").update({
+      main_service: v("main_service"), biggest_gap: v("main_service"), searches_monthly: numOrNull(v("searches_monthly")),
+      map_rank: numOrNull(v("map_rank")), avg_ticket: numOrNull(v("avg_ticket")), close_rate: close == null ? null : close / 100,
+      top3_avg_reviews: numOrNull(v("top3_avg_reviews")), opener: null,
+      demand_source: f.get("his_numbers") === "on" ? "audit" : "hq",
+    }).eq("id", p.id));
+    setOpen(false);
+  };
+  return (
+    <form className="hq-grid" onSubmit={save}>
+      <label>Main service<input name="main_service" defaultValue={p.biggest_gap ?? p.main_service ?? ""} required /></label>
+      <label>Searches a month<input name="searches_monthly" inputMode="numeric" defaultValue={p.searches_monthly ?? ""} required /></label>
+      <label>Map rank (blank = not top 20)<input name="map_rank" inputMode="numeric" defaultValue={p.map_rank ?? ""} /></label>
+      <label>Top-3 average reviews<input name="top3_avg_reviews" inputMode="numeric" defaultValue={p.top3_avg_reviews ?? ""} /></label>
+      <label>Average ticket ($)<input name="avg_ticket" inputMode="numeric" defaultValue={p.avg_ticket ?? ""} required /></label>
+      <label>Close rate (%)<input name="close_rate" inputMode="numeric" defaultValue={p.close_rate != null ? Math.round(Number(p.close_rate) * 100) : ""} /></label>
+      <label className="hq-tick wide"><input type="checkbox" name="his_numbers" defaultChecked={p.demand_source === "audit"} /> These are his real numbers (from the audit)</label>
+      <p className="wide hq-muted">Saving recalculates from this one service, so a Clay total across three services becomes this service&apos;s number.</p>
+      <div className="wide hq-row"><button className="hq-btn small">Save demand</button><button type="button" className="hq-btn small ghost" onClick={() => setOpen(false)}>Cancel</button></div>
+    </form>
+  );
+}
+
+/** Clay export in, prospects out. New shops come in as sourced; shops already in HQ get their demand refreshed. */
+function ImportClay({ sb, run }: { sb: any; run: (l: string, f: () => PromiseLike<{ error: any }>) => Promise<void> }) {
+  const [open, setOpen] = useState(false);
+  const [rows, setRows] = useState<ImportRow[]>([]);
+  const [note, setNote] = useState("");
+  if (!open) return <button className="hq-btn ghost" onClick={() => setOpen(true)}>Import from Clay</button>;
+  const pick = async (file?: File) => {
+    if (!file) return;
+    const { rows: r, problems } = clayRows(await file.text());
+    setRows(r);
+    const withDemand = r.filter((x) => x.missed_monthly != null).length;
+    setNote(problems.length ? problems.join(" ") : `${r.length} shops found, ${withDemand} with demand numbers.`);
+  };
+  const send = () => run("Clay import", async () => {
+    let inserted = 0, updated = 0, skipped = 0; const errors: string[] = [];
+    for (let i = 0; i < rows.length; i += 200) {
+      const { data, error } = await sb.rpc("hq_import_prospects", { p_rows: rows.slice(i, i + 200) });
+      if (error) return { error };
+      inserted += data.inserted; updated += data.updated; skipped += data.skipped;
+      for (const e of data.errors ?? []) errors.push(`${e.row}: ${e.error}`);
+    }
+    setNote(`${inserted} added, ${updated} updated, ${skipped} skipped.${errors.length ? " " + errors.slice(0, 3).join(" · ") : ""}`);
+    setRows([]);
+    return { error: null };
+  });
+  return (
+    <div className="hq-card wide">
+      <h2>Import from Clay</h2>
+      <p className="hq-muted">Export the Clay demand table as CSV with the template headers (Shop, Phone, Suburb, Trade, Service 1 to 3, Searches S1 to S3, Map rank S1 to S3, Ticket S1 to S3, Close rate S1 to S3, Opener). Shops already in HQ are matched by phone, or by name and city.</p>
+      <input type="file" accept=".csv,text/csv" onChange={(e) => void pick(e.target.files?.[0])} />
+      {note && <p className="hq-line">{note}</p>}
+      <div className="hq-row">
+        <button className="hq-btn small" disabled={rows.length === 0} onClick={() => void send()}>Import {rows.length || ""} shops</button>
+        <button className="hq-btn small ghost" onClick={() => { setOpen(false); setRows([]); setNote(""); }}>Close</button>
+      </div>
     </div>
   );
 }

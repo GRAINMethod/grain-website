@@ -62,3 +62,13 @@
 .hq-msg { border-top: 1px solid var(--line); padding: 12px 0; }
 .hq-pill { display: inline-block; padding: 2px 6px; border: 1px solid var(--line); text-transform: uppercase; margin-right: 6px; }
 .hq-pill.sent { color: var(--moss-l); border-color: var(--moss-d); } .hq-pill.failed, .hq-pill.skipped { color: #E2A78C; }
+
+/* Demand tiers (Nov 18): A = qualified and missing $10k+ a month, B = $3k to $10k, C = the rest */
+.hq-prospect-name { flex: 1; min-width: 0; }
+.hq-tier { flex: none; margin-left: auto; font: 700 11px "JetBrains Mono", monospace; letter-spacing: .04em; padding: 6px 8px; border: 1px solid var(--line); color: rgba(240,236,223,.7); white-space: nowrap; }
+.hq-tier.t-A { background: var(--moss); border-color: var(--moss); color: var(--deep); }
+.hq-tier.t-B { border-color: var(--moss-d); color: var(--moss-l); }
+.hq-tier-chip.t-A { border-color: var(--moss); color: var(--moss-l); }
+.hq-opener { border-left: 3px solid var(--moss) !important; }
+.hq-card.wide { width: 100%; margin-top: 10px; }
+.hq-row > form.hq-card { flex: 1 1 100%; }

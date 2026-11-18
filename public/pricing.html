@@ -23,7 +23,7 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-T5DP2CY8NW');</script>
 <script>
   var BOOKING_URL=''; /* GoHighLevel calendar link goes here when it's ready */
-  function openCalendly(e){if(e)e.preventDefault();if(typeof gtag!=='undefined')gtag('event','audit_click');window.location.href=BOOKING_URL||'apply.html';return false;}
+  function openCalendly(e){if(e)e.preventDefault();if(typeof gtag!=='undefined')gtag('event','audit_click');window.location.href=BOOKING_URL||'/apply';return false;}
 </script>
 
 <style>
@@ -763,6 +763,16 @@ h1, h2, h3, h4 {
 @media (max-width: 900px) { .g3 { grid-template-columns: 1fr; } .g3-cell { border-right: 0; border-bottom: 1px solid var(--line-dark); padding: 26px 4px; } }
 .tier-founding { margin: 2px 0 10px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.04em; color: var(--moss-light); }
 .tier-founding span { font-weight: 700; }
+
+/* Growth: what every tier includes, then the add-ons (Nov 18) */
+.addons-sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--moss-light); font-weight: 600; margin: 0 0 16px; }
+.addons-sub.second { margin-top: 56px; }
+.addons-grid.three { grid-template-columns: repeat(3, 1fr); }
+.addons-grid.two { grid-template-columns: repeat(2, 1fr); }
+.addon.included { min-height: 0; }
+.addon.included .addon-price { color: var(--moss); }
+@media (max-width: 1080px) { .addons-grid.three { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 860px) { .addons-grid.three, .addons-grid.two { grid-template-columns: 1fr; } }
 .addons-grid.four { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 1100px) { .addons-grid.four { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .addons-grid.four { grid-template-columns: 1fr; } }
@@ -1628,7 +1638,7 @@ h1, h2, h3, h4 {
 <!-- ===== NAV ===== -->
 <nav class="nav" id="main-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand">
+    <a href="/" class="nav-brand">
       <svg class="nav-brand-logo" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g transform="translate(90,75)">
           <g transform="translate(110,230)">
@@ -1647,11 +1657,11 @@ h1, h2, h3, h4 {
       <span></span><span></span><span></span>
     </div>
     <div class="nav-links">
-      <a href="method.html" class="nav-link">Method</a>
-      <a href="dashboard.html" class="nav-link">Dashboard</a>
-      <a href="calculator.html" class="nav-link">Calculator</a>
-      <a href="pricing.html" class="nav-link active">Pricing</a>
-      <a href="apply.html" class="nav-cta">Apply</a>
+      <a href="/method" class="nav-link">Method</a>
+      <a href="/dashboard" class="nav-link">Dashboard</a>
+      <a href="/calculator" class="nav-link">Calculator</a>
+      <a href="/pricing" class="nav-link active">Pricing</a>
+      <a href="/apply" class="nav-cta">Apply</a>
       <span class="nav-divider" aria-hidden="true"></span>
       <a href="/login" class="nav-signin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>Sign in</a>
     </div>
@@ -1712,7 +1722,7 @@ h1, h2, h3, h4 {
       <article class="tier anchor reveal" data-delay="1">
         <div class="tier-badge">Recommended</div>
         <div class="tier-name">Greenhouse</div>
-        <div class="tier-tagline">Every call answered, every quote followed up and old estimates revived, for one location. Live in 14 days, run by us.</div>
+        <div class="tier-tagline">Every lead answered and booked, every quote followed up, old estimates revived and your shop found on Google. One location, live in 14 days, run by us.</div>
         <div class="tier-price">
           <span class="tier-price-num"><span data-price-monthly="2997" data-price-annual="2497">$2,997</span></span>
           <span class="tier-price-period">/ month</span>
@@ -1725,6 +1735,7 @@ h1, h2, h3, h4 {
         <ul class="tier-features">
           <li>60-second response, 24/7: voice, form and SMS</li>
           <li>90-day follow-up on every quote</li>
+          <li>Found on Google and in AI answers, with a review request after every job</li>
           <li>Old estimates revived, 10% only on jobs completed and paid</li>
           <li>CRM integration: your existing tools stay</li>
           <li>Greenhouse Dashboard, plus a daily update of yesterday's numbers</li>
@@ -1924,16 +1935,53 @@ h1, h2, h3, h4 {
 <section class="section addons-section" id="addons">
   <div class="wrap">
     <div class="addons-intro">
-      <div class="eyebrow reveal">Growth add-ons</div>
+      <div class="eyebrow reveal">Growth</div>
       <h2 class="h-section reveal" data-delay="1">
         More leads, <span class="italic-accent">when you want them.</span>
       </h2>
       <p class="lede reveal" data-delay="2">
-        Old-estimate revival comes with every tier. These add more on the same system, so every new lead gets the same 60-second answer. Most clients add them at the day-60 review, once every call is being answered. Pause or remove any of them with 30 days' notice.
+        Getting found on Google, more reviews and old-estimate revival come with every tier. Sunlight adds ads on the same system, so every new lead gets the same 60-second answer. Most clients add it at the day-60 review, once every call is being answered. Pause or remove an add-on with 30 days' notice.
       </p>
     </div>
 
-    <div class="addons-grid four">
+    <div class="addons-sub reveal">In every tier</div>
+    <div class="addons-grid three">
+      <article class="addon included reveal">
+        <span class="addon-glyph" aria-hidden="true">▼</span>
+        <div class="addon-plain">Found on Google and in AI answers</div>
+        <div class="addon-header">
+          <div class="addon-name">Roots</div>
+        </div>
+        <div class="addon-price">Included</div>
+        <p class="addon-desc">Your Google profile, the same details on every listing, a new service or FAQ page each month, and a monthly check on whether ChatGPT and Gemini recommend you.</p>
+        <div class="addon-bundled">Every tier</div>
+      </article>
+
+      <article class="addon included reveal" data-delay="1">
+        <span class="addon-glyph" aria-hidden="true">◐</span>
+        <div class="addon-plain">More 5-star reviews and referrals</div>
+        <div class="addon-header">
+          <div class="addon-name">Fertilizer</div>
+        </div>
+        <div class="addon-price">Included</div>
+        <p class="addon-desc">A review request after every finished job, a reply to every review, and a referral ask to your happiest customers.</p>
+        <div class="addon-bundled">Every tier</div>
+      </article>
+
+      <article class="addon included reveal" data-delay="2">
+        <span class="addon-glyph" aria-hidden="true">✦</span>
+        <div class="addon-plain">Old estimates turned into jobs</div>
+        <div class="addon-header">
+          <div class="addon-name">Compost</div>
+        </div>
+        <div class="addon-price">Included · 10% of revived jobs</div>
+        <p class="addon-desc">Two years of unsold estimates and past customers worked back into booked jobs, with a fresh pass every quarter. You pay 10% only on jobs completed and paid.</p>
+        <div class="addon-bundled">Every tier</div>
+      </article>
+    </div>
+
+    <div class="addons-sub second reveal">Add when you want more</div>
+    <div class="addons-grid two">
       <article class="addon reveal">
         <span class="addon-glyph" aria-hidden="true">◉</span>
         <div class="addon-plain">More leads from Google and Meta ads</div>
@@ -1946,28 +1994,6 @@ h1, h2, h3, h4 {
       </article>
 
       <article class="addon reveal" data-delay="1">
-        <span class="addon-glyph" aria-hidden="true">▼</span>
-        <div class="addon-plain">Found on Google and in AI answers</div>
-        <div class="addon-header">
-          <div class="addon-name">Roots</div>
-        </div>
-        <div class="addon-price">$997 / month · 90-day minimum</div>
-        <p class="addon-desc">Google Business Profile, local SEO and service pages, so your name comes up when people search Google or ask ChatGPT and Gemini who to call.</p>
-        <div class="addon-bundled">Priced per location</div>
-      </article>
-
-      <article class="addon reveal" data-delay="2">
-        <span class="addon-glyph" aria-hidden="true">◐</span>
-        <div class="addon-plain">More reviews and referrals</div>
-        <div class="addon-header">
-          <div class="addon-name">Fertilizer</div>
-        </div>
-        <div class="addon-price">$997 / month</div>
-        <p class="addon-desc">On top of the review requests every tier includes: a reply to every review, weekly Google posts, fresh content from your jobs and a referral ask to your happiest customers.</p>
-        <div class="addon-bundled">Priced per location</div>
-      </article>
-
-      <article class="addon reveal" data-delay="3">
         <span class="addon-glyph" aria-hidden="true">◆</span>
         <div class="addon-plain">Your team's questions, answered</div>
         <div class="addon-header">
@@ -1994,6 +2020,8 @@ h1, h2, h3, h4 {
         <h3><span class="check">+</span> Included, no extra charge</h3>
         <ul>
           <li>Unlimited voice agent calls</li>
+          <li>Google profile, listings and AI search checks</li>
+          <li>Review requests and replies</li>
           <li>Unlimited texts and emails</li>
           <li>CRM setup and upkeep</li>
           <li>Updates and tuning</li>
@@ -2130,27 +2158,27 @@ h1, h2, h3, h4 {
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Method</div>
-        <a href="method.html">How it works</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="calculator.html">Calculator</a>
+        <a href="/method">How it works</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/calculator">Calculator</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Engage</div>
-        <a href="pricing.html">Pricing</a>
-        <a href="apply.html">Apply</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/apply">Apply</a>
         <a href="mailto:johnny@grainmethod.com">Email</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Who it's for</div>
-        <a href="home-services.html">Home services</a>
-        <a href="pricing.html">Multi-location</a>
-        <a href="apply.html">Not in home services? Apply and we'll tell you if it fits.</a>
+        <a href="/home-services">Home services</a>
+        <a href="/pricing">Multi-location</a>
+        <a href="/apply">Not in home services? Apply and we'll tell you if it fits.</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Trust</div>
-        <a href="privacy.html">Privacy policy</a>
-        <a href="terms.html">Terms of service</a>
-        <a href="security.html">Security</a>
+        <a href="/privacy">Privacy policy</a>
+        <a href="/terms">Terms of service</a>
+        <a href="/security">Security</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -2263,16 +2291,17 @@ h1, h2, h3, h4 {
 
   /* ---------- ASK GRAIN ---------- */
   const ASK_EXAMPLES = [
-    { q: "What does GRAIN actually do?", a: "GRAIN is done-for-you lead response. We answer every call, text and form in under 60 seconds, 24/7, book it, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days. Home services is our first industry." },
-    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. GRAIN is what happens after the phone rings: every lead answered, qualified, booked and followed up, done for you. We work with the CRM and marketing you already have." },
+    { q: "What does GRAIN actually do?", a: "GRAIN is done for you. Every lead answered in under 60 seconds, 24/7, and booked. Every quote followed up for 90 days. Your old unsold estimates worked back into jobs. And more leads when you want them: getting found on Google and in AI answers, and more reviews, come with every tier, and we run the ads too. You pay $0 until it's live, and it's live in 14 days. Home services is our first industry." },
+    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you leads and stops there. GRAIN answers, books and follows up every lead, works your old estimates, and gets you found on Google, done for you. We work with the CRM and marketing you already have." },
     { q: "How fast can I be live?", a: "Greenhouse is live within 14 days of kickoff, or month 1 is free. Kickoff happens within 3 business days of signing, and you approve the test calls before anything goes live. Orchard and Estate roll out location by location on the same 14-day build." },
     { q: "What does it cost?", a: "Greenhouse, one location: $2,997/month, with a founding rate of $1,497/month through Dec 31, plus $1,500 setup and 10% of revived jobs, only on jobs completed and paid. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
     { q: "What are the guarantees?", a: "Three. Start Guarantee: $0 until it's live, live in 14 days or month 1 is free. Call promise: 99% of calls answered in 60 seconds every month, or that month is free. Payback Guarantee: if revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do, and if you're still short at day 180 we refund the difference. Each has conditions, listed on the pricing page." },
     { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, painting, fencing, pools, landscaping and garage doors. If you're outside those, we'll tell you on the audit call and we won't take your money." },
     { q: "Do you replace my team?", a: "No. We cover what your team can't get to: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team keeps doing what they're already good at." },
     { q: "What CRMs do you work with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx and most others. Where your software takes outside bookings, jobs go straight in. Where it doesn't, they land on a shared calendar your office confirms. We check yours on the audit." },
-    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real response times, close rates and unsold estimates, and show you what they're costing you each month. You get a written number within 48 hours, whether you become a client or not." },
+    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We show you how many people search for your work nearby and how many find you, what your missed calls cost, and what your old estimates are worth. You get a written number within 48 hours, whether you become a client or not." },
     { q: "Do you run ads?", a: "Yes. Sunlight runs your Google Local Services Ads, Google Search and Meta campaigns: $997/month or 15% of ad spend, whichever is higher. You pay the platforms directly and we never mark up spend. Every lead lands in your Greenhouse and gets answered in under 60 seconds." },
+    { q: "Is getting found on Google included?", a: "Yes. Every tier includes Roots (your Google profile, matching listings, a new service page each month and AI search checks) and Fertilizer (a review request after every job, a reply to every review and a referral ask). Sunlight, the ads, is the one add-on." },
     { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave." }
   ];
 
@@ -2346,7 +2375,7 @@ h1, h2, h3, h4 {
       if (!any && v.length > 2) {
         suggestionsEl.innerHTML = `
           <div class="ask-suggestion-label">No exact match. Talk to us directly.</div>
-          <a class="ask-suggestion" href="apply.html">Apply for an audit call →</a>
+          <a class="ask-suggestion" href="/apply">Apply for an audit call →</a>
         `;
       }
     });

@@ -23,7 +23,7 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-T5DP2CY8NW');</script>
 <script>
   var BOOKING_URL=''; /* GoHighLevel calendar link goes here when it's ready */
-  function openCalendly(e){if(e)e.preventDefault();if(typeof gtag!=='undefined')gtag('event','audit_click');window.location.href=BOOKING_URL||'apply.html';return false;}
+  function openCalendly(e){if(e)e.preventDefault();if(typeof gtag!=='undefined')gtag('event','audit_click');window.location.href=BOOKING_URL||'/apply';return false;}
 </script>
 
 <style>
@@ -1630,6 +1630,118 @@ h1, h2, h3, h4 {
 .addons-grid.four { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 1100px) { .addons-grid.four { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .addons-grid.four { grid-template-columns: 1fr; } }
+
+/* What we do + GRAIN grid on the homepage (from the Method page, Nov 18) */
+.wwd-section { border-bottom: 1px solid var(--line-dark); padding-top: clamp(24px, 3vw, 40px); }
+.wwd-section .wwd-flow { margin-top: 0; }
+.wwd-link { color: inherit; text-decoration: underline; text-decoration-color: rgba(191, 208, 162, 0.45); text-underline-offset: 4px; transition: text-decoration-color 0.2s; }
+.wwd-link:hover { text-decoration-color: var(--moss-light); }
+@media (max-width: 960px) { .wwd-section .wwd-flow::before { top: 10px; } }
+.wwd-flow { list-style: none; margin: 52px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+.wwd-flow::before { content: ""; position: absolute; top: 14px; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, var(--moss) 0%, rgba(154,175,122,0.15) 100%); }
+.wwd-flow li { position: relative; padding: 40px 22px 0 0; display: flex; flex-direction: column; gap: 10px; }
+.wwd-flow li::before { content: ""; position: absolute; top: 9px; left: 0; width: 11px; height: 11px; border-radius: 50%; background: var(--ink); border: 2px solid var(--moss); }
+.wwd-n { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--moss); }
+.wwd-flow strong { font-size: 19px; line-height: 1.25; color: var(--bg); font-weight: 700; letter-spacing: -0.01em; }
+.wwd-flow li > span:last-child { font-size: 15px; line-height: 1.5; color: rgba(240, 236, 223, 0.7); }
+.wwd-foot { margin-top: 48px; font-size: 18px; color: rgba(240, 236, 223, 0.85); }
+.wwd-foot strong { color: var(--moss-light); }
+@media (max-width: 960px) { .wwd-flow { grid-template-columns: 1fr; } .wwd-flow::before { top: 0; bottom: 0; left: 5px; right: auto; width: 1px; height: auto; background: linear-gradient(180deg, var(--moss), rgba(154,175,122,0.15)); } .wwd-flow li { padding: 0 0 28px 34px; } .wwd-flow li::before { top: 4px; } }
+.grain-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--line-dark);
+  border: 1px solid var(--line-dark);
+  margin-top: 20px;
+}
+.grain-cell {
+  background: var(--ink);
+  padding: 56px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 360px;
+  position: relative;
+  cursor: default;
+  transition: background 0.5s var(--ease);
+  overflow: hidden;
+}
+.grain-cell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(154,175,122,0.10) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease);
+  pointer-events: none;
+}
+.grain-cell:hover { background: var(--ink-deeper); }
+.grain-cell:hover::before { opacity: 1; }
+.grain-cell:hover .grain-letter { color: var(--moss); transform: translateY(-4px); }
+.grain-letter {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(72px, 7vw, 116px);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: var(--bg);
+  transition: all 0.5s var(--ease);
+}
+.grain-cell-body { position: relative; z-index: 2; }
+.grain-word {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 26px;
+  color: var(--moss-light);
+  margin-bottom: 12px;
+  line-height: 1;
+}
+.grain-result {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,236,223,0.5);
+}
+a.grain-cell { text-decoration: none; cursor: pointer; min-height: 250px; }
+@media (max-width: 600px) {
+  a.grain-cell { min-height: 0; flex-direction: row; justify-content: flex-start; align-items: center; gap: 22px; padding: 22px 24px; }
+  a.grain-cell .grain-letter { font-size: 56px; width: 52px; }
+  a.grain-cell .grain-word { margin-bottom: 8px; }
+}
+
+@media (max-width: 1080px) {
+  .grain-grid { grid-template-columns: repeat(2, 1fr); }
+  .grain-cell { min-height: 280px; padding: 40px 28px 32px; }
+}
+@media (max-width: 600px) {
+  .grain-grid { grid-template-columns: 1fr; }
+}
+
+
+.home-wwd { border-bottom: 1px solid var(--line-dark); }
+.home-wwd .wwd-flow { margin-top: 40px; }
+.home-grain-grid { margin-top: 64px; }
+.home-grain-grid a.grain-cell { min-height: 200px; padding: 40px 28px 32px; }
+@media (max-width: 600px) { .home-grain-grid a.grain-cell { min-height: 0; padding: 18px 22px; } }
+
+/* Six-step flow (Nov 18) */
+.wwd-flow.six { grid-template-columns: repeat(6, 1fr); }
+@media (max-width: 1200px) and (min-width: 961px) { .wwd-flow.six { grid-template-columns: repeat(3, 1fr); row-gap: 40px; } .wwd-flow.six::before { display: none; } }
+@media (max-width: 960px) { .wwd-flow.six { grid-template-columns: 1fr; } }
+
+/* Growth: what every tier includes, then the add-ons (Nov 18) */
+.addons-sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--moss-light); font-weight: 600; margin: 0 0 16px; }
+.addons-sub.second { margin-top: 56px; }
+.addons-grid.three { grid-template-columns: repeat(3, 1fr); }
+.addons-grid.two { grid-template-columns: repeat(2, 1fr); }
+.addon.included { min-height: 0; }
+.addon.included .addon-price { color: var(--moss); }
+@media (max-width: 1080px) { .addons-grid.three { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 860px) { .addons-grid.three, .addons-grid.two { grid-template-columns: 1fr; } }
 </style>
 <script>try{if(!sessionStorage.getItem('grainIntro')){var d=document.documentElement;d.classList.add('logo-intro');sessionStorage.setItem('grainIntro','1');var started=false,go=function(){if(started)return;started=true;requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('logo-go');});});};if(document.readyState==='complete'){go();}else{window.addEventListener('load',go);setTimeout(go,1500);}}}catch(e){}</script>
 <style>
@@ -1685,7 +1797,7 @@ h1, h2, h3, h4 {
 <!-- ===== NAV ===== -->
 <nav class="nav" id="main-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand">
+    <a href="/" class="nav-brand">
       <svg class="nav-brand-logo" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g transform="translate(90,75)">
           <g transform="translate(110,230)">
@@ -1704,11 +1816,11 @@ h1, h2, h3, h4 {
       <span></span><span></span><span></span>
     </div>
     <div class="nav-links">
-      <a href="method.html" class="nav-link">Method</a>
-      <a href="dashboard.html" class="nav-link">Dashboard</a>
-      <a href="calculator.html" class="nav-link">Calculator</a>
-      <a href="pricing.html" class="nav-link">Pricing</a>
-      <a href="apply.html" class="nav-cta">Apply</a>
+      <a href="/method" class="nav-link">Method</a>
+      <a href="/dashboard" class="nav-link">Dashboard</a>
+      <a href="/calculator" class="nav-link">Calculator</a>
+      <a href="/pricing" class="nav-link">Pricing</a>
+      <a href="/apply" class="nav-cta">Apply</a>
       <span class="nav-divider" aria-hidden="true"></span>
       <a href="/login" class="nav-signin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>Sign in</a>
     </div>
@@ -1728,11 +1840,11 @@ h1, h2, h3, h4 {
       <div class="eyebrow hero-eyebrow reveal">FOR HOME SERVICE BUSINESSES · NASHVILLE</div>
 
       <h1 class="h-hero hero-title reveal" data-delay="1">
-        Your leads are seeds.<br>We build the <span class="italic-accent">greenhouse</span>.
+        Every lead answered.<br><span class="italic-accent">More jobs booked.</span>
       </h1>
 
       <p class="hero-sub reveal" data-delay="2">
-        Every call, text and form answered in under <strong>60 seconds</strong> and booked as a job. Every estimate followed up, and when you want more leads, we run the ads and search that bring them.
+        Calls, texts and forms answered in under <strong>60 seconds</strong> and booked. Every estimate followed up. Your old estimates turned into jobs. And when you need more leads, we bring those too. Done for you, live in 14 days.
       </p>
 
       <div class="hero-guarantee reveal" data-delay="3">
@@ -1742,9 +1854,9 @@ h1, h2, h3, h4 {
 
       <div class="hero-ctas reveal" data-delay="4">
         <button class="btn btn-primary" onclick="openCalendly(event)">
-          Apply for your audit <span class="btn-arrow">→</span>
+          Apply for your free audit <span class="btn-arrow">→</span>
         </button>
-        <a href="method.html" class="btn btn-secondary">
+        <a href="/method" class="btn btn-secondary">
           See how it works <span class="btn-arrow">→</span>
         </a>
       </div>
@@ -1807,6 +1919,45 @@ h1, h2, h3, h4 {
   </div>
 </div>
 
+<!-- ===== WHAT WE DO (plain English, same as the Method page) ===== -->
+<section class="section wwd-section home-wwd">
+  <div class="wrap">
+    <div class="eyebrow reveal">What we do</div>
+    <ol class="wwd-flow six reveal" data-delay="1">
+      <li><span class="wwd-n">01</span><strong>A lead comes in</strong><span>Call, text, web form or ad. Day or night.</span></li>
+      <li><span class="wwd-n">02</span><strong>We answer in under 60 seconds</strong><span>A voice agent trained on your services, prices and area.</span></li>
+      <li><span class="wwd-n">03</span><strong>We book it</strong><span>Straight onto your calendar. Your tech just shows up.</span></li>
+      <li><span class="wwd-n">04</span><strong>We follow up every quote</strong><span>For 90 days, until it's a yes or a no.</span></li>
+      <li><span class="wwd-n">05</span><strong>We revive old estimates</strong><span>Two years of unsold quotes, worked back into jobs.</span></li>
+      <li><span class="wwd-n">06</span><strong>We bring more leads</strong><span>Google, AI search and reviews included. Ads when you want more.</span></li>
+    </ol>
+    <p class="wwd-foot reveal" data-delay="3">You see every call, booking and dollar in your <a class="wwd-link" href="/dashboard"><strong>Greenhouse Dashboard</strong></a>. You run the jobs. We run the rest.</p>
+
+    <div class="grain-grid home-grain-grid">
+      <a class="grain-cell reveal" href="/method#engine-g" aria-label="Generate: how it works">
+        <div class="grain-letter">G</div>
+        <div class="grain-cell-body"><div class="grain-word">Generate</div><div class="grain-result">found</div></div>
+      </a>
+      <a class="grain-cell reveal" data-delay="1" href="/method#engine-r" aria-label="Respond: how it works">
+        <div class="grain-letter">R</div>
+        <div class="grain-cell-body"><div class="grain-word">Respond</div><div class="grain-result">answered</div></div>
+      </a>
+      <a class="grain-cell reveal" data-delay="2" href="/method#engine-a" aria-label="Automate: how it works">
+        <div class="grain-letter">A</div>
+        <div class="grain-cell-body"><div class="grain-word">Automate</div><div class="grain-result">followed up</div></div>
+      </a>
+      <a class="grain-cell reveal" data-delay="3" href="/method#engine-i" aria-label="Integrate: how it works">
+        <div class="grain-letter">I</div>
+        <div class="grain-cell-body"><div class="grain-word">Integrate</div><div class="grain-result">connected</div></div>
+      </a>
+      <a class="grain-cell reveal" data-delay="4" href="/method#engine-n" aria-label="Nurture: how it works">
+        <div class="grain-letter">N</div>
+        <div class="grain-cell-body"><div class="grain-word">Nurture</div><div class="grain-result">revived</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ===== THE LEAK (market data, sourced) ===== -->
 <section class="section leak-section">
   <div class="wrap">
@@ -1822,64 +1973,6 @@ h1, h2, h3, h4 {
   </div>
 </section>
 
-<!-- ===== METHOD / G-R-A-I-N CASCADE ===== -->
-<section class="section method">
-  <div class="wrap">
-    <div class="method-intro">
-      <div class="eyebrow reveal">The method</div>
-      <h2 class="h-section reveal" data-delay="1">
-        What happens after <span class="italic-accent">the phone rings.</span>
-      </h2>
-      <p class="lede reveal" data-delay="2">
-        Built around your shop in 14 days, then run by us. Here is what each part does.
-      </p>
-    </div>
-
-    <div class="method-cascade">
-      <div class="method-row reveal">
-        <div class="method-letter">G</div>
-        <div class="method-content">
-          <div class="method-word">Generate</div>
-          <p class="method-desc">Every lead from Google, ads, referrals or your website lands in one place, tagged by source. You know what brought it in.</p>
-        </div>
-        <div class="method-arrow">captured</div>
-      </div>
-      <div class="method-row reveal" data-delay="1">
-        <div class="method-letter">R</div>
-        <div class="method-content">
-          <div class="method-word">Respond</div>
-          <p class="method-desc">Calls, texts and web forms answered in under 60 seconds, 24 hours a day, by a voice agent trained on your business. No voicemail, no lost lead.</p>
-        </div>
-        <div class="method-arrow">answered</div>
-      </div>
-      <div class="method-row reveal" data-delay="2">
-        <div class="method-letter">A</div>
-        <div class="method-content">
-          <div class="method-word">Automate</div>
-          <p class="method-desc">The follow-up nobody on your team has time for. Every estimate followed up for 90 days by text and email, until it books or they say no.</p>
-        </div>
-        <div class="method-arrow">followed up</div>
-      </div>
-      <div class="method-row reveal" data-delay="3">
-        <div class="method-letter">I</div>
-        <div class="method-content">
-          <div class="method-word">Integrate</div>
-          <p class="method-desc">Works with the software you already run: ServiceTitan, Jobber, Housecall Pro, JobNimbus and the rest. Bookings land on your calendar, your data stays where it is, and your team's day doesn't change.</p>
-        </div>
-        <div class="method-arrow">connected</div>
-      </div>
-      <div class="method-row reveal" data-delay="4">
-        <div class="method-letter">N</div>
-        <div class="method-content">
-          <div class="method-word">Nurture</div>
-          <p class="method-desc">Past customers and old estimates worked back into revenue every quarter. You pay 10% only on revived jobs that are completed and paid.</p>
-        </div>
-        <div class="method-arrow">revived</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== GROWTH ===== -->
 <section class="section addons-section" id="growth">
   <div class="wrap">
@@ -1889,11 +1982,48 @@ h1, h2, h3, h4 {
         Need more leads?<br><span class="italic-accent">We bring them.</span>
       </h2>
       <p class="lede reveal" data-delay="2">
-        First we make sure you stop losing the leads you already pay for. Then we add what brings in more, on the same system: every new lead answered in 60 seconds, every dollar tracked to a booked job.
+        Getting found on Google and in AI answers, and more 5-star reviews, come with every tier. When you want more leads on top of that, we run the ads. Every new lead is answered in 60 seconds and tracked to a booked job.
       </p>
     </div>
 
-    <div class="addons-grid four">
+    <div class="addons-sub reveal">In every tier</div>
+    <div class="addons-grid three">
+      <article class="addon included reveal">
+        <span class="addon-glyph" aria-hidden="true">▼</span>
+        <div class="addon-plain">Found on Google and in AI answers</div>
+        <div class="addon-header">
+          <div class="addon-name">Roots</div>
+        </div>
+        <div class="addon-price">Included</div>
+        <p class="addon-desc">Your Google profile, the same details on every listing, a new service or FAQ page each month, and a monthly check on whether ChatGPT and Gemini recommend you.</p>
+        <div class="addon-bundled">Every tier</div>
+      </article>
+
+      <article class="addon included reveal" data-delay="1">
+        <span class="addon-glyph" aria-hidden="true">◐</span>
+        <div class="addon-plain">More 5-star reviews and referrals</div>
+        <div class="addon-header">
+          <div class="addon-name">Fertilizer</div>
+        </div>
+        <div class="addon-price">Included</div>
+        <p class="addon-desc">A review request after every finished job, a reply to every review, and a referral ask to your happiest customers.</p>
+        <div class="addon-bundled">Every tier</div>
+      </article>
+
+      <article class="addon included reveal" data-delay="2">
+        <span class="addon-glyph" aria-hidden="true">✦</span>
+        <div class="addon-plain">Old estimates turned into jobs</div>
+        <div class="addon-header">
+          <div class="addon-name">Compost</div>
+        </div>
+        <div class="addon-price">Included · 10% of revived jobs</div>
+        <p class="addon-desc">Two years of unsold estimates and past customers worked back into booked jobs, with a fresh pass every quarter. You pay 10% only on jobs completed and paid.</p>
+        <div class="addon-bundled">Every tier</div>
+      </article>
+    </div>
+
+    <div class="addons-sub second reveal">Add when you want more</div>
+    <div class="addons-grid two">
       <article class="addon reveal">
         <span class="addon-glyph" aria-hidden="true">◉</span>
         <div class="addon-plain">More leads from Google and Meta ads</div>
@@ -1906,28 +2036,6 @@ h1, h2, h3, h4 {
       </article>
 
       <article class="addon reveal" data-delay="1">
-        <span class="addon-glyph" aria-hidden="true">▼</span>
-        <div class="addon-plain">Found on Google and in AI answers</div>
-        <div class="addon-header">
-          <div class="addon-name">Roots</div>
-        </div>
-        <div class="addon-price">$997 / month · 90-day minimum</div>
-        <p class="addon-desc">Google Business Profile, local SEO and service pages, so your name comes up when people search Google or ask ChatGPT and Gemini who to call.</p>
-        <div class="addon-bundled">Priced per location</div>
-      </article>
-
-      <article class="addon reveal" data-delay="2">
-        <span class="addon-glyph" aria-hidden="true">◐</span>
-        <div class="addon-plain">More reviews and referrals</div>
-        <div class="addon-header">
-          <div class="addon-name">Fertilizer</div>
-        </div>
-        <div class="addon-price">$997 / month</div>
-        <p class="addon-desc">On top of the review requests every tier includes: a reply to every review, weekly Google posts, fresh content from your jobs and a referral ask to your happiest customers.</p>
-        <div class="addon-bundled">Priced per location</div>
-      </article>
-
-      <article class="addon reveal" data-delay="3">
         <span class="addon-glyph" aria-hidden="true">◆</span>
         <div class="addon-plain">Your team's questions, answered</div>
         <div class="addon-header">
@@ -1940,7 +2048,7 @@ h1, h2, h3, h4 {
     </div>
 
     <div class="reveal" style="margin-top: 44px;">
-      <a class="btn btn-secondary" href="pricing.html#addons">See how it's priced <span class="btn-arrow">→</span></a>
+      <a class="btn btn-secondary" href="/pricing">See pricing <span class="btn-arrow">→</span></a>
     </div>
   </div>
 </section>
@@ -1954,13 +2062,13 @@ h1, h2, h3, h4 {
         Find out how much you're<br><span class="italic-accent">leaving behind.</span>
       </h2>
       <p class="reveal" data-delay="2">
-        Thirty minutes with the founder. We pull your real numbers (response time, close rate, past customers) and tell you what they're costing you each month. Free, no pitch, whether or not you become a client.
+        Thirty minutes with the founder. How many people search for your work nearby, how many calls you miss, and what your old estimates are worth, in your own numbers. Free, whether or not you become a client.
       </p>
       <div class="cta-actions reveal" data-delay="3">
         <button class="btn btn-primary" onclick="openCalendly(event)">
-          Apply for your audit <span class="btn-arrow">→</span>
+          Apply for your free audit <span class="btn-arrow">→</span>
         </button>
-        <a href="calculator.html" class="btn btn-secondary">
+        <a href="/calculator" class="btn btn-secondary">
           Run the numbers yourself <span class="btn-arrow">→</span>
         </a>
       </div>
@@ -1983,27 +2091,27 @@ h1, h2, h3, h4 {
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Method</div>
-        <a href="method.html">How it works</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="calculator.html">Calculator</a>
+        <a href="/method">How it works</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/calculator">Calculator</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Engage</div>
-        <a href="pricing.html">Pricing</a>
-        <a href="apply.html">Apply</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/apply">Apply</a>
         <a href="mailto:johnny@grainmethod.com">Email</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Who it's for</div>
-        <a href="home-services.html">Home services</a>
-        <a href="pricing.html">Multi-location</a>
-        <a href="apply.html">Not in home services? Apply and we'll tell you if it fits.</a>
+        <a href="/home-services">Home services</a>
+        <a href="/pricing">Multi-location</a>
+        <a href="/apply">Not in home services? Apply and we'll tell you if it fits.</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Trust</div>
-        <a href="privacy.html">Privacy policy</a>
-        <a href="terms.html">Terms of service</a>
-        <a href="security.html">Security</a>
+        <a href="/privacy">Privacy policy</a>
+        <a href="/terms">Terms of service</a>
+        <a href="/security">Security</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -2202,16 +2310,17 @@ h1, h2, h3, h4 {
 
   /* ---------- ASK GRAIN ---------- */
   const ASK_EXAMPLES = [
-    { q: "What does GRAIN actually do?", a: "GRAIN is done-for-you lead response. We answer every call, text and form in under 60 seconds, 24/7, book it, follow up on every quote for 90 days, and work your old unsold estimates back into booked jobs. You pay $0 until it's live, and it's live in 14 days. Home services is our first industry." },
-    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you more leads. GRAIN is what happens after the phone rings: every lead answered, qualified, booked and followed up, done for you. We work with the CRM and marketing you already have." },
+    { q: "What does GRAIN actually do?", a: "GRAIN is done for you. Every lead answered in under 60 seconds, 24/7, and booked. Every quote followed up for 90 days. Your old unsold estimates worked back into jobs. And more leads when you want them: getting found on Google and in AI answers, and more reviews, come with every tier, and we run the ads too. You pay $0 until it's live, and it's live in 14 days. Home services is our first industry." },
+    { q: "How is this different from a CRM or marketing agency?", a: "A CRM is a database. A marketing agency sends you leads and stops there. GRAIN answers, books and follows up every lead, works your old estimates, and gets you found on Google, done for you. We work with the CRM and marketing you already have." },
     { q: "How fast can I be live?", a: "Greenhouse is live within 14 days of kickoff, or month 1 is free. Kickoff happens within 3 business days of signing, and you approve the test calls before anything goes live. Orchard and Estate roll out location by location on the same 14-day build." },
     { q: "What does it cost?", a: "Greenhouse, one location: $2,997/month, with a founding rate of $1,497/month through Dec 31, plus $1,500 setup and 10% of revived jobs, only on jobs completed and paid. Nothing is due at signing; setup and month one are charged at go-live. Orchard, multi-location: first location at the Greenhouse price, each added location $1,997/month + $1,500 setup. Estate, 10+ locations: about $1,497 per location on one contract. Annual prepay saves two months." },
     { q: "What are the guarantees?", a: "Three. Start Guarantee: $0 until it's live, live in 14 days or month 1 is free. Call promise: 99% of calls answered in 60 seconds every month, or that month is free. Payback Guarantee: if revived jobs haven't covered everything you've paid by day 90, your monthly pauses until they do, and if you're still short at day 180 we refund the difference. Each has conditions, listed on the pricing page." },
     { q: "Will this work for my trade?", a: "If your jobs start with an estimate, yes: HVAC, plumbing, roofing, electrical, remodeling, painting, fencing, pools, landscaping and garage doors. If you're outside those, we'll tell you on the audit call and we won't take your money." },
     { q: "Do you replace my team?", a: "No. We cover what your team can't get to: after-hours calls, weekend leads, the 90 days of follow-up on quotes that go cold, and the old estimates nobody has time to work. Your team keeps doing what they're already good at." },
     { q: "What CRMs do you work with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx and most others. Where your software takes outside bookings, jobs go straight in. Where it doesn't, they land on a shared calendar your office confirms. We check yours on the audit." },
-    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We pull your real response times, close rates and unsold estimates, and show you what they're costing you each month. You get a written number within 48 hours, whether you become a client or not." },
+    { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We show you how many people search for your work nearby and how many find you, what your missed calls cost, and what your old estimates are worth. You get a written number within 48 hours, whether you become a client or not." },
     { q: "Do you run ads?", a: "Yes. Sunlight runs your Google Local Services Ads, Google Search and Meta campaigns: $997/month or 15% of ad spend, whichever is higher. You pay the platforms directly and we never mark up spend. Every lead lands in your Greenhouse and gets answered in under 60 seconds." },
+    { q: "Is getting found on Google included?", a: "Yes. Every tier includes Roots (your Google profile, matching listings, a new service page each month and AI search checks) and Fertilizer (a review request after every job, a reply to every review and a referral ask). Sunlight, the ads, is the one add-on." },
     { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave." }
   ];
 
@@ -2285,7 +2394,7 @@ h1, h2, h3, h4 {
       if (!any && v.length > 2) {
         suggestionsEl.innerHTML = `
           <div class="ask-suggestion-label">No exact match. Talk to us directly.</div>
-          <a class="ask-suggestion" href="apply.html">Apply for an audit call →</a>
+          <a class="ask-suggestion" href="/apply">Apply for an audit call →</a>
         `;
       }
     });
