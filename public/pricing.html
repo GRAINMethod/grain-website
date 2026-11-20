@@ -771,6 +771,9 @@ h1, h2, h3, h4 {
 .addons-grid.two { grid-template-columns: repeat(2, 1fr); }
 .addon.included { min-height: 0; }
 .addon.included .addon-price { color: var(--moss); }
+.addon.included .addon-glyph { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 26px; }
+.addon-link { display: block; transition: color 0.2s; }
+.addon-link:hover { color: var(--bg); }
 @media (max-width: 1080px) { .addons-grid.three { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 860px) { .addons-grid.three, .addons-grid.two { grid-template-columns: 1fr; } }
 .addons-grid.four { grid-template-columns: repeat(4, 1fr); }
@@ -1945,38 +1948,27 @@ h1, h2, h3, h4 {
     </div>
 
     <div class="addons-sub reveal">In every tier</div>
-    <div class="addons-grid three">
+    <div class="addons-grid two">
       <article class="addon included reveal">
-        <span class="addon-glyph" aria-hidden="true">▼</span>
-        <div class="addon-plain">Found on Google and in AI answers</div>
+        <span class="addon-glyph" aria-hidden="true">G</span>
+        <div class="addon-plain">Found, chosen and every lead captured</div>
         <div class="addon-header">
-          <div class="addon-name">Roots</div>
+          <div class="addon-name">Generate</div>
         </div>
         <div class="addon-price">Included</div>
-        <p class="addon-desc">Your Google profile, the same details on every listing, a new service or FAQ page each month, and a monthly check on whether ChatGPT and Gemini recommend you.</p>
-        <div class="addon-bundled">Every tier</div>
+        <p class="addon-desc">Roots gets you found: your Google profile, the same details on every listing, a new service or FAQ page each month, and a monthly check on whether ChatGPT and Gemini recommend you. Fertilizer gets you chosen: a review request after every finished job, a reply to every review, and a referral ask to your happiest customers.</p>
+        <a class="addon-bundled addon-link" href="/method#engine-g">How Generate works</a>
       </article>
 
       <article class="addon included reveal" data-delay="1">
-        <span class="addon-glyph" aria-hidden="true">◐</span>
-        <div class="addon-plain">More 5-star reviews and referrals</div>
-        <div class="addon-header">
-          <div class="addon-name">Fertilizer</div>
-        </div>
-        <div class="addon-price">Included</div>
-        <p class="addon-desc">A review request after every finished job, a reply to every review, and a referral ask to your happiest customers.</p>
-        <div class="addon-bundled">Every tier</div>
-      </article>
-
-      <article class="addon included reveal" data-delay="2">
-        <span class="addon-glyph" aria-hidden="true">✦</span>
+        <span class="addon-glyph" aria-hidden="true">N</span>
         <div class="addon-plain">Old estimates turned into jobs</div>
         <div class="addon-header">
-          <div class="addon-name">Compost</div>
+          <div class="addon-name">Nurture</div>
         </div>
         <div class="addon-price">Included · 10% of revived jobs</div>
-        <p class="addon-desc">Two years of unsold estimates and past customers worked back into booked jobs, with a fresh pass every quarter. You pay 10% only on jobs completed and paid.</p>
-        <div class="addon-bundled">Every tier</div>
+        <p class="addon-desc">Compost works two years of unsold estimates and past customers back into booked jobs, with a fresh pass every quarter. You pay 10% only on jobs completed and paid.</p>
+        <a class="addon-bundled addon-link" href="/method#engine-n">How Nurture works</a>
       </article>
     </div>
 
@@ -2301,7 +2293,7 @@ h1, h2, h3, h4 {
     { q: "What CRMs do you work with?", a: "ServiceTitan, Jobber, Housecall Pro, JobNimbus, AccuLynx and most others. Where your software takes outside bookings, jobs go straight in. Where it doesn't, they land on a shared calendar your office confirms. We check yours on the audit." },
     { q: "What happens on the audit call?", a: "Thirty minutes with the founder. We show you how many people search for your work nearby and how many find you, what your missed calls cost, and what your old estimates are worth. You get a written number within 48 hours, whether you become a client or not." },
     { q: "Do you run ads?", a: "Yes. Sunlight runs your Google Local Services Ads, Google Search and Meta campaigns: $997/month or 15% of ad spend, whichever is higher. You pay the platforms directly and we never mark up spend. Every lead lands in your Greenhouse and gets answered in under 60 seconds." },
-    { q: "Is getting found on Google included?", a: "Yes. Every tier includes Roots (your Google profile, matching listings, a new service page each month and AI search checks) and Fertilizer (a review request after every job, a reply to every review and a referral ask). Sunlight, the ads, is the one add-on." },
+    { q: "Is getting found on Google included?", a: "Yes. It's part of the Generate engine in every tier: your Google profile, matching listings, a new service page each month and AI search checks (that's Roots), plus a review request after every job, a reply to every review and a referral ask (that's Fertilizer). Sunlight, the ads, is the one add-on." },
     { q: "How do I cancel?", a: "The first term is 90 days. After that it's month to month with 30 days' written notice. No penalties, nothing to claw back. If GRAIN isn't working for you, you should leave." }
   ];
 
