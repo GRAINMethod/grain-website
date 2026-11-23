@@ -1027,6 +1027,25 @@ h1, h2, h3, h4 {
   .engine-summary { grid-template-columns: 1fr; }
 }
 
+/* Ads by channel inside Generate (Sunlight) */
+.ads-card { border: 1px solid var(--line-dark); background: var(--ink-deeper); }
+.ads-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--line-dark); }
+.ads-card-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(240,236,223,0.6); font-weight: 600; }
+.ads-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); background: var(--moss); padding: 3px 8px; font-weight: 700; }
+.ads-table { display: flex; flex-direction: column; }
+.ads-tr { display: grid; grid-template-columns: 1.7fr 1fr 0.7fr 0.8fr 1.1fr; gap: 12px; padding: 12px 20px; border-bottom: 1px solid var(--line-dark); font-size: 14px; color: rgba(240,236,223,0.86); font-variant-numeric: tabular-nums; }
+.ads-tr span:not(:first-child) { text-align: right; }
+.ads-th { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(240,236,223,0.45); font-weight: 600; padding-top: 10px; padding-bottom: 10px; }
+.ads-total { font-weight: 700; color: var(--bg); border-bottom: none; }
+.ads-total span:last-child { color: var(--moss-light); }
+.ads-card-foot { padding: 12px 20px 16px; border-top: 1px solid var(--line-dark); font-size: 13px; line-height: 1.5; color: rgba(240,236,223,0.6); }
+@media (max-width: 560px) {
+  .ads-tr { grid-template-columns: 1.5fr 1fr 0.8fr 1fr; gap: 8px; padding: 11px 14px; font-size: 13px; }
+  .ads-tr span:nth-child(3) { display: none; }
+  .ads-th { font-size: 8.5px; letter-spacing: 0.08em; }
+  .ads-card-head { padding: 14px; }
+}
+
 /* Activity feed */
 .activity-feed {
   background: var(--ink-deeper);
@@ -1366,10 +1385,10 @@ h1, h2, h3, h4 {
   <div class="page-hero-inner">
     <div class="eyebrow reveal" style="justify-content:center;">Greenhouse Dashboard</div>
     <h1 class="h-section reveal" data-delay="1">
-      Every call, booking and dollar, <span class="italic-accent">in one place.</span>
+      Every lead, booking and dollar, <span class="italic-accent">in one place.</span>
     </h1>
     <p class="lede reveal" data-delay="2" style="margin: 0 auto;">
-      What came in, what got answered, what got booked and what it was worth. This is the view your account opens to every morning.
+      All five engines on one screen. See where every lead came from, what your ads cost, how fast each one was answered and what it booked, updated as it happens.
     </p>
     <div class="view-toggle-wrap reveal" data-delay="3">
       <div class="view-toggle" role="tablist">
@@ -1453,7 +1472,7 @@ h1, h2, h3, h4 {
       See your real numbers <span class="italic-accent">live.</span>
     </h2>
     <p class="reveal" data-delay="2">
-      Within 14 days of kickoff this view opens on your own business: your calls, your bookings, every quote followed up and every dollar it brought in.
+      Within 14 days of kickoff this view opens on your own business: your calls, your bookings, every estimate followed up and every dollar it brought in.
     </p>
     <button class="btn btn-primary reveal" data-delay="3" onclick="openCalendly(event)">
       Apply for your audit <span class="btn-arrow">→</span>
@@ -1757,6 +1776,11 @@ h1, h2, h3, h4 {
       ],
       engines: {
         G: {
+          ads: { managed: true, rows: [
+            { channel: 'Local Services Ads', spend: '$1,809', leads: 34, booked: 11, per_booked: '$164' },
+            { channel: 'Google Search ads', spend: '$3,209', leads: 32, booked: 11, per_booked: '$292' },
+            { channel: 'Facebook and Instagram', spend: '$1,846', leads: 41, booked: 5, per_booked: '$369' }
+          ], total: { spend: '$6,863', leads: 107, booked: 27, per_booked: '$254', booked_value: '$35K', return: '5.1x' } },
           summary: [
             { label: 'Sources active', value: '6', unit: '' },
             { label: 'Cost per lead', value: '$42', unit: '' },
@@ -1788,8 +1812,8 @@ h1, h2, h3, h4 {
         },
         A: {
           summary: [
-            { label: 'Quotes in follow-up', value: '184', unit: '' },
-            { label: 'Avg touches per quote', value: '5.2', unit: '' },
+            { label: 'Estimates in follow-up', value: '184', unit: '' },
+            { label: 'Avg touches per estimate', value: '5.2', unit: '' },
             { label: 'Conversion lift', value: '+14', unit: ' pts' }
           ],
           chart: { title: 'Quotes closed via follow-up, last 14 days', stat: '23 recovered', bars: [1,2,1,3,2,1,2,3,2,1,2,3,2,1] },
@@ -1843,16 +1867,21 @@ h1, h2, h3, h4 {
       ],
       engines: {
         G: {
+          ads: { managed: true, rows: [
+            { channel: 'Local Services Ads', spend: '$5,654', leads: 106, booked: 37, per_booked: '$153' },
+            { channel: 'Google Search ads', spend: '$9,238', leads: 89, booked: 33, per_booked: '$280' },
+            { channel: 'Facebook and Instagram', spend: '$4,018', leads: 89, booked: 30, per_booked: '$134' }
+          ], total: { spend: '$19K', leads: 284, booked: 100, per_booked: '$189', booked_value: '$155K', return: '8.2x' } },
           summary: [
             { label: 'Sources active', value: '14', unit: '' },
             { label: 'Trades covered', value: '4', unit: '' },
-            { label: 'Watershed inbox volume', value: '2.4K', unit: '' }
+            { label: 'Leads routed to crews', value: '2.4K', unit: '' }
           ],
           chart: { title: 'Leads, last 14 days (multi-trade)', stat: '584 total', bars: [28,34,31,40,46,52,38,44,41,48,54,47,42,39] },
           activity: [
             { time: '40s', text: '<strong>Thumbtack lead</strong> · plumbing emergency · 9.1 score', status: 'qualified' },
-            { time: '4m', text: '<strong>Watershed</strong> · Angi roofing lead · routed to crew B', status: 'qualified' },
-            { time: '12m', text: '<strong>Referral via Pollination</strong> · HVAC install $14K', status: 'booked' },
+            { time: '4m', text: '<strong>Angi lead</strong> · roofing · routed to crew B', status: 'qualified' },
+            { time: '12m', text: '<strong>Referral</strong> · HVAC install $14K', status: 'booked' },
             { time: '38m', text: '<strong>LSA lead</strong> · electrical · 8.6 score', status: 'qualified' },
             { time: '1h', text: '<strong>Form lead</strong> · multi-service inquiry · cross-routed', status: 'live' }
           ]
@@ -1874,8 +1903,8 @@ h1, h2, h3, h4 {
         },
         A: {
           summary: [
-            { label: 'Quotes in follow-up', value: '724', unit: '' },
-            { label: 'Avg touches per quote', value: '6.1', unit: '' },
+            { label: 'Estimates in follow-up', value: '724', unit: '' },
+            { label: 'Avg touches per estimate', value: '6.1', unit: '' },
             { label: 'Conversion lift', value: '+17', unit: ' pts' }
           ],
           chart: { title: 'Quotes closed via follow-up, last 14 days', stat: '127 recovered', bars: [7,9,8,11,12,8,10,13,11,9,12,14,11,9] },
@@ -1896,7 +1925,7 @@ h1, h2, h3, h4 {
           chart: { title: 'Multi-location sync activity, last 14 days', stat: '18,420 records', bars: [1100,1240,1080,1320,1410,1490,1340,1280,1190,1430,1240,1280,1310,1220] },
           activity: [
             { time: 'now', text: '<strong>Two-way sync</strong> ServiceTitan + Jobber · all 3 sites', status: 'live' },
-            { time: '8m', text: '<strong>Watershed bridge</strong> · 47 lead sources consolidated', status: 'live' },
+            { time: '8m', text: '<strong>Lead sources</strong> · 47 in one place', status: 'live' },
             { time: '32m', text: '<strong>Cross-location routing</strong> · lead matched to Nashville crew', status: 'qualified' },
             { time: '2h', text: '<strong>Calendar sync</strong> · 28 audits booked across 3 teams', status: 'booked' },
             { time: '5h', text: '<strong>Custom API</strong> · partner referral feed healthy', status: 'live' }
@@ -1910,7 +1939,7 @@ h1, h2, h3, h4 {
           ],
           chart: { title: 'Old estimates reached, last 14 days', stat: '441 contacts', bars: [22,28,26,32,38,32,28,42,36,40,32,46,38,38] },
           activity: [
-            { time: '18m', text: '<strong>Pollination</strong> · 14 referrals from past customers this week', status: 'booked' },
+            { time: '18m', text: '<strong>Referrals</strong> · 14 from past customers this week', status: 'booked' },
             { time: '1h', text: '<strong>Q1 multi-trade</strong> sequence sent to 3,200 contacts', status: 'qualified' },
             { time: '2h', text: '<strong>Fertilizer</strong> · 6 review requests sent, 2 new 5-star reviews', status: 'qualified' },
             { time: '4h', text: '<strong>Compost</strong> · 4 old estimates booked · $42K', status: 'booked' },
@@ -1991,6 +2020,29 @@ h1, h2, h3, h4 {
     }
   }
 
+  // Ads by channel, inside Generate. Shown when the account has ad leads; spend shows when we run the ads (Sunlight).
+  function adsHtml(ads) {
+    if (!ads || !ads.rows || !ads.rows.length) return '';
+    const t = ads.total || {};
+    const row = (r, cls) => `<div class="ads-tr${cls || ''}" role="row"><span role="cell">${r.channel}</span><span role="cell">${r.spend}</span><span role="cell">${r.leads}</span><span role="cell">${r.booked}</span><span role="cell">${r.per_booked}</span></div>`;
+    const foot = t.spend && t.spend !== '–'
+      ? `${t.booked_value} in booked jobs from ${t.spend} in ads. You pay Google and Facebook directly.`
+      : `${t.booked_value} in booked jobs from ad leads.`;
+    return `
+          <div class="ads-card">
+            <div class="ads-card-head">
+              <span class="ads-card-title">${ads.managed ? 'Ads we run, last 30 days' : 'Ad leads, last 30 days'}</span>
+              ${ads.managed ? '<span class="ads-card-tag">Sunlight</span>' : ''}
+            </div>
+            <div class="ads-table" role="table" aria-label="Ads by channel, last 30 days">
+              <div class="ads-tr ads-th" role="row"><span role="columnheader">Channel</span><span role="columnheader">Spent</span><span role="columnheader">Leads</span><span role="columnheader">Booked</span><span role="columnheader">Per booked job</span></div>
+              ${ads.rows.map(r => row(r)).join('')}
+              ${row({ channel: 'Total', spend: t.spend, leads: t.leads, booked: t.booked, per_booked: t.per_booked }, ' ads-total')}
+            </div>
+            <div class="ads-card-foot">${foot}</div>
+          </div>`;
+  }
+
   function renderEnginePanel(view, engine) {
     const data = VIEW_DATA[view].engines[engine];
     const maxBar = Math.max(1, ...data.chart.bars);
@@ -2022,6 +2074,7 @@ h1, h2, h3, h4 {
               <span>Today</span>
             </div>
           </div>
+          ${adsHtml(data.ads)}
         </div>
         <div class="activity-feed">
           <div class="activity-header">Latest activity</div>
