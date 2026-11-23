@@ -1636,6 +1636,18 @@ h1, h2, h3, h4 {
 <style>
 @media (min-width: 881px) { .addon-plain { min-height: 3.1em; } }
 </style>
+<style>
+/* Sunlight section (same as the Method page) */
+.ads-section { background: var(--ink-deeper); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
+.ads-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.ads-lede { margin-top: 24px; font-size: 18px; line-height: 1.55; color: rgba(240, 236, 223, 0.8); max-width: 520px; }
+.ads-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-dark-strong); }
+.ads-list li { padding: 18px 0; border-bottom: 1px solid var(--line-dark); display: flex; flex-direction: column; gap: 4px; font-size: 15px; color: rgba(240, 236, 223, 0.7); }
+.ads-list strong { font-size: 17px; color: var(--bg); }
+.ads-list .ads-price strong { color: var(--moss-light); }
+.ads-cta { margin-top: 32px; }
+@media (max-width: 960px) { .ads-inner { grid-template-columns: 1fr; gap: 32px; } }
+</style>
 </head>
 <body>
 
@@ -1743,6 +1755,7 @@ h1, h2, h3, h4 {
           <li>Old estimates revived, 10% only on jobs completed and paid</li>
           <li>CRM integration: your existing tools stay</li>
           <li>Greenhouse Dashboard, plus a daily update of yesterday's numbers</li>
+          <li>Almanac: your team can ask about any price or policy, any time</li>
           <li>Monthly review call with the founder</li>
         </ul>
         <div class="tier-cta">
@@ -1936,40 +1949,22 @@ h1, h2, h3, h4 {
 </section>
 
 <!-- ===== ADD-ONS ===== -->
-<section class="section addons-section" id="addons">
+<section class="section ads-section" id="addons">
   <div class="wrap">
-    <div class="addons-intro">
-      <div class="eyebrow reveal">Add-ons</div>
-      <h2 class="h-section reveal" data-delay="1">
-        Want more? <span class="italic-accent">Add it when you're ready.</span>
-      </h2>
-      <p class="lede reveal" data-delay="2">
-        Getting found on Google, more reviews and work on your old estimates come with every plan. If you want more leads, we can run your ads too. Most shops add that around day 60, once every call is getting answered. You can drop an add-on any time with 30 days' notice.
-      </p>
-    </div>
-
-    <div class="addons-grid two">
-      <article class="addon reveal">
-        <span class="addon-glyph" aria-hidden="true">◉</span>
-        <div class="addon-plain">More leads from ads</div>
-        <div class="addon-header">
-          <div class="addon-name">Sunlight</div>
-        </div>
-        <div class="addon-price">$997 / month or 15% of ad spend, whichever is higher</div>
-        <p class="addon-desc">We run your Google and Facebook ads. Every lead gets answered in under a minute, and your dashboard shows what each booked job cost, not just the click. You pay Google and Facebook directly.</p>
-        <div class="addon-bundled">When your schedule's full, we turn the ads down</div>
-      </article>
-
-      <article class="addon reveal" data-delay="1">
-        <span class="addon-glyph" aria-hidden="true">◆</span>
-        <div class="addon-plain">Answers for your team</div>
-        <div class="addon-header">
-          <div class="addon-name">Almanac</div>
-        </div>
-        <div class="addon-price">Priced on your audit</div>
-        <p class="addon-desc">Your prices, policies and how-tos in one place your office and techs can ask any time, so they stop calling you for answers.</p>
-        <div class="addon-bundled">Built from your own documents</div>
-      </article>
+    <div class="ads-inner">
+      <div>
+        <div class="eyebrow reveal">Sunlight · ads, run for you</div>
+        <h2 class="h-section reveal" data-delay="1">Need more leads?<br><span class="italic-accent">We run the ads too.</span></h2>
+        <p class="ads-lede reveal" data-delay="2">Every plan already gets you more leads from Google, reviews, referrals and your old estimates. When you want more on top, we run your Google and Facebook ads, and every lead they bring gets answered in under 60 seconds and followed up until it books.</p>
+      </div>
+      <ul class="ads-list reveal" data-delay="2">
+        <li><strong>Google Local Services Ads</strong>Set up, verified and managed, with junk leads disputed</li>
+        <li><strong>Google Search and Facebook</strong>Campaigns, copy and weekly tuning</li>
+        <li><strong>Your money, your accounts</strong>You pay Google and Facebook directly. We never mark up spend.</li>
+        <li><strong>Cost per booked job</strong>Not just cost per click, right in your dashboard</li>
+        <li><strong>Full schedule?</strong>We turn the ads down when you can't take more work</li>
+        <li class="ads-price"><strong>$997 / month or 15% of ad spend</strong>Whichever is higher. Most shops add it around day 60, once every call is getting answered.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1989,6 +1984,7 @@ h1, h2, h3, h4 {
           <li>Unlimited voice agent calls</li>
           <li>Google profile, listings and AI search checks</li>
           <li>Review requests and replies</li>
+          <li>Almanac: answers for your team from your own prices and policies</li>
           <li>Unlimited texts and emails</li>
           <li>CRM setup and upkeep</li>
           <li>Updates and tuning</li>
