@@ -1788,6 +1788,17 @@ h1, h2, h3, h4 {
   }, 1000);
 })();
 </script>
+<script>
+/* /calculator?trade=hvac opens with that trade picked (trade pages link here) */
+(function () {
+  try {
+    var t = new URLSearchParams(location.search).get('trade');
+    if (!t) return;
+    var cell = document.querySelector('.trade-cell[data-trade="' + t.replace(/[^a-z-]/g, '') + '"]');
+    if (cell && !cell.classList.contains('active')) cell.click();
+  } catch (e) {}
+})();
+</script>
 </body>
 
 </html>

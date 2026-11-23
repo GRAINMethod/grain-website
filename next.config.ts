@@ -6,6 +6,8 @@ import type { NextConfig } from "next";
   /login, /hq (GRAIN HQ) and the Greenhouse Dashboard feed.
 */
 const PAGES = ["method", "industries", "home-services", "pricing", "calculator", "dashboard", "apply", "privacy", "terms", "security"];
+// One page per home service trade, built by scripts/build-trade-pages.py into public/home-services/<trade>.html
+const TRADES = ["hvac", "plumbing", "roofing", "electrical", "remodeling", "painting", "fencing", "pools", "landscaping", "garage-doors"];
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -14,6 +16,7 @@ const nextConfig: NextConfig = {
       beforeFiles: [
         { source: "/", destination: "/index.html" },
         ...PAGES.map((p) => ({ source: `/${p}`, destination: `/${p}.html` })),
+        ...TRADES.map((t) => ({ source: `/home-services/${t}`, destination: `/home-services/${t}.html` })),
       ],
       afterFiles: [],
       fallback: [],
