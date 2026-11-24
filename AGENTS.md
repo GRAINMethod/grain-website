@@ -53,7 +53,7 @@ The mark (greenhouse with a plant): the plant stands on the floor and never reac
 
 - Anything that looks like live data must be real or labeled ("Sample data", "Example", "Illustration"). No made-up results. Stats need a named source on the page.
 - Forms post to `/api/leads` (saves to Supabase `public.leads` via the insert-only `submit_lead` function, optional `LEAD_WEBHOOK_URL` and Resend email). The apply form pre-selects a trade from `?trade=`.
-- Booking buttons call `openCalendly()`, which goes to `BOOKING_URL` (GoHighLevel calendar, set in each page) or falls back to `/apply`.
+- Booking buttons call `openCalendly()`, which goes to `BOOKING_URL` (set in each page) or falls back to `/apply`. Since Nov 24, 2026 it is the GoHighLevel "Free audit" calendar in the GRAIN sub-account: `https://api.leadconnectorhq.com/widget/bookings/grainmethod-audit` (30 min, Central time, hours set in GoHighLevel, not here).
 - Internal links use clean URLs (`/pricing`, `/method`, `/` for home), never `pricing.html`. A button that says "pricing" goes to the top of `/pricing`, not to a section halfway down it.
 - No em dashes in new client-facing copy.
 - Never commit secrets. The Supabase service role key never goes in the repo or a `NEXT_PUBLIC_` variable.
