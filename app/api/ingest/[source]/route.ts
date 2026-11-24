@@ -1,12 +1,16 @@
 import { NextResponse } from "next/server";
 import { serverClient } from "@/lib/supabase";
+import { fallbackId, fromGhl } from "@/lib/ingest";
 
 /*
   Webhook intake for client activity.
     POST /api/ingest/retell   Retell's own webhook (we use the call_analyzed event)
-    POST /api/ingest/ghl      a GoHighLevel "Custom Webhook" action posting the GRAIN shape below
+    POST /api/ingest/ghl      a GoHighLevel workflow posting the GRAIN shape below: the whole body from a
+                              "Custom Webhook" action, or Custom Data items on the standard "Webhook" action
+                              (org then comes from the sub-account, location.id). See lib/ingest.ts.
 
-  Send the ingest key as the x-grain-key header, or ?key=... when the sender cannot set headers (Retell).
+  Send the ingest key as the x-grain-key header, or ?key=... when the sender cannot set headers (Retell,
+  GoHighLevel's standard Webhook action). With no id, the body's hash is the id, so retries count once.
   The key is created and shown in GRAIN HQ, System. It is checked inside the database.
 
   GRAIN shape: { "type": "call|lead|appointment|estimate|followup|sync", "id": "<unique id>", "org": "<GHL location id or client slug>", ...fields }
@@ -58,11 +62,13 @@ export async function POST(req: Request, ctx: { params: Promise<{ source: string
     const m = fromRetell(body);
     if (m.skip) return NextResponse.json({ ok: true, note: m.skip });
     ({ type, id, org } = m); payload = m.payload ?? {};
+  } else if (source === "ghl") {
+    ({ type, id, org, payload } = fromGhl(body));
   } else {
     const { type: t, id: i, org: o, ...rest } = body;
     type = str(t); id = str(i); org = str(o); payload = rest;
   }
-  if (!id || id === "undefined") return NextResponse.json({ error: "missing_id" }, { status: 400 });
+  if (!id || id === "undefined") id = fallbackId(source, body);
 
   const { data, error } = await serverClient().rpc("ops_ingest", {
     p_key: key, p_source: source, p_external_id: id, p_event_type: type ?? null, p_org_ref: org ?? null, p_payload: payload,

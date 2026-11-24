@@ -970,6 +970,7 @@ h1, h2, h3, h4 {
   color: rgba(240,236,223,0.62);
   line-height: 1.5;
 }
+.checkbox-card-desc a { color: var(--moss-light); text-decoration: underline; text-underline-offset: 2px; }
 
 @media (max-width: 720px) {
   .field-grid { grid-template-columns: 1fr; }
@@ -1219,6 +1220,14 @@ h1, h2, h3, h4 {
               <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(615) 555-0100">
             </div>
           </div>
+
+          <label class="checkbox-card" for="sms-consent">
+            <input type="checkbox" id="sms-consent" name="sms_consent" value="yes">
+            <div class="checkbox-card-body">
+              <div class="checkbox-card-title">Text me about my audit</div>
+              <div class="checkbox-card-desc" id="sms-consent-text">I agree to get texts from GRAIN Method at the number above about my application and audit. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Agreeing isn't a condition of buying anything. See our <a href="/privacy#s-sms" target="_blank" rel="noopener">Privacy Policy</a> and <a href="/terms#s-sms" target="_blank" rel="noopener">Terms</a>.</div>
+            </div>
+          </label>
 
           <div class="field-grid">
             <div class="field">
@@ -1648,12 +1657,16 @@ h1, h2, h3, h4 {
           .filter(([, x]) => x).map(([k, x]) => k + ': ' + x).join('\n');
         const qs = new URLSearchParams(window.location.search);
         const utm = {}; ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(k => { if (qs.get(k)) utm[k] = qs.get(k); });
+        // Texting opt-in: saved with the exact words the person agreed to (A2P needs the record).
+        const sms = fd.get('sms_consent') === 'yes';
+        const smsText = sms ? ((document.getElementById('sms-consent-text') || {}).textContent || '').replace(/\s+/g, ' ').trim() : '';
         const res = await fetch('/api/leads', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
             kind: 'leak_check', name: (v('first_name') + ' ' + v('last_name')).trim(), shop: v('company'), email: v('email'), phone: v('phone'),
             trade: v('trade'), website: v('website'), software: v('crm'), message: [v('problem'), extra].filter(Boolean).join('\n\n'),
+            sms_consent: sms, sms_consent_text: smsText,
             company_site: v('_gotcha'), source_page: window.location.pathname, referrer: document.referrer, utm
           })
         });

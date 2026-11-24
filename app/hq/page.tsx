@@ -428,11 +428,40 @@ function Client({ c, sb, run }: { c: Row; sb: any; run: (l: string, f: () => Pro
         <label>Daily update goes by<select value={c.comms_channel} onChange={(e) => run("Channel", () => sb.from("orgs").update({ comms_channel: e.target.value }).eq("id", c.id))}>
           <option value="none">Off</option><option value="sms">Text</option><option value="slack">Slack</option><option value="email">Email</option></select></label>
       </div>
+      <Connections id={c.id} sb={sb} run={run} />
       <div className="hq-row">
         {c.status !== "live" && <button className="hq-btn" onClick={() => run("Go-live", () => sb.rpc("ops_mark_live", { p_org: c.id }))}>Mark live now</button>}
         <a className="hq-btn ghost" href={`/dashboard?org=${c.slug}`}>Open their dashboard</a>
       </div>
     </section>
+  );
+}
+
+/** Which GoHighLevel sub-account and Retell agent are this client's, so their webhooks land on this client's dashboard. */
+function Connections({ id, sb, run }: { id: string; sb: any; run: (l: string, f: () => PromiseLike<{ error: any }>) => Promise<void> }) {
+  const [saved, setSaved] = useState<Row>({});
+  const [ghl, setGhl] = useState(""); const [agent, setAgent] = useState("");
+  useEffect(() => {
+    void sb.from("orgs").select("ghl_location_id, retell_agent_id").eq("id", id).maybeSingle()
+      .then(({ data }: { data: Row | null }) => setSaved(data ?? {}));
+  }, [id, sb]);
+  const save = (label: string, col: "ghl_location_id" | "retell_agent_id", value: string, clear: () => void) =>
+    run(label, async () => {
+      const v = value.trim().slice(0, 100);
+      const r = await sb.from("orgs").update({ [col]: v }).eq("id", id);
+      if (!r.error) { setSaved((s) => ({ ...s, [col]: v })); clear(); }
+      return r;
+    });
+  return (
+    <div className="hq-grid">
+      <label>GoHighLevel location ID<span className="hq-row"><input value={ghl} placeholder={saved.ghl_location_id || "in the sub-account's address: /location/..."} onChange={(e) => setGhl(e.target.value)} />
+        <button className="hq-btn small" disabled={!ghl.trim()} onClick={() => save("GoHighLevel", "ghl_location_id", ghl, () => setGhl(""))}>Save</button></span></label>
+      <label>Retell agent ID<span className="hq-row"><input value={agent} placeholder={saved.retell_agent_id || "agent_..."} onChange={(e) => setAgent(e.target.value)} />
+        <button className="hq-btn small" disabled={!agent.trim()} onClick={() => save("Retell", "retell_agent_id", agent, () => setAgent(""))}>Save</button></span></label>
+      <p className="hq-muted wide">{saved.ghl_location_id || saved.retell_agent_id
+        ? "Webhooks from this sub-account and agent land on this client's dashboard."
+        : "Not connected yet. Once these are saved, webhooks from their GoHighLevel sub-account and Retell agent land on this dashboard."}</p>
+    </div>
   );
 }
 
