@@ -1,7 +1,7 @@
 -- Almanac (Nov 23, 2026): the team's prices, policies and how-tos in one place they can ask.
 -- It answers only from documents marked approved, and says which one it used. Editing an approved
--- document puts it back in draft until the owner approves it again. These are the same documents
--- the voice agent answers callers from.
+-- document puts it back in draft until the owner approves it again. The voice agent's knowledge base
+-- is built from the same documents, minus the ones marked team only (for_callers = false).
 -- Also (Johnny, Nov 23): the sample accounts move to the new prices. Greenhouse $3,997 a month and
 -- $2,500 setup; each added location $2,497 a month and $1,500 setup.
 
@@ -15,6 +15,9 @@ create table public.almanac_docs (
   source text check (source is null or char_length(source) <= 140),
   approved_by text check (approved_by is null or char_length(approved_by) <= 140),
   approved_at timestamptz,
+  -- Off for answers only the team should see, that the voice agent must never say to a caller
+  -- (exact internal prices, a discount to offer only when asked).
+  for_callers boolean not null default true,
   is_sample boolean not null default false,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),

@@ -462,7 +462,7 @@ function Almanac({ sb, run }: { sb: any; run: (l: string, f: () => PromiseLike<{
   const loadOrg = useCallback(async (id: string) => {
     if (!id) return;
     const [d, q] = await Promise.all([
-      sb.from("almanac_docs").select("id, topic, title, body, status, source, approved_by, approved_at, updated_at").eq("org_id", id).order("topic").order("title"),
+      sb.from("almanac_docs").select("id, topic, title, body, status, source, approved_by, approved_at, for_callers, updated_at").eq("org_id", id).order("topic").order("title"),
       sb.from("almanac_questions").select("id, question, created_at").eq("org_id", id).eq("answered", false).is("resolved_at", null).order("created_at", { ascending: false }).limit(50),
     ]);
     if (d.error) setNote(`Almanac isn't switched on in the database yet: ${d.error.message}`); else setNote("");
@@ -478,7 +478,7 @@ function Almanac({ sb, run }: { sb: any; run: (l: string, f: () => PromiseLike<{
     const submitter = (e.nativeEvent as SubmitEvent).submitter as HTMLButtonElement | null;
     const approve = submitter?.value === "approve";
     const f = new FormData(e.currentTarget); const v = (k: string) => String(f.get(k) ?? "").trim();
-    const row: Row = { topic: v("topic") || "General", title: v("title"), body: v("body"), source: v("source") || null };
+    const row: Row = { topic: v("topic") || "General", title: v("title"), body: v("body"), source: v("source") || null, for_callers: f.get("for_callers") === "on" };
     Object.assign(row, approve
       ? { status: "approved", approved_at: new Date().toISOString(), approved_by: v("approved_by") || "The owner" }
       : { status: "draft" });
@@ -531,6 +531,7 @@ function Almanac({ sb, run }: { sb: any; run: (l: string, f: () => PromiseLike<{
           <label className="wide">The answer, the way the owner would say it<textarea name="body" rows={6} defaultValue={edit.body ?? ""} maxLength={6000} required /></label>
           <label>Where it came from<input name="source" defaultValue={edit.source ?? ""} placeholder="Kickoff call, price sheet" /></label>
           <label>Approved by<input name="approved_by" defaultValue={edit.approved_by ?? ""} placeholder="Owner's name" /></label>
+          <label className="hq-tick wide"><input type="checkbox" name="for_callers" defaultChecked={edit.for_callers ?? true} /> The voice agent can say this to callers (untick for team-only answers, like internal prices)</label>
           <div className="wide hq-row">
             <button className="hq-btn small" name="do" value="approve">Save as approved</button>
             <button className="hq-btn small ghost" name="do" value="draft">Save as draft</button>
@@ -565,7 +566,7 @@ function Almanac({ sb, run }: { sb: any; run: (l: string, f: () => PromiseLike<{
             {docs.filter((d) => d.topic === t).map((d) => (
               <button key={d.id} className="hq-doc" onClick={() => { setFromQ(null); setEdit(d); }}>
                 <span className={"hq-pill " + d.status}>{d.status}</span>
-                <span className="hq-doc-title">{d.title}<small>{d.status === "approved" && d.approved_by ? `${d.approved_by} · ` : ""}updated {day(d.updated_at)}</small></span>
+                <span className="hq-doc-title">{d.title}<small>{d.status === "approved" && d.approved_by ? `${d.approved_by} · ` : ""}{d.for_callers === false ? "team only · " : ""}updated {day(d.updated_at)}</small></span>
               </button>
             ))}
           </div>
