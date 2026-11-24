@@ -395,8 +395,9 @@ function Won({ onWon }: { onWon: (tier: string, kickoff: string) => void }) {
 
 function Client({ c, sb, run }: { c: Row; sb: any; run: (l: string, f: () => PromiseLike<{ error: any }>) => Promise<void> }) {
   const g = c.guarantees as Row; const ob = c.onboarding as Row; const w = c.last7 as Row;
-  const [kick, setKick] = useState(""); const [total, setTotal] = useState(""); const [pay, setPay] = useState("");
+  const [kick, setKick] = useState(""); const [total, setTotal] = useState(""); const [pay, setPay] = useState(""); const [invite, setInvite] = useState("");
   const rate = w.inbound_calls > 0 ? w.answered_60s / w.inbound_calls : null;
+  const access = (c.access ?? []) as Row[];
   return (
     <section className="hq-card">
       <h2>{c.name}<span>{c.tier} · {c.status}{c.day ? ` · day ${c.day} of 14` : ""}</span></h2>
@@ -427,6 +428,15 @@ function Client({ c, sb, run }: { c: Row; sb: any; run: (l: string, f: () => Pro
           <button className="hq-btn small" disabled={!pay} onClick={() => run("Payment", () => sb.from("mc_payments").insert({ org_id: c.id, at: new Date().toISOString(), kind: "monthly", amount: Number(pay.replace(/[^0-9.]/g, "")) }))}>Add</button></span></label>
         <label>Daily update goes by<select value={c.comms_channel} onChange={(e) => run("Channel", () => sb.from("orgs").update({ comms_channel: e.target.value }).eq("id", c.id))}>
           <option value="none">Off</option><option value="sms">Text</option><option value="slack">Slack</option><option value="email">Email</option></select></label>
+      </div>
+      <div className="hq-grid">
+        <label className="wide">Dashboard access: they sign in at grainmethod.com with this email, no password<span className="hq-row">
+          <input type="email" value={invite} placeholder="owner@theirshop.com" onChange={(e) => setInvite(e.target.value)} />
+          <button className="hq-btn small" disabled={!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(invite.trim())}
+            onClick={() => { const e = invite.trim(); setInvite(""); void run("Access", () => sb.rpc("hq_invite", { p_org: c.id, p_email: e })); }}>Give access</button></span></label>
+        <p className="hq-muted wide">{access.length
+          ? access.map((a) => `${a.email} (${a.claimed ? "signed in" : "not signed in yet"})`).join(" · ")
+          : "Nobody has access yet. Add the owner's email, then tell them: grainmethod.com, Sign in, that email."}</p>
       </div>
       <Connections id={c.id} sb={sb} run={run} />
       <div className="hq-row">
