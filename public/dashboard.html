@@ -995,7 +995,7 @@ h1, h2, h3, h4 {
   grid-template-columns: 1.4fr 1fr;
   gap: 40px;
 }
-.engine-panel-main { display: flex; flex-direction: column; gap: 28px; }
+.engine-panel-main { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
 .engine-summary {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1044,6 +1044,46 @@ h1, h2, h3, h4 {
   .ads-tr span:nth-child(3) { display: none; }
   .ads-th { font-size: 8.5px; letter-spacing: 0.08em; }
   .ads-card-head { padding: 14px; }
+}
+
+/* Almanac inside Integrate: the team asks, answers come only from approved documents */
+.alm-card { border: 1px solid var(--line-dark); background: var(--ink-deeper); }
+.alm-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 6px 12px; padding: 16px 20px; border-bottom: 1px solid var(--line-dark); }
+.alm-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(240,236,223,0.6); font-weight: 600; }
+.alm-meta { font-size: 12.5px; color: rgba(240,236,223,0.5); }
+.alm-form { display: flex; gap: 8px; padding: 16px 20px 12px; }
+.alm-input { flex: 1 1 0; width: 0; min-width: 0; background: var(--ink); border: 1px solid var(--line-dark-strong); color: var(--bg); font: 500 16px/1.3 'Inter', sans-serif; padding: 11px 14px; outline: none; border-radius: 0; }
+.alm-input:focus { border-color: var(--moss); }
+.alm-input::placeholder { color: rgba(240,236,223,0.38); }
+.alm-ask { background: var(--moss); color: var(--ink); border: 0; font: 700 13px 'Inter', sans-serif; letter-spacing: 0.02em; padding: 0 20px; cursor: pointer; transition: background 0.2s; }
+.alm-ask:hover { background: var(--moss-light); }
+.alm-ask:disabled { opacity: 0.55; cursor: default; }
+.alm-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 20px 16px; }
+.alm-chips:empty { display: none; }
+.alm-chip { background: transparent; border: 1px solid var(--line-dark-strong); color: rgba(240,236,223,0.74); font: 500 12.5px/1.35 'Inter', sans-serif; padding: 6px 10px; cursor: pointer; text-align: left; transition: border-color 0.2s, color 0.2s; }
+.alm-chip:hover { border-color: var(--moss); color: var(--bg); }
+.alm-answer { margin: 0 20px 18px; padding: 14px 16px; border-left: 2px solid var(--moss); background: rgba(154,175,122,0.07); }
+.alm-answer[hidden] { display: none; }
+.alm-answer-label { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--moss); font-weight: 700; margin-bottom: 6px; }
+.alm-answer-text { font-size: 15px; line-height: 1.55; color: var(--bg); }
+.alm-answer-src { margin-top: 8px; font-size: 12px; line-height: 1.45; color: rgba(240,236,223,0.5); }
+.alm-answer-src:empty { display: none; }
+.alm-answer.partial { border-left-color: rgba(240,236,223,0.35); background: rgba(240,236,223,0.04); }
+.alm-answer.partial .alm-answer-label { color: rgba(240,236,223,0.6); }
+.alm-answer.not-yet { border-left-color: #D4AF37; background: rgba(212,175,55,0.06); }
+.alm-answer.not-yet .alm-answer-label { color: #D4AF37; }
+.alm-answer.loading .alm-answer-text { color: rgba(240,236,223,0.55); }
+.alm-recent { border-top: 1px solid var(--line-dark); }
+.alm-recent-head { padding: 12px 20px 6px; font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(240,236,223,0.45); font-weight: 600; }
+.alm-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 9px 20px; font-size: 13.5px; line-height: 1.4; color: rgba(240,236,223,0.8); border-bottom: 1px solid var(--line-dark); }
+.alm-row:last-child { border-bottom: none; }
+.alm-row small { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--moss); white-space: nowrap; align-self: center; }
+.alm-row small.not-yet { color: #D4AF37; }
+.alm-foot { padding: 12px 20px 16px; border-top: 1px solid var(--line-dark); font-size: 12.5px; line-height: 1.5; color: rgba(240,236,223,0.55); }
+@media (max-width: 560px) {
+  .alm-head, .alm-chips, .alm-recent-head, .alm-row, .alm-foot { padding-left: 14px; padding-right: 14px; }
+  .alm-form { padding: 14px 14px 12px; }
+  .alm-answer { margin-left: 14px; margin-right: 14px; }
 }
 
 /* Activity feed */
@@ -1388,7 +1428,7 @@ h1, h2, h3, h4 {
       Every lead, booking and dollar, <span class="italic-accent">in one place.</span>
     </h1>
     <p class="lede reveal" data-delay="2" style="margin: 0 auto;">
-      All five engines on one screen. See where every lead came from, what your ads cost, how fast each one was answered and what it booked, updated as it happens.
+      All five engines on one screen. See where every lead came from, what your ads cost, how fast each one was answered and what it booked, updated as it happens. Your team can ask it your prices and policies, too.
     </p>
     <div class="view-toggle-wrap reveal" data-delay="3">
       <div class="view-toggle" role="tablist">
@@ -1523,7 +1563,7 @@ h1, h2, h3, h4 {
       <div class="footer-bottom-mid">
         <span>Founding rate</span>
         <span class="sep">·</span>
-        <span>through Dec 31</span>
+        <span>sign by Dec 31</span>
       </div>
       <div class="footer-bottom-right"><a href="mailto:audit@grainmethod.com">audit@grainmethod.com</a></div>
     </div>
@@ -1631,7 +1671,7 @@ h1, h2, h3, h4 {
     { q: "What does GRAIN actually do?", a: "We get you more leads and make sure none slip through. We keep you showing up on Google and get you more reviews. Calls, texts and web forms get answered in under a minute, day or night, and booked on your calendar. Every estimate gets followed up until it's a yes or a no, and we turn your old estimates into jobs. Nothing's charged until it's live, and it's live in 14 days." },
     { q: "How is this different from a CRM or marketing agency?", a: "Your CRM stores your customers. Most marketing agencies send you leads and stop there. We bring you leads and make sure each one gets answered, booked and followed up, at 9pm or three weeks later. We work with the CRM you already have, and alongside your marketing if you keep it." },
     { q: "How fast can I be live?", a: "14 days from kickoff, or your first month is free. You hear the test calls and approve them before a single customer talks to it. If you have more than one location, each one goes live on its own 14-day build." },
-    { q: "What does it cost?", a: "One location is $2,997 a month, or $1,497 a month at our founding rate through Dec 31. Setup is $1,500. On top of that we take 10% of the old estimates we turn into jobs, and only once those jobs are done and paid. Nothing's charged when you sign. Setup and your first month are charged the day it goes live. More than one location? It's on the pricing page." },
+    { q: "What does it cost?", a: "One location is $3,997 a month. Sign by Dec 31 and it's $1,997 a month at our founding rate, and you keep that rate as long as you stay. Setup is $2,500. On top of that we take 10% of the old estimates we turn into jobs, and only once those jobs are done and paid. Nothing's charged when you sign. Setup and your first month are charged the day it goes live. More than one location? It's on the pricing page." },
     { q: "What are the guarantees?", a: "Three. You pay nothing until it's live, and if it's not live in 14 days your first month is free. If we miss more than 1 call in 100 in a month, that month is free. And if your old estimates haven't paid back what you've paid us by day 90, your monthly stops until they do. Still short at day 180, we refund the difference. Each one has a few conditions, and they're on the pricing page." },
     { q: "Will this work for my business?", a: "If customers reach you by phone, text or a form, and you give quotes or estimates, it's probably a fit. That's HVAC, plumbing, roofing and the other trades, and plenty of businesses outside them too. Not sure? We'll tell you straight on the audit." },
     { q: "Do you replace my team?", a: "No. We pick up what your team can't get to: calls after hours and on weekends, quotes that go quiet, and old estimates nobody has time to chase. Your office keeps running the way it does." },
@@ -1826,6 +1866,23 @@ h1, h2, h3, h4 {
           ]
         },
         I: {
+          almanac: {
+            docs: 14, approved_by: 'The owner', updated: 'Nov 19', asked_30: 30, answered_30: 29,
+            suggest: ['Do members pay the after-hours fee?', 'How much is a tune-up for a second system?', 'Do we go out to Murfreesboro?', 'Do we give a senior discount?'],
+            recent: [
+              { q: 'Do we give a senior discount?', answered: true, ago: '7h' },
+              { q: 'How long is an estimate good for?', answered: true, ago: '1d' },
+              { q: 'Can we quote a monthly payment on the phone?', answered: true, ago: '2d' },
+              { q: 'What do we tell someone who smells gas?', answered: true, ago: '3d' },
+              { q: "Is there a fee if nobody's home?", answered: true, ago: '4d' }
+            ],
+            answers: {
+              'do members pay the after hours fee': { answer: "No. Comfort Club members don't pay a diagnostic or after-hours fee. Everyone else pays $149 for a night, weekend or holiday visit.", sources: ['After-hours and weekend calls', 'Comfort Club membership'] },
+              'how much is a tune up for a second system': { answer: "$99 when it's at the same house as the first system. The first one is $129.", sources: ['Tune-ups'] },
+              'do we go out to murfreesboro': { answer: 'No, Murfreesboro is outside our area. Take their details and tell them the office will call back by noon the next business day.', sources: ['Where we work'] },
+              'do we give a senior discount': { answer: "No. The only discount is 10% off repairs, up to $200, for military, first responders and teachers, and it doesn't stack with the Comfort Club discount.", sources: ['Discounts'] }
+            }
+          },
           summary: [
             { label: 'CRM', value: 'ServiceTitan', unit: '' },
             { label: 'Records synced today', value: '342', unit: '' },
@@ -1917,6 +1974,23 @@ h1, h2, h3, h4 {
           ]
         },
         I: {
+          almanac: {
+            docs: 12, approved_by: 'The owner', updated: 'Nov 19', asked_30: 60, answered_30: 57,
+            suggest: ['Which location covers Mt. Juliet?', 'What do we charge to clear a main line?', 'Do Home Plan members pay the service call fee?', 'Do we need a deposit on a $6,000 job?'],
+            recent: [
+              { q: 'Is financing available on a $2,000 repair?', answered: true, ago: '6h' },
+              { q: 'Do we need a deposit on a $6,000 job?', answered: true, ago: '11h' },
+              { q: 'Who follows up if they call a different location?', answered: true, ago: '1d' },
+              { q: 'A pipe burst. What do I tell them?', answered: true, ago: '1d' },
+              { q: "What's the after-hours charge?", answered: true, ago: '2d' }
+            ],
+            answers: {
+              'which location covers mt juliet': { answer: 'Lebanon. It covers Wilson County, including Mt. Juliet.', sources: ['Our three locations'] },
+              'what do we charge to clear a main line': { answer: "$249. A camera inspection is $189, and it's waived if we do the repair.", sources: ['Drain cleaning'] },
+              'do home plan members pay the service call fee': { answer: "No. Ridgeline Home Plan members don't pay service call fees, and they get 15% off repairs.", sources: ['Ridgeline Home Plan', 'Service call fees'] },
+              'do we need a deposit on a $6 000 job': { answer: 'Yes. Jobs over $5,000 need a 30% deposit to get on the schedule.', sources: ['Payment and deposits'] }
+            }
+          },
           summary: [
             { label: 'CRMs synced', value: '2', unit: '' },
             { label: 'Records synced today', value: '1.2K', unit: '' },
@@ -2043,8 +2117,104 @@ h1, h2, h3, h4 {
           </div>`;
   }
 
+  // ---- Almanac (inside Integrate) ----
+  let almEl = null, almBusy = false, almView = null;
+  const almNorm = s => String(s || '').toLowerCase().replace(/[^a-z0-9$]+/g, ' ').trim();
+  function almNode() {
+    if (almEl) return almEl;
+    almEl = document.createElement('div');
+    almEl.className = 'alm-card';
+    almEl.innerHTML = `
+      <div class="alm-head"><span class="alm-title">Almanac · your team's answers</span><span class="alm-meta"></span></div>
+      <form class="alm-form" autocomplete="off">
+        <input class="alm-input" name="q" maxlength="300" aria-label="Ask your Almanac" placeholder="Ask about a price, policy or how-to">
+        <button class="alm-ask" type="submit">Ask</button>
+      </form>
+      <div class="alm-chips"></div>
+      <div class="alm-answer" hidden aria-live="polite"><div class="alm-answer-label"></div><div class="alm-answer-text"></div><div class="alm-answer-src"></div></div>
+      <div class="alm-recent"><div class="alm-recent-head">Asked lately</div><div class="alm-list"></div></div>
+      <div class="alm-foot">It answers only from what your owner approved: the same prices and policies your voice agent gives callers. If it isn't in there, it says so, and we add it.</div>`;
+    almEl.querySelector('.alm-form').addEventListener('submit', e => { e.preventDefault(); almAsk(almEl.querySelector('.alm-input').value); });
+    almEl.querySelector('.alm-chips').addEventListener('click', e => {
+      const b = e.target.closest('.alm-chip');
+      if (!b) return;
+      almEl.querySelector('.alm-input').value = b.dataset.q;
+      almAsk(b.dataset.q);
+    });
+    return almEl;
+  }
+  function almFill(a) {
+    const n = almNode();
+    if (!a) { n.style.display = 'none'; return n; }
+    n.style.display = '';
+    if (almView !== currentView) {          // another account: clear the last answer
+      almView = currentView;
+      n.querySelector('.alm-input').value = '';
+      n.querySelector('.alm-answer').hidden = true;
+    }
+    const who = /^the owner$/i.test(a.approved_by || '') ? 'the owner' : (a.approved_by || '');
+    const meta = [a.docs ? a.docs + ' answers' : 'No answers yet', who ? 'approved by ' + who : '', a.updated ? 'updated ' + a.updated : '']
+      .filter(Boolean).join(' · ');
+    n.querySelector('.alm-meta').textContent = meta;
+    const chips = n.querySelector('.alm-chips');
+    chips.textContent = '';
+    (a.suggest || []).forEach(q => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'alm-chip'; b.dataset.q = q; b.textContent = q;
+      chips.appendChild(b);
+    });
+    const list = n.querySelector('.alm-list');
+    list.textContent = '';
+    (a.recent || []).forEach(r => {
+      const row = document.createElement('div'); row.className = 'alm-row';
+      const q = document.createElement('span'); q.textContent = r.q;
+      const s = document.createElement('small');
+      s.className = r.answered ? '' : 'not-yet';
+      s.textContent = (r.answered ? 'Answered' : 'Not in it yet') + (r.ago ? ' · ' + r.ago : '');
+      row.append(q, s); list.appendChild(row);
+    });
+    n.querySelector('.alm-recent').style.display = (a.recent || []).length ? '' : 'none';
+    return n;
+  }
+  function almShow(kind, label, text, src) {
+    const box = almNode().querySelector('.alm-answer');
+    box.className = 'alm-answer' + (kind ? ' ' + kind : '');
+    box.querySelector('.alm-answer-label').textContent = label;
+    box.querySelector('.alm-answer-text').textContent = text;
+    box.querySelector('.alm-answer-src').textContent = src || '';
+    box.hidden = false;
+  }
+  function almAsk(raw) {
+    const q = String(raw || '').replace(/\s+/g, ' ').trim();
+    if (q.length < 2 || almBusy) return;
+    const btn = almNode().querySelector('.alm-ask');
+    almBusy = true; btn.disabled = true;
+    almShow('loading', 'Almanac', 'Looking it up.', '');
+    const a = (VIEW_DATA[currentView].engines.I || {}).almanac || {};
+    const local = (a.answers || {})[almNorm(q)];
+    const ask = window.GreenhouseDashboard.ask ? window.GreenhouseDashboard.ask(q) : Promise.resolve(null);
+    ask.then(r => {
+      if (!r && local) r = { answered: true, match: 'full', answer: local.answer, sources: local.sources.map(t => ({ title: t })), demo: true };
+      if (!r) { almShow('not-yet', 'Almanac', "It isn't reachable right now. Try again in a minute.", ''); return; }
+      const titles = (r.sources || []).map(s => s.title).filter(Boolean);
+      const from = titles.length ? 'From: ' + titles.join(', ') : '';
+      if (r.answered) {
+        almShow('', 'From your Almanac', r.answer, from);
+      } else if (r.match === 'partial' && r.answer) {
+        almShow('partial', 'Closest match in your Almanac', r.answer,
+          from + (from ? ' · ' : '') + "If this doesn't answer it, it isn't in there yet." + (r.demo ? '' : " We've passed the question to the GRAIN team."));
+      } else {
+        almShow('not-yet', 'Not in your Almanac yet', r.demo
+          ? 'On a real account, this question goes to the GRAIN team, and the answer is added once your owner approves it.'
+          : "We've passed it to the GRAIN team. Once your owner approves the answer, it's in here for everyone.", '');
+      }
+    }).finally(() => { almBusy = false; btn.disabled = false; });
+  }
+
   function renderEnginePanel(view, engine) {
     const data = VIEW_DATA[view].engines[engine];
+    const almInput = almEl && almEl.querySelector('.alm-input');
+    const almFocus = almInput && document.activeElement === almInput ? [almInput.selectionStart, almInput.selectionEnd] : null;
     const maxBar = Math.max(1, ...data.chart.bars);
     const barsHtml = data.chart.bars.map((v, i) => {
       const isToday = i === data.chart.bars.length - 1;
@@ -2075,6 +2245,7 @@ h1, h2, h3, h4 {
             </div>
           </div>
           ${adsHtml(data.ads)}
+          ${engine === 'I' ? '<div class="alm-slot"></div>' : ''}
         </div>
         <div class="activity-feed">
           <div class="activity-header">Latest activity</div>
@@ -2090,6 +2261,11 @@ h1, h2, h3, h4 {
         </div>
       </div>
     `;
+    const slot = enginePanels.querySelector('.alm-slot');
+    if (slot) {
+      slot.replaceWith(almFill(data.almanac));
+      if (almFocus) { almInput.focus(); try { almInput.setSelectionRange(almFocus[0], almFocus[1]); } catch (e) {} }
+    }
   }
 
   function update(quiet) {
@@ -2148,7 +2324,15 @@ h1, h2, h3, h4 {
   // The live feed (/js/greenhouse-live.js) swaps real data in through this.
   const liveViews = {};
   window.GreenhouseDashboard = {
-    set(view, data) {
+    set(view, data, opts) {
+      const prev = VIEW_DATA[view];
+      if (opts && opts.demo && prev && prev.engines && data && data.engines) {
+        [['G', 'ads'], ['I', 'almanac']].forEach(([e, k]) => {
+          if (data.engines[e] && data.engines[e][k] == null && prev.engines[e] && prev.engines[e][k]) data.engines[e][k] = prev.engines[e][k];
+        });
+        const pa = prev.engines.I && prev.engines.I.almanac, na = data.engines.I && data.engines.I.almanac;
+        if (pa && na && pa.answers && !na.answers) na.answers = pa.answers;
+      }
       const refresh = liveViews[view] === true;
       liveViews[view] = true;
       VIEW_DATA[view] = data;

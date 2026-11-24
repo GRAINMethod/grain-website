@@ -42,7 +42,7 @@ TRADES = [
         "respond": "No-heat and no-cool calls answered in under 60 seconds, day or night. A gas smell or CO alarm gets safety steps first, then your on-call tech.",
         "estimates": "replacement and repair",
         "old": "system quotes and lapsed maintenance customers",
-        "stat": ("$11,500", "is about what a full HVAC system replacement runs. One revived quote can pay for months of GRAIN.", "ConsumerAffairs, May 2026"),
+        "stat": ("$11,500", "is about what a full HVAC system replacement runs. One revived estimate can pay for months of GRAIN.", "ConsumerAffairs, May 2026"),
         "software": "ServiceTitan, Housecall Pro, Jobber and FieldEdge",
         "faq": [
             ("Can it handle no-heat and no-cool emergencies?", "Yes. It books the visit and sends true emergencies to your on-call tech. On a gas smell or a CO alarm it tells the caller to get out and call 911 or the gas company first."),
@@ -217,7 +217,7 @@ TRADES = [
         "respond": "Every call, text and form answered in under 60 seconds, even in the opening rush, with green-pool emergencies flagged for your team.",
         "estimates": "build, remodel and equipment",
         "old": "build and remodel quotes",
-        "stat": ("$66,000", "is about what the average inground pool costs. One revived build quote can pay for a year of GRAIN.", "Angi, via NerdWallet"),
+        "stat": ("$66,000", "is about what the average inground pool costs. One revived build estimate can pay for a year of GRAIN.", "Angi, via NerdWallet"),
         "software": "Skimmer, Pool Brain, Jobber and Buildertrend",
         "faq": [
             ("We do service routes and builds. Does it handle both?", "Yes. Service calls get booked into your schedule, and build and remodel quotes get 90 days of follow-up."),
@@ -310,7 +310,7 @@ def page(t, shell_head, shell_foot):
     night = "\n".join(f'      <li><span class="wwd-n">{esc(a)}</span><strong>{esc(b)}</strong><span>{esc(c)}</span></li>' for a, b, c in t["night"])
     stats = [t["stat"], STAT_UNANSWERED, STAT_SPEED, STAT_LSA]
     leak = "\n".join(f'      <div class="leak-cell"><div class="leak-num">{n}</div><div class="leak-text">{x}</div><div class="leak-src">{esc(s)}</div></div>' for n, x, s in stats)
-    faq = t["faq"] + [("What does it cost?", "Greenhouse is $2,997 a month, with a founding rate of $1,497 a month through Dec 31, plus $1,500 setup and 10% of revived jobs. Nothing is due up front: setup and month one are charged the day it goes live.")]
+    faq = t["faq"] + [("What does it cost?", "Greenhouse is $3,997 a month, or $1,997 a month at the founding rate if you sign by Dec 31 (you keep it as long as you stay), plus $2,500 setup and 10% of revived jobs. Nothing is due up front: setup and month one are charged the day it goes live.")]
     faq_html = "\n".join(f"      <li><strong>{esc(q)}</strong><span>{esc(a)}</span></li>" for q, a in faq)
     others = "\n".join(f'      <a class="trade-pill" href="/home-services/{o["slug"]}">{esc(o["name"])}</a>' for o in TRADES if o["slug"] != slug)
 

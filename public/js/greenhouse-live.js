@@ -22,6 +22,33 @@
       .replace(/<(\/?)strong>/g, '\u0001$1strong\u0002').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/\u0001(\/?)strong\u0002/g, '<$1strong>');
   }
+  function num(n) { n = Number(n); return isFinite(n) ? n : 0; }
+  function str(x, max) { return String(x == null ? '' : x).slice(0, max || 300); }
+  // Ads we run (inside Generate). Rendered as HTML, so every field is cleaned.
+  function shapeAds(a) {
+    if (!a || !Array.isArray(a.rows) || !a.rows.length) return null;
+    var t = a.total || {};
+    return {
+      managed: !!a.managed,
+      rows: a.rows.slice(0, 8).map(function (r) {
+        return { channel: clean(r.channel), spend: clean(r.spend), leads: clean(r.leads), booked: clean(r.booked), per_booked: clean(r.per_booked) };
+      }),
+      total: { spend: clean(t.spend), leads: clean(t.leads), booked: clean(t.booked), per_booked: clean(t.per_booked), booked_value: clean(t.booked_value) }
+    };
+  }
+  // Almanac (inside Integrate). Rendered as text, never as HTML.
+  function shapeAlmanac(a) {
+    if (!a || typeof a !== 'object') return null;
+    return {
+      docs: num(a.docs), updated: str(a.updated, 16), approved_by: str(a.approved_by, 80),
+      asked_30: num(a.asked_30), answered_30: num(a.answered_30), waiting: num(a.waiting),
+      topics: (Array.isArray(a.topics) ? a.topics : []).slice(0, 8).map(function (t) { return str(t, 40); }),
+      suggest: (Array.isArray(a.suggest) ? a.suggest : []).slice(0, 4).map(function (q) { return str(q, 300); }),
+      recent: (Array.isArray(a.recent) ? a.recent : []).slice(0, 5).map(function (r) {
+        return { q: str(r && r.q, 300), answered: !!(r && r.answered), ago: str(r && r.ago, 8) };
+      })
+    };
+  }
   function shape(v) {
     if (!v || !Array.isArray(v.kpi) || v.kpi.length !== 4 || !v.engines) return null;
     var out = {
@@ -41,6 +68,8 @@
         chart: { title: clean(x.chart.title), stat: clean(x.chart.stat), bars: x.chart.bars.map(function (n) { return Math.max(0, Number(n) || 0); }) },
         activity: feed
       };
+      if (e === 'G') { var ads = shapeAds(x.ads); if (ads) out.engines.G.ads = ads; }
+      if (e === 'I') { var alm = shapeAlmanac(x.almanac); if (alm) out.engines.I.almanac = alm; }
       return true;
     });
     return ok ? out : null;
@@ -66,7 +95,7 @@
         var v = j && shape(j.view);
         if (!v) return null;
         var key = view || (j.org && j.org.tier === 'greenhouse' ? 'greenhouse' : 'orchard');
-        D.set(key, v);
+        D.set(key, v, { demo: !!(j.org && j.org.is_demo) });
         j._view = key;
         try { sessionStorage.removeItem('grain-bounced'); } catch (e) {}
         return j;
@@ -105,6 +134,16 @@
     var slug = org || DEMO[D.current() === 'orchard' ? 'orchard' : 'greenhouse'];
     fetch('/api/mc/' + slug, { method: 'POST' }).catch(function () {}).then(function () { setTimeout(refresh, 1200); });
   }
+
+  // Almanac: ask the account on screen. Resolves to the answer, or null when it can't be reached.
+  D.ask = function (question) {
+    var slug = org || DEMO[D.current() === 'orchard' ? 'orchard' : 'greenhouse'];
+    var headers = { 'Content-Type': 'application/json' };
+    if (org) { var a = authHeaders(); for (var k in a) headers[k] = a[k]; }
+    return fetch('/api/almanac/' + slug, { method: 'POST', headers: headers, body: JSON.stringify({ question: question }), cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
+  };
 
   refresh();
   setInterval(nudge, 40000);

@@ -16,7 +16,7 @@ const STAGES = ["sourced", "qualified", "contacted", "conversation", "audit_book
 const TRADES = ["hvac", "plumbing", "roofing", "electrical", "remodeling", "painting", "fencing", "pools", "landscaping", "garage_doors", "health_fitness", "real_estate", "auto", "tech", "other"];
 const CHANNELS = ["call", "sms", "email", "linkedin", "loom", "in_person", "after_hours_test"];
 const OUTCOMES = ["no_answer", "voicemail", "conversation", "audit_booked", "follow_up", "not_interested"];
-const TABS = ["Today", "Pipeline", "Clients", "Updates", "System"] as const;
+const TABS = ["Today", "Pipeline", "Clients", "Almanac", "Updates", "System"] as const;
 
 const nice = (s?: string | null) => (s ? s.replace(/_/g, " ") : "");
 const when = (t?: string | null) =>
@@ -153,6 +153,8 @@ export default function HQ() {
           {clients.map((c) => <Client key={c.id} c={c} sb={sb} run={run} />)}
         </>
       )}
+
+      {tab === "Almanac" && <Almanac sb={sb} run={run} />}
 
       {tab === "Updates" && (
         <Card title="Outbox" count={o.outbox.length}>
@@ -431,6 +433,164 @@ function Client({ c, sb, run }: { c: Row; sb: any; run: (l: string, f: () => Pro
         <a className="hq-btn ghost" href={`/dashboard?org=${c.slug}`}>Open their dashboard</a>
       </div>
     </section>
+  );
+}
+
+/**
+  Almanac: each client's prices, policies and how-tos. The team's Almanac and the voice agent answer
+  only from documents marked approved. Editing an approved one puts it back in draft until it's approved again.
+*/
+function Almanac({ sb, run }: { sb: any; run: (l: string, f: () => PromiseLike<{ error: any }>) => Promise<void> }) {
+  const [orgs, setOrgs] = useState<Row[]>([]);
+  const [orgId, setOrgId] = useState("");
+  const [docs, setDocs] = useState<Row[]>([]);
+  const [waiting, setWaiting] = useState<Row[]>([]);
+  const [edit, setEdit] = useState<Row | null>(null);
+  const [fromQ, setFromQ] = useState<string | null>(null);
+  const [tryQ, setTryQ] = useState("");
+  const [tryA, setTryA] = useState<Row | null>(null);
+  const [note, setNote] = useState("");
+
+  useEffect(() => {
+    void (async () => {
+      const { data } = await sb.from("orgs").select("id, slug, name, is_demo").order("is_demo").order("name");
+      setOrgs(data ?? []);
+      if (data?.length) setOrgId((cur: string) => cur || data[0].id);
+    })();
+  }, [sb]);
+
+  const loadOrg = useCallback(async (id: string) => {
+    if (!id) return;
+    const [d, q] = await Promise.all([
+      sb.from("almanac_docs").select("id, topic, title, body, status, source, approved_by, approved_at, updated_at").eq("org_id", id).order("topic").order("title"),
+      sb.from("almanac_questions").select("id, question, created_at").eq("org_id", id).eq("answered", false).is("resolved_at", null).order("created_at", { ascending: false }).limit(50),
+    ]);
+    if (d.error) setNote(`Almanac isn't switched on in the database yet: ${d.error.message}`); else setNote("");
+    setDocs(d.data ?? []); setWaiting(q.data ?? []);
+  }, [sb]);
+  useEffect(() => { setEdit(null); setTryA(null); void loadOrg(orgId); }, [orgId, loadOrg]);
+
+  const org = orgs.find((o) => o.id === orgId);
+  const act = async (label: string, fn: () => PromiseLike<{ error: any }>) => { await run(label, fn); await loadOrg(orgId); };
+
+  const save = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const submitter = (e.nativeEvent as SubmitEvent).submitter as HTMLButtonElement | null;
+    const approve = submitter?.value === "approve";
+    const f = new FormData(e.currentTarget); const v = (k: string) => String(f.get(k) ?? "").trim();
+    const row: Row = { topic: v("topic") || "General", title: v("title"), body: v("body"), source: v("source") || null };
+    Object.assign(row, approve
+      ? { status: "approved", approved_at: new Date().toISOString(), approved_by: v("approved_by") || "The owner" }
+      : { status: "draft" });
+    void act(approve ? "Approved answer" : "Answer", async () => {
+      const res = edit?.id
+        ? await sb.from("almanac_docs").update(row).eq("id", edit.id).select("id").single()
+        : await sb.from("almanac_docs").insert({ ...row, org_id: orgId }).select("id").single();
+      if (res.error) return res;
+      if (fromQ) { const r = await sb.rpc("hq_almanac_resolve", { p_question: fromQ, p_doc: res.data.id }); if (r.error) return r; }
+      setEdit(null); setFromQ(null);
+      return { error: null };
+    });
+  };
+
+  const ask = async () => {
+    if (!org || tryQ.trim().length < 2) return;
+    setTryA({ loading: true });
+    const { data: s } = await sb.auth.getSession();
+    const r = await fetch(`/api/almanac/${org.slug}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...(s.session ? { Authorization: `Bearer ${s.session.access_token}` } : {}) },
+      body: JSON.stringify({ question: tryQ.trim() }),
+    }).then((x) => (x.ok ? x.json() : null)).catch(() => null);
+    setTryA(r ?? { error: true });
+  };
+
+  const topics = [...new Set(docs.map((d) => d.topic))];
+  const count = (st: string) => docs.filter((d) => d.status === st).length;
+  return (
+    <>
+      <Card title="Almanac">
+        <label>Account<select value={orgId} onChange={(e) => setOrgId(e.target.value)}>
+          {orgs.map((o) => <option key={o.id} value={o.id}>{o.name}{o.is_demo ? " (sample)" : ""}</option>)}
+        </select></label>
+        <p className="hq-line">{count("approved")} approved · {count("draft")} drafts · {waiting.length} waiting for an answer</p>
+        <p className="hq-muted">Only approved answers are used, by the team&apos;s Almanac and by the voice agent. Changing an approved answer sends it back to draft until the owner approves it again.</p>
+        {note && <p className="hq-error">{note}</p>}
+        <div className="hq-row">
+          <button className="hq-btn small" onClick={() => { setFromQ(null); setEdit({}); }}>Add an answer</button>
+          {org && <a className="hq-btn small ghost" href={`/dashboard?org=${org.slug}`}>Open their dashboard</a>}
+        </div>
+      </Card>
+
+      {edit && (
+        <form className="hq-card hq-grid" onSubmit={save} key={edit.id ?? fromQ ?? "new"}>
+          <h2>{edit.id ? "Edit answer" : "New answer"}{edit.status && <span>{edit.status}</span>}</h2>
+          <label>Topic<input name="topic" list="alm-topics" defaultValue={edit.topic ?? ""} placeholder="Prices" required />
+            <datalist id="alm-topics">{["Prices", "Policies", "Service area", "Safety", "How-tos", "Memberships", "Financing", "Warranty", ...topics].filter((t, i, a) => a.indexOf(t) === i).map((t) => <option key={t} value={t} />)}</datalist></label>
+          <label>Title<input name="title" defaultValue={edit.title ?? ""} maxLength={140} required /></label>
+          <label className="wide">The answer, the way the owner would say it<textarea name="body" rows={6} defaultValue={edit.body ?? ""} maxLength={6000} required /></label>
+          <label>Where it came from<input name="source" defaultValue={edit.source ?? ""} placeholder="Kickoff call, price sheet" /></label>
+          <label>Approved by<input name="approved_by" defaultValue={edit.approved_by ?? ""} placeholder="Owner's name" /></label>
+          <div className="wide hq-row">
+            <button className="hq-btn small" name="do" value="approve">Save as approved</button>
+            <button className="hq-btn small ghost" name="do" value="draft">Save as draft</button>
+            {edit.id && edit.status !== "retired" && (
+              <button type="button" className="hq-btn small ghost" onClick={() => act("Retired", () => sb.from("almanac_docs").update({ status: "retired" }).eq("id", edit.id)).then(() => setEdit(null))}>Retire</button>
+            )}
+            <button type="button" className="hq-btn small ghost" onClick={() => { setEdit(null); setFromQ(null); }}>Cancel</button>
+          </div>
+        </form>
+      )}
+
+      {waiting.length > 0 && (
+        <Card title="Waiting for an answer" count={waiting.length}>
+          <p className="hq-muted">Questions the team asked that the Almanac couldn&apos;t answer. Confirm the answer with the owner, then add it.</p>
+          {waiting.map((q) => (
+            <div key={q.id} className="hq-msg">
+              <p className="hq-line">{q.question}<small> · {when(q.created_at)}</small></p>
+              <div className="hq-row">
+                <button className="hq-btn small" onClick={() => { setFromQ(q.id); setEdit({ title: q.question }); }}>Add the answer</button>
+                <button className="hq-btn small ghost" onClick={() => act("Question", () => sb.rpc("hq_almanac_resolve", { p_question: q.id, p_doc: null }))}>Handled another way</button>
+              </div>
+            </div>
+          ))}
+        </Card>
+      )}
+
+      <Card title="Answers" count={docs.length}>
+        {docs.length === 0 && <p className="hq-muted">None yet. Build it from the kickoff call and the price sheet: prices, policies, service area, emergencies, how-tos.</p>}
+        {topics.map((t) => (
+          <div key={t}>
+            <p className="hq-muted">{t}</p>
+            {docs.filter((d) => d.topic === t).map((d) => (
+              <button key={d.id} className="hq-doc" onClick={() => { setFromQ(null); setEdit(d); }}>
+                <span className={"hq-pill " + d.status}>{d.status}</span>
+                <span className="hq-doc-title">{d.title}<small>{d.status === "approved" && d.approved_by ? `${d.approved_by} · ` : ""}updated {day(d.updated_at)}</small></span>
+              </button>
+            ))}
+          </div>
+        ))}
+      </Card>
+
+      <Card title="Try it">
+        <p className="hq-muted">Ask the way the team would. It answers from approved answers only. Your test questions aren&apos;t kept.</p>
+        <form className="hq-inline" onSubmit={(e) => { e.preventDefault(); void ask(); }}>
+          <input value={tryQ} onChange={(e) => setTryQ(e.target.value)} placeholder="Do members pay the after-hours fee?" maxLength={300} />
+          <button className="hq-btn small" disabled={!org || tryQ.trim().length < 2}>Ask</button>
+        </form>
+        {tryA && (
+          <div className="hq-answer">
+            {tryA.loading ? <p className="hq-muted">Looking it up.</p>
+              : tryA.error ? <p className="hq-error">Almanac isn&apos;t reachable. Check that the database step is switched on.</p>
+              : <>
+                  <p className="hq-muted">{tryA.answered ? "Answer" : tryA.match === "partial" ? "Closest match (not a full answer)" : "Not in the Almanac"} · {tryA.mode === "model" ? "written from the answers" : tryA.mode === "sample" ? "sample" : "best matching passage"}</p>
+                  {tryA.answer && <p className="hq-line">{tryA.answer}</p>}
+                  {tryA.sources?.length > 0 && <small>From: {tryA.sources.map((x: Row) => x.title).join(", ")}</small>}
+                </>}
+          </div>
+        )}
+      </Card>
+    </>
   );
 }
 

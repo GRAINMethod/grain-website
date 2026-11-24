@@ -72,3 +72,11 @@
 .hq-opener { border-left: 3px solid var(--moss) !important; }
 .hq-card.wide { width: 100%; margin-top: 10px; }
 .hq-row > form.hq-card { flex: 1 1 100%; }
+
+/* Almanac (Nov 23): each client's approved answers */
+.hq-doc { display: flex; gap: 10px; align-items: baseline; width: 100%; background: none; border: 0; border-top: 1px solid var(--line); color: var(--cream); text-align: left; padding: 10px 0; cursor: pointer; font: inherit; }
+.hq-doc:hover .hq-doc-title { color: var(--moss-l); }
+.hq-doc-title { flex: 1; min-width: 0; font-weight: 600; } .hq-doc-title small { display: block; font-weight: 500; margin-top: 2px; }
+.hq-pill.approved { color: var(--moss-l); border-color: var(--moss-d); } .hq-pill.draft { color: #D8C27A; border-color: rgba(216,194,122,.4); } .hq-pill.retired { opacity: .55; }
+.hq-doc .hq-pill { flex: none; font: 600 10px "JetBrains Mono", monospace; letter-spacing: .06em; }
+.hq-answer { margin-top: 12px; padding: 12px 14px; border-left: 3px solid var(--moss); background: var(--ink); }
