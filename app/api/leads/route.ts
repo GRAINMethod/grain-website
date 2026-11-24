@@ -76,8 +76,10 @@ export async function POST(req: Request) {
     shop_phone: clip(body.shop_phone, 40),
     wants_test: body.wants_test === true,
     message: clip(body.message, 2000),
+    // sms_consent is the texts-about-the-audit box. The marketing box (sms_offers) is kept in the consent
+    // text, which records the exact words of every box the person checked.
     sms_consent: body.sms_consent === true,
-    sms_consent_text: body.sms_consent === true ? clip(body.sms_consent_text, 600) : "",
+    sms_consent_text: body.sms_consent === true || body.sms_offers === true ? clip(body.sms_consent_text, 600) : "",
     source_page: clip(body.source_page, 300),
     referrer: clip(body.referrer, 500),
     utm,
